@@ -39,6 +39,8 @@ dependencies:
   flutter_hooks: ^0.18.6
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
+  ## https://zenn.dev/k9i/articles/25c310b2dad300 この記事を参考にしてChat GPTを使用できるようにするプラグインを追加
+  dart_openai: ^1.9.91 
 
 dev_dependencies:
   flutter_test:
