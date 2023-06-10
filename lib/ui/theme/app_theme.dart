@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/ui/view/screens/home_screen.dart';
+import 'package:cooking_completly_understood/ui/view/screens/navigation.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +29,7 @@ class AppTheme extends StatelessWidget {
                 ),
             brightness: Brightness.dark,
           ),
-          home: const HomeScreen(
-            title: 'Home',
-          ),
+          home: const Navigation(),
         );
       },
     );
