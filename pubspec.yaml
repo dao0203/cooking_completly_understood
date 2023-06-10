@@ -44,6 +44,7 @@ dependencies:
   dynamic_color: ^1.6.5
   geolocator: ^9.0.2
   riverpod_annotation: ^2.1.1
+  chopper: ^6.1.4
 
 
 dev_dependencies:
