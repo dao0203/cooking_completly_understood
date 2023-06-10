@@ -1,4 +1,5 @@
 import 'package:cooking_completly_understood/ui/view/screens/analytics_screen.dart';
+import 'package:cooking_completly_understood/ui/view/screens/camera_screen.dart';
 import 'package:cooking_completly_understood/ui/view/screens/menu_screen.dart';
 import 'package:cooking_completly_understood/ui/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,15 @@ class _NavigationState extends State<Navigation> {
           child: const Icon(Icons.restaurant_rounded),
         ),
         FloatingActionButton.large(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const CameraScreen();
+                },
+              ),
+            );
+          },
           child: const Icon(Icons.add_a_photo_outlined),
         ),
         null,
