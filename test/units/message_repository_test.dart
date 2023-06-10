@@ -5,13 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 
-import 'posisition_data_source_mock.dart';
+import '../mocks/posisition_data_source_mock.dart';
 
 @GenerateMocks([PositionDataSource])
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   late PositionDataSource positionDataSource;
   setUp(() {
+    // ここでモックを使うように設定
     positionDataSource = PositionDataSourceMock();
   });
   test(
@@ -30,4 +31,3 @@ void main() async {
     },
   );
 }
-
