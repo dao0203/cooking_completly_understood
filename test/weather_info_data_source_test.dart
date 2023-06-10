@@ -10,12 +10,12 @@ void main() {
     // ここにテストコードを書く
     final weatherInfoDataSource = WeatherInfoDataSource.create();
 
-    final response = await weatherInfoDataSource.getCurrentWeather(
+    final response = await weatherInfoDataSource.getWeatherInfo(
       //東京の緯度経度
       35.6804,
       139.7690,
     );
-    
+
     //レスポンスボディを出力：成功
     debugPrint(response.body);
 

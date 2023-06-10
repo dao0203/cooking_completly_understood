@@ -17,7 +17,7 @@ class _$WeatherInfoDataSource extends WeatherInfoDataSource {
   final definitionType = WeatherInfoDataSource;
 
   @override
-  Future<Response<dynamic>> getCurrentWeather(
+  Future<Response<dynamic>> getWeatherInfo(
     double latitude,
     double longtitude,
   ) {

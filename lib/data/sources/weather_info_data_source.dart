@@ -7,8 +7,10 @@ abstract class WeatherInfoDataSource extends ChopperService {
   static WeatherInfoDataSource create() =>
       _$WeatherInfoDataSource(ChopperClient());
 
-  @Get(path: '/v1/forecast?latitude={latitude}&longitude={longtitude}&current_weather=true')
-  Future<Response> getCurrentWeather(
+  @Get(
+      path:
+          '/v1/forecast?latitude={latitude}&longitude={longtitude}&current_weather=true')
+  Future<Response> getWeatherInfo(
     @Path('latitude') double latitude,
     @Path("longtitude") double longtitude,
   );
