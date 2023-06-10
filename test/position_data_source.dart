@@ -9,8 +9,8 @@ void main() {
     final position = await positionDataSource.getLocationInfo();
     final latitude = position.latitude;
     final longitude = position.longitude;
-    print("latitude: $latitude");
-    print("longitude: $longitude"); 
+    debugPrint("latitude: $latitude");
+    debugPrint("longitude: $longitude"); 
     expect(latitude, isNotNull);
     expect(longitude, isNotNull);
   });
