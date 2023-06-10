@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/ui/view/widget/menu_item.dart';
 import 'package:flutter/material.dart';
 
 class AnalyticsScreen extends StatelessWidget {
@@ -12,6 +13,7 @@ class AnalyticsScreen extends StatelessWidget {
           Text(
             '過去の料理の栄養バランスなど',
           ),
+          MenuItem(),
         ],
       ),
     );
