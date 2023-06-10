@@ -2,6 +2,7 @@ import 'package:cooking_completly_understood/ui/view/screens/analytics_screen.da
 import 'package:cooking_completly_understood/ui/view/screens/camera_screen.dart';
 import 'package:cooking_completly_understood/ui/view/screens/menu_screen.dart';
 import 'package:cooking_completly_understood/ui/view/screens/home_screen.dart';
+import 'package:cooking_completly_understood/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -87,6 +88,36 @@ class _NavigationState extends State<Navigation> {
         null,
       ][_currentPageIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      drawer: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 16, 0, 16),
+        child: Drawer(
+          backgroundColor: alphaBlend(
+            Theme.of(context).colorScheme.primary.withOpacity(0.08),
+            Theme.of(context).colorScheme.background,
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+          ),
+          child: Column(
+            children: [
+              const DrawerHeader(child: Text('Drawer Header')),
+              ListTile(
+                title: const Text('Item 1'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Item 2'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawerEdgeDragWidth: MediaQuery.of(context).size.width * 0.5,
     );
   }
 }
