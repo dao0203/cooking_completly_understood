@@ -71,10 +71,7 @@ class _NavigationState extends State<Navigation> {
         ],
       ),
       floatingActionButton: [
-        FloatingActionButton.large(
-          onPressed: () {},
-          child: const Icon(Icons.restaurant_rounded),
-        ),
+        null,
         FloatingActionButton.large(
           onPressed: () {
             Navigator.of(context).push(
