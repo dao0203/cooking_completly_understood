@@ -3,6 +3,7 @@ import 'package:cooking_completly_understood/ui/view/screens/camera_screen.dart'
 import 'package:cooking_completly_understood/ui/view/screens/menu_screen.dart';
 import 'package:cooking_completly_understood/ui/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);
@@ -22,6 +23,15 @@ class _NavigationState extends State<Navigation> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        statusBarColor: Colors.transparent,
+      ),
+    );
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.edgeToEdge,
+    );
     return Scaffold(
       appBar: [
         AppBar(
