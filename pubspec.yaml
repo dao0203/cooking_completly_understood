@@ -46,6 +46,7 @@ dependencies:
   riverpod_annotation: ^2.1.1
   chopper: ^6.1.4
   chopper_generator: ^6.0.1
+  mockito: ^5.4.2
 
 
 dev_dependencies:
