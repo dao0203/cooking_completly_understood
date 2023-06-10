@@ -6,7 +6,8 @@ part 'current_weather.g.dart';
 @freezed
 abstract class CurrentWeather with _$CurrentWeather {
   const factory CurrentWeather({
-    @JsonKey(name: 'temperature', defaultValue: '') required String temperature,
+    @JsonKey(name: 'temperature', defaultValue: 0.0)
+    required double temperature,
   }) = _CurrentWeather;
 
   factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
