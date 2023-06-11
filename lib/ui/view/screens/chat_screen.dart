@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/ui/state/message_state.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -63,7 +64,7 @@ class ChatScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final messages = ref.watch(messagesProvider);
+    final messages = ref.watch(messagesStateProvider);
     final messageController = useTextEditingController();
     final screenWidth = MediaQuery.of(context).size.width;
     final isWaiting = useState(false);
@@ -171,7 +172,7 @@ class ChatScreen extends HookConsumerWidget {
                             );
                           } else {
                             final sendMessage =
-                                ref.read(messagesProvider.notifier).sendMessage(
+                                ref.read(messagesStateProvider.notifier).sendMessageAndReceiveMessage(
                                       messageController.text,
                                     );
                             isWaiting.value = true;
