@@ -13,7 +13,7 @@ class MenuDetailsScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
