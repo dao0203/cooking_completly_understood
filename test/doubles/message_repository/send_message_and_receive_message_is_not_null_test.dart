@@ -35,7 +35,7 @@ void main() async {
       const sendedMessage = "きゅうりと鶏肉のおすすめのレシピは？";
       await messageRepository.sendMessageAndReceiveMessage(sendedMessage).then(
         (value) {
-          debugPrint(value);
+          debugPrint(value.content);
           expect(value, isNotNull);
         },
       );
