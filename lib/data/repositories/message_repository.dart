@@ -31,6 +31,7 @@ class MessageRepository {
         .getWeatherInfo(position.altitude, position.longitude)
         .then(
       (response) async {
+        //成功していないので、原因を調査
         print("成功してますか？:${response.isSuccessful}}");
         //レスポンス成功時
         if (response.isSuccessful) {
