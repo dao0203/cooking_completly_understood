@@ -54,7 +54,7 @@ class _ImageLabelViewState extends State<ImageLabelView> {
     // uncomment next lines if you want to use a local model
     // make sure to add tflite model to assets/ml
     // final path = 'assets/ml/lite-model_aiy_vision_classifier_birds_V1_3.tflite';
-    const path = 'assets/ml/object_labeler.tflite';
+    const path = 'assets/ml/lite-model_aiy_vision_classifier_food_V1_1.tflite';
     final modelPath = await _getModel(path);
     final options = LocalLabelerOptions(modelPath: modelPath);
     _imageLabeler = ImageLabeler(options: options);
