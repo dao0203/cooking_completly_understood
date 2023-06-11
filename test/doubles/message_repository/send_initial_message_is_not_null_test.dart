@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
@@ -21,12 +23,12 @@ void main() async {
     positionDataSource = PositionDataSourceMock();
   });
 
-  test('最初に送るメッセージをRepositoryから送れるかどうかを判断', () {
+  test('最初に送るメッセージをRepositoryから送れるかどうかを判断するテストダブル', () async {
     final messageRepository = MessageRepository(
       positionDataSource,
       WeatherInfoDataSource.create(),
       MessageService(),
     );
-    expect(messageRepository.sendInitialMessage(), isNotNull);
+    await messageRepository.sendInitialMessage();
   });
 }
