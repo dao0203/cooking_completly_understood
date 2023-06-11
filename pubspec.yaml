@@ -48,6 +48,12 @@ dependencies:
   chopper: ^6.1.4
   chopper_generator: ^6.0.1
   mockito: ^5.4.2
+  google_mlkit_image_labeling: ^0.7.0
+  camera: ^0.10.5+2
+  image_picker: ^0.8.8
+  path: ^1.8.3
+  path_provider: ^2.0.15
+  google_mlkit_commons: ^0.4.0
 
 
 dev_dependencies:
