@@ -47,5 +47,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>食品の読み取り機能を利用するにはカメラへのアクセスを許可する必要があります</string>
 </dict>
 </plist>

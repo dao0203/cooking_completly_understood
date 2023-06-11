@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/ui/view/screens/mlkit/vision_detector_views/label_detector_view.dart';
 import 'package:flutter/material.dart';
 
 class CameraScreen extends StatelessWidget {
@@ -6,16 +7,7 @@ class CameraScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'カメラの画面を表示',
-            ),
-          ],
-        ),
-      ),
+      body: const ImageLabelView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pop(context);
