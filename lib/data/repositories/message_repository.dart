@@ -15,6 +15,13 @@ class MessageRepository {
     this._messageService,
   );
 
+  //初期メッセージを送信する
+  Future<void> sendInitialMessage() async {
+    //初期メッセージを送信
+    await _messageService.sendInitialMessage();
+  }
+
+
   //メッセージを送信して返信を受け取る
   Future<String> sendMessageAndReceiveMessage(String message) async {
     final position = await _positionDataSource.getLocationInfo();
