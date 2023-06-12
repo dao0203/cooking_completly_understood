@@ -1,4 +1,3 @@
-import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
