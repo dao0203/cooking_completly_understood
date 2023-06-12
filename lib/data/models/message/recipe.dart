@@ -8,7 +8,7 @@ part 'recipe.freezed.dart';
 part 'recipe.g.dart';
 
 @freezed
-class Message with _$Recipe {
+class Message with _$Message {
   const Message._();
 
   const factory Message({
@@ -24,5 +24,5 @@ class Message with _$Recipe {
     required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
   }) = _Recipe;
 
-  factory Message.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
+  factory Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);
 }
