@@ -8,20 +8,21 @@ part 'recipe.freezed.dart';
 part 'recipe.g.dart';
 
 @freezed
-class Recipe with _$Recipe {
-  const Recipe._();
+class Message with _$Recipe {
+  const Message._();
 
-  const factory Recipe({
-    @JsonKey(name: jsonRecipeName, defaultValue: '') required String name, //レシピ名
+  const factory Message({
+    @JsonKey(name: jsonRecipeName, defaultValue: '')
+    required String recipeName, //レシピ名
     @JsonKey(name: jsonRecipeDescription, defaultValue: '')
-    required String description, //レシピの説明
+    required String recipeDescription, //レシピの説明
     @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
-    required List<RecipeIngredients> ingredients, //材料
+    required List<RecipeIngredients> recipeIngredients, //材料
     @JsonKey(name: jsonRecipeSteps, defaultValue: [])
-    required List<RecipeSteps> steps, //手順
+    required List<RecipeSteps> recipeSteps, //手順
     @JsonKey(name: jsonRecipeNutrition)
     required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
   }) = _Recipe;
 
-  factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
+  factory Message.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
 }
