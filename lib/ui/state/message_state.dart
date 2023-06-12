@@ -40,7 +40,7 @@ class MessagesState extends _$MessagesState {
           (value) => state = [
             ...state,
             OpenAIChatCompletionChoiceMessageModel(
-              content: value.toString(),
+              content: value,
               role: OpenAIChatMessageRole.assistant,
             ),
           ],

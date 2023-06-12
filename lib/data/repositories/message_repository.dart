@@ -5,6 +5,7 @@ import 'package:cooking_completly_understood/data/models/weather_forecast/weathe
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:cooking_completly_understood/utils/constants.dart';
 
 class MessageRepository {
   final PositionDataSource _positionDataSource;
@@ -23,7 +24,7 @@ class MessageRepository {
   }
 
   //メッセージを送信して返信を受け取る
-  Future<Recipe> sendMessageAndReceiveMessage(String message) async {
+  Future<String> sendMessageAndReceiveMessage(String message) async {
     final position = await _positionDataSource.getLocationInfo();
     return await _weatherInfoDataSource
         //緯度経度をもとに天気情報を取得する
@@ -45,36 +46,11 @@ class MessageRepository {
               weatherForecast.currentWeather.weatherCode.toString();
 
           //送信するメッセージを作成
-          final sendedMessage = """
-以下の条件を満たすレシピを教えてください。
-1.userの入力したメッセージを考慮して結果を回答してください
-メッセージ: $message
-2.天気情報を考慮して結果を回答してください
-温度: $currentTemperature 天気(WMO): $currentWeather
-3.回答は下記のJson形式で回答してください
-{
-  "recipe_name": "レシピ名",
-  "recipe_description": "レシピの説明",
-  "recipe_ingredients": [
-    {
-      "ingredient_name": "材料名",
-      "ingredient_quantity": "材料の量"
-    }
-  ],
-  "recipe_steps": [
-    {
-      "step_number": "手順番号",
-      "step_description": "手順の説明"
-    }
-  ]
-  "recipe_nutrition": {
-    "calorie": "カロリー",
-    "protein": "タンパク質",
-    "fat": "脂質",
-    "carbohydrate": "炭水化物"
-  }
-}
-          """;
+          final sendedMessage = messageThatUserInputted(
+            message,
+            currentTemperature,
+            currentWeather,
+          );
 
           //ChatGPTにメッセージを送信して返信を受け取る
           return await _messageService
@@ -84,10 +60,11 @@ class MessageRepository {
             if (value.haveChoices) {
               //レスポンスボディをパース
               print(value.choices[0].toString());
-              final recipe =
-                  Recipe.fromJson(json.decode(value.choices[0].message.content));
-              
-              return recipe;
+              final recipe = Recipe.fromJson(
+                  json.decode(value.choices[0].message.content));
+              //TODO:ここでレシピをローカルDBに保存するようにする
+              //本当は何も返さないようにしたい
+              return recipe.toString();
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
