@@ -20,9 +20,9 @@ RecipeIngredients _$RecipeIngredientsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RecipeIngredients {
-  @JsonKey(name: 'ingredient_name', defaultValue: '')
+  @JsonKey(name: jsonIngredientName, defaultValue: '')
   String get name => throw _privateConstructorUsedError; //材料名
-  @JsonKey(name: 'ingredient_quantity', defaultValue: '')
+  @JsonKey(name: jsoningredientQuantity, defaultValue: '')
   String get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,8 +38,10 @@ abstract class $RecipeIngredientsCopyWith<$Res> {
       _$RecipeIngredientsCopyWithImpl<$Res, RecipeIngredients>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ingredient_name', defaultValue: '') String name,
-      @JsonKey(name: 'ingredient_quantity', defaultValue: '') String quantity});
+      {@JsonKey(name: jsonIngredientName, defaultValue: '')
+          String name,
+      @JsonKey(name: jsoningredientQuantity, defaultValue: '')
+          String quantity});
 }
 
 /// @nodoc
@@ -80,8 +82,10 @@ abstract class _$$_RecipeIngredientsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ingredient_name', defaultValue: '') String name,
-      @JsonKey(name: 'ingredient_quantity', defaultValue: '') String quantity});
+      {@JsonKey(name: jsonIngredientName, defaultValue: '')
+          String name,
+      @JsonKey(name: jsoningredientQuantity, defaultValue: '')
+          String quantity});
 }
 
 /// @nodoc
@@ -115,20 +119,20 @@ class __$$_RecipeIngredientsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RecipeIngredients implements _RecipeIngredients {
   const _$_RecipeIngredients(
-      {@JsonKey(name: 'ingredient_name', defaultValue: '')
+      {@JsonKey(name: jsonIngredientName, defaultValue: '')
           required this.name,
-      @JsonKey(name: 'ingredient_quantity', defaultValue: '')
+      @JsonKey(name: jsoningredientQuantity, defaultValue: '')
           required this.quantity});
 
   factory _$_RecipeIngredients.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeIngredientsFromJson(json);
 
   @override
-  @JsonKey(name: 'ingredient_name', defaultValue: '')
+  @JsonKey(name: jsonIngredientName, defaultValue: '')
   final String name;
 //材料名
   @override
-  @JsonKey(name: 'ingredient_quantity', defaultValue: '')
+  @JsonKey(name: jsoningredientQuantity, defaultValue: '')
   final String quantity;
 
   @override
@@ -167,19 +171,19 @@ class _$_RecipeIngredients implements _RecipeIngredients {
 
 abstract class _RecipeIngredients implements RecipeIngredients {
   const factory _RecipeIngredients(
-      {@JsonKey(name: 'ingredient_name', defaultValue: '')
+      {@JsonKey(name: jsonIngredientName, defaultValue: '')
           required final String name,
-      @JsonKey(name: 'ingredient_quantity', defaultValue: '')
+      @JsonKey(name: jsoningredientQuantity, defaultValue: '')
           required final String quantity}) = _$_RecipeIngredients;
 
   factory _RecipeIngredients.fromJson(Map<String, dynamic> json) =
       _$_RecipeIngredients.fromJson;
 
   @override
-  @JsonKey(name: 'ingredient_name', defaultValue: '')
+  @JsonKey(name: jsonIngredientName, defaultValue: '')
   String get name;
   @override //材料名
-  @JsonKey(name: 'ingredient_quantity', defaultValue: '')
+  @JsonKey(name: jsoningredientQuantity, defaultValue: '')
   String get quantity;
   @override
   @JsonKey(ignore: true)

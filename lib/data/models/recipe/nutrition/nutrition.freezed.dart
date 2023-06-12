@@ -20,13 +20,13 @@ Nutrition _$NutritionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Nutrition {
-  @JsonKey(name: "calorie", defaultValue: '')
+  @JsonKey(name: jsonCalorie, defaultValue: '')
   String get calorie => throw _privateConstructorUsedError; //カロリー
-  @JsonKey(name: 'protein', defaultValue: '')
+  @JsonKey(name: jsonProtein, defaultValue: '')
   String get protein => throw _privateConstructorUsedError; //タンパク質
-  @JsonKey(name: 'fat', defaultValue: '')
+  @JsonKey(name: jsonFat, defaultValue: '')
   String get fat => throw _privateConstructorUsedError; //脂質
-  @JsonKey(name: 'carbohydrate', defaultValue: '')
+  @JsonKey(name: jsonCarbohydrate, defaultValue: '')
   String get carbohydrate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,10 +41,10 @@ abstract class $NutritionCopyWith<$Res> {
       _$NutritionCopyWithImpl<$Res, Nutrition>;
   @useResult
   $Res call(
-      {@JsonKey(name: "calorie", defaultValue: '') String calorie,
-      @JsonKey(name: 'protein', defaultValue: '') String protein,
-      @JsonKey(name: 'fat', defaultValue: '') String fat,
-      @JsonKey(name: 'carbohydrate', defaultValue: '') String carbohydrate});
+      {@JsonKey(name: jsonCalorie, defaultValue: '') String calorie,
+      @JsonKey(name: jsonProtein, defaultValue: '') String protein,
+      @JsonKey(name: jsonFat, defaultValue: '') String fat,
+      @JsonKey(name: jsonCarbohydrate, defaultValue: '') String carbohydrate});
 }
 
 /// @nodoc
@@ -94,10 +94,10 @@ abstract class _$$_NutritionCopyWith<$Res> implements $NutritionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "calorie", defaultValue: '') String calorie,
-      @JsonKey(name: 'protein', defaultValue: '') String protein,
-      @JsonKey(name: 'fat', defaultValue: '') String fat,
-      @JsonKey(name: 'carbohydrate', defaultValue: '') String carbohydrate});
+      {@JsonKey(name: jsonCalorie, defaultValue: '') String calorie,
+      @JsonKey(name: jsonProtein, defaultValue: '') String protein,
+      @JsonKey(name: jsonFat, defaultValue: '') String fat,
+      @JsonKey(name: jsonCarbohydrate, defaultValue: '') String carbohydrate});
 }
 
 /// @nodoc
@@ -141,32 +141,32 @@ class __$$_NutritionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Nutrition implements _Nutrition {
   const _$_Nutrition(
-      {@JsonKey(name: "calorie", defaultValue: '')
+      {@JsonKey(name: jsonCalorie, defaultValue: '')
           required this.calorie,
-      @JsonKey(name: 'protein', defaultValue: '')
+      @JsonKey(name: jsonProtein, defaultValue: '')
           required this.protein,
-      @JsonKey(name: 'fat', defaultValue: '')
+      @JsonKey(name: jsonFat, defaultValue: '')
           required this.fat,
-      @JsonKey(name: 'carbohydrate', defaultValue: '')
+      @JsonKey(name: jsonCarbohydrate, defaultValue: '')
           required this.carbohydrate});
 
   factory _$_Nutrition.fromJson(Map<String, dynamic> json) =>
       _$$_NutritionFromJson(json);
 
   @override
-  @JsonKey(name: "calorie", defaultValue: '')
+  @JsonKey(name: jsonCalorie, defaultValue: '')
   final String calorie;
 //カロリー
   @override
-  @JsonKey(name: 'protein', defaultValue: '')
+  @JsonKey(name: jsonProtein, defaultValue: '')
   final String protein;
 //タンパク質
   @override
-  @JsonKey(name: 'fat', defaultValue: '')
+  @JsonKey(name: jsonFat, defaultValue: '')
   final String fat;
 //脂質
   @override
-  @JsonKey(name: 'carbohydrate', defaultValue: '')
+  @JsonKey(name: jsonCarbohydrate, defaultValue: '')
   final String carbohydrate;
 
   @override
@@ -207,29 +207,29 @@ class _$_Nutrition implements _Nutrition {
 
 abstract class _Nutrition implements Nutrition {
   const factory _Nutrition(
-      {@JsonKey(name: "calorie", defaultValue: '')
+      {@JsonKey(name: jsonCalorie, defaultValue: '')
           required final String calorie,
-      @JsonKey(name: 'protein', defaultValue: '')
+      @JsonKey(name: jsonProtein, defaultValue: '')
           required final String protein,
-      @JsonKey(name: 'fat', defaultValue: '')
+      @JsonKey(name: jsonFat, defaultValue: '')
           required final String fat,
-      @JsonKey(name: 'carbohydrate', defaultValue: '')
+      @JsonKey(name: jsonCarbohydrate, defaultValue: '')
           required final String carbohydrate}) = _$_Nutrition;
 
   factory _Nutrition.fromJson(Map<String, dynamic> json) =
       _$_Nutrition.fromJson;
 
   @override
-  @JsonKey(name: "calorie", defaultValue: '')
+  @JsonKey(name: jsonCalorie, defaultValue: '')
   String get calorie;
   @override //カロリー
-  @JsonKey(name: 'protein', defaultValue: '')
+  @JsonKey(name: jsonProtein, defaultValue: '')
   String get protein;
   @override //タンパク質
-  @JsonKey(name: 'fat', defaultValue: '')
+  @JsonKey(name: jsonFat, defaultValue: '')
   String get fat;
   @override //脂質
-  @JsonKey(name: 'carbohydrate', defaultValue: '')
+  @JsonKey(name: jsonCarbohydrate, defaultValue: '')
   String get carbohydrate;
   @override
   @JsonKey(ignore: true)

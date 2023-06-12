@@ -20,16 +20,16 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Recipe {
-  @JsonKey(name: 'recipe_name', defaultValue: '')
+  @JsonKey(name: jsonRecipeName, defaultValue: '')
   String get name => throw _privateConstructorUsedError; //レシピ名
-  @JsonKey(name: 'recipe_description', defaultValue: '')
+  @JsonKey(name: jsonRecipeDescription, defaultValue: '')
   String get description => throw _privateConstructorUsedError; //レシピの説明
-  @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+  @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
   List<RecipeIngredients> get ingredients =>
       throw _privateConstructorUsedError; //材料
-  @JsonKey(name: 'recipe_steps', defaultValue: [])
+  @JsonKey(name: jsonRecipeSteps, defaultValue: [])
   List<RecipeSteps> get steps => throw _privateConstructorUsedError; //手順
-  @JsonKey(name: 'recipe_nutrition')
+  @JsonKey(name: jsonRecipeNutrition)
   Nutrition get nutrition => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,15 +43,15 @@ abstract class $RecipeCopyWith<$Res> {
       _$RecipeCopyWithImpl<$Res, Recipe>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'recipe_name', defaultValue: '')
+      {@JsonKey(name: jsonRecipeName, defaultValue: '')
           String name,
-      @JsonKey(name: 'recipe_description', defaultValue: '')
+      @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           String description,
-      @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+      @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           List<RecipeIngredients> ingredients,
-      @JsonKey(name: 'recipe_steps', defaultValue: [])
+      @JsonKey(name: jsonRecipeSteps, defaultValue: [])
           List<RecipeSteps> steps,
-      @JsonKey(name: 'recipe_nutrition')
+      @JsonKey(name: jsonRecipeNutrition)
           Nutrition nutrition});
 
   $NutritionCopyWith<$Res> get nutrition;
@@ -116,15 +116,15 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'recipe_name', defaultValue: '')
+      {@JsonKey(name: jsonRecipeName, defaultValue: '')
           String name,
-      @JsonKey(name: 'recipe_description', defaultValue: '')
+      @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           String description,
-      @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+      @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           List<RecipeIngredients> ingredients,
-      @JsonKey(name: 'recipe_steps', defaultValue: [])
+      @JsonKey(name: jsonRecipeSteps, defaultValue: [])
           List<RecipeSteps> steps,
-      @JsonKey(name: 'recipe_nutrition')
+      @JsonKey(name: jsonRecipeNutrition)
           Nutrition nutrition});
 
   @override
@@ -176,15 +176,15 @@ class __$$_RecipeCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Recipe implements _Recipe {
   const _$_Recipe(
-      {@JsonKey(name: 'recipe_name', defaultValue: '')
+      {@JsonKey(name: jsonRecipeName, defaultValue: '')
           required this.name,
-      @JsonKey(name: 'recipe_description', defaultValue: '')
+      @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           required this.description,
-      @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+      @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           required final List<RecipeIngredients> ingredients,
-      @JsonKey(name: 'recipe_steps', defaultValue: [])
+      @JsonKey(name: jsonRecipeSteps, defaultValue: [])
           required final List<RecipeSteps> steps,
-      @JsonKey(name: 'recipe_nutrition')
+      @JsonKey(name: jsonRecipeNutrition)
           required this.nutrition})
       : _ingredients = ingredients,
         _steps = steps;
@@ -193,17 +193,17 @@ class _$_Recipe implements _Recipe {
       _$$_RecipeFromJson(json);
 
   @override
-  @JsonKey(name: 'recipe_name', defaultValue: '')
+  @JsonKey(name: jsonRecipeName, defaultValue: '')
   final String name;
 //レシピ名
   @override
-  @JsonKey(name: 'recipe_description', defaultValue: '')
+  @JsonKey(name: jsonRecipeDescription, defaultValue: '')
   final String description;
 //レシピの説明
   final List<RecipeIngredients> _ingredients;
 //レシピの説明
   @override
-  @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+  @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
   List<RecipeIngredients> get ingredients {
     if (_ingredients is EqualUnmodifiableListView) return _ingredients;
     // ignore: implicit_dynamic_type
@@ -214,7 +214,7 @@ class _$_Recipe implements _Recipe {
   final List<RecipeSteps> _steps;
 //材料
   @override
-  @JsonKey(name: 'recipe_steps', defaultValue: [])
+  @JsonKey(name: jsonRecipeSteps, defaultValue: [])
   List<RecipeSteps> get steps {
     if (_steps is EqualUnmodifiableListView) return _steps;
     // ignore: implicit_dynamic_type
@@ -223,7 +223,7 @@ class _$_Recipe implements _Recipe {
 
 //手順
   @override
-  @JsonKey(name: 'recipe_nutrition')
+  @JsonKey(name: jsonRecipeNutrition)
   final Nutrition nutrition;
 
   @override
@@ -272,33 +272,33 @@ class _$_Recipe implements _Recipe {
 
 abstract class _Recipe implements Recipe {
   const factory _Recipe(
-      {@JsonKey(name: 'recipe_name', defaultValue: '')
+      {@JsonKey(name: jsonRecipeName, defaultValue: '')
           required final String name,
-      @JsonKey(name: 'recipe_description', defaultValue: '')
+      @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           required final String description,
-      @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+      @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           required final List<RecipeIngredients> ingredients,
-      @JsonKey(name: 'recipe_steps', defaultValue: [])
+      @JsonKey(name: jsonRecipeSteps, defaultValue: [])
           required final List<RecipeSteps> steps,
-      @JsonKey(name: 'recipe_nutrition')
+      @JsonKey(name: jsonRecipeNutrition)
           required final Nutrition nutrition}) = _$_Recipe;
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
 
   @override
-  @JsonKey(name: 'recipe_name', defaultValue: '')
+  @JsonKey(name: jsonRecipeName, defaultValue: '')
   String get name;
   @override //レシピ名
-  @JsonKey(name: 'recipe_description', defaultValue: '')
+  @JsonKey(name: jsonRecipeDescription, defaultValue: '')
   String get description;
   @override //レシピの説明
-  @JsonKey(name: 'recipe_ingredients', defaultValue: [])
+  @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
   List<RecipeIngredients> get ingredients;
   @override //材料
-  @JsonKey(name: 'recipe_steps', defaultValue: [])
+  @JsonKey(name: jsonRecipeSteps, defaultValue: [])
   List<RecipeSteps> get steps;
   @override //手順
-  @JsonKey(name: 'recipe_nutrition')
+  @JsonKey(name: jsonRecipeNutrition)
   Nutrition get nutrition;
   @override
   @JsonKey(ignore: true)

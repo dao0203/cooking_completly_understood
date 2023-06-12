@@ -20,9 +20,9 @@ RecipeSteps _$RecipeStepsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RecipeSteps {
-  @JsonKey(name: 'step_number', defaultValue: '')
+  @JsonKey(name: jsonStepNumber, defaultValue: '')
   String get number => throw _privateConstructorUsedError; //手順番号
-  @JsonKey(name: 'step_description', defaultValue: '')
+  @JsonKey(name: jsonStepDescription, defaultValue: '')
   String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,8 +38,10 @@ abstract class $RecipeStepsCopyWith<$Res> {
       _$RecipeStepsCopyWithImpl<$Res, RecipeSteps>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'step_number', defaultValue: '') String number,
-      @JsonKey(name: 'step_description', defaultValue: '') String description});
+      {@JsonKey(name: jsonStepNumber, defaultValue: '')
+          String number,
+      @JsonKey(name: jsonStepDescription, defaultValue: '')
+          String description});
 }
 
 /// @nodoc
@@ -80,8 +82,10 @@ abstract class _$$_RecipeStepsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'step_number', defaultValue: '') String number,
-      @JsonKey(name: 'step_description', defaultValue: '') String description});
+      {@JsonKey(name: jsonStepNumber, defaultValue: '')
+          String number,
+      @JsonKey(name: jsonStepDescription, defaultValue: '')
+          String description});
 }
 
 /// @nodoc
@@ -115,20 +119,20 @@ class __$$_RecipeStepsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RecipeSteps implements _RecipeSteps {
   const _$_RecipeSteps(
-      {@JsonKey(name: 'step_number', defaultValue: '')
+      {@JsonKey(name: jsonStepNumber, defaultValue: '')
           required this.number,
-      @JsonKey(name: 'step_description', defaultValue: '')
+      @JsonKey(name: jsonStepDescription, defaultValue: '')
           required this.description});
 
   factory _$_RecipeSteps.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeStepsFromJson(json);
 
   @override
-  @JsonKey(name: 'step_number', defaultValue: '')
+  @JsonKey(name: jsonStepNumber, defaultValue: '')
   final String number;
 //手順番号
   @override
-  @JsonKey(name: 'step_description', defaultValue: '')
+  @JsonKey(name: jsonStepDescription, defaultValue: '')
   final String description;
 
   @override
@@ -166,19 +170,19 @@ class _$_RecipeSteps implements _RecipeSteps {
 
 abstract class _RecipeSteps implements RecipeSteps {
   const factory _RecipeSteps(
-      {@JsonKey(name: 'step_number', defaultValue: '')
+      {@JsonKey(name: jsonStepNumber, defaultValue: '')
           required final String number,
-      @JsonKey(name: 'step_description', defaultValue: '')
+      @JsonKey(name: jsonStepDescription, defaultValue: '')
           required final String description}) = _$_RecipeSteps;
 
   factory _RecipeSteps.fromJson(Map<String, dynamic> json) =
       _$_RecipeSteps.fromJson;
 
   @override
-  @JsonKey(name: 'step_number', defaultValue: '')
+  @JsonKey(name: jsonStepNumber, defaultValue: '')
   String get number;
   @override //手順番号
-  @JsonKey(name: 'step_description', defaultValue: '')
+  @JsonKey(name: jsonStepDescription, defaultValue: '')
   String get description;
   @override
   @JsonKey(ignore: true)

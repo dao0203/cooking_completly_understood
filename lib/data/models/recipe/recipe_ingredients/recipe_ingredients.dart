@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recipe_ingredients.freezed.dart';
@@ -6,9 +7,9 @@ part 'recipe_ingredients.g.dart';
 @freezed
 abstract class RecipeIngredients with _$RecipeIngredients {
   const factory RecipeIngredients({
-    @JsonKey(name: 'ingredient_name', defaultValue: '')
+    @JsonKey(name: jsonIngredientName, defaultValue: '')
     required String name, //材料名
-    @JsonKey(name: 'ingredient_quantity', defaultValue: '')
+    @JsonKey(name: jsoningredientQuantity, defaultValue: '')
     required String quantity, //材料の量
   }) = _RecipeIngredients;
 
