@@ -11,43 +11,43 @@ String messageThatUserInputted(String message,String temperature,String weather)
 温度: $message 天気(WMO): $weather
 3.回答は下記のJson形式で回答してください
 {
-  "$_recipeName": "レシピ名",
-  "$_recipeDescription": "レシピの説明",
-  "$_recipeIngredients": [
+  "$jsonRecipeName": "レシピ名",
+  "$jsonRecipeDescription": "レシピの説明",
+  "$jsonRecipeIngredients": [
     {
-      "$_ingredientName": "材料名",
-      "$_ingredientQuantity": "材料の量"
+      "$jsonIngredientName": "材料名",
+      "$jsoningredientQuantity": "材料の量"
     }
   ],
-  "$_recipeSteps": [
+  "$jsonRecipeSteps": [
     {
-      "$_stepNumber": "手順番号",
-      "$_stepDescription": "手順の説明"
+      "$jsonStepNumber": "手順番号",
+      "$jsonStepDescription": "手順の説明"
     }
   ]
-  "$_recipeNutrition": {
-    "$_calorie": "カロリー",
-    "$_protein": "タンパク質",
-    "$_fat": "脂質",
-    "$_carbohydrate": "炭水化物"
+  "$jsonRecipeNutrition": {
+    "$jsonCalorie": "カロリー",
+    "$jsonProtein": "タンパク質",
+    "$jsonFat": "脂質",
+    "$jsonCarbohydrate": "炭水化物"
   }
 }
 ''';
 
 //--------------レシピのJson形式-----------------
-const _recipeName = "recipe_name";
-const _recipeDescription = "recipe_description";
+const  jsonRecipeName = "recipe_name";
+const jsonRecipeDescription = "recipe_description";
 //材料
-const _recipeIngredients = "recipe_ingredients";
-const _ingredientName = "ingredient_name";
-const _ingredientQuantity = "ingredient_quantity";
+const jsonRecipeIngredients = "recipe_ingredients";
+const jsonIngredientName = "ingredient_name";
+const jsoningredientQuantity = "ingredient_quantity";
 //手順
-const _recipeSteps = "recipe_steps";
-const _stepNumber = "step_number";
-const _stepDescription = "step_description";
+const jsonRecipeSteps = "recipe_steps";
+const jsonStepNumber = "step_number";
+const jsonStepDescription = "step_description";
 //栄養素
-const _recipeNutrition = "recipe_nutrition";
-const _calorie = "calorie";
-const _protein = "protein";
-const _fat = "fat";
-const _carbohydrate = "carbohydrate";
+const jsonRecipeNutrition = "recipe_nutrition";
+const jsonCalorie = "calorie";
+const jsonProtein = "protein";
+const jsonFat = "fat";
+const jsonCarbohydrate = "carbohydrate";
