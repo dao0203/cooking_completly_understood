@@ -11,43 +11,43 @@ String messageThatUserInputted(String message,String temperature,String weather)
 温度: $message 天気(WMO): $weather
 3.回答は下記のJson形式で回答してください
 {
-  "$recipeName": "レシピ名",
-  "$recipeDescription": "レシピの説明",
-  "$recipeIngredients": [
+  "$_recipeName": "レシピ名",
+  "$_recipeDescription": "レシピの説明",
+  "$_recipeIngredients": [
     {
-      "$ingredientName": "材料名",
-      "$ingredientQuantity": "材料の量"
+      "$_ingredientName": "材料名",
+      "$_ingredientQuantity": "材料の量"
     }
   ],
-  "$recipeSteps": [
+  "$_recipeSteps": [
     {
-      "$stepNumber": "手順番号",
-      "$stepDescription": "手順の説明"
+      "$_stepNumber": "手順番号",
+      "$_stepDescription": "手順の説明"
     }
   ]
-  "$recipeNutrition": {
-    "$calorie": "カロリー",
-    "$protein": "タンパク質",
-    "$fat": "脂質",
-    "$carbohydrate": "炭水化物"
+  "$_recipeNutrition": {
+    "$_calorie": "カロリー",
+    "$_protein": "タンパク質",
+    "$_fat": "脂質",
+    "$_carbohydrate": "炭水化物"
   }
 }
 ''';
 
 //--------------レシピのJson形式-----------------
-const recipeName = "recipe_name";
-const recipeDescription = "recipe_description";
+const _recipeName = "recipe_name";
+const _recipeDescription = "recipe_description";
 //材料
-const recipeIngredients = "recipe_ingredients";
-const ingredientName = "ingredient_name";
-const ingredientQuantity = "ingredient_quantity";
+const _recipeIngredients = "recipe_ingredients";
+const _ingredientName = "ingredient_name";
+const _ingredientQuantity = "ingredient_quantity";
 //手順
-const recipeSteps = "recipe_steps";
-const stepNumber = "step_number";
-const stepDescription = "step_description";
+const _recipeSteps = "recipe_steps";
+const _stepNumber = "step_number";
+const _stepDescription = "step_description";
 //栄養素
-const recipeNutrition = "recipe_nutrition";
-const calorie = "calorie";
-const protein = "protein";
-const fat = "fat";
-const carbohydrate = "carbohydrate";
+const _recipeNutrition = "recipe_nutrition";
+const _calorie = "calorie";
+const _protein = "protein";
+const _fat = "fat";
+const _carbohydrate = "carbohydrate";
