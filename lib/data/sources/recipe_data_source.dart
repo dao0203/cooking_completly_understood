@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/message/recipe.dart';
+import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:path_provider/path_provider.dart';
 
 // class RecipeDataSource {

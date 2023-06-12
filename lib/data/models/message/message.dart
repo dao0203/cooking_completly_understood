@@ -4,8 +4,8 @@ import 'package:cooking_completly_understood/data/models/message/recipe_steps/re
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'recipe.freezed.dart';
-part 'recipe.g.dart';
+part 'message.freezed.dart';
+part 'message.g.dart';
 
 @freezed
 class Message with _$Message {
