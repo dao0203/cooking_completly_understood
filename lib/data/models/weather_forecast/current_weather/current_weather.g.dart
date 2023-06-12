@@ -9,9 +9,11 @@ part of 'current_weather.dart';
 _$_CurrentWeather _$$_CurrentWeatherFromJson(Map<String, dynamic> json) =>
     _$_CurrentWeather(
       temperature: (json['temperature'] as num?)?.toDouble() ?? 0.0,
+      weatherCode: json['weathercode'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_CurrentWeatherToJson(_$_CurrentWeather instance) =>
     <String, dynamic>{
       'temperature': instance.temperature,
+      'weathercode': instance.weatherCode,
     };

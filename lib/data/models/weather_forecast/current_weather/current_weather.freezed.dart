@@ -22,6 +22,8 @@ CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) {
 mixin _$CurrentWeather {
   @JsonKey(name: 'temperature', defaultValue: 0.0)
   double get temperature => throw _privateConstructorUsedError;
+  @JsonKey(name: 'weathercode', defaultValue: 0)
+  int get weatherCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,8 @@ abstract class $CurrentWeatherCopyWith<$Res> {
       _$CurrentWeatherCopyWithImpl<$Res, CurrentWeather>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'temperature', defaultValue: 0.0) double temperature});
+      {@JsonKey(name: 'temperature', defaultValue: 0.0) double temperature,
+      @JsonKey(name: 'weathercode', defaultValue: 0) int weatherCode});
 }
 
 /// @nodoc
@@ -53,12 +56,17 @@ class _$CurrentWeatherCopyWithImpl<$Res, $Val extends CurrentWeather>
   @override
   $Res call({
     Object? temperature = null,
+    Object? weatherCode = null,
   }) {
     return _then(_value.copyWith(
       temperature: null == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as double,
+      weatherCode: null == weatherCode
+          ? _value.weatherCode
+          : weatherCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -72,7 +80,8 @@ abstract class _$$_CurrentWeatherCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'temperature', defaultValue: 0.0) double temperature});
+      {@JsonKey(name: 'temperature', defaultValue: 0.0) double temperature,
+      @JsonKey(name: 'weathercode', defaultValue: 0) int weatherCode});
 }
 
 /// @nodoc
@@ -87,12 +96,17 @@ class __$$_CurrentWeatherCopyWithImpl<$Res>
   @override
   $Res call({
     Object? temperature = null,
+    Object? weatherCode = null,
   }) {
     return _then(_$_CurrentWeather(
       temperature: null == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as double,
+      weatherCode: null == weatherCode
+          ? _value.weatherCode
+          : weatherCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -102,7 +116,9 @@ class __$$_CurrentWeatherCopyWithImpl<$Res>
 class _$_CurrentWeather implements _CurrentWeather {
   const _$_CurrentWeather(
       {@JsonKey(name: 'temperature', defaultValue: 0.0)
-          required this.temperature});
+          required this.temperature,
+      @JsonKey(name: 'weathercode', defaultValue: 0)
+          required this.weatherCode});
 
   factory _$_CurrentWeather.fromJson(Map<String, dynamic> json) =>
       _$$_CurrentWeatherFromJson(json);
@@ -110,10 +126,13 @@ class _$_CurrentWeather implements _CurrentWeather {
   @override
   @JsonKey(name: 'temperature', defaultValue: 0.0)
   final double temperature;
+  @override
+  @JsonKey(name: 'weathercode', defaultValue: 0)
+  final int weatherCode;
 
   @override
   String toString() {
-    return 'CurrentWeather(temperature: $temperature)';
+    return 'CurrentWeather(temperature: $temperature, weatherCode: $weatherCode)';
   }
 
   @override
@@ -122,12 +141,14 @@ class _$_CurrentWeather implements _CurrentWeather {
         (other.runtimeType == runtimeType &&
             other is _$_CurrentWeather &&
             (identical(other.temperature, temperature) ||
-                other.temperature == temperature));
+                other.temperature == temperature) &&
+            (identical(other.weatherCode, weatherCode) ||
+                other.weatherCode == weatherCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, temperature);
+  int get hashCode => Object.hash(runtimeType, temperature, weatherCode);
 
   @JsonKey(ignore: true)
   @override
@@ -146,7 +167,9 @@ class _$_CurrentWeather implements _CurrentWeather {
 abstract class _CurrentWeather implements CurrentWeather {
   const factory _CurrentWeather(
       {@JsonKey(name: 'temperature', defaultValue: 0.0)
-          required final double temperature}) = _$_CurrentWeather;
+          required final double temperature,
+      @JsonKey(name: 'weathercode', defaultValue: 0)
+          required final int weatherCode}) = _$_CurrentWeather;
 
   factory _CurrentWeather.fromJson(Map<String, dynamic> json) =
       _$_CurrentWeather.fromJson;
@@ -154,6 +177,9 @@ abstract class _CurrentWeather implements CurrentWeather {
   @override
   @JsonKey(name: 'temperature', defaultValue: 0.0)
   double get temperature;
+  @override
+  @JsonKey(name: 'weathercode', defaultValue: 0)
+  int get weatherCode;
   @override
   @JsonKey(ignore: true)
   _$$_CurrentWeatherCopyWith<_$_CurrentWeather> get copyWith =>

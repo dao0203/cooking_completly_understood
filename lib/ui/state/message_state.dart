@@ -34,9 +34,14 @@ class MessagesState extends _$MessagesState {
           //現状はString型のメッセージを受け取って、stateに保存しているが、
           //ここのクラスでは、このように状態を保存せず、repository内のビジネスロジックで
           //ローカルDBに保存するように実装する
+
+          
           (value) => state = [
             ...state,
-            value,
+            OpenAIChatCompletionChoiceMessageModel(
+              content: value,
+              role: OpenAIChatMessageRole.assistant,
+            ),
           ],
         );
   }

@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/weather_forecast.dart';
+import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
-import 'package:dart_openai/dart_openai.dart';
+import 'package:cooking_completly_understood/utils/constants.dart';
 
 class MessageRepository {
   final PositionDataSource _positionDataSource;
@@ -23,8 +24,7 @@ class MessageRepository {
   }
 
   //メッセージを送信して返信を受け取る
-  Future<OpenAIChatCompletionChoiceMessageModel> sendMessageAndReceiveMessage(
-      String message) async {
+  Future<String> sendMessageAndReceiveMessage(String message) async {
     final position = await _positionDataSource.getLocationInfo();
     return await _weatherInfoDataSource
         //緯度経度をもとに天気情報を取得する
@@ -38,11 +38,19 @@ class MessageRepository {
               WeatherForecast.fromJson(json.decode(response.bodyString));
 
           //パースしたデータの温度を格納
-          final currentWeather =
+          final currentTemperature =
               weatherForecast.currentWeather.temperature.toString();
 
+          //パースしたデータの天気を格納
+          final currentWeather =
+              weatherForecast.currentWeather.weatherCode.toString();
+
           //送信するメッセージを作成
-          final sendedMessage = "$message。現在地の温度は$currentWeatherです";
+          final sendedMessage = messageThatUserInputted(
+            message,
+            currentTemperature,
+            currentWeather,
+          );
 
           //ChatGPTにメッセージを送信して返信を受け取る
           return await _messageService
@@ -50,8 +58,12 @@ class MessageRepository {
               .then((value) {
             //成功時(1つでも選択肢がある場合)
             if (value.haveChoices) {
-              //最初の選択肢を返す
-              return value.choices.first.message;
+              //レスポンスボディをパース
+              final recipe = Recipe.fromJson(
+                  json.decode(value.choices[0].message.content));
+              //TODO:ここでレシピをローカルDBに保存するようにする
+              //本当は何も返さないようにしたい
+              return recipe.toString();
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
