@@ -55,6 +55,8 @@ dependencies:
   path_provider: ^2.0.15
   google_mlkit_commons: ^0.4.0
   drift: ^2.8.2
+  sqlite3_flutter_libs: ^1.0.0
+  
 
 
 dev_dependencies:
@@ -73,6 +75,7 @@ dev_dependencies:
   custom_lint: ^0.4.0
   riverpod_generator: ^2.2.3
   freezed: ^2.3.5
+  drift_dev: ^2.8.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
