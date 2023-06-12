@@ -55,8 +55,8 @@ dependencies:
   path_provider: ^2.0.15
   google_mlkit_commons: ^0.4.0
   drift: ^2.8.2
-  sqlite3_flutter_libs: ^1.0.0
-  
+  sqlite3_flutter_libs: ^0.5.15
+
 
 
 dev_dependencies:
