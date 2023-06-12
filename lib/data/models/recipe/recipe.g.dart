@@ -18,6 +18,8 @@ _$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
               ?.map((e) => RecipeSteps.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      nutrition:
+          Nutrition.fromJson(json['recipe_nutrition'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
@@ -25,4 +27,5 @@ Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
       'reciipe_description': instance.description,
       'recipie_ingredients': instance.ingredients,
       'recipe_steps': instance.steps,
+      'recipe_nutrition': instance.nutrition,
     };

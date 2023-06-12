@@ -28,7 +28,9 @@ mixin _$Recipe {
   List<RecipeIngredients> get ingredients =>
       throw _privateConstructorUsedError; //材料
   @JsonKey(name: 'recipe_steps', defaultValue: [])
-  List<RecipeSteps> get steps => throw _privateConstructorUsedError;
+  List<RecipeSteps> get steps => throw _privateConstructorUsedError; //手順
+  @JsonKey(name: 'recipe_nutrition')
+  Nutrition get nutrition => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +50,11 @@ abstract class $RecipeCopyWith<$Res> {
       @JsonKey(name: 'recipie_ingredients', defaultValue: [])
           List<RecipeIngredients> ingredients,
       @JsonKey(name: 'recipe_steps', defaultValue: [])
-          List<RecipeSteps> steps});
+          List<RecipeSteps> steps,
+      @JsonKey(name: 'recipe_nutrition')
+          Nutrition nutrition});
+
+  $NutritionCopyWith<$Res> get nutrition;
 }
 
 /// @nodoc
@@ -68,6 +74,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
     Object? description = null,
     Object? ingredients = null,
     Object? steps = null,
+    Object? nutrition = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -86,7 +93,19 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<RecipeSteps>,
+      nutrition: null == nutrition
+          ? _value.nutrition
+          : nutrition // ignore: cast_nullable_to_non_nullable
+              as Nutrition,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NutritionCopyWith<$Res> get nutrition {
+    return $NutritionCopyWith<$Res>(_value.nutrition, (value) {
+      return _then(_value.copyWith(nutrition: value) as $Val);
+    });
   }
 }
 
@@ -104,7 +123,12 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       @JsonKey(name: 'recipie_ingredients', defaultValue: [])
           List<RecipeIngredients> ingredients,
       @JsonKey(name: 'recipe_steps', defaultValue: [])
-          List<RecipeSteps> steps});
+          List<RecipeSteps> steps,
+      @JsonKey(name: 'recipe_nutrition')
+          Nutrition nutrition});
+
+  @override
+  $NutritionCopyWith<$Res> get nutrition;
 }
 
 /// @nodoc
@@ -121,6 +145,7 @@ class __$$_RecipeCopyWithImpl<$Res>
     Object? description = null,
     Object? ingredients = null,
     Object? steps = null,
+    Object? nutrition = null,
   }) {
     return _then(_$_Recipe(
       name: null == name
@@ -139,6 +164,10 @@ class __$$_RecipeCopyWithImpl<$Res>
           ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<RecipeSteps>,
+      nutrition: null == nutrition
+          ? _value.nutrition
+          : nutrition // ignore: cast_nullable_to_non_nullable
+              as Nutrition,
     ));
   }
 }
@@ -154,7 +183,9 @@ class _$_Recipe implements _Recipe {
       @JsonKey(name: 'recipie_ingredients', defaultValue: [])
           required final List<RecipeIngredients> ingredients,
       @JsonKey(name: 'recipe_steps', defaultValue: [])
-          required final List<RecipeSteps> steps})
+          required final List<RecipeSteps> steps,
+      @JsonKey(name: 'recipe_nutrition')
+          required this.nutrition})
       : _ingredients = ingredients,
         _steps = steps;
 
@@ -190,9 +221,14 @@ class _$_Recipe implements _Recipe {
     return EqualUnmodifiableListView(_steps);
   }
 
+//手順
+  @override
+  @JsonKey(name: 'recipe_nutrition')
+  final Nutrition nutrition;
+
   @override
   String toString() {
-    return 'Recipe(name: $name, description: $description, ingredients: $ingredients, steps: $steps)';
+    return 'Recipe(name: $name, description: $description, ingredients: $ingredients, steps: $steps, nutrition: $nutrition)';
   }
 
   @override
@@ -205,7 +241,9 @@ class _$_Recipe implements _Recipe {
                 other.description == description) &&
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients) &&
-            const DeepCollectionEquality().equals(other._steps, _steps));
+            const DeepCollectionEquality().equals(other._steps, _steps) &&
+            (identical(other.nutrition, nutrition) ||
+                other.nutrition == nutrition));
   }
 
   @JsonKey(ignore: true)
@@ -215,7 +253,8 @@ class _$_Recipe implements _Recipe {
       name,
       description,
       const DeepCollectionEquality().hash(_ingredients),
-      const DeepCollectionEquality().hash(_steps));
+      const DeepCollectionEquality().hash(_steps),
+      nutrition);
 
   @JsonKey(ignore: true)
   @override
@@ -240,7 +279,9 @@ abstract class _Recipe implements Recipe {
       @JsonKey(name: 'recipie_ingredients', defaultValue: [])
           required final List<RecipeIngredients> ingredients,
       @JsonKey(name: 'recipe_steps', defaultValue: [])
-          required final List<RecipeSteps> steps}) = _$_Recipe;
+          required final List<RecipeSteps> steps,
+      @JsonKey(name: 'recipe_nutrition')
+          required final Nutrition nutrition}) = _$_Recipe;
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
 
@@ -256,6 +297,9 @@ abstract class _Recipe implements Recipe {
   @override //材料
   @JsonKey(name: 'recipe_steps', defaultValue: [])
   List<RecipeSteps> get steps;
+  @override //手順
+  @JsonKey(name: 'recipe_nutrition')
+  Nutrition get nutrition;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
