@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -34,9 +35,14 @@ class MessagesState extends _$MessagesState {
           //現状はString型のメッセージを受け取って、stateに保存しているが、
           //ここのクラスでは、このように状態を保存せず、repository内のビジネスロジックで
           //ローカルDBに保存するように実装する
+
+          
           (value) => state = [
             ...state,
-            value,
+            OpenAIChatCompletionChoiceMessageModel(
+              content: value.toString(),
+              role: OpenAIChatMessageRole.assistant,
+            ),
           ],
         );
   }
