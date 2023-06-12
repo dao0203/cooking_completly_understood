@@ -3,12 +3,16 @@ import 'package:cooking_completly_understood/data/models/recipe/recipe_ingredien
 import 'package:cooking_completly_understood/data/models/recipe/recipe_steps/recipe_steps.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:isar/isar.dart';
 
 part 'recipe.freezed.dart';
 part 'recipe.g.dart';
 
 @freezed
-abstract class Recipe with _$Recipe {
+@Collection(ignore: {'copyWith'})
+class Recipe with _$Recipe {
+  const Recipe._();
+
   const factory Recipe({
     @JsonKey(name: jsonRecipeName, defaultValue: '') required String name, //レシピ名
     @JsonKey(name: jsonRecipeDescription, defaultValue: '')
@@ -20,6 +24,8 @@ abstract class Recipe with _$Recipe {
     @JsonKey(name: jsonRecipeNutrition)
     required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
   }) = _Recipe;
+
+  Id get id => Isar.autoIncrement;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
 }

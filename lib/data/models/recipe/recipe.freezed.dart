@@ -174,7 +174,7 @@ class __$$_RecipeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Recipe implements _Recipe {
+class _$_Recipe extends _Recipe {
   const _$_Recipe(
       {@JsonKey(name: jsonRecipeName, defaultValue: '')
           required this.name,
@@ -187,7 +187,8 @@ class _$_Recipe implements _Recipe {
       @JsonKey(name: jsonRecipeNutrition)
           required this.nutrition})
       : _ingredients = ingredients,
-        _steps = steps;
+        _steps = steps,
+        super._();
 
   factory _$_Recipe.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeFromJson(json);
@@ -270,7 +271,7 @@ class _$_Recipe implements _Recipe {
   }
 }
 
-abstract class _Recipe implements Recipe {
+abstract class _Recipe extends Recipe {
   const factory _Recipe(
       {@JsonKey(name: jsonRecipeName, defaultValue: '')
           required final String name,
@@ -282,6 +283,7 @@ abstract class _Recipe implements Recipe {
           required final List<RecipeSteps> steps,
       @JsonKey(name: jsonRecipeNutrition)
           required final Nutrition nutrition}) = _$_Recipe;
+  const _Recipe._() : super._();
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
 
