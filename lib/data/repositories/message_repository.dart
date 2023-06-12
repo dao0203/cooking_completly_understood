@@ -4,6 +4,7 @@ import 'package:cooking_completly_understood/data/models/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:dart_openai/dart_openai.dart';
 
 class MessageRepository {
   final PositionDataSource _positionDataSource;
@@ -15,8 +16,15 @@ class MessageRepository {
     this._messageService,
   );
 
+  //初期メッセージを送信する
+  Future<void> sendInitialMessage() async {
+    //初期メッセージを送信
+    await _messageService.sendInitialMessage();
+  }
+
   //メッセージを送信して返信を受け取る
-  Future<String> sendMessageAndReceiveMessage(String message) async {
+  Future<OpenAIChatCompletionChoiceMessageModel> sendMessageAndReceiveMessage(
+      String message) async {
     final position = await _positionDataSource.getLocationInfo();
     return await _weatherInfoDataSource
         //緯度経度をもとに天気情報を取得する
@@ -40,18 +48,19 @@ class MessageRepository {
           return await _messageService
               .sendMessageAndReceiveMessage(sendedMessage)
               .then((value) {
-            //成功時
-            if (value.isNotEmpty) {
-              return value;
+            //成功時(1つでも選択肢がある場合)
+            if (value.haveChoices) {
+              //最初の選択肢を返す
+              return value.choices.first.message;
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
-              throw Exception('エラーが発生しました');
+              throw Exception('failed to get message');
             }
           });
         } else {
           //レスポンス失敗時
-          throw Exception('エラーが発生しました');
+          throw Exception('failed to get weather info');
         }
       },
     );

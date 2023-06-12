@@ -21,7 +21,8 @@ class MessageService {
     debugPrint('message: ${chatCompletion.choices.first.message}');
   }
 
-  Future<String> sendMessageAndReceiveMessage(String message) async{
+  Future<OpenAIChatCompletionModel> sendMessageAndReceiveMessage(
+      String message) async {
     // メッセージをuserロールでモデル化
     final newUserMessage = OpenAIChatCompletionChoiceMessageModel(
       content: message,
@@ -29,13 +30,9 @@ class MessageService {
     );
 
     // ChatGPTに聞く
-    final chatCompletion = await openAI.chat.create(
+    return await openAI.chat.create(
       model: 'gpt-3.5-turbo',
       messages: [newUserMessage],
-    );
-
-    return chatCompletion.choices.first.message.content;
+    ).then((value) => value);
   }
-
-
 }

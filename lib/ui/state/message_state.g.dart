@@ -1,25 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_screen.dart';
+part of 'message_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$messagesHash() => r'5ac85b0e17e282aca50078037a8a5dbb113645a7';
+String _$messagesStateHash() => r'f23ecdd52c6804a4b4ad8033562528647093d9de';
 
-/// See also [Messages].
-@ProviderFor(Messages)
-final messagesProvider = AutoDisposeNotifierProvider<Messages,
+/// See also [MessagesState].
+@ProviderFor(MessagesState)
+final messagesStateProvider = AutoDisposeNotifierProvider<MessagesState,
     List<OpenAIChatCompletionChoiceMessageModel>>.internal(
-  Messages.new,
-  name: r'messagesProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$messagesHash,
+  MessagesState.new,
+  name: r'messagesStateProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$messagesStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Messages
+typedef _$MessagesState
     = AutoDisposeNotifier<List<OpenAIChatCompletionChoiceMessageModel>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
