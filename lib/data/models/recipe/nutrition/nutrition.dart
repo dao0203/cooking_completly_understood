@@ -4,7 +4,7 @@ part 'nutrition.freezed.dart';
 part 'nutrition.g.dart';
 
 @freezed
-abstract class Nutrition with _$Nutrition {
+class Nutrition with _$Nutrition {
   const factory Nutrition({
     @JsonKey(name: jsonCalorie, defaultValue: '')
     required String calorie, //カロリー
