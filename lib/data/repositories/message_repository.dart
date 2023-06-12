@@ -1,11 +1,10 @@
 import 'dart:convert';
 
+import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
-import 'package:dart_openai/dart_openai.dart';
-import 'package:flutter/foundation.dart';
 
 class MessageRepository {
   final PositionDataSource _positionDataSource;
@@ -24,8 +23,7 @@ class MessageRepository {
   }
 
   //メッセージを送信して返信を受け取る
-  Future<OpenAIChatCompletionChoiceMessageModel> sendMessageAndReceiveMessage(
-      String message) async {
+  Future<Recipe> sendMessageAndReceiveMessage(String message) async {
     final position = await _positionDataSource.getLocationInfo();
     return await _weatherInfoDataSource
         //緯度経度をもとに天気情報を取得する
@@ -43,7 +41,8 @@ class MessageRepository {
               weatherForecast.currentWeather.temperature.toString();
 
           //パースしたデータの天気を格納
-          final currentWeather = weatherForecast.currentWeather.weatherCode.toString();
+          final currentWeather =
+              weatherForecast.currentWeather.weatherCode.toString();
 
           //送信するメッセージを作成
           final sendedMessage = """
@@ -68,6 +67,12 @@ class MessageRepository {
       "step_description": "手順の説明"
     }
   ]
+  "recipe_nutrition": {
+    "calorie": "カロリー",
+    "protein": "タンパク質",
+    "fat": "脂質",
+    "carbohydrate": "炭水化物"
+  }
 }
           """;
 
@@ -77,8 +82,12 @@ class MessageRepository {
               .then((value) {
             //成功時(1つでも選択肢がある場合)
             if (value.haveChoices) {
-              //最初の選択肢を返す
-              return value.choices.first.message;
+              //レスポンスボディをパース
+              print(value.choices[0].toString());
+              final recipe =
+                  Recipe.fromJson(json.decode(value.choices[0].message.content));
+              
+              return recipe;
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
