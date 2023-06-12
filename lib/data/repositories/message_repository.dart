@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/weather_forecast.dart';
+import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
