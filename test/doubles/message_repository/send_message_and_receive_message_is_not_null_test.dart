@@ -32,10 +32,39 @@ void main() async {
         WeatherInfoDataSource.create(),
         MessageService(),
       );
-      const sendedMessage = "きゅうりと鶏肉のおすすめのレシピは？";
+      const sendedMessage = """
+以下の条件を満たすレシピを教えてください。
+1.userの入力したメッセージを考慮して結果を回答してください
+メッセージ: じゃがいもを使ったレシピを教えて
+2.天気情報を考慮して結果を回答してください
+温度: 20 天気(WMO): 3
+3.回答は下記のJson形式で回答してください
+{
+  "recipe_name": "レシピ名",
+  "recipe_description": "レシピの説明",
+  "recipe_ingredients": [
+    {
+      "ingredient_name": "材料名",
+      "ingredient_quantity": "材料の量"
+    }
+  ],
+  "recipe_steps": [
+    {
+      "step_number": "手順番号",
+      "step_description": "手順の説明"
+    }
+  ]
+  "recipe_nutrition": {
+    "calorie": "カロリー",
+    "protein": "タンパク質",
+    "fat": "脂質",
+    "carbohydrate": "炭水化物"
+  }
+}
+          """;
       await messageRepository.sendMessageAndReceiveMessage(sendedMessage).then(
         (value) {
-          debugPrint(value.content);
+          debugPrint(value.toString());
           expect(value, isNotNull);
         },
       );
