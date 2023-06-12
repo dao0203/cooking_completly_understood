@@ -20,7 +20,7 @@ Nutrition _$NutritionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Nutrition {
-  @JsonKey(name: 'calorie', defaultValue: '')
+  @JsonKey(name: "calorie", defaultValue: '')
   String get calorie => throw _privateConstructorUsedError; //カロリー
   @JsonKey(name: 'protein', defaultValue: '')
   String get protein => throw _privateConstructorUsedError; //タンパク質
@@ -41,7 +41,7 @@ abstract class $NutritionCopyWith<$Res> {
       _$NutritionCopyWithImpl<$Res, Nutrition>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'calorie', defaultValue: '') String calorie,
+      {@JsonKey(name: "calorie", defaultValue: '') String calorie,
       @JsonKey(name: 'protein', defaultValue: '') String protein,
       @JsonKey(name: 'fat', defaultValue: '') String fat,
       @JsonKey(name: 'carbohydrate', defaultValue: '') String carbohydrate});
@@ -94,7 +94,7 @@ abstract class _$$_NutritionCopyWith<$Res> implements $NutritionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'calorie', defaultValue: '') String calorie,
+      {@JsonKey(name: "calorie", defaultValue: '') String calorie,
       @JsonKey(name: 'protein', defaultValue: '') String protein,
       @JsonKey(name: 'fat', defaultValue: '') String fat,
       @JsonKey(name: 'carbohydrate', defaultValue: '') String carbohydrate});
@@ -141,7 +141,7 @@ class __$$_NutritionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Nutrition implements _Nutrition {
   const _$_Nutrition(
-      {@JsonKey(name: 'calorie', defaultValue: '')
+      {@JsonKey(name: "calorie", defaultValue: '')
           required this.calorie,
       @JsonKey(name: 'protein', defaultValue: '')
           required this.protein,
@@ -154,7 +154,7 @@ class _$_Nutrition implements _Nutrition {
       _$$_NutritionFromJson(json);
 
   @override
-  @JsonKey(name: 'calorie', defaultValue: '')
+  @JsonKey(name: "calorie", defaultValue: '')
   final String calorie;
 //カロリー
   @override
@@ -207,7 +207,7 @@ class _$_Nutrition implements _Nutrition {
 
 abstract class _Nutrition implements Nutrition {
   const factory _Nutrition(
-      {@JsonKey(name: 'calorie', defaultValue: '')
+      {@JsonKey(name: "calorie", defaultValue: '')
           required final String calorie,
       @JsonKey(name: 'protein', defaultValue: '')
           required final String protein,
@@ -220,7 +220,7 @@ abstract class _Nutrition implements Nutrition {
       _$_Nutrition.fromJson;
 
   @override
-  @JsonKey(name: 'calorie', defaultValue: '')
+  @JsonKey(name: "calorie", defaultValue: '')
   String get calorie;
   @override //カロリー
   @JsonKey(name: 'protein', defaultValue: '')

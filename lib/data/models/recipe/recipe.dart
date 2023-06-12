@@ -10,13 +10,14 @@ part 'recipe.g.dart';
 abstract class Recipe with _$Recipe {
   const factory Recipe({
     @JsonKey(name: 'recipe_name', defaultValue: '') required String name, //レシピ名
-    @JsonKey(name: 'reciipe_description', defaultValue: '')
+    @JsonKey(name: 'recipe_description', defaultValue: '')
     required String description, //レシピの説明
-    @JsonKey(name: 'recipie_ingredients', defaultValue: [])
+    @JsonKey(name: 'recipe_ingredients', defaultValue: [])
     required List<RecipeIngredients> ingredients, //材料
     @JsonKey(name: 'recipe_steps', defaultValue: [])
-    required List<RecipeSteps> steps, //手順　
-    @JsonKey(name: 'recipe_nutrition') required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
+    required List<RecipeSteps> steps, //手順
+    @JsonKey(name: 'recipe_nutrition')
+    required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
   }) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
