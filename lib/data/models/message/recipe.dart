@@ -1,6 +1,6 @@
-import 'package:cooking_completly_understood/data/models/recipe/nutrition/nutrition.dart';
-import 'package:cooking_completly_understood/data/models/recipe/recipe_ingredients/recipe_ingredients.dart';
-import 'package:cooking_completly_understood/data/models/recipe/recipe_steps/recipe_steps.dart';
+import 'package:cooking_completly_understood/data/models/message/nutrition/nutrition.dart';
+import 'package:cooking_completly_understood/data/models/message/recipe_ingredients/recipe_ingredients.dart';
+import 'package:cooking_completly_understood/data/models/message/recipe_steps/recipe_steps.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
