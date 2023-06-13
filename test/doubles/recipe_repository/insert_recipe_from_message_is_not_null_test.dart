@@ -24,6 +24,7 @@ void main() async {
     const Message(
       recipeName: "test",
       recipeDescription: "test",
+      recipeCookingTime: "test",
       recipeIngredients: [
         RecipeIngredients(
           name: "test",
