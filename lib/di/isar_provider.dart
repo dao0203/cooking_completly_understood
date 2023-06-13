@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
-final isarProvider = FutureProvider((ref) async {
+final isarProvider = Provider((ref) async {
   // データベースの保存先のパスを取得
   final dir = await getApplicationDocumentsDirectory();
 
