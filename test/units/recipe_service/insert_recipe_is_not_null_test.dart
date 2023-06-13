@@ -92,16 +92,16 @@ void main() async {
     expect(result[1].protein, recipe[1].protein);
     expect(result[1].fat, recipe[1].fat);
     expect(result[1].carbohydrate, recipe[1].carbohydrate);
-
-
   });
 
-  tearDownAll(() async {
-    //Isarを閉じる
-    await isar.close(deleteFromDisk: true);
-    //テスト用のディレクトリを削除する
-    if (dir.existsSync()) {
-      await dir.delete(recursive: true);
-    }
-  });
+  tearDownAll(
+    () async {
+      //Isarを閉じる
+      await isar.close(deleteFromDisk: true);
+      //テスト用のディレクトリを削除する
+      if (dir.existsSync()) {
+        await dir.delete(recursive: true);
+      }
+    },
+  );
 }
