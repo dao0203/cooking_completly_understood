@@ -7,6 +7,7 @@ class Recipe {
   Id id = Isar.autoIncrement;
   String name = '';
   String description = '';
+  String cookingTime = '';
   List<String> ingredientName = [];
   List<String> ingredientQuantity = [];
   List<String> stepNumber = [];

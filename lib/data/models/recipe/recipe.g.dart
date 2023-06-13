@@ -27,43 +27,48 @@ const RecipeSchema = CollectionSchema(
       name: r'carbohydrate',
       type: IsarType.string,
     ),
-    r'description': PropertySchema(
+    r'cookingTime': PropertySchema(
       id: 2,
+      name: r'cookingTime',
+      type: IsarType.string,
+    ),
+    r'description': PropertySchema(
+      id: 3,
       name: r'description',
       type: IsarType.string,
     ),
     r'fat': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'fat',
       type: IsarType.string,
     ),
     r'ingredientName': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'ingredientName',
       type: IsarType.stringList,
     ),
     r'ingredientQuantity': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'ingredientQuantity',
       type: IsarType.stringList,
     ),
     r'name': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'name',
       type: IsarType.string,
     ),
     r'protein': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'protein',
       type: IsarType.string,
     ),
     r'stepDescription': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'stepDescription',
       type: IsarType.stringList,
     ),
     r'stepNumber': PropertySchema(
-      id: 9,
+      id: 10,
       name: r'stepNumber',
       type: IsarType.stringList,
     )
@@ -90,6 +95,7 @@ int _recipeEstimateSize(
   var bytesCount = offsets.last;
   bytesCount += 3 + object.calorie.length * 3;
   bytesCount += 3 + object.carbohydrate.length * 3;
+  bytesCount += 3 + object.cookingTime.length * 3;
   bytesCount += 3 + object.description.length * 3;
   bytesCount += 3 + object.fat.length * 3;
   bytesCount += 3 + object.ingredientName.length * 3;
@@ -133,14 +139,15 @@ void _recipeSerialize(
 ) {
   writer.writeString(offsets[0], object.calorie);
   writer.writeString(offsets[1], object.carbohydrate);
-  writer.writeString(offsets[2], object.description);
-  writer.writeString(offsets[3], object.fat);
-  writer.writeStringList(offsets[4], object.ingredientName);
-  writer.writeStringList(offsets[5], object.ingredientQuantity);
-  writer.writeString(offsets[6], object.name);
-  writer.writeString(offsets[7], object.protein);
-  writer.writeStringList(offsets[8], object.stepDescription);
-  writer.writeStringList(offsets[9], object.stepNumber);
+  writer.writeString(offsets[2], object.cookingTime);
+  writer.writeString(offsets[3], object.description);
+  writer.writeString(offsets[4], object.fat);
+  writer.writeStringList(offsets[5], object.ingredientName);
+  writer.writeStringList(offsets[6], object.ingredientQuantity);
+  writer.writeString(offsets[7], object.name);
+  writer.writeString(offsets[8], object.protein);
+  writer.writeStringList(offsets[9], object.stepDescription);
+  writer.writeStringList(offsets[10], object.stepNumber);
 }
 
 Recipe _recipeDeserialize(
@@ -152,15 +159,16 @@ Recipe _recipeDeserialize(
   final object = Recipe();
   object.calorie = reader.readString(offsets[0]);
   object.carbohydrate = reader.readString(offsets[1]);
-  object.description = reader.readString(offsets[2]);
-  object.fat = reader.readString(offsets[3]);
+  object.cookingTime = reader.readString(offsets[2]);
+  object.description = reader.readString(offsets[3]);
+  object.fat = reader.readString(offsets[4]);
   object.id = id;
-  object.ingredientName = reader.readStringList(offsets[4]) ?? [];
-  object.ingredientQuantity = reader.readStringList(offsets[5]) ?? [];
-  object.name = reader.readString(offsets[6]);
-  object.protein = reader.readString(offsets[7]);
-  object.stepDescription = reader.readStringList(offsets[8]) ?? [];
-  object.stepNumber = reader.readStringList(offsets[9]) ?? [];
+  object.ingredientName = reader.readStringList(offsets[5]) ?? [];
+  object.ingredientQuantity = reader.readStringList(offsets[6]) ?? [];
+  object.name = reader.readString(offsets[7]);
+  object.protein = reader.readString(offsets[8]);
+  object.stepDescription = reader.readStringList(offsets[9]) ?? [];
+  object.stepNumber = reader.readStringList(offsets[10]) ?? [];
   return object;
 }
 
@@ -180,16 +188,18 @@ P _recipeDeserializeProp<P>(
     case 3:
       return (reader.readString(offset)) as P;
     case 4:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readString(offset)) as P;
     case 5:
       return (reader.readStringList(offset) ?? []) as P;
     case 6:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringList(offset) ?? []) as P;
     case 7:
       return (reader.readString(offset)) as P;
     case 8:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readString(offset)) as P;
     case 9:
+      return (reader.readStringList(offset) ?? []) as P;
+    case 10:
       return (reader.readStringList(offset) ?? []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -539,6 +549,136 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'carbohydrate',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'cookingTime',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'cookingTime',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'cookingTime',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'cookingTime',
         value: '',
       ));
     });
@@ -2040,6 +2180,18 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCookingTime() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cookingTime', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCookingTimeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cookingTime', Sort.desc);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.asc);
@@ -2111,6 +2263,18 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
   QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCarbohydrateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carbohydrate', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCookingTime() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cookingTime', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCookingTimeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cookingTime', Sort.desc);
     });
   }
 
@@ -2190,6 +2354,13 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctByCookingTime(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'cookingTime', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByDescription(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2259,6 +2430,12 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
   QueryBuilder<Recipe, String, QQueryOperations> carbohydrateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'carbohydrate');
+    });
+  }
+
+  QueryBuilder<Recipe, String, QQueryOperations> cookingTimeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'cookingTime');
     });
   }
 

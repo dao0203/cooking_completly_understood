@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 const Color seedColor = Colors.blue;
 
 //--------------入力したメッセージをChatGPTに送るメッセージ-----------------
-String messageThatUserInputted(String message,String temperature,String weather) => '''
+String messageThatUserInputted(
+        String message, String temperature, String weather) =>
+    '''
 以下の条件を満たすレシピを教えてください。
 1.userの入力したメッセージを考慮して結果を回答してください
 メッセージ: $message
@@ -13,6 +15,7 @@ String messageThatUserInputted(String message,String temperature,String weather)
 {
   "$jsonRecipeName": "レシピ名",
   "$jsonRecipeDescription": "レシピの説明",
+  "$jsonRecipeCookingTime": "調理時間（分）",
   "$jsonRecipeIngredients": [
     {
       "$jsonIngredientName": "材料名",
@@ -35,8 +38,9 @@ String messageThatUserInputted(String message,String temperature,String weather)
 ''';
 
 //--------------レシピのJson形式-----------------
-const  jsonRecipeName = "recipe_name";
+const jsonRecipeName = "recipe_name";
 const jsonRecipeDescription = "recipe_description";
+const jsonRecipeCookingTime = "recipe_cooking_time";
 //材料
 const jsonRecipeIngredients = "recipe_ingredients";
 const jsonIngredientName = "ingredient_name";

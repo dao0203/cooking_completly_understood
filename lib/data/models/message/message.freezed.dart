@@ -24,6 +24,8 @@ mixin _$Message {
   String get recipeName => throw _privateConstructorUsedError; //レシピ名
   @JsonKey(name: jsonRecipeDescription, defaultValue: '')
   String get recipeDescription => throw _privateConstructorUsedError; //レシピの説明
+  @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+  String get recipeCookingTime => throw _privateConstructorUsedError; //調理時間
   @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
   List<RecipeIngredients> get recipeIngredients =>
       throw _privateConstructorUsedError; //材料
@@ -47,6 +49,8 @@ abstract class $MessageCopyWith<$Res> {
           String recipeName,
       @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           String recipeDescription,
+      @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+          String recipeCookingTime,
       @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           List<RecipeIngredients> recipeIngredients,
       @JsonKey(name: jsonRecipeSteps, defaultValue: [])
@@ -72,6 +76,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
   $Res call({
     Object? recipeName = null,
     Object? recipeDescription = null,
+    Object? recipeCookingTime = null,
     Object? recipeIngredients = null,
     Object? recipeSteps = null,
     Object? nutrition = null,
@@ -84,6 +89,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
       recipeDescription: null == recipeDescription
           ? _value.recipeDescription
           : recipeDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      recipeCookingTime: null == recipeCookingTime
+          ? _value.recipeCookingTime
+          : recipeCookingTime // ignore: cast_nullable_to_non_nullable
               as String,
       recipeIngredients: null == recipeIngredients
           ? _value.recipeIngredients
@@ -120,6 +129,8 @@ abstract class _$$_RecipeCopyWith<$Res> implements $MessageCopyWith<$Res> {
           String recipeName,
       @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           String recipeDescription,
+      @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+          String recipeCookingTime,
       @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           List<RecipeIngredients> recipeIngredients,
       @JsonKey(name: jsonRecipeSteps, defaultValue: [])
@@ -143,6 +154,7 @@ class __$$_RecipeCopyWithImpl<$Res>
   $Res call({
     Object? recipeName = null,
     Object? recipeDescription = null,
+    Object? recipeCookingTime = null,
     Object? recipeIngredients = null,
     Object? recipeSteps = null,
     Object? nutrition = null,
@@ -155,6 +167,10 @@ class __$$_RecipeCopyWithImpl<$Res>
       recipeDescription: null == recipeDescription
           ? _value.recipeDescription
           : recipeDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      recipeCookingTime: null == recipeCookingTime
+          ? _value.recipeCookingTime
+          : recipeCookingTime // ignore: cast_nullable_to_non_nullable
               as String,
       recipeIngredients: null == recipeIngredients
           ? _value._recipeIngredients
@@ -180,6 +196,8 @@ class _$_Recipe extends _Recipe {
           required this.recipeName,
       @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           required this.recipeDescription,
+      @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+          required this.recipeCookingTime,
       @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           required final List<RecipeIngredients> recipeIngredients,
       @JsonKey(name: jsonRecipeSteps, defaultValue: [])
@@ -201,8 +219,12 @@ class _$_Recipe extends _Recipe {
   @JsonKey(name: jsonRecipeDescription, defaultValue: '')
   final String recipeDescription;
 //レシピの説明
+  @override
+  @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+  final String recipeCookingTime;
+//調理時間
   final List<RecipeIngredients> _recipeIngredients;
-//レシピの説明
+//調理時間
   @override
   @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
   List<RecipeIngredients> get recipeIngredients {
@@ -230,7 +252,7 @@ class _$_Recipe extends _Recipe {
 
   @override
   String toString() {
-    return 'Message(recipeName: $recipeName, recipeDescription: $recipeDescription, recipeIngredients: $recipeIngredients, recipeSteps: $recipeSteps, nutrition: $nutrition)';
+    return 'Message(recipeName: $recipeName, recipeDescription: $recipeDescription, recipeCookingTime: $recipeCookingTime, recipeIngredients: $recipeIngredients, recipeSteps: $recipeSteps, nutrition: $nutrition)';
   }
 
   @override
@@ -242,6 +264,8 @@ class _$_Recipe extends _Recipe {
                 other.recipeName == recipeName) &&
             (identical(other.recipeDescription, recipeDescription) ||
                 other.recipeDescription == recipeDescription) &&
+            (identical(other.recipeCookingTime, recipeCookingTime) ||
+                other.recipeCookingTime == recipeCookingTime) &&
             const DeepCollectionEquality()
                 .equals(other._recipeIngredients, _recipeIngredients) &&
             const DeepCollectionEquality()
@@ -256,6 +280,7 @@ class _$_Recipe extends _Recipe {
       runtimeType,
       recipeName,
       recipeDescription,
+      recipeCookingTime,
       const DeepCollectionEquality().hash(_recipeIngredients),
       const DeepCollectionEquality().hash(_recipeSteps),
       nutrition);
@@ -280,6 +305,8 @@ abstract class _Recipe extends Message {
           required final String recipeName,
       @JsonKey(name: jsonRecipeDescription, defaultValue: '')
           required final String recipeDescription,
+      @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+          required final String recipeCookingTime,
       @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
           required final List<RecipeIngredients> recipeIngredients,
       @JsonKey(name: jsonRecipeSteps, defaultValue: [])
@@ -297,6 +324,9 @@ abstract class _Recipe extends Message {
   @JsonKey(name: jsonRecipeDescription, defaultValue: '')
   String get recipeDescription;
   @override //レシピの説明
+  @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+  String get recipeCookingTime;
+  @override //調理時間
   @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
   List<RecipeIngredients> get recipeIngredients;
   @override //材料

@@ -19,6 +19,7 @@ mixin _$ImmuRecipe {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get cookingTime => throw _privateConstructorUsedError;
   List<String> get ingredientName => throw _privateConstructorUsedError;
   List<String> get ingredientQuantity => throw _privateConstructorUsedError;
   List<String> get stepNumber => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $ImmuRecipeCopyWith<$Res> {
       {int id,
       String name,
       String description,
+      String cookingTime,
       List<String> ingredientName,
       List<String> ingredientQuantity,
       List<String> stepNumber,
@@ -69,6 +71,7 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? cookingTime = null,
     Object? ingredientName = null,
     Object? ingredientQuantity = null,
     Object? stepNumber = null,
@@ -90,6 +93,10 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      cookingTime: null == cookingTime
+          ? _value.cookingTime
+          : cookingTime // ignore: cast_nullable_to_non_nullable
               as String,
       ingredientName: null == ingredientName
           ? _value.ingredientName
@@ -139,6 +146,7 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
       {int id,
       String name,
       String description,
+      String cookingTime,
       List<String> ingredientName,
       List<String> ingredientQuantity,
       List<String> stepNumber,
@@ -163,6 +171,7 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? cookingTime = null,
     Object? ingredientName = null,
     Object? ingredientQuantity = null,
     Object? stepNumber = null,
@@ -184,6 +193,10 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      cookingTime: null == cookingTime
+          ? _value.cookingTime
+          : cookingTime // ignore: cast_nullable_to_non_nullable
               as String,
       ingredientName: null == ingredientName
           ? _value._ingredientName
@@ -228,6 +241,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       {this.id = 0,
       this.name = '',
       this.description = '',
+      this.cookingTime = '',
       final List<String> ingredientName = const [],
       final List<String> ingredientQuantity = const [],
       final List<String> stepNumber = const [],
@@ -250,6 +264,9 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   @override
   @JsonKey()
   final String description;
+  @override
+  @JsonKey()
+  final String cookingTime;
   final List<String> _ingredientName;
   @override
   @JsonKey()
@@ -302,7 +319,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   @override
   String toString() {
-    return 'ImmuRecipe(id: $id, name: $name, description: $description, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate)';
+    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate)';
   }
 
   @override
@@ -314,6 +331,8 @@ class _$_ImmuRecipe implements _ImmuRecipe {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.cookingTime, cookingTime) ||
+                other.cookingTime == cookingTime) &&
             const DeepCollectionEquality()
                 .equals(other._ingredientName, _ingredientName) &&
             const DeepCollectionEquality()
@@ -335,6 +354,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       id,
       name,
       description,
+      cookingTime,
       const DeepCollectionEquality().hash(_ingredientName),
       const DeepCollectionEquality().hash(_ingredientQuantity),
       const DeepCollectionEquality().hash(_stepNumber),
@@ -356,6 +376,7 @@ abstract class _ImmuRecipe implements ImmuRecipe {
       {final int id,
       final String name,
       final String description,
+      final String cookingTime,
       final List<String> ingredientName,
       final List<String> ingredientQuantity,
       final List<String> stepNumber,
@@ -371,6 +392,8 @@ abstract class _ImmuRecipe implements ImmuRecipe {
   String get name;
   @override
   String get description;
+  @override
+  String get cookingTime;
   @override
   List<String> get ingredientName;
   @override

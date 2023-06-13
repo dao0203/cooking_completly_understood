@@ -16,6 +16,8 @@ class Message with _$Message {
     required String recipeName, //レシピ名
     @JsonKey(name: jsonRecipeDescription, defaultValue: '')
     required String recipeDescription, //レシピの説明
+    @JsonKey(name: jsonRecipeCookingTime, defaultValue: '')
+    required String recipeCookingTime, //調理時間
     @JsonKey(name: jsonRecipeIngredients, defaultValue: [])
     required List<RecipeIngredients> recipeIngredients, //材料
     @JsonKey(name: jsonRecipeSteps, defaultValue: [])
@@ -24,5 +26,6 @@ class Message with _$Message {
     required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
   }) = _Recipe;
 
-  factory Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);
+  factory Message.fromJson(Map<String, dynamic> json) =>
+      _$MessageFromJson(json);
 }
