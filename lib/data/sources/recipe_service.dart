@@ -6,6 +6,9 @@ class RecipeService {
   final Isar _isar;
   RecipeService(this._isar);
 
+  // レシピのクエリを作成するメソッド
+  Query<Recipe> get _recipeQuery => _isar.recipes.where(sort: Sort.asc).build();
+
   // レシピを保存するメソッド
   Future<void> insertRecipe(Recipe recipe) async {
     await _isar.writeTxn(
@@ -16,11 +19,7 @@ class RecipeService {
   }
 
   // レシピを全て取得するメソッド
-  Future<List<Recipe>> getAllRecipes() async {
-    return _isar.txn(
-      () async {
-        return _isar.recipes.where().findAll();
-      },
-    );
+  Stream<List<Recipe>> getAllRecipes() {
+    return _recipeQuery.watch(fireImmediately: true);
   }
 }
