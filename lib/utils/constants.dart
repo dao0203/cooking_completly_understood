@@ -7,9 +7,9 @@ String messageThatUserInputted(String message,String temperature,String weather)
 以下の条件を満たすレシピを教えてください。
 1.userの入力したメッセージを考慮して結果を回答してください
 メッセージ: $message
-2.天気情報を考慮して結果を回答してください
+2.今の天気状況にあったレシピを回答してください
 温度: $message 天気(WMO): $weather
-3.回答は下記のJson形式で回答してください
+3.回答は下記のJson形式で回答してください（Json形式のみで大丈夫です）
 {
   "$jsonRecipeName": "レシピ名",
   "$jsonRecipeDescription": "レシピの説明",
