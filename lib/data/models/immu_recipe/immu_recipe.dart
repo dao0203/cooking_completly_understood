@@ -5,16 +5,16 @@ part 'immu_recipe.freezed.dart';
 @freezed
 class ImmuRecipe with _$ImmuRecipe {
   const factory ImmuRecipe({
-    @Default(0) required int id,
-    @Default('') required String name,
-    @Default('') required String description,
-    @Default('') required List<String> ingredientName,
-    @Default('') required List<String> ingredientQuantity,
-    @Default([]) required List<String> stepNumber,
-    @Default([]) required List<String> stepDescription,
-    @Default('') required String calorie,
-    @Default('') required String protein,
-    @Default('') required String fat,
-    @Default('') required String carbohydrate,
+    @Default(0)  int id,
+    @Default('')  String name,
+    @Default('')  String description,
+    @Default([])  List<String> ingredientName,
+    @Default([])  List<String> ingredientQuantity,
+    @Default([])  List<String> stepNumber,
+    @Default([])  List<String> stepDescription,
+    @Default('')  String calorie,
+    @Default('')  String protein,
+    @Default('')  String fat,
+    @Default('')  String carbohydrate,
   }) = _ImmuRecipe;
 }

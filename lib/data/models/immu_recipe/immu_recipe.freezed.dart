@@ -225,17 +225,17 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
 
 class _$_ImmuRecipe implements _ImmuRecipe {
   const _$_ImmuRecipe(
-      {required this.id = 0,
-      required this.name = '',
-      required this.description = '',
-      required final List<String> ingredientName = '',
-      required final List<String> ingredientQuantity = '',
-      required final List<String> stepNumber = const [],
-      required final List<String> stepDescription = const [],
-      required this.calorie = '',
-      required this.protein = '',
-      required this.fat = '',
-      required this.carbohydrate = ''})
+      {this.id = 0,
+      this.name = '',
+      this.description = '',
+      final List<String> ingredientName = const [],
+      final List<String> ingredientQuantity = const [],
+      final List<String> stepNumber = const [],
+      final List<String> stepDescription = const [],
+      this.calorie = '',
+      this.protein = '',
+      this.fat = '',
+      this.carbohydrate = ''})
       : _ingredientName = ingredientName,
         _ingredientQuantity = ingredientQuantity,
         _stepNumber = stepNumber,
@@ -353,17 +353,17 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
 abstract class _ImmuRecipe implements ImmuRecipe {
   const factory _ImmuRecipe(
-      {required final int id,
-      required final String name,
-      required final String description,
-      required final List<String> ingredientName,
-      required final List<String> ingredientQuantity,
-      required final List<String> stepNumber,
-      required final List<String> stepDescription,
-      required final String calorie,
-      required final String protein,
-      required final String fat,
-      required final String carbohydrate}) = _$_ImmuRecipe;
+      {final int id,
+      final String name,
+      final String description,
+      final List<String> ingredientName,
+      final List<String> ingredientQuantity,
+      final List<String> stepNumber,
+      final List<String> stepDescription,
+      final String calorie,
+      final String protein,
+      final String fat,
+      final String carbohydrate}) = _$_ImmuRecipe;
 
   @override
   int get id;
