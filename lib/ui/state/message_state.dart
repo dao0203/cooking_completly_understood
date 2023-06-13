@@ -1,4 +1,5 @@
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
+import 'package:cooking_completly_understood/di/recipe_repository_provider.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -10,39 +11,45 @@ class MessagesState extends _$MessagesState {
   List<OpenAIChatCompletionChoiceMessageModel> build() {
     //MessageStateが初期化された際に初期メッセージを送信する
     ref.read(messageRepositoryProvider).sendInitialMessage();
-    //TODO: MessageRepositoryからローカルDBに保存されているメッセージを取得してこちらに格納
+    //TODO: RecipeRepositoryからローカルDBに保存されているメッセージを取得してこちらに格納
     return [];
   }
 
-  Future<void> sendMessageAndReceiveMessage(String message) async {
-
-    //TODO: ローカルDBにメッセージを保存する
-    //現状はstateに保存しているが、ローカルDBに保存するようにする
+  Future<void> sendMessageAndReceiveMessage(String inputedMessage) async {
+    //FIXME: 現状は、ユーザーがメッセージを入力した際に、そのメッセージをstateに保存しているが、
+    //要件次第では消える可能性大
     state = [
       ...state,
       OpenAIChatCompletionChoiceMessageModel(
-        content: message,
+        content: inputedMessage,
         role: OpenAIChatMessageRole.user,
       ),
     ];
 
-    //TODO: MessageRepositoryからメッセージを送信
+    //ChatGPTを呼び出してメッセージを呼び出し、そのメッセージをstateに保存する
     await ref
         .read(messageRepositoryProvider)
-        .sendMessageAndReceiveMessage(message)
+        .sendMessageAndReceiveMessage(inputedMessage)
         .then(
-          //現状はString型のメッセージを受け取って、stateに保存しているが、
-          //ここのクラスでは、このように状態を保存せず、repository内のビジネスロジックで
-          //ローカルDBに保存するように実装する
+      //現状はString型のメッセージを受け取って、stateに保存しているが、
+      //ここのクラスでは、このように状態を保存せず、repository内のビジネスロジックで
+      //ローカルDBに保存するように実装する
 
-          
-          (value) => state = [
-            ...state,
-            OpenAIChatCompletionChoiceMessageModel(
-              content: value,
-              role: OpenAIChatMessageRole.assistant,
-            ),
-          ],
-        );
+      (message) async {
+        state = [
+          ...state,
+          OpenAIChatCompletionChoiceMessageModel(
+            content: message.toString(),
+            role: OpenAIChatMessageRole.assistant,
+          ),
+        ];
+
+        //FIXME: 現在は、メッセージを受け取った際にレシピを保存するようにしているが
+        // 本来は、ユーザーがレシピを選択した際にレシピを保存するようにしたい
+        await ref.read(recipeRepositoryProvider).then(
+              (value) => value.insertRecipeFromMessage(message),
+            );
+      },
+    );
   }
 }
