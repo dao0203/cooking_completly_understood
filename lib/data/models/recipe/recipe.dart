@@ -4,7 +4,7 @@ part 'recipe.g.dart';
 
 @collection
 class Recipe {
-  Id? id = Isar.autoIncrement;
+  Id id = Isar.autoIncrement;
   String name = '';
   String description = '';
   List<String> ingredientName = [];
