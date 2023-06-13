@@ -20,56 +20,70 @@ class ChatScreen extends HookConsumerWidget {
           children: [
             // メッセージ一覧
             Expanded(
-              child: ListView.separated(
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: messages.length,
-                itemBuilder: (context, index) {
-                  final message = messages[index];
-                  // systemロールのメッセージは表示しない
-                  if (message.role == OpenAIChatMessageRole.system) {
-                    return const SizedBox();
-                  }
+              child: messages.when(
+                data: (value) {
+                  return ListView.separated(
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    itemCount: value.length,
+                    itemBuilder: (context, index) {
+                      final message = messages.value![index];
+                      // systemロールのメッセージは表示しない
+                      if (message.role == OpenAIChatMessageRole.system) {
+                        return const SizedBox();
+                      }
 
-                  return Align(
-                    key: Key(message.hashCode.toString()),
-                    alignment: message.role == OpenAIChatMessageRole.user
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: screenWidth * 0.8,
-                      ),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: message.role == OpenAIChatMessageRole.user
-                              ? Theme.of(context).colorScheme.primary
-                              : Theme.of(context).colorScheme.secondary,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 16,
+                      return Align(
+                        key: Key(message.hashCode.toString()),
+                        alignment: message.role == OpenAIChatMessageRole.user
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: screenWidth * 0.8,
                           ),
-                          child: Text(
-                            message.content,
-                            style: TextStyle(
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
                               color: message.role == OpenAIChatMessageRole.user
-                                  ? Theme.of(context).colorScheme.onPrimary
-                                  : Theme.of(context).colorScheme.onSecondary,
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.secondary,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 16,
+                              ),
+                              child: Text(
+                                message.content,
+                                style: TextStyle(
+                                  color: message.role ==
+                                          OpenAIChatMessageRole.user
+                                      ? Theme.of(context).colorScheme.onPrimary
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
                   );
                 },
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 16),
+                error: (Object error, StackTrace stackTrace) {
+                  return Text('エラーが発生しました。再度お試しください。');
+                },
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
               ),
             ),
+
             // 送信フォーム
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -116,10 +130,11 @@ class ChatScreen extends HookConsumerWidget {
                               ),
                             );
                           } else {
-                            final sendMessage =
-                                ref.read(messagesStateProvider.notifier).sendMessageAndReceiveMessage(
-                                      messageController.text,
-                                    );
+                            final sendMessage = ref
+                                .read(messagesStateProvider.notifier)
+                                .sendMessageAndReceiveMessage(
+                                  messageController.text,
+                                );
                             isWaiting.value = true;
                             messageController.clear();
                             await sendMessage;
