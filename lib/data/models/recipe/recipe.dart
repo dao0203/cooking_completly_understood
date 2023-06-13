@@ -16,4 +16,6 @@ class Recipe {
   String protein = '';
   String fat = '';
   String carbohydrate = '';
+  String vitamin = '';
+  String mineral = '';
 }

@@ -19,7 +19,7 @@ String messageThatUserInputted(
   "$jsonRecipeIngredients": [
     {
       "$jsonIngredientName": "材料名",
-      "$jsoningredientQuantity": "材料の量"
+      "$jsoningredientQuantity": "材料の量(g)"
     }
   ],
   "$jsonRecipeSteps": [
@@ -29,10 +29,12 @@ String messageThatUserInputted(
     }
   ]
   "$jsonRecipeNutrition": {
-    "$jsonCalorie": "カロリー",
-    "$jsonProtein": "タンパク質",
-    "$jsonFat": "脂質",
-    "$jsonCarbohydrate": "炭水化物"
+    "$jsonCalorie": "カロリー(kcal)",
+    "$jsonProtein": "タンパク質(g)",
+    "$jsonFat": "脂質(g)",
+    "$jsonCarbohydrate": "炭水化物(g)"
+    "$jsonVitamin": "ビタミン(g)",
+    "$jsonMineral": "ミネラル(g)"
   }
 }
 ''';
@@ -55,3 +57,5 @@ const jsonCalorie = "calorie";
 const jsonProtein = "protein";
 const jsonFat = "fat";
 const jsonCarbohydrate = "carbohydrate";
+const jsonVitamin = "vitamin";
+const jsonMineral = "mineral";

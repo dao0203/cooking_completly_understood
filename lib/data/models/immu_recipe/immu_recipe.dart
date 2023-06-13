@@ -17,5 +17,7 @@ class ImmuRecipe with _$ImmuRecipe {
     @Default('') String protein,
     @Default('') String fat,
     @Default('') String carbohydrate,
+    @Default('') String vitamin,
+    @Default('') String mineral,
   }) = _ImmuRecipe;
 }

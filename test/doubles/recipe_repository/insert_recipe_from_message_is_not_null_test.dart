@@ -1,13 +1,12 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/message/nutrition/nutrition.dart';
 import 'package:cooking_completly_understood/data/models/message/recipe_ingredients/recipe_ingredients.dart';
 import 'package:cooking_completly_understood/data/models/message/recipe_steps/recipe_steps.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/repositories/recipe_repository/recipe_repository.dart';
+import 'package:cooking_completly_understood/data/repositories/recipe_repository.dart';
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
@@ -42,6 +41,8 @@ void main() async {
         protein: "test",
         fat: "test",
         carbohydrate: "test",
+        vitamin: "test",
+        mineral: "test",
       ),
     ),
   ];

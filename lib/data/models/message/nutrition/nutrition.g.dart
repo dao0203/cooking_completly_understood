@@ -11,6 +11,8 @@ _$_Nutrition _$$_NutritionFromJson(Map<String, dynamic> json) => _$_Nutrition(
       protein: json['protein'] as String? ?? '',
       fat: json['fat'] as String? ?? '',
       carbohydrate: json['carbohydrate'] as String? ?? '',
+      vitamin: json['vitamin'] as String? ?? '',
+      mineral: json['mineral'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_NutritionToJson(_$_Nutrition instance) =>
@@ -19,4 +21,6 @@ Map<String, dynamic> _$$_NutritionToJson(_$_Nutrition instance) =>
       'protein': instance.protein,
       'fat': instance.fat,
       'carbohydrate': instance.carbohydrate,
+      'vitamin': instance.vitamin,
+      'mineral': instance.mineral,
     };

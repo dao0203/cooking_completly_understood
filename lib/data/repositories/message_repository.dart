@@ -59,6 +59,7 @@ class MessageRepository {
             //成功時(1つでも選択肢がある場合)
             if (value.haveChoices) {
               //レスポンスボディをパース
+              print("${value.choices[0].message.content}");
               final recipe = Message.fromJson(
                   json.decode(value.choices[0].message.content));
               //TODO:ここでレシピをローカルDBに保存するようにする
