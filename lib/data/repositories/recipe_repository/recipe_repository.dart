@@ -1,4 +1,5 @@
 import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
+import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 
@@ -7,25 +8,26 @@ class RecipeRepository {
   RecipeRepository(this._recipeService);
 
   // レシピを保存するメソッド
-  Future<void> insertRecipe(ImmuRecipe recipe) async {
+  Future<void> insertRecipeFromMessage(Message message) async {
 
     //保存するレシピデータクラスを作成
     final insertedRecipe = Recipe();
     //レシピデータクラスに値を代入
-    insertedRecipe.name = recipe.name;
-    insertedRecipe.description = recipe.description;
-    insertedRecipe.ingredientName = recipe.ingredientName;
-    insertedRecipe.ingredientQuantity = recipe.ingredientQuantity;
-    insertedRecipe.stepNumber = recipe.stepNumber;
-    insertedRecipe.stepDescription = recipe.stepDescription;
-    insertedRecipe.calorie = recipe.calorie;
-    insertedRecipe.protein = recipe.protein;
-    insertedRecipe.fat = recipe.fat;
-    insertedRecipe.carbohydrate = recipe.carbohydrate;
+    insertedRecipe.name = message.recipeName;
+    insertedRecipe.description = message.recipeDescription;
+    insertedRecipe.ingredientName = message.recipeIngredients.map((e) => e.name).toList();
+    insertedRecipe.ingredientQuantity = message.recipeIngredients.map((e) => e.quantity).toList();
+    insertedRecipe.stepNumber = message.recipeSteps.map((e) => e.number).toList();
+    insertedRecipe.stepDescription = message.recipeSteps.map((e) => e.description).toList();
+    insertedRecipe.calorie = message.nutrition.calorie;
+    insertedRecipe.protein = message.nutrition.protein;
+    insertedRecipe.fat = message.nutrition.fat;
+    insertedRecipe.carbohydrate = message.nutrition.carbohydrate;
     //レシピを保存
     await _recipeService.insertRecipe(insertedRecipe);
   }
 
+  // レシピを全て取得するメソッド
   Future<List<ImmuRecipe>> getAllRecipes() async {
     //レシピを全て取得
     final recipes = await _recipeService.getAllRecipes();

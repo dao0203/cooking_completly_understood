@@ -5,6 +5,7 @@ class MessageService {
   // OpenAIのインスタンスを取得
   final openAI = OpenAI.instance;
 
+  // 献立メッセージに遷移した時に先にメッセージを投げるメソッド
   Future<void> sendInitialMessage() async {
     // メッセージをuserロールでモデル化
     const receivedMessage = OpenAIChatCompletionChoiceMessageModel(
