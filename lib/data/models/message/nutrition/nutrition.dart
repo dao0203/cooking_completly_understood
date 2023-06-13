@@ -14,11 +14,9 @@ class Nutrition with _$Nutrition {
     required String fat, //脂質
     @JsonKey(name: jsonCarbohydrate, defaultValue: '')
     required String carbohydrate, //炭水化物
-    @JsonKey(name: jsonVitamin, defaultValue: '')
-    required String vitamin, //ビタミン
-    @JsonKey(name: jsonMineral, defaultValue: '')
-    required String mineral, //ミネラル
-    
+    @JsonKey(name: jsonSalt, defaultValue: '')
+    required String salt, //塩分
+
   }) = _Nutrition;
 
   factory Nutrition.fromJson(Map<String, dynamic> json) =>

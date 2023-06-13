@@ -28,10 +28,8 @@ mixin _$Nutrition {
   String get fat => throw _privateConstructorUsedError; //脂質
   @JsonKey(name: jsonCarbohydrate, defaultValue: '')
   String get carbohydrate => throw _privateConstructorUsedError; //炭水化物
-  @JsonKey(name: jsonVitamin, defaultValue: '')
-  String get vitamin => throw _privateConstructorUsedError; //ビタミン
-  @JsonKey(name: jsonMineral, defaultValue: '')
-  String get mineral => throw _privateConstructorUsedError;
+  @JsonKey(name: jsonSalt, defaultValue: '')
+  String get salt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,8 +47,7 @@ abstract class $NutritionCopyWith<$Res> {
       @JsonKey(name: jsonProtein, defaultValue: '') String protein,
       @JsonKey(name: jsonFat, defaultValue: '') String fat,
       @JsonKey(name: jsonCarbohydrate, defaultValue: '') String carbohydrate,
-      @JsonKey(name: jsonVitamin, defaultValue: '') String vitamin,
-      @JsonKey(name: jsonMineral, defaultValue: '') String mineral});
+      @JsonKey(name: jsonSalt, defaultValue: '') String salt});
 }
 
 /// @nodoc
@@ -70,8 +67,7 @@ class _$NutritionCopyWithImpl<$Res, $Val extends Nutrition>
     Object? protein = null,
     Object? fat = null,
     Object? carbohydrate = null,
-    Object? vitamin = null,
-    Object? mineral = null,
+    Object? salt = null,
   }) {
     return _then(_value.copyWith(
       calorie: null == calorie
@@ -90,13 +86,9 @@ class _$NutritionCopyWithImpl<$Res, $Val extends Nutrition>
           ? _value.carbohydrate
           : carbohydrate // ignore: cast_nullable_to_non_nullable
               as String,
-      vitamin: null == vitamin
-          ? _value.vitamin
-          : vitamin // ignore: cast_nullable_to_non_nullable
-              as String,
-      mineral: null == mineral
-          ? _value.mineral
-          : mineral // ignore: cast_nullable_to_non_nullable
+      salt: null == salt
+          ? _value.salt
+          : salt // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -114,8 +106,7 @@ abstract class _$$_NutritionCopyWith<$Res> implements $NutritionCopyWith<$Res> {
       @JsonKey(name: jsonProtein, defaultValue: '') String protein,
       @JsonKey(name: jsonFat, defaultValue: '') String fat,
       @JsonKey(name: jsonCarbohydrate, defaultValue: '') String carbohydrate,
-      @JsonKey(name: jsonVitamin, defaultValue: '') String vitamin,
-      @JsonKey(name: jsonMineral, defaultValue: '') String mineral});
+      @JsonKey(name: jsonSalt, defaultValue: '') String salt});
 }
 
 /// @nodoc
@@ -133,8 +124,7 @@ class __$$_NutritionCopyWithImpl<$Res>
     Object? protein = null,
     Object? fat = null,
     Object? carbohydrate = null,
-    Object? vitamin = null,
-    Object? mineral = null,
+    Object? salt = null,
   }) {
     return _then(_$_Nutrition(
       calorie: null == calorie
@@ -153,13 +143,9 @@ class __$$_NutritionCopyWithImpl<$Res>
           ? _value.carbohydrate
           : carbohydrate // ignore: cast_nullable_to_non_nullable
               as String,
-      vitamin: null == vitamin
-          ? _value.vitamin
-          : vitamin // ignore: cast_nullable_to_non_nullable
-              as String,
-      mineral: null == mineral
-          ? _value.mineral
-          : mineral // ignore: cast_nullable_to_non_nullable
+      salt: null == salt
+          ? _value.salt
+          : salt // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -177,10 +163,8 @@ class _$_Nutrition implements _Nutrition {
           required this.fat,
       @JsonKey(name: jsonCarbohydrate, defaultValue: '')
           required this.carbohydrate,
-      @JsonKey(name: jsonVitamin, defaultValue: '')
-          required this.vitamin,
-      @JsonKey(name: jsonMineral, defaultValue: '')
-          required this.mineral});
+      @JsonKey(name: jsonSalt, defaultValue: '')
+          required this.salt});
 
   factory _$_Nutrition.fromJson(Map<String, dynamic> json) =>
       _$$_NutritionFromJson(json);
@@ -202,16 +186,12 @@ class _$_Nutrition implements _Nutrition {
   final String carbohydrate;
 //炭水化物
   @override
-  @JsonKey(name: jsonVitamin, defaultValue: '')
-  final String vitamin;
-//ビタミン
-  @override
-  @JsonKey(name: jsonMineral, defaultValue: '')
-  final String mineral;
+  @JsonKey(name: jsonSalt, defaultValue: '')
+  final String salt;
 
   @override
   String toString() {
-    return 'Nutrition(calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, vitamin: $vitamin, mineral: $mineral)';
+    return 'Nutrition(calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt)';
   }
 
   @override
@@ -224,14 +204,13 @@ class _$_Nutrition implements _Nutrition {
             (identical(other.fat, fat) || other.fat == fat) &&
             (identical(other.carbohydrate, carbohydrate) ||
                 other.carbohydrate == carbohydrate) &&
-            (identical(other.vitamin, vitamin) || other.vitamin == vitamin) &&
-            (identical(other.mineral, mineral) || other.mineral == mineral));
+            (identical(other.salt, salt) || other.salt == salt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, calorie, protein, fat, carbohydrate, vitamin, mineral);
+  int get hashCode =>
+      Object.hash(runtimeType, calorie, protein, fat, carbohydrate, salt);
 
   @JsonKey(ignore: true)
   @override
@@ -257,10 +236,8 @@ abstract class _Nutrition implements Nutrition {
           required final String fat,
       @JsonKey(name: jsonCarbohydrate, defaultValue: '')
           required final String carbohydrate,
-      @JsonKey(name: jsonVitamin, defaultValue: '')
-          required final String vitamin,
-      @JsonKey(name: jsonMineral, defaultValue: '')
-          required final String mineral}) = _$_Nutrition;
+      @JsonKey(name: jsonSalt, defaultValue: '')
+          required final String salt}) = _$_Nutrition;
 
   factory _Nutrition.fromJson(Map<String, dynamic> json) =
       _$_Nutrition.fromJson;
@@ -278,11 +255,8 @@ abstract class _Nutrition implements Nutrition {
   @JsonKey(name: jsonCarbohydrate, defaultValue: '')
   String get carbohydrate;
   @override //炭水化物
-  @JsonKey(name: jsonVitamin, defaultValue: '')
-  String get vitamin;
-  @override //ビタミン
-  @JsonKey(name: jsonMineral, defaultValue: '')
-  String get mineral;
+  @JsonKey(name: jsonSalt, defaultValue: '')
+  String get salt;
   @override
   @JsonKey(ignore: true)
   _$$_NutritionCopyWith<_$_Nutrition> get copyWith =>

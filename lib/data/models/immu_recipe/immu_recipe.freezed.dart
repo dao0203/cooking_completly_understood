@@ -28,8 +28,7 @@ mixin _$ImmuRecipe {
   String get protein => throw _privateConstructorUsedError;
   String get fat => throw _privateConstructorUsedError;
   String get carbohydrate => throw _privateConstructorUsedError;
-  String get vitamin => throw _privateConstructorUsedError;
-  String get mineral => throw _privateConstructorUsedError;
+  String get salt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ImmuRecipeCopyWith<ImmuRecipe> get copyWith =>
@@ -55,8 +54,7 @@ abstract class $ImmuRecipeCopyWith<$Res> {
       String protein,
       String fat,
       String carbohydrate,
-      String vitamin,
-      String mineral});
+      String salt});
 }
 
 /// @nodoc
@@ -84,8 +82,7 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
     Object? protein = null,
     Object? fat = null,
     Object? carbohydrate = null,
-    Object? vitamin = null,
-    Object? mineral = null,
+    Object? salt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -136,13 +133,9 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
           ? _value.carbohydrate
           : carbohydrate // ignore: cast_nullable_to_non_nullable
               as String,
-      vitamin: null == vitamin
-          ? _value.vitamin
-          : vitamin // ignore: cast_nullable_to_non_nullable
-              as String,
-      mineral: null == mineral
-          ? _value.mineral
-          : mineral // ignore: cast_nullable_to_non_nullable
+      salt: null == salt
+          ? _value.salt
+          : salt // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -169,8 +162,7 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
       String protein,
       String fat,
       String carbohydrate,
-      String vitamin,
-      String mineral});
+      String salt});
 }
 
 /// @nodoc
@@ -196,8 +188,7 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
     Object? protein = null,
     Object? fat = null,
     Object? carbohydrate = null,
-    Object? vitamin = null,
-    Object? mineral = null,
+    Object? salt = null,
   }) {
     return _then(_$_ImmuRecipe(
       id: null == id
@@ -248,13 +239,9 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
           ? _value.carbohydrate
           : carbohydrate // ignore: cast_nullable_to_non_nullable
               as String,
-      vitamin: null == vitamin
-          ? _value.vitamin
-          : vitamin // ignore: cast_nullable_to_non_nullable
-              as String,
-      mineral: null == mineral
-          ? _value.mineral
-          : mineral // ignore: cast_nullable_to_non_nullable
+      salt: null == salt
+          ? _value.salt
+          : salt // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -276,8 +263,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       this.protein = '',
       this.fat = '',
       this.carbohydrate = '',
-      this.vitamin = '',
-      this.mineral = ''})
+      this.salt = ''})
       : _ingredientName = ingredientName,
         _ingredientQuantity = ingredientQuantity,
         _stepNumber = stepNumber,
@@ -346,14 +332,11 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   final String carbohydrate;
   @override
   @JsonKey()
-  final String vitamin;
-  @override
-  @JsonKey()
-  final String mineral;
+  final String salt;
 
   @override
   String toString() {
-    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, vitamin: $vitamin, mineral: $mineral)';
+    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt)';
   }
 
   @override
@@ -380,8 +363,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
             (identical(other.fat, fat) || other.fat == fat) &&
             (identical(other.carbohydrate, carbohydrate) ||
                 other.carbohydrate == carbohydrate) &&
-            (identical(other.vitamin, vitamin) || other.vitamin == vitamin) &&
-            (identical(other.mineral, mineral) || other.mineral == mineral));
+            (identical(other.salt, salt) || other.salt == salt));
   }
 
   @override
@@ -399,8 +381,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       protein,
       fat,
       carbohydrate,
-      vitamin,
-      mineral);
+      salt);
 
   @JsonKey(ignore: true)
   @override
@@ -423,8 +404,7 @@ abstract class _ImmuRecipe implements ImmuRecipe {
       final String protein,
       final String fat,
       final String carbohydrate,
-      final String vitamin,
-      final String mineral}) = _$_ImmuRecipe;
+      final String salt}) = _$_ImmuRecipe;
 
   @override
   int get id;
@@ -451,9 +431,7 @@ abstract class _ImmuRecipe implements ImmuRecipe {
   @override
   String get carbohydrate;
   @override
-  String get vitamin;
-  @override
-  String get mineral;
+  String get salt;
   @override
   @JsonKey(ignore: true)
   _$$_ImmuRecipeCopyWith<_$_ImmuRecipe> get copyWith =>

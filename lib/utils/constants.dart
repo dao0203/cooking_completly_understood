@@ -32,9 +32,8 @@ String messageThatUserInputted(
     "$jsonCalorie": "カロリー(kcal)",
     "$jsonProtein": "タンパク質(g)",
     "$jsonFat": "脂質(g)",
-    "$jsonCarbohydrate": "炭水化物(g)"
-    "$jsonVitamin": "ビタミン(g)",
-    "$jsonMineral": "ミネラル(g)"
+    "$jsonCarbohydrate": "炭水化物(g)",
+    "$jsonSalt": "塩分(g)"
   }
 }
 ''';
@@ -57,5 +56,4 @@ const jsonCalorie = "calorie";
 const jsonProtein = "protein";
 const jsonFat = "fat";
 const jsonCarbohydrate = "carbohydrate";
-const jsonVitamin = "vitamin";
-const jsonMineral = "mineral";
+const jsonSalt = "salt";

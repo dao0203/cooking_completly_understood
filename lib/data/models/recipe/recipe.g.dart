@@ -52,19 +52,19 @@ const RecipeSchema = CollectionSchema(
       name: r'ingredientQuantity',
       type: IsarType.stringList,
     ),
-    r'mineral': PropertySchema(
-      id: 7,
-      name: r'mineral',
-      type: IsarType.string,
-    ),
     r'name': PropertySchema(
-      id: 8,
+      id: 7,
       name: r'name',
       type: IsarType.string,
     ),
     r'protein': PropertySchema(
-      id: 9,
+      id: 8,
       name: r'protein',
+      type: IsarType.string,
+    ),
+    r'salt': PropertySchema(
+      id: 9,
+      name: r'salt',
       type: IsarType.string,
     ),
     r'stepDescription': PropertySchema(
@@ -76,11 +76,6 @@ const RecipeSchema = CollectionSchema(
       id: 11,
       name: r'stepNumber',
       type: IsarType.stringList,
-    ),
-    r'vitamin': PropertySchema(
-      id: 12,
-      name: r'vitamin',
-      type: IsarType.string,
     )
   },
   estimateSize: _recipeEstimateSize,
@@ -122,9 +117,9 @@ int _recipeEstimateSize(
       bytesCount += value.length * 3;
     }
   }
-  bytesCount += 3 + object.mineral.length * 3;
   bytesCount += 3 + object.name.length * 3;
   bytesCount += 3 + object.protein.length * 3;
+  bytesCount += 3 + object.salt.length * 3;
   bytesCount += 3 + object.stepDescription.length * 3;
   {
     for (var i = 0; i < object.stepDescription.length; i++) {
@@ -139,7 +134,6 @@ int _recipeEstimateSize(
       bytesCount += value.length * 3;
     }
   }
-  bytesCount += 3 + object.vitamin.length * 3;
   return bytesCount;
 }
 
@@ -156,12 +150,11 @@ void _recipeSerialize(
   writer.writeString(offsets[4], object.fat);
   writer.writeStringList(offsets[5], object.ingredientName);
   writer.writeStringList(offsets[6], object.ingredientQuantity);
-  writer.writeString(offsets[7], object.mineral);
-  writer.writeString(offsets[8], object.name);
-  writer.writeString(offsets[9], object.protein);
+  writer.writeString(offsets[7], object.name);
+  writer.writeString(offsets[8], object.protein);
+  writer.writeString(offsets[9], object.salt);
   writer.writeStringList(offsets[10], object.stepDescription);
   writer.writeStringList(offsets[11], object.stepNumber);
-  writer.writeString(offsets[12], object.vitamin);
 }
 
 Recipe _recipeDeserialize(
@@ -179,12 +172,11 @@ Recipe _recipeDeserialize(
   object.id = id;
   object.ingredientName = reader.readStringList(offsets[5]) ?? [];
   object.ingredientQuantity = reader.readStringList(offsets[6]) ?? [];
-  object.mineral = reader.readString(offsets[7]);
-  object.name = reader.readString(offsets[8]);
-  object.protein = reader.readString(offsets[9]);
+  object.name = reader.readString(offsets[7]);
+  object.protein = reader.readString(offsets[8]);
+  object.salt = reader.readString(offsets[9]);
   object.stepDescription = reader.readStringList(offsets[10]) ?? [];
   object.stepNumber = reader.readStringList(offsets[11]) ?? [];
-  object.vitamin = reader.readString(offsets[12]);
   return object;
 }
 
@@ -219,8 +211,6 @@ P _recipeDeserializeProp<P>(
       return (reader.readStringList(offset) ?? []) as P;
     case 11:
       return (reader.readStringList(offset) ?? []) as P;
-    case 12:
-      return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -1466,136 +1456,6 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'mineral',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'mineral',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'mineral',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'mineral',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'mineral',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'mineral',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralContains(
-      String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'mineral',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'mineral',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'mineral',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> mineralIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'mineral',
-        value: '',
-      ));
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1850,6 +1710,135 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'protein',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'salt',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'salt',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'salt',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'salt',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'salt',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'salt',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltContains(String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'salt',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'salt',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'salt',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'salt',
         value: '',
       ));
     });
@@ -2299,136 +2288,6 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
       );
     });
   }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'vitamin',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'vitamin',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'vitamin',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'vitamin',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'vitamin',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'vitamin',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminContains(
-      String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'vitamin',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'vitamin',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'vitamin',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> vitaminIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'vitamin',
-        value: '',
-      ));
-    });
-  }
 }
 
 extension RecipeQueryObject on QueryBuilder<Recipe, Recipe, QFilterCondition> {}
@@ -2496,18 +2355,6 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByMineral() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mineral', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByMineralDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mineral', Sort.desc);
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -2532,15 +2379,15 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByVitamin() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortBySalt() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'vitamin', Sort.asc);
+      return query.addSortBy(r'salt', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByVitaminDesc() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortBySaltDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'vitamin', Sort.desc);
+      return query.addSortBy(r'salt', Sort.desc);
     });
   }
 }
@@ -2618,18 +2465,6 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByMineral() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mineral', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByMineralDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mineral', Sort.desc);
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -2654,15 +2489,15 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByVitamin() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenBySalt() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'vitamin', Sort.asc);
+      return query.addSortBy(r'salt', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByVitaminDesc() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenBySaltDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'vitamin', Sort.desc);
+      return query.addSortBy(r'salt', Sort.desc);
     });
   }
 }
@@ -2715,13 +2550,6 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByMineral(
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'mineral', caseSensitive: caseSensitive);
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2736,6 +2564,13 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctBySalt(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'salt', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByStepDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stepDescription');
@@ -2745,13 +2580,6 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByStepNumber() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stepNumber');
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByVitamin(
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'vitamin', caseSensitive: caseSensitive);
     });
   }
 }
@@ -2807,12 +2635,6 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> mineralProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'mineral');
-    });
-  }
-
   QueryBuilder<Recipe, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
@@ -2822,6 +2644,12 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
   QueryBuilder<Recipe, String, QQueryOperations> proteinProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'protein');
+    });
+  }
+
+  QueryBuilder<Recipe, String, QQueryOperations> saltProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'salt');
     });
   }
 
@@ -2835,12 +2663,6 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
   QueryBuilder<Recipe, List<String>, QQueryOperations> stepNumberProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'stepNumber');
-    });
-  }
-
-  QueryBuilder<Recipe, String, QQueryOperations> vitaminProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'vitamin');
     });
   }
 }

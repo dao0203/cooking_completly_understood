@@ -23,8 +23,7 @@ class RecipeRepository {
     insertedRecipe.protein = message.nutrition.protein;
     insertedRecipe.fat = message.nutrition.fat;
     insertedRecipe.carbohydrate = message.nutrition.carbohydrate;
-    insertedRecipe.vitamin = message.nutrition.vitamin;
-    insertedRecipe.mineral = message.nutrition.mineral;
+    insertedRecipe.salt = message.nutrition.salt;
     //レシピを保存
     await _recipeService.insertRecipe(insertedRecipe);
   }
@@ -50,8 +49,7 @@ class RecipeRepository {
           protein: recipe.protein,
           fat: recipe.fat,
           carbohydrate: recipe.carbohydrate,
-          vitamin: recipe.vitamin,
-          mineral: recipe.mineral,
+          salt: recipe.salt,
         ),
       );
     }
