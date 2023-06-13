@@ -24,7 +24,7 @@ class MessageRepository {
   }
 
   //メッセージを送信して返信を受け取る
-  Future<String> sendMessageAndReceiveMessage(String message) async {
+  Future<Message> sendMessageAndReceiveMessage(String message) async {
     final position = await _positionDataSource.getLocationInfo();
     return await _weatherInfoDataSource
         //緯度経度をもとに天気情報を取得する
@@ -63,7 +63,7 @@ class MessageRepository {
                   json.decode(value.choices[0].message.content));
               //TODO:ここでレシピをローカルDBに保存するようにする
               //本当は何も返さないようにしたい
-              return recipe.toString();
+              return recipe;
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
