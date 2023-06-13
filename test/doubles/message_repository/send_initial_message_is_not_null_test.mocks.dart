@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart'
+import 'package:cooking_completly_understood/data/sources/position_service.dart'
     as _i3;
 import 'package:geolocator/geolocator.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -31,12 +31,11 @@ class _FakePosition_0 extends _i1.SmartFake implements _i2.Position {
         );
 }
 
-/// A class which mocks [PositionDataSource].
+/// A class which mocks [PositionService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockPositionDataSource extends _i1.Mock
-    implements _i3.PositionDataSource {
-  MockPositionDataSource() {
+class MockPositionService extends _i1.Mock implements _i3.PositionService {
+  MockPositionService() {
     _i1.throwOnMissingStub(this);
   }
 

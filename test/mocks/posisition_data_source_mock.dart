@@ -1,9 +1,8 @@
-
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geolocator/geolocator.dart';
 
-class PositionDataSourceMock extends Fake implements PositionDataSource {
+class PositionServiceMock extends Fake implements PositionService {
   @override
   Future<Position> getLocationInfo() async {
     return Position(

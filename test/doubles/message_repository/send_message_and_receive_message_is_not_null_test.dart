@@ -1,7 +1,7 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/position_service.dart';
+import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,11 +10,10 @@ import 'package:mockito/annotations.dart';
 
 import '../../mocks/posisition_data_source_mock.dart';
 
-
-@GenerateMocks([PositionDataSource])
+@GenerateMocks([PositionService])
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  late PositionDataSource positionDataSource;
+  late PositionService positionDataSource;
   // .evnから環境変数を読み込む
   await dotenv.load(fileName: '.env');
   // OpenAIのAPIキーを設定
@@ -22,14 +21,14 @@ void main() async {
 
   setUp(() {
     // ここでモックを使うように設定
-    positionDataSource = PositionDataSourceMock();
+    positionDataSource = PositionServiceMock();
   });
   test(
     '東京駅の気温と受け取ったメッセージからCHATGPTの返信を受け取る単体テスト',
     () async {
       final messageRepository = MessageRepository(
         positionDataSource, //東京の緯度経度から天気情報を取得するようなモックを代入
-        WeatherInfoDataSource.create(),
+        WeatherService.create(),
         MessageService(),
       );
       const sendedMessage = """

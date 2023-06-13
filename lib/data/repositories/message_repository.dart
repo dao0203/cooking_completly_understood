@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/message_service.dart';
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/position_service.dart';
+import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 
 class MessageRepository {
-  final PositionDataSource _positionDataSource;
-  final WeatherInfoDataSource _weatherInfoDataSource;
+  final PositionService _positionDataSource;
+  final WeatherService _weatherInfoDataSource;
   final MessageService _messageService;
   MessageRepository(
     this._positionDataSource,

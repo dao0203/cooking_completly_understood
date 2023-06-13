@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('クエリが正しく返されてきているかテスト', () async {
     // ここにテストコードを書く
-    final weatherInfoDataSource = WeatherInfoDataSource.create();
+    final weatherInfoDataSource = WeatherService.create();
 
     final response = await weatherInfoDataSource.getWeatherInfo(
       //東京の緯度経度
