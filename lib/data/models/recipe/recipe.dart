@@ -1,6 +1,3 @@
-
-import 'package:cooking_completly_understood/data/models/message/nutrition/nutrition.dart';
-import 'package:cooking_completly_understood/data/models/message/recipe_ingredients/recipe_ingredients.dart';
 import 'package:isar/isar.dart';
 
 part 'recipe.g.dart';
