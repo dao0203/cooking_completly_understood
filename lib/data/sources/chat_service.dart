@@ -1,7 +1,7 @@
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/foundation.dart';
 
-class MessageService {
+class ChatService {
   // OpenAIのインスタンスを取得
   final openAI = OpenAI.instance;
 

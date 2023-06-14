@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/message_service.dart';
+import 'package:cooking_completly_understood/data/sources/chat_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
@@ -10,7 +10,7 @@ import 'package:cooking_completly_understood/utils/constants.dart';
 class MessageRepository {
   final PositionService _positionDataSource;
   final WeatherService _weatherInfoDataSource;
-  final MessageService _messageService;
+  final ChatService _messageService;
   MessageRepository(
     this._positionDataSource,
     this._weatherInfoDataSource,

@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/data/sources/message_service.dart';
+import 'package:cooking_completly_understood/data/sources/chat_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:dart_openai/dart_openai.dart';
@@ -25,7 +25,7 @@ void main() async {
     final messageRepository = MessageRepository(
       positionDataSource,
       WeatherService.create(),
-      MessageService(),
+      ChatService(),
     );
     await messageRepository.sendInitialMessage();
   });

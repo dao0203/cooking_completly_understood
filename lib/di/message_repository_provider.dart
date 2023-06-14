@@ -8,6 +8,6 @@ final messageRepositoryProvider = Provider<MessageRepository>((ref) {
   return MessageRepository(
     ref.read(positionDataSourceProvider),
     ref.read(weatherInfoDataSourceProvider),
-    ref.read(messageServiceProvider),
+    ref.read(chatServiceProvider),
   );
 });

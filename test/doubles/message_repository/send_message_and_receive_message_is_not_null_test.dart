@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/data/sources/message_service.dart';
+import 'package:cooking_completly_understood/data/sources/chat_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
@@ -16,7 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   late PositionService positionDataSource;
   late WeatherService weatherService;
-  late MessageService messageService;
+  late ChatService messageService;
   late MessageRepository messageRepository;
   // .evnから環境変数を読み込む
   await dotenv.load(fileName: '.env');
@@ -27,7 +27,7 @@ void main() async {
     // ここでモックを使うように設定
     positionDataSource = PositionServiceMock();
     weatherService = WeatherService.create();
-    messageService = MessageService();
+    messageService = ChatService();
     messageRepository = MessageRepository(
       positionDataSource,
       weatherService,
@@ -37,7 +37,8 @@ void main() async {
   test(
     '東京駅の気温と受け取ったメッセージからCHATGPTの返信を受け取る単体テスト',
     () async {
-      final sendedMessage = messageThatUserInputted("じゃがいもを使った簡単なレシピを教えて", "20", "3");
+      final sendedMessage =
+          messageThatUserInputted("じゃがいもを使った簡単なレシピを教えて", "20", "3");
       debugPrint(sendedMessage);
       await messageRepository.sendMessageAndReceiveMessage(sendedMessage).then(
         (value) {
