@@ -1,7 +1,8 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/data/sources/message_service.dart';
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/chat_service.dart';
+import 'package:cooking_completly_understood/data/sources/position_service.dart';
+import 'package:cooking_completly_understood/data/sources/weather_service.dart';
+import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,59 +11,36 @@ import 'package:mockito/annotations.dart';
 
 import '../../mocks/posisition_data_source_mock.dart';
 
-
-@GenerateMocks([PositionDataSource])
+@GenerateMocks([PositionService])
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  late PositionDataSource positionDataSource;
+  late PositionService positionDataSource;
+  late WeatherService weatherService;
+  late ChatService messageService;
+  late MessageRepository messageRepository;
   // .evnから環境変数を読み込む
   await dotenv.load(fileName: '.env');
   // OpenAIのAPIキーを設定
   OpenAI.apiKey = dotenv.get('OPEN_AI_API_KEY');
 
-  setUp(() {
+  setUpAll(() {
     // ここでモックを使うように設定
-    positionDataSource = PositionDataSourceMock();
+    positionDataSource = PositionServiceMock();
+    weatherService = WeatherService.create();
+    messageService = ChatService();
+    messageRepository = MessageRepository(
+      positionDataSource,
+      weatherService,
+      messageService,
+    );
   });
   test(
     '東京駅の気温と受け取ったメッセージからCHATGPTの返信を受け取る単体テスト',
     () async {
-      final messageRepository = MessageRepository(
-        positionDataSource, //東京の緯度経度から天気情報を取得するようなモックを代入
-        WeatherInfoDataSource.create(),
-        MessageService(),
-      );
-      const sendedMessage = """
-以下の条件を満たすレシピを教えてください。
-1.userの入力したメッセージを考慮して結果を回答してください
-メッセージ: じゃがいもを使ったレシピを教えて
-2.天気情報を考慮して結果を回答してください
-温度: 20 天気(WMO): 3
-3.回答は下記のJson形式で回答してください
-{
-  "recipe_name": "レシピ名",
-  "recipe_description": "レシピの説明",
-  "recipe_ingredients": [
-    {
-      "ingredient_name": "材料名",
-      "ingredient_quantity": "材料の量"
-    }
-  ],
-  "recipe_steps": [
-    {
-      "step_number": "手順番号",
-      "step_description": "手順の説明"
-    }
-  ]
-  "recipe_nutrition": {
-    "calorie": "カロリー",
-    "protein": "タンパク質",
-    "fat": "脂質",
-    "carbohydrate": "炭水化物"
-  }
-}
-          """;
-      await messageRepository.sendMessageAndReceiveMessage(sendedMessage).then(
+      final sendedMessage =
+          messageThatUserInputted("じゃがいもを使った簡単なレシピを教えて", "20", "3");
+      debugPrint(sendedMessage);
+      await messageRepository.sendMessage(sendedMessage).then(
         (value) {
           debugPrint(value.toString());
           expect(value, isNotNull);

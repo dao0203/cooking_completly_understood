@@ -4,7 +4,7 @@ part 'nutrition.freezed.dart';
 part 'nutrition.g.dart';
 
 @freezed
-abstract class Nutrition with _$Nutrition {
+class Nutrition with _$Nutrition {
   const factory Nutrition({
     @JsonKey(name: jsonCalorie, defaultValue: '')
     required String calorie, //カロリー
@@ -14,6 +14,9 @@ abstract class Nutrition with _$Nutrition {
     required String fat, //脂質
     @JsonKey(name: jsonCarbohydrate, defaultValue: '')
     required String carbohydrate, //炭水化物
+    @JsonKey(name: jsonSalt, defaultValue: '')
+    required String salt, //塩分
+
   }) = _Nutrition;
 
   factory Nutrition.fromJson(Map<String, dynamic> json) =>

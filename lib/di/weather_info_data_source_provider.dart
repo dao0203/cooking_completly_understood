@@ -1,7 +1,6 @@
-
-import 'package:cooking_completly_understood/data/sources/weather_info_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final weatherInfoDataSourceProvider = Provider<WeatherInfoDataSource>((ref) {
-  return WeatherInfoDataSource.create();
+final weatherInfoDataSourceProvider = Provider<WeatherService>((ref) {
+  return WeatherService.create();
 });

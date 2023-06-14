@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/message_service.dart';
+import 'package:cooking_completly_understood/data/sources/chat_service.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,7 +11,7 @@ void main() async {
 
   test('最初のメッセージがChat GPTに正しく送れているかを確認する単体テスト', () async {
     // MessageServiceのインスタンスを作成
-    final messageService = MessageService();
+    final messageService = ChatService();
 
     // Chat GPTに最初のメッセージを送信
     await messageService.sendInitialMessage();

@@ -5,7 +5,7 @@ part 'recipe_ingredients.freezed.dart';
 part 'recipe_ingredients.g.dart';
 
 @freezed
-abstract class RecipeIngredients with _$RecipeIngredients {
+class RecipeIngredients with _$RecipeIngredients {
   const factory RecipeIngredients({
     @JsonKey(name: jsonIngredientName, defaultValue: '')
     required String name, //材料名

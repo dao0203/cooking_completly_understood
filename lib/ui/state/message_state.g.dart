@@ -6,12 +6,12 @@ part of 'message_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$messagesStateHash() => r'f567137e5bdb00717167d1b8a231981e464ec46c';
+String _$messagesStateHash() => r'2ac3beea7f2376eee7196108709dc29a8cb11dd4';
 
 /// See also [MessagesState].
 @ProviderFor(MessagesState)
-final messagesStateProvider = AutoDisposeNotifierProvider<MessagesState,
-    List<OpenAIChatCompletionChoiceMessageModel>>.internal(
+final messagesStateProvider = AutoDisposeAsyncNotifierProvider<MessagesState,
+    Stream<List<RecipeMessage>>>.internal(
   MessagesState.new,
   name: r'messagesStateProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,5 @@ final messagesStateProvider = AutoDisposeNotifierProvider<MessagesState,
   allTransitiveDependencies: null,
 );
 
-typedef _$MessagesState
-    = AutoDisposeNotifier<List<OpenAIChatCompletionChoiceMessageModel>>;
+typedef _$MessagesState = AutoDisposeAsyncNotifier<Stream<List<RecipeMessage>>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -1,7 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 
-class PositionDataSource {
-
+class PositionService {
   // 位置情報を取得する
   Future<Position> getLocationInfo() async {
     // 位置情報を取得できるかどうかのフラグ

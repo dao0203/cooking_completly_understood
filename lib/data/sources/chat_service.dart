@@ -1,10 +1,11 @@
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/foundation.dart';
 
-class MessageService {
+class ChatService {
   // OpenAIのインスタンスを取得
   final openAI = OpenAI.instance;
 
+  // 献立メッセージに遷移した時に先にメッセージを投げるメソッド
   Future<void> sendInitialMessage() async {
     // メッセージをuserロールでモデル化
     const receivedMessage = OpenAIChatCompletionChoiceMessageModel(

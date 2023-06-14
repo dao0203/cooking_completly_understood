@@ -5,7 +5,7 @@ part 'recipe_steps.freezed.dart';
 part 'recipe_steps.g.dart';
 
 @freezed
-abstract class RecipeSteps with _$RecipeSteps {
+class RecipeSteps with _$RecipeSteps {
   const factory RecipeSteps({
     @JsonKey(name: jsonStepNumber, defaultValue: '')
     required String number, //手順番号

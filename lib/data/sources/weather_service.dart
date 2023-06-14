@@ -1,11 +1,10 @@
 import 'package:chopper/chopper.dart';
 
-part 'weather_info_data_source.chopper.dart';
+part 'weather_service.chopper.dart';
 
 @ChopperApi(baseUrl: 'https://api.open-meteo.com')
-abstract class WeatherInfoDataSource extends ChopperService {
-  static WeatherInfoDataSource create() =>
-      _$WeatherInfoDataSource(ChopperClient());
+abstract class WeatherService extends ChopperService {
+  static WeatherService create() => _$WeatherService(ChopperClient());
 
   @Get(
       path:
