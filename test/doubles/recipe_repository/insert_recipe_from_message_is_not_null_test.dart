@@ -41,7 +41,7 @@ void main() async {
         protein: "test",
         fat: "test",
         carbohydrate: "test",
-        salt: "test"
+        salt: "test",
       ),
     ),
   ];
