@@ -81,7 +81,6 @@ class MessageRepository {
             //成功時(1つでも選択肢がある場合)
             if (value.haveChoices) {
               //レスポンスボディをパース
-              print("${value.choices[0].message.content}");
               final recipe = Message.fromJson(
                   json.decode(value.choices[0].message.content));
 
@@ -151,10 +150,11 @@ class MessageRepository {
       handleData: (myMessages, sink) {
         List<RecipeMessage> recipeMessages = myMessages.map((e) {
           return RecipeMessage(
-              id: e.id,
-              role: e.role,
-              content: e.toString(), //TODO:ここでレシピを文字列に変換する
-              timeStamp: e.timeStamp);
+            id: e.id,
+            role: e.role,
+            content: e.content,
+            timeStamp: e.timeStamp,
+          );
         }).toList();
         sink.add(recipeMessages);
       },

@@ -68,7 +68,7 @@ class ChatScreen extends HookConsumerWidget {
                                     ),
                                     //メッセージの内容
                                     child: Text(
-                                      message.timeStamp.toString(),
+                                      message.content,
                                       style: TextStyle(
                                         color: //ここでメッセージの送信者を判定する
                                             message.role ==
