@@ -12,6 +12,7 @@ import 'package:cooking_completly_understood/data/sources/position_service.dart'
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MessageRepository {
@@ -35,7 +36,7 @@ class MessageRepository {
   }
 
   //メッセージを送信して返信を受け取る
-  Future<Message> sendMessageAndReceiveMessage(String message) async {
+  Future<void> sendMessage(String message) async {
     final position = await _positionService.getLocationInfo();
     return await _weatherService
         //緯度経度をもとに天気情報を取得する
@@ -63,10 +64,19 @@ class MessageRepository {
             currentWeather,
           );
 
+          //自分のメッセージをMyMessageデータクラスに変換して保存
+          final myMessage = MyMessage()
+            ..content = sendedMessage
+            ..role = OpenAIChatMessageRole.user.name
+            ..timeStamp = DateTime.now();
+
+          //自分のメッセージをローカルDBに保存
+          await _myMessageService.insertMyMessage(myMessage);
+
           //ChatGPTにメッセージを送信して返信を受け取る
-          return await _chatService
+          await _chatService
               .sendMessageAndReceiveMessage(sendedMessage)
-              .then((value) {
+              .then((value) async {
             //成功時(1つでも選択肢がある場合)
             if (value.haveChoices) {
               //レスポンスボディをパース
@@ -74,8 +84,31 @@ class MessageRepository {
               final recipe = Message.fromJson(
                   json.decode(value.choices[0].message.content));
               //TODO:ここでレシピをローカルDBに保存するようにする
-              //本当は何も返さないようにしたい
-              return recipe;
+              //レシピをローカルDBに保存
+              //保存するレシピデータクラスを作成
+              final insertedRecipe = Recipe()
+                ..name = recipe.recipeName
+                ..role = OpenAIChatMessageRole.assistant.name
+                ..description = recipe.recipeDescription
+                ..cookingTime = recipe.recipeCookingTime
+                ..ingredientName =
+                    recipe.recipeIngredients.map((e) => e.name).toList()
+                ..ingredientQuantity =
+                    recipe.recipeIngredients.map((e) => e.quantity).toList()
+                ..stepNumber = recipe.recipeSteps.map((e) => e.number).toList()
+                ..stepDescription =
+                    recipe.recipeSteps.map((e) => e.description).toList()
+                ..calorie = recipe.nutrition.calorie
+                ..protein = recipe.nutrition.protein
+                ..fat = recipe.nutrition.fat
+                ..carbohydrate = recipe.nutrition.carbohydrate
+                ..salt = recipe.nutrition.salt
+                ..timeStamp = DateTime.now()
+                ..isError = false
+                ..isMade = false;
+
+              //レシピを保存
+              await _recipeService.insertRecipe(insertedRecipe);
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
