@@ -40,7 +40,7 @@ void main() async {
       final sendedMessage =
           messageThatUserInputted("じゃがいもを使った簡単なレシピを教えて", "20", "3");
       debugPrint(sendedMessage);
-      await messageRepository.sendMessageAndReceiveMessage(sendedMessage).then(
+      await messageRepository.sendMessage(sendedMessage).then(
         (value) {
           debugPrint(value.toString());
           expect(value, isNotNull);
