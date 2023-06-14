@@ -1,5 +1,4 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
-import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -22,57 +21,76 @@ class ChatScreen extends HookConsumerWidget {
             Expanded(
               child: messages.when(
                 data: (value) {
-                  return ListView.separated(
-                    keyboardDismissBehavior:
-                        ScrollViewKeyboardDismissBehavior.onDrag,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemCount: value.length,
-                    itemBuilder: (context, index) {
-                      final message = messages.value![index];
-                      // systemロールのメッセージは表示しない
-                      if (message.role == OpenAIChatMessageRole.system) {
-                        return const SizedBox();
-                      }
-
-                      return Align(
-                        key: Key(message.hashCode.toString()),
-                        alignment: message.role == OpenAIChatMessageRole.user
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxWidth: screenWidth * 0.8,
-                          ),
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: message.role == OpenAIChatMessageRole.user
-                                  ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.secondary,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8,
-                                horizontal: 16,
-                              ),
-                              child: Text(
-                                message.content,
-                                style: TextStyle(
-                                  color: message.role ==
-                                          OpenAIChatMessageRole.user
-                                      ? Theme.of(context).colorScheme.onPrimary
-                                      : Theme.of(context)
-                                          .colorScheme
-                                          .onSecondary,
+                  return StreamBuilder(
+                    stream: value,
+                    builder: (context, snapshot) {
+                      //ローディング中
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                        //エラー
+                      } else if (snapshot.hasError) {
+                        return Text('エラーが発生しました。再度お試しください。');
+                      } else {
+                        return ListView.separated(
+                          keyboardDismissBehavior:
+                              ScrollViewKeyboardDismissBehavior.onDrag,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            final message = snapshot.data![index];
+                            return Align(
+                              key: Key(message.hashCode.toString()),
+                              alignment: //FIXME: ここでメッセージの送信者を判定する
+                                  // message.role == OpenAIChatMessageRole.user
+                                  //     ? Alignment.centerRight
+                                  //     :
+                                  Alignment.centerLeft,
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: screenWidth * 0.8,
+                                ),
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: //FIXME: ここでメッセージの送信者を判定する
+                                        // message.role ==
+                                        //         OpenAIChatMessageRole.user
+                                        //     ? Theme.of(context).colorScheme.primary
+                                        //     :
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8,
+                                      horizontal: 16,
+                                    ),
+                                    child: Text(
+                                      message.content,
+                                      style: TextStyle(
+                                        color: //FIXME: ここでメッセージの送信者を判定する
+                                            // message.role ==
+                                            //         OpenAIChatMessageRole.user
+                                            //     ? Theme.of(context)
+                                            //         .colorScheme
+                                            //         .onPrimary
+                                            // :
+                                            Theme.of(context)
+                                                .colorScheme
+                                                .onSecondary,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                      );
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 16),
+                        );
+                      }
                     },
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 16),
                   );
                 },
                 error: (Object error, StackTrace stackTrace) {
