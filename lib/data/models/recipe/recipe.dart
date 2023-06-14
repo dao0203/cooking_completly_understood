@@ -5,16 +5,20 @@ part 'recipe.g.dart';
 @collection
 class Recipe {
   Id id = Isar.autoIncrement;
-  String name = '';
-  String description = '';
-  String cookingTime = '';
-  List<String> ingredientName = [];
-  List<String> ingredientQuantity = [];
-  List<String> stepNumber = [];
-  List<String> stepDescription = [];
-  String calorie = '';
-  String protein = '';
-  String fat = '';
-  String carbohydrate = '';
-  String salt = '';
+  late String role;
+  late String name;
+  late String description;
+  late String cookingTime;
+  late List<String> ingredientName;
+  late List<String> ingredientQuantity;
+  late List<String> stepNumber;
+  late List<String> stepDescription;
+  late String calorie;
+  late String protein;
+  late String fat;
+  late String carbohydrate;
+  late String salt;
+  late DateTime timeStamp;
+  late bool isError;
+  bool isMade = false;
 }

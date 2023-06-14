@@ -52,30 +52,50 @@ const RecipeSchema = CollectionSchema(
       name: r'ingredientQuantity',
       type: IsarType.stringList,
     ),
-    r'name': PropertySchema(
+    r'isError': PropertySchema(
       id: 7,
+      name: r'isError',
+      type: IsarType.bool,
+    ),
+    r'isMade': PropertySchema(
+      id: 8,
+      name: r'isMade',
+      type: IsarType.bool,
+    ),
+    r'name': PropertySchema(
+      id: 9,
       name: r'name',
       type: IsarType.string,
     ),
     r'protein': PropertySchema(
-      id: 8,
+      id: 10,
       name: r'protein',
       type: IsarType.string,
     ),
+    r'role': PropertySchema(
+      id: 11,
+      name: r'role',
+      type: IsarType.string,
+    ),
     r'salt': PropertySchema(
-      id: 9,
+      id: 12,
       name: r'salt',
       type: IsarType.string,
     ),
     r'stepDescription': PropertySchema(
-      id: 10,
+      id: 13,
       name: r'stepDescription',
       type: IsarType.stringList,
     ),
     r'stepNumber': PropertySchema(
-      id: 11,
+      id: 14,
       name: r'stepNumber',
       type: IsarType.stringList,
+    ),
+    r'timeStamp': PropertySchema(
+      id: 15,
+      name: r'timeStamp',
+      type: IsarType.dateTime,
     )
   },
   estimateSize: _recipeEstimateSize,
@@ -119,6 +139,7 @@ int _recipeEstimateSize(
   }
   bytesCount += 3 + object.name.length * 3;
   bytesCount += 3 + object.protein.length * 3;
+  bytesCount += 3 + object.role.length * 3;
   bytesCount += 3 + object.salt.length * 3;
   bytesCount += 3 + object.stepDescription.length * 3;
   {
@@ -150,11 +171,15 @@ void _recipeSerialize(
   writer.writeString(offsets[4], object.fat);
   writer.writeStringList(offsets[5], object.ingredientName);
   writer.writeStringList(offsets[6], object.ingredientQuantity);
-  writer.writeString(offsets[7], object.name);
-  writer.writeString(offsets[8], object.protein);
-  writer.writeString(offsets[9], object.salt);
-  writer.writeStringList(offsets[10], object.stepDescription);
-  writer.writeStringList(offsets[11], object.stepNumber);
+  writer.writeBool(offsets[7], object.isError);
+  writer.writeBool(offsets[8], object.isMade);
+  writer.writeString(offsets[9], object.name);
+  writer.writeString(offsets[10], object.protein);
+  writer.writeString(offsets[11], object.role);
+  writer.writeString(offsets[12], object.salt);
+  writer.writeStringList(offsets[13], object.stepDescription);
+  writer.writeStringList(offsets[14], object.stepNumber);
+  writer.writeDateTime(offsets[15], object.timeStamp);
 }
 
 Recipe _recipeDeserialize(
@@ -172,11 +197,15 @@ Recipe _recipeDeserialize(
   object.id = id;
   object.ingredientName = reader.readStringList(offsets[5]) ?? [];
   object.ingredientQuantity = reader.readStringList(offsets[6]) ?? [];
-  object.name = reader.readString(offsets[7]);
-  object.protein = reader.readString(offsets[8]);
-  object.salt = reader.readString(offsets[9]);
-  object.stepDescription = reader.readStringList(offsets[10]) ?? [];
-  object.stepNumber = reader.readStringList(offsets[11]) ?? [];
+  object.isError = reader.readBool(offsets[7]);
+  object.isMade = reader.readBool(offsets[8]);
+  object.name = reader.readString(offsets[9]);
+  object.protein = reader.readString(offsets[10]);
+  object.role = reader.readString(offsets[11]);
+  object.salt = reader.readString(offsets[12]);
+  object.stepDescription = reader.readStringList(offsets[13]) ?? [];
+  object.stepNumber = reader.readStringList(offsets[14]) ?? [];
+  object.timeStamp = reader.readDateTime(offsets[15]);
   return object;
 }
 
@@ -202,15 +231,23 @@ P _recipeDeserializeProp<P>(
     case 6:
       return (reader.readStringList(offset) ?? []) as P;
     case 7:
-      return (reader.readString(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 8:
-      return (reader.readString(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 9:
       return (reader.readString(offset)) as P;
     case 10:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readString(offset)) as P;
     case 11:
+      return (reader.readString(offset)) as P;
+    case 12:
+      return (reader.readString(offset)) as P;
+    case 13:
       return (reader.readStringList(offset) ?? []) as P;
+    case 14:
+      return (reader.readStringList(offset) ?? []) as P;
+    case 15:
+      return (reader.readDateTime(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -1456,6 +1493,26 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isErrorEqualTo(
+      bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isError',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isMadeEqualTo(
+      bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isMade',
+        value: value,
+      ));
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1710,6 +1767,135 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'protein',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'role',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'role',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'role',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'role',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'role',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'role',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleContains(String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'role',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'role',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'role',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'role',
         value: '',
       ));
     });
@@ -2288,6 +2474,59 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
       );
     });
   }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampEqualTo(
+      DateTime value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'timeStamp',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampGreaterThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'timeStamp',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampLessThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'timeStamp',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampBetween(
+    DateTime lower,
+    DateTime upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'timeStamp',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
 }
 
 extension RecipeQueryObject on QueryBuilder<Recipe, Recipe, QFilterCondition> {}
@@ -2355,6 +2594,30 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsError() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isError', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsErrorDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isError', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsMade() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMade', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsMadeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMade', Sort.desc);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -2379,6 +2642,18 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByRole() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'role', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByRoleDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'role', Sort.desc);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QAfterSortBy> sortBySalt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.asc);
@@ -2388,6 +2663,18 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
   QueryBuilder<Recipe, Recipe, QAfterSortBy> sortBySaltDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByTimeStamp() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timeStamp', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByTimeStampDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timeStamp', Sort.desc);
     });
   }
 }
@@ -2465,6 +2752,30 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsError() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isError', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsErrorDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isError', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsMade() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMade', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsMadeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMade', Sort.desc);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -2489,6 +2800,18 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByRole() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'role', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByRoleDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'role', Sort.desc);
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QAfterSortBy> thenBySalt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.asc);
@@ -2498,6 +2821,18 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
   QueryBuilder<Recipe, Recipe, QAfterSortBy> thenBySaltDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByTimeStamp() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timeStamp', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByTimeStampDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timeStamp', Sort.desc);
     });
   }
 }
@@ -2550,6 +2885,18 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
     });
   }
 
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsError() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isError');
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsMade() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isMade');
+    });
+  }
+
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2561,6 +2908,13 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'protein', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctByRole(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'role', caseSensitive: caseSensitive);
     });
   }
 
@@ -2580,6 +2934,12 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByStepNumber() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stepNumber');
+    });
+  }
+
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctByTimeStamp() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'timeStamp');
     });
   }
 }
@@ -2635,6 +2995,18 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
     });
   }
 
+  QueryBuilder<Recipe, bool, QQueryOperations> isErrorProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isError');
+    });
+  }
+
+  QueryBuilder<Recipe, bool, QQueryOperations> isMadeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isMade');
+    });
+  }
+
   QueryBuilder<Recipe, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
@@ -2644,6 +3016,12 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
   QueryBuilder<Recipe, String, QQueryOperations> proteinProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'protein');
+    });
+  }
+
+  QueryBuilder<Recipe, String, QQueryOperations> roleProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'role');
     });
   }
 
@@ -2663,6 +3041,12 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
   QueryBuilder<Recipe, List<String>, QQueryOperations> stepNumberProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'stepNumber');
+    });
+  }
+
+  QueryBuilder<Recipe, DateTime, QQueryOperations> timeStampProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'timeStamp');
     });
   }
 }
