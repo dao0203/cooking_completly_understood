@@ -69,25 +69,22 @@ class MessageRepository {
               weatherForecast.currentWeather.weatherCode.toString();
 
           //送信するメッセージを作成
-          final sendedMessage = messageThatUserInputted(
+          final sendedMessage = messageThatUserInputtedInEnglish(
             inputedMessage,
             currentTemperature,
             currentWeather,
           );
 
+          final encodedModel =
+              json.encode(getRequestBodyForMakerSuite(sendedMessage));
+
           //ChatGPTにメッセージを送信して返信を受け取る
-          await _makerMeteoService
-              .getMessage(
-            'application/json',
-            // 'Bearer $makerSuiteApiKey',
-            getRequestBodyForMakerSuite(inputedMessage),
-          )
-              .then((value) async {
-                print(value.bodyString);
+          await _makerMeteoService.getMessage(encodedModel).then((value) async {
             //成功時(1つでも選択肢がある場合)
             if (value.isSuccessful) {
               //レスポンスボディをパース
-              final recipe = Message.fromJson(json.decode(value.bodyString));
+              print('candidates:${json.decode(value.body)['candidates'][0]['output']}');
+              final recipe = Message.fromJson(json.decode(value.body)['candidates'][0]['output']);
 
               //保存するレシピデータクラスを作成
               final insertedRecipe = Recipe()
@@ -116,7 +113,7 @@ class MessageRepository {
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
-              throw Exception('failed to get message');
+              // throw Exception('failed to get message');
             }
           });
         } else {

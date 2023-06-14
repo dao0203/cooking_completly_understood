@@ -17,14 +17,11 @@ class _$MakerSuiteService extends MakerSuiteService {
   final definitionType = MakerSuiteService;
 
   @override
-  Future<Response<dynamic>> getMessage(
-    String contentType,
-    Map<String, dynamic> body,
-  ) {
+  Future<Response<dynamic>> getMessage(String body) {
     final Uri $url = Uri.parse(
         'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyA-JxATohTDu9DArbAwiCh1Cagyv_BzqJ8');
     final Map<String, String> $headers = {
-      'Content-Type': contentType,
+      'Content-Type': 'application/json',
     };
     final $body = body;
     final Request $request = Request(
