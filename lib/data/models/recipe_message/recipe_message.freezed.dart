@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecipeMessage {
   int get id => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError; //timeStamp
+  String get content => throw _privateConstructorUsedError;
   DateTime get timeStamp => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -126,23 +126,18 @@ class __$$_RecipeMessageCopyWithImpl<$Res>
 
 class _$_RecipeMessage implements _RecipeMessage {
   const _$_RecipeMessage(
-      {required this.id = -1,
-      required this.role = '',
-      required this.content = '',
-      required this.timeStamp = ''});
+      {required this.id,
+      required this.role,
+      required this.content,
+      required this.timeStamp});
 
   @override
-  @JsonKey()
   final int id;
   @override
-  @JsonKey()
   final String role;
   @override
-  @JsonKey()
   final String content;
-//timeStamp
   @override
-  @JsonKey()
   final DateTime timeStamp;
 
   @override
@@ -185,7 +180,7 @@ abstract class _RecipeMessage implements RecipeMessage {
   String get role;
   @override
   String get content;
-  @override //timeStamp
+  @override
   DateTime get timeStamp;
   @override
   @JsonKey(ignore: true)
