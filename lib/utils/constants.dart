@@ -10,7 +10,7 @@ String messageThatUserInputted(
 1.userの入力したメッセージを考慮して結果を回答してください
 メッセージ: $message
 2.今の天気状況にあったレシピを回答してください
-温度: $message 天気(WMO): $weather
+温度: $temperature 天気(WMO): $weather
 3.回答は下記のJson形式で「必ず」回答してください
 {
   "$jsonRecipeName": "レシピ名",
