@@ -9,7 +9,7 @@ class ChatService {
   Future<void> sendInitialMessage() async {
     // メッセージをuserロールでモデル化
     const receivedMessage = OpenAIChatCompletionChoiceMessageModel(
-      content: '日本語でレシピについて相談されます。あなたは家庭料理に詳しい料理研究家です。絶対に指定されたJSON形式で返してください',
+      content: '日本語でレシピについて相談されます。あなたは家庭料理に詳しい料理研究家です。',
       role: OpenAIChatMessageRole.system,
     );
 
