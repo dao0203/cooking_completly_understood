@@ -38,6 +38,41 @@ String messageThatUserInputted(
 }
 ''';
 
+String messageThatUserInputtedInEnglish(
+        String message, String temperature, String weather) =>
+    '''
+Please give me a recipe that meets the following criteria
+1.Please answer the result considering the message entered by the user
+Message: $message
+2. Please answer the result considering the weather information
+temperature: $temperature weather(WMO): $weather
+3. Please answer in Json format as follows.
+{
+  "$jsonRecipeName": "recipe name",
+  "$jsonRecipeDescription": "recipe description",
+  "$jsonRecipeCookingTime": "cooking time(minute)",
+  "$jsonRecipeIngredients": [
+    {
+      "$jsonIngredientName": "ingredient name",
+      "$jsoningredientQuantity": "ingredient quantity(g)"
+    }
+  ],
+  "$jsonRecipeSteps": [
+    {
+      "$jsonStepNumber": "step number",
+      "$jsonStepDescription": "step description"
+    }
+  ],
+  "$jsonRecipeNutrition": {
+    "$jsonCalorie": "calorie(kcal)",
+    "$jsonProtein": "protein(g)",
+    "$jsonFat": "fat(g)",
+    "$jsonCarbohydrate": "carbohydrate(g)",
+    "$jsonSalt": "salt(g)"
+  }
+}
+''';
+
 //--------------レシピのJson形式-----------------
 const jsonRecipeName = "recipe_name";
 const jsonRecipeDescription = "recipe_description";
@@ -60,10 +95,11 @@ const jsonSalt = "salt";
 
 Map<String, dynamic> getRequestBodyForMakerSuite(String promptString) {
   return {
-    // 'model': 'models/text-bison-001',
+    // 'model': 'models/test-beta-001',
     'prompt': {
       'text': promptString,
-    }
+    },
+
     // 'temperature': 0.7,
     // 'candidateCount': 1,
     // 'top_k': 40,
