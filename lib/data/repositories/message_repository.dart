@@ -36,9 +36,19 @@ class MessageRepository {
   }
 
   //メッセージを送信して返信を受け取る
-  Future<void> sendMessage(String message) async {
+  Future<void> sendMessage(String inputedMessage) async {
+    final myMessage = MyMessage()
+      ..content = inputedMessage
+      ..role = OpenAIChatMessageRole.user.name
+      ..timeStamp = DateTime.now();
+
+    //自分のメッセージをローカルDBに保存
+    await _myMessageService.insertMyMessage(myMessage);
+    //現在地を取得
     final position = await _positionService.getLocationInfo();
-    return await _weatherService
+
+    //天気情報を取得
+    await _weatherService
         //緯度経度をもとに天気情報を取得する
         .getWeatherInfo(position.altitude, position.longitude)
         .then(
@@ -59,19 +69,10 @@ class MessageRepository {
 
           //送信するメッセージを作成
           final sendedMessage = messageThatUserInputted(
-            message,
+            inputedMessage,
             currentTemperature,
             currentWeather,
           );
-
-          //自分のメッセージをMyMessageデータクラスに変換して保存
-          final myMessage = MyMessage()
-            ..content = sendedMessage
-            ..role = OpenAIChatMessageRole.user.name
-            ..timeStamp = DateTime.now();
-
-          //自分のメッセージをローカルDBに保存
-          await _myMessageService.insertMyMessage(myMessage);
 
           //ChatGPTにメッセージを送信して返信を受け取る
           await _chatService
@@ -169,8 +170,8 @@ class MessageRepository {
       convertedRecipeToRecipeMessage,
       (t, s) {
         final recipeMessages = t + s;
-        //最新ごとにソート
-        recipeMessages.sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
+        //時間順にソート
+        recipeMessages.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
 
         //ソートしたレシピメッセージを返す
         return recipeMessages;
