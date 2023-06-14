@@ -1,4 +1,5 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -42,11 +43,10 @@ class ChatScreen extends HookConsumerWidget {
                             final message = snapshot.data![index];
                             return Align(
                               key: Key(message.hashCode.toString()),
-                              alignment: //FIXME: ここでメッセージの送信者を判定する
-                                  // message.role == OpenAIChatMessageRole.user
-                                  //     ? Alignment.centerRight
-                                  //     :
-                                  Alignment.centerLeft,
+                              alignment: message.role ==
+                                      OpenAIChatMessageRole.user.name
+                                  ? Alignment.centerRight
+                                  : Alignment.centerLeft,
                               child: ConstrainedBox(
                                 constraints: BoxConstraints(
                                   maxWidth: screenWidth * 0.8,
@@ -54,31 +54,32 @@ class ChatScreen extends HookConsumerWidget {
                                 child: DecoratedBox(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
-                                    color: //FIXME: ここでメッセージの送信者を判定する
-                                        // message.role ==
-                                        //         OpenAIChatMessageRole.user
-                                        //     ? Theme.of(context).colorScheme.primary
-                                        //     :
-                                        Theme.of(context).colorScheme.secondary,
+                                    color: message.role ==
+                                            OpenAIChatMessageRole.user.name
+                                        ? Theme.of(context).colorScheme.primary
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 8,
                                       horizontal: 16,
                                     ),
+                                    //メッセージの内容
                                     child: Text(
-                                      message.content,
+                                      message.timeStamp.toString(),
                                       style: TextStyle(
-                                        color: //FIXME: ここでメッセージの送信者を判定する
-                                            // message.role ==
-                                            //         OpenAIChatMessageRole.user
-                                            //     ? Theme.of(context)
-                                            //         .colorScheme
-                                            //         .onPrimary
-                                            // :
-                                            Theme.of(context)
-                                                .colorScheme
-                                                .onSecondary,
+                                        color: //ここでメッセージの送信者を判定する
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? Theme.of(context)
+                                                    .colorScheme
+                                                    .onPrimary
+                                                : Theme.of(context)
+                                                    .colorScheme
+                                                    .onSecondary,
                                       ),
                                     ),
                                   ),
@@ -155,8 +156,7 @@ class ChatScreen extends HookConsumerWidget {
                                 );
                             isWaiting.value = true;
                             messageController.clear();
-                            await sendMessage;
-                            isWaiting.value = false;
+                            await sendMessage.then((value) => isWaiting.value = false);
                           }
                         },
                         icon: !isWaiting.value
