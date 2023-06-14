@@ -13,7 +13,7 @@ class MyMessageService {
   Future<void> insertMyMessage(MyMessage myMessage) async {
     await _isar.writeTxn(
       () async {
-        await _isar.myMessages.put(myMessage).then((value) => debugPrint("success"));
+        await _isar.myMessages.put(myMessage).then((value) => debugPrint("自分のメッセージを保存しました"));
       },
     );
   }
