@@ -13,7 +13,7 @@ class RecipeService {
   Future<void> insertRecipe(Recipe recipe) async {
     await _isar.writeTxn(
       () async {
-        await _isar.recipes.put(recipe).then((value) => debugPrint("success"));
+        await _isar.recipes.put(recipe).then((value) => debugPrint("レシピを保存しました"));
       },
     );
   }

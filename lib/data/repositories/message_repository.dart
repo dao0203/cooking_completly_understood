@@ -83,8 +83,7 @@ class MessageRepository {
               print("${value.choices[0].message.content}");
               final recipe = Message.fromJson(
                   json.decode(value.choices[0].message.content));
-              //TODO:ここでレシピをローカルDBに保存するようにする
-              //レシピをローカルDBに保存
+
               //保存するレシピデータクラスを作成
               final insertedRecipe = Recipe()
                 ..name = recipe.recipeName
