@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
+import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
 import 'package:cooking_completly_understood/di/recipe_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,31 +12,26 @@ part 'message_state.g.dart';
 @riverpod
 class MessagesState extends _$MessagesState {
   @override
-  Future<Stream<List<ImmuRecipe>>> build() async{
+  Future<Stream<List<RecipeMessage>>> build() async {
     //MessageStateが初期化された際に初期メッセージを送信する
-    ref.read(messageRepositoryProvider).sendInitialMessage();
-
-    //ここでレシピメッセージを取得する
-    return  await ref.read(recipeRepositoryProvider).then((value){
-      return value.getAllRecipes();
+    return await ref.read(messageRepositoryProvider).then((value) {
+      value.sendInitialMessage();
+      return value.getAllRecipeMessages();
     });
   }
 
   //TODO: メッセージを送るだけにしたい
   Future<void> sendMessageAndReceiveMessage(String inputedMessage) async {
     //TODO:ChatGPTを呼び出してメッセージを返しているが、MessageRepositoryのみで完結させるようにする
-    await ref
-        .read(messageRepositoryProvider)
-        .sendMessageAndReceiveMessage(inputedMessage)
-        .then(
-
-      (message) async {
-
-        //TODO: ここで自分のメッセージと一緒に、相手のメッセージも保存するようにする
-        await ref.read(recipeRepositoryProvider).then(
-              (value) => value.insertRecipeFromMessage(message),
-            );
-      },
-    );
+    await ref.read(messageRepositoryProvider).then(
+          (value) => value.sendMessageAndReceiveMessage(inputedMessage).then(
+            (message) async {
+              //TODO: ここで自分のメッセージと一緒に、相手のメッセージも保存するようにする
+              await ref.read(recipeRepositoryProvider).then(
+                    (value) => value.insertRecipeFromMessage(message),
+                  );
+            },
+          ),
+        );
   }
 }
