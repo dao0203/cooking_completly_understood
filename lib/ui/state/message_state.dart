@@ -24,14 +24,7 @@ class MessagesState extends _$MessagesState {
   Future<void> sendMessageAndReceiveMessage(String inputedMessage) async {
     //TODO:ChatGPTを呼び出してメッセージを返しているが、MessageRepositoryのみで完結させるようにする
     await ref.read(messageRepositoryProvider).then(
-          (value) => value.sendMessageAndReceiveMessage(inputedMessage).then(
-            (message) async {
-              //TODO: ここで自分のメッセージと一緒に、相手のメッセージも保存するようにする
-              await ref.read(recipeRepositoryProvider).then(
-                    (value) => value.insertRecipeFromMessage(message),
-                  );
-            },
-          ),
+          (value) => value.sendMessage(inputedMessage),
         );
   }
 }
