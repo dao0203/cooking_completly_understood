@@ -3,24 +3,30 @@ import 'dart:convert';
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/chat_service.dart';
+import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
+import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 
 class MessageRepository {
   final PositionService _positionDataSource;
   final WeatherService _weatherInfoDataSource;
-  final ChatService _messageService;
+  final ChatService _chatService;
+  final RecipeService _recipeService;
+  final MyMessageService _myMessageService;
   MessageRepository(
     this._positionDataSource,
     this._weatherInfoDataSource,
-    this._messageService,
+    this._chatService,
+    this._recipeService,
+    this._myMessageService,
   );
 
   //初期メッセージを送信する
   Future<void> sendInitialMessage() async {
     //初期メッセージを送信
-    await _messageService.sendInitialMessage();
+    await _chatService.sendInitialMessage();
   }
 
   //メッセージを送信して返信を受け取る
@@ -53,7 +59,7 @@ class MessageRepository {
           );
 
           //ChatGPTにメッセージを送信して返信を受け取る
-          return await _messageService
+          return await _chatService
               .sendMessageAndReceiveMessage(sendedMessage)
               .then((value) {
             //成功時(1つでも選択肢がある場合)
