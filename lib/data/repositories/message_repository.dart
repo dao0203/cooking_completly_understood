@@ -160,22 +160,27 @@ class MessageRepository {
       },
     );
 
-    final convertedRecipeToRecipeMessage =
-        recipes.transform(recipeToRecipeMessage);
     final convertedMyMessageToRecipeMessage =
         myMessages.transform(myMessageToRecipeMessage);
+    final convertedRecipeToRecipeMessage =
+        recipes.transform(recipeToRecipeMessage);
+    //レシピと自分のメッセージを結合して返す
+    // return convertedMyMessageToRecipeMessage;
+    //FIXME:ここで結合して返したいと考えているが、なぜかレシピの方から変更の通知が来ないと、マイメッセージが変更されないというもんだが起きている
+    //TODO:原因を調査する
 
-    //レシピと自分のメッセージを結合する
-    return convertedMyMessageToRecipeMessage.zipWith(
+    //レシピと自分のメッセージを結合
+    return Rx.combineLatest2<List<RecipeMessage>, List<RecipeMessage>,
+        List<RecipeMessage>>(
       convertedRecipeToRecipeMessage,
-      (t, s) {
-        final recipeMessages = t + s;
-        //時間順にソート
+      convertedMyMessageToRecipeMessage,
+      (recipes, myMessages) {
+        //レシピと自分のメッセージを結合
+        final recipeMessages = recipes + myMessages;
+        //結合したメッセージを時間順にソート
         recipeMessages.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
-
-        //ソートしたレシピメッセージを返す
         return recipeMessages;
       },
-    );
+    ).asBroadcastStream();
   }
 }
