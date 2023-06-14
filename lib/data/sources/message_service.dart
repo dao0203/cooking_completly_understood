@@ -14,7 +14,7 @@ class MessageService {
 
     // ChatGPTに聞く
     final chatCompletion = await openAI.chat.create(
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-3.5-turbo-0613',
       messages: [receivedMessage],
     );
 
@@ -31,7 +31,7 @@ class MessageService {
 
     // ChatGPTに聞く
     return await openAI.chat.create(
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-3.5-turbo-0613',
       messages: [newUserMessage],
     ).then((value) => value);
   }
