@@ -27,7 +27,7 @@ String messageThatUserInputted(
       "$jsonStepNumber": "手順番号",
       "$jsonStepDescription": "手順の説明"
     }
-  ]
+  ],
   "$jsonRecipeNutrition": {
     "$jsonCalorie": "カロリー(kcal)",
     "$jsonProtein": "タンパク質(g)",
