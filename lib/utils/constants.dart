@@ -10,7 +10,7 @@ String messageThatUserInputted(
 1.userの入力したメッセージを考慮して結果を回答してください
 メッセージ: $message
 2.今の天気状況にあったレシピを回答してください
-温度: $message 天気(WMO): $weather
+温度: $temperature 天気(WMO): $weather
 3.回答は下記のJson形式で「必ず」回答してください
 {
   "$jsonRecipeName": "レシピ名",
@@ -57,3 +57,26 @@ const jsonProtein = "protein";
 const jsonFat = "fat";
 const jsonCarbohydrate = "carbohydrate";
 const jsonSalt = "salt";
+
+Map<String, dynamic> getRequestBodyForMakerSuite(String promptString) {
+  return {
+    // 'model': 'models/text-bison-001',
+    'prompt': {
+      'text': promptString,
+    }
+    // 'temperature': 0.7,
+    // 'candidateCount': 1,
+    // 'top_k': 40,
+    // 'top_p': 0.95,
+    // 'max_output_tokens': 1024,
+    // 'stop_sequences': [],
+    // 'safety_settings': [
+    //   {'category': 'HARM_CATEGORY_DEROGATORY', 'threshold': 1},
+    //   {'category': 'HARM_CATEGORY_TOXICITY', 'threshold': 1},
+    //   {'category': 'HARM_CATEGORY_VIOLENCE', 'threshold': 2},
+    //   {'category': 'HARM_CATEGORY_SEXUAL', 'threshold': 2},
+    //   {'category': 'HARM_CATEGORY_MEDICAL', 'threshold': 2},
+    //   {'category': 'HARM_CATEGORY_DANGEROUS', 'threshold': 2},
+    // ],
+  };
+}

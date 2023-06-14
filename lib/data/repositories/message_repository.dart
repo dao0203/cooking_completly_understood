@@ -6,7 +6,7 @@ import 'package:cooking_completly_understood/data/models/my_message/my_message.d
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/chat_service.dart';
+import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
 import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
@@ -18,13 +18,14 @@ import 'package:rxdart/rxdart.dart';
 class MessageRepository {
   final PositionService _positionService;
   final WeatherService _weatherService;
-  final ChatService _chatService;
+  // final ChatService _chatService;
+  final MakerSuiteService _makerMeteoService;
   final RecipeService _recipeService;
   final MyMessageService _myMessageService;
   MessageRepository(
     this._positionService,
     this._weatherService,
-    this._chatService,
+    this._makerMeteoService,
     this._recipeService,
     this._myMessageService,
   );
@@ -32,7 +33,7 @@ class MessageRepository {
   //初期メッセージを送信する
   Future<void> sendInitialMessage() async {
     //初期メッセージを送信
-    await _chatService.sendInitialMessage();
+    // await _chatService.sendInitialMessage();
   }
 
   //メッセージを送信して返信を受け取る
@@ -75,14 +76,18 @@ class MessageRepository {
           );
 
           //ChatGPTにメッセージを送信して返信を受け取る
-          await _chatService
-              .sendMessageAndReceiveMessage(sendedMessage)
+          await _makerMeteoService
+              .getMessage(
+            'application/json',
+            // 'Bearer $makerSuiteApiKey',
+            getRequestBodyForMakerSuite(inputedMessage),
+          )
               .then((value) async {
+                print(value.bodyString);
             //成功時(1つでも選択肢がある場合)
-            if (value.haveChoices) {
+            if (value.isSuccessful) {
               //レスポンスボディをパース
-              final recipe = Message.fromJson(
-                  json.decode(value.choices[0].message.content));
+              final recipe = Message.fromJson(json.decode(value.bodyString));
 
               //保存するレシピデータクラスを作成
               final insertedRecipe = Recipe()
