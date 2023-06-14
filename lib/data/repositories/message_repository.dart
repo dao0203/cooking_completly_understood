@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/message/message.dart';
+import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
+import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/chat_service.dart';
 import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
@@ -8,16 +12,17 @@ import 'package:cooking_completly_understood/data/sources/position_service.dart'
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:rxdart/rxdart.dart';
 
 class MessageRepository {
-  final PositionService _positionDataSource;
-  final WeatherService _weatherInfoDataSource;
+  final PositionService _positionService;
+  final WeatherService _weatherService;
   final ChatService _chatService;
   final RecipeService _recipeService;
   final MyMessageService _myMessageService;
   MessageRepository(
-    this._positionDataSource,
-    this._weatherInfoDataSource,
+    this._positionService,
+    this._weatherService,
     this._chatService,
     this._recipeService,
     this._myMessageService,
@@ -31,8 +36,8 @@ class MessageRepository {
 
   //メッセージを送信して返信を受け取る
   Future<Message> sendMessageAndReceiveMessage(String message) async {
-    final position = await _positionDataSource.getLocationInfo();
-    return await _weatherInfoDataSource
+    final position = await _positionService.getLocationInfo();
+    return await _weatherService
         //緯度経度をもとに天気情報を取得する
         .getWeatherInfo(position.altitude, position.longitude)
         .then(
@@ -81,6 +86,62 @@ class MessageRepository {
           //レスポンス失敗時
           throw Exception('failed to get weather info');
         }
+      },
+    );
+  }
+
+  //自分のメッセージと相手のメッセージを一つのデータクラスに統一してメッセージに表示するメソッド
+  Stream<List<RecipeMessage>> getAllRecipeMessages() {
+    //レシピを全て取得
+    final recipes = _recipeService.getAllRecipes();
+    //自分のメッセージを全て取得
+    final myMessages = _myMessageService.getAllMyMessages();
+
+    //RecipeをRecipeMessageに変換するトランスフォーマー
+    StreamTransformer<List<Recipe>, List<RecipeMessage>> recipeToRecipeMessage =
+        StreamTransformer.fromHandlers(
+      handleData: (recipes, sink) {
+        List<RecipeMessage> recipeMessages = recipes.map((e) {
+          return RecipeMessage(
+              id: e.id,
+              role: e.role,
+              content: e.toString(), //TODO:ここでレシピを文字列に変換する
+              timeStamp: e.timeStamp);
+        }).toList();
+        sink.add(recipeMessages);
+      },
+    );
+
+    //MyMessageをRecipeMessageに変換するトランスフォーマー
+    StreamTransformer<List<MyMessage>, List<RecipeMessage>>
+        myMessageToRecipeMessage = StreamTransformer.fromHandlers(
+      handleData: (myMessages, sink) {
+        List<RecipeMessage> recipeMessages = myMessages.map((e) {
+          return RecipeMessage(
+              id: e.id,
+              role: e.role,
+              content: e.toString(), //TODO:ここでレシピを文字列に変換する
+              timeStamp: e.timeStamp);
+        }).toList();
+        sink.add(recipeMessages);
+      },
+    );
+
+    final convertedRecipeToRecipeMessage =
+        recipes.transform(recipeToRecipeMessage);
+    final convertedMyMessageToRecipeMessage =
+        myMessages.transform(myMessageToRecipeMessage);
+
+    //レシピと自分のメッセージを結合する
+    return convertedMyMessageToRecipeMessage.zipWith(
+      convertedRecipeToRecipeMessage,
+      (t, s) {
+        final recipeMessages = t + s;
+        //最新ごとにソート
+        recipeMessages.sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
+
+        //ソートしたレシピメッセージを返す
+        return recipeMessages;
       },
     );
   }
