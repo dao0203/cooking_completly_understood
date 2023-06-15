@@ -29,6 +29,10 @@ mixin _$ImmuRecipe {
   String get fat => throw _privateConstructorUsedError;
   String get carbohydrate => throw _privateConstructorUsedError;
   String get salt => throw _privateConstructorUsedError;
+  DateTime get timeStamp => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
+  bool get isMade => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ImmuRecipeCopyWith<ImmuRecipe> get copyWith =>
@@ -54,7 +58,11 @@ abstract class $ImmuRecipeCopyWith<$Res> {
       String protein,
       String fat,
       String carbohydrate,
-      String salt});
+      String salt,
+      DateTime timeStamp,
+      bool isError,
+      bool isMade,
+      bool isFavorite});
 }
 
 /// @nodoc
@@ -83,6 +91,10 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
     Object? fat = null,
     Object? carbohydrate = null,
     Object? salt = null,
+    Object? timeStamp = null,
+    Object? isError = null,
+    Object? isMade = null,
+    Object? isFavorite = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -137,6 +149,22 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String,
+      timeStamp: null == timeStamp
+          ? _value.timeStamp
+          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMade: null == isMade
+          ? _value.isMade
+          : isMade // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -162,7 +190,11 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
       String protein,
       String fat,
       String carbohydrate,
-      String salt});
+      String salt,
+      DateTime timeStamp,
+      bool isError,
+      bool isMade,
+      bool isFavorite});
 }
 
 /// @nodoc
@@ -189,6 +221,10 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
     Object? fat = null,
     Object? carbohydrate = null,
     Object? salt = null,
+    Object? timeStamp = null,
+    Object? isError = null,
+    Object? isMade = null,
+    Object? isFavorite = null,
   }) {
     return _then(_$_ImmuRecipe(
       id: null == id
@@ -243,6 +279,22 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String,
+      timeStamp: null == timeStamp
+          ? _value.timeStamp
+          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMade: null == isMade
+          ? _value.isMade
+          : isMade // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -263,7 +315,11 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       this.protein = '',
       this.fat = '',
       this.carbohydrate = '',
-      this.salt = ''})
+      this.salt = '',
+      this.timeStamp = '',
+      this.isError = false,
+      this.isMade = false,
+      this.isFavorite = false})
       : _ingredientName = ingredientName,
         _ingredientQuantity = ingredientQuantity,
         _stepNumber = stepNumber,
@@ -333,10 +389,22 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   @override
   @JsonKey()
   final String salt;
+  @override
+  @JsonKey()
+  final DateTime timeStamp;
+  @override
+  @JsonKey()
+  final bool isError;
+  @override
+  @JsonKey()
+  final bool isMade;
+  @override
+  @JsonKey()
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt)';
+    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isError: $isError, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
@@ -363,7 +431,13 @@ class _$_ImmuRecipe implements _ImmuRecipe {
             (identical(other.fat, fat) || other.fat == fat) &&
             (identical(other.carbohydrate, carbohydrate) ||
                 other.carbohydrate == carbohydrate) &&
-            (identical(other.salt, salt) || other.salt == salt));
+            (identical(other.salt, salt) || other.salt == salt) &&
+            (identical(other.timeStamp, timeStamp) ||
+                other.timeStamp == timeStamp) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isMade, isMade) || other.isMade == isMade) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
   }
 
   @override
@@ -381,7 +455,11 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       protein,
       fat,
       carbohydrate,
-      salt);
+      salt,
+      timeStamp,
+      isError,
+      isMade,
+      isFavorite);
 
   @JsonKey(ignore: true)
   @override
@@ -404,7 +482,11 @@ abstract class _ImmuRecipe implements ImmuRecipe {
       final String protein,
       final String fat,
       final String carbohydrate,
-      final String salt}) = _$_ImmuRecipe;
+      final String salt,
+      final DateTime timeStamp,
+      final bool isError,
+      final bool isMade,
+      final bool isFavorite}) = _$_ImmuRecipe;
 
   @override
   int get id;
@@ -432,6 +514,14 @@ abstract class _ImmuRecipe implements ImmuRecipe {
   String get carbohydrate;
   @override
   String get salt;
+  @override
+  DateTime get timeStamp;
+  @override
+  bool get isError;
+  @override
+  bool get isMade;
+  @override
+  bool get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$$_ImmuRecipeCopyWith<_$_ImmuRecipe> get copyWith =>
