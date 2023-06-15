@@ -46,7 +46,10 @@ Please give me a recipe that meets the following criteria
 Message: $message
 2. Please answer the result considering the weather information
 temperature: $temperature weather(WMO): $weather
-3. Please answer in Json format as follows.(all type string)
+3. Please answer in Json format as follows.
+- all types are string
+- please make sure to place the comma correctly
+- please do not display units such as kcal and g
 {
   "$jsonRecipeName": "recipe name",
   "$jsonRecipeDescription": "recipe description",
