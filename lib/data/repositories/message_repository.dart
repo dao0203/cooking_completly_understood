@@ -171,7 +171,7 @@ class MessageRepository {
           return RecipeMessage(
               id: e.id,
               role: e.role,
-              content: e.toString(), //TODO:ここでレシピを文字列に変換する
+              content: '${e.name}をおすすめします', //TODO:ここでレシピを文字列に変換する
               timeStamp: e.timeStamp);
         }).toList();
         sink.add(recipeMessages);
