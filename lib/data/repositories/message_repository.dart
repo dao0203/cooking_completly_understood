@@ -88,16 +88,16 @@ class MessageRepository {
               //レスポンスボディをパース
               final parseByJsonToString = json
                   .decode(chatResponse.body)['candidates'][0]["output"]
-                  .toString()
-                  .substring(7); //[///Json]の部分を削除
+                  .toString();
 
-              debugPrint(
-                  'candidates1:${parseByJsonToString.substring(0, parseByJsonToString.length - 3)}');
+              final cuttedPreviousMessage = parseByJsonToString.substring(
+                  parseByJsonToString.indexOf('{'), //最初の{の位置までを切り取る
+                  parseByJsonToString.length - 3); //最後の[''']を切り取る
+
+              debugPrint('cuttedPreviousMessage: $cuttedPreviousMessage');
               //パースしたものをまたパース
               final recipe = Message.fromJson(
-                json.decode(
-                  parseByJsonToString.substring(0, parseByJsonToString.length - 3), ///[''']の部分を削除
-                ),
+                json.decode(cuttedPreviousMessage),
               );
 
               //保存するレシピデータクラスを作成
