@@ -20,8 +20,10 @@ class RecipeRepository {
       handleData: (recipes, sink) {
         List<ImmuRecipe> immuRecipes = recipes.map((e) {
           return ImmuRecipe(
+            id: e.id,
             name: e.name,
             description: e.description,
+            cookingTime: e.cookingTime,
             ingredientName: e.ingredientName,
             ingredientQuantity: e.ingredientQuantity,
             stepNumber: e.stepNumber,
