@@ -52,12 +52,27 @@ class _RadarCartState extends State<RadarChartView> {
             switch (index) {
               case 0:
                 return RadarChartTitle(
-                  text: 'Mobile or Tablet',
+                  text: 'カロリー',
+                  angle: usedAngle,
+                );
+              case 5:
+                return RadarChartTitle(
+                  text: 'タンパク質',
+                  angle: usedAngle,
+                );
+              case 4:
+                return RadarChartTitle(
+                  text: '脂質',
+                  angle: usedAngle,
+                );
+              case 3:
+                return RadarChartTitle(
+                  text: '炭水化物',
                   angle: usedAngle,
                 );
               case 2:
                 return RadarChartTitle(
-                  text: 'Desktop',
+                  text: '塩分',
                   angle: usedAngle,
                 );
               case 1:
@@ -105,50 +120,17 @@ class _RadarCartState extends State<RadarChartView> {
   List<RawDataSet> rawDataSets() {
     return [
       RawDataSet(
-        title: 'Fashion',
+        title: 'Nutrition',
         color: widget.fashionColor,
         values: [
-          300,
-          50,
-          250,
-        ],
-      ),
-      RawDataSet(
-        title: 'Art & Tech',
-        color: widget.artColor,
-        values: [
-          250,
-          100,
-          200,
-        ],
-      ),
-      RawDataSet(
-        title: 'Entertainment',
-        color: widget.entertainmentColor,
-        values: [
-          200,
-          150,
+          10,
+          20,
+          30,
+          40,
           50,
         ],
       ),
-      RawDataSet(
-        title: 'Off-road Vehicle',
-        color: widget.offRoadColor,
-        values: [
-          150,
-          200,
-          150,
-        ],
-      ),
-      RawDataSet(
-        title: 'Boxing',
-        color: widget.boxingColor,
-        values: [
-          100,
-          250,
-          100,
-        ],
-      ),
+      
     ];
   }
 }
