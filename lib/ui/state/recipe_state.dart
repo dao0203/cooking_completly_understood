@@ -12,4 +12,18 @@ class RecipeState extends _$RecipeState {
           (value) => value.getAllRecipes(),
         );
   }
+
+  //レシピのお気に入り状態を変更するメソッド
+  Future<void> changeFavoriteStaus(ImmuRecipe recipe) {
+    return ref.read(recipeRepositoryProvider).then(
+          (value) => value.changeFavoriteStatus(recipe),
+        );
+  }
+
+  //レシピの料理済み状態を変更するメソッド
+  Future<void> changeMadeStatus(ImmuRecipe recipe) {
+    return ref.read(recipeRepositoryProvider).then(
+          (value) => value.changeMadeStatus(recipe),
+        );
+  }
 }
