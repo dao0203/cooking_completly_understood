@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ImmuRecipe {
   int get id => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get cookingTime => throw _privateConstructorUsedError;
@@ -29,6 +30,9 @@ mixin _$ImmuRecipe {
   String get fat => throw _privateConstructorUsedError;
   String get carbohydrate => throw _privateConstructorUsedError;
   String get salt => throw _privateConstructorUsedError;
+  DateTime get timeStamp => throw _privateConstructorUsedError;
+  bool get isMade => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ImmuRecipeCopyWith<ImmuRecipe> get copyWith =>
@@ -43,6 +47,7 @@ abstract class $ImmuRecipeCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      String role,
       String name,
       String description,
       String cookingTime,
@@ -54,7 +59,10 @@ abstract class $ImmuRecipeCopyWith<$Res> {
       String protein,
       String fat,
       String carbohydrate,
-      String salt});
+      String salt,
+      DateTime timeStamp,
+      bool isMade,
+      bool isFavorite});
 }
 
 /// @nodoc
@@ -71,6 +79,7 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
   @override
   $Res call({
     Object? id = null,
+    Object? role = null,
     Object? name = null,
     Object? description = null,
     Object? cookingTime = null,
@@ -83,12 +92,19 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
     Object? fat = null,
     Object? carbohydrate = null,
     Object? salt = null,
+    Object? timeStamp = null,
+    Object? isMade = null,
+    Object? isFavorite = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -137,6 +153,18 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String,
+      timeStamp: null == timeStamp
+          ? _value.timeStamp
+          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isMade: null == isMade
+          ? _value.isMade
+          : isMade // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -151,6 +179,7 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
+      String role,
       String name,
       String description,
       String cookingTime,
@@ -162,7 +191,10 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
       String protein,
       String fat,
       String carbohydrate,
-      String salt});
+      String salt,
+      DateTime timeStamp,
+      bool isMade,
+      bool isFavorite});
 }
 
 /// @nodoc
@@ -177,6 +209,7 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? role = null,
     Object? name = null,
     Object? description = null,
     Object? cookingTime = null,
@@ -189,12 +222,19 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
     Object? fat = null,
     Object? carbohydrate = null,
     Object? salt = null,
+    Object? timeStamp = null,
+    Object? isMade = null,
+    Object? isFavorite = null,
   }) {
     return _then(_$_ImmuRecipe(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -243,6 +283,18 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String,
+      timeStamp: null == timeStamp
+          ? _value.timeStamp
+          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isMade: null == isMade
+          ? _value.isMade
+          : isMade // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -251,39 +303,40 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
 
 class _$_ImmuRecipe implements _ImmuRecipe {
   const _$_ImmuRecipe(
-      {this.id = 0,
-      this.name = '',
-      this.description = '',
-      this.cookingTime = '',
-      final List<String> ingredientName = const [],
-      final List<String> ingredientQuantity = const [],
-      final List<String> stepNumber = const [],
-      final List<String> stepDescription = const [],
-      this.calorie = '',
-      this.protein = '',
-      this.fat = '',
-      this.carbohydrate = '',
-      this.salt = ''})
+      {required this.id,
+      required this.role,
+      required this.name,
+      required this.description,
+      required this.cookingTime,
+      required final List<String> ingredientName,
+      required final List<String> ingredientQuantity,
+      required final List<String> stepNumber,
+      required final List<String> stepDescription,
+      required this.calorie,
+      required this.protein,
+      required this.fat,
+      required this.carbohydrate,
+      required this.salt,
+      required this.timeStamp,
+      required this.isMade,
+      required this.isFavorite})
       : _ingredientName = ingredientName,
         _ingredientQuantity = ingredientQuantity,
         _stepNumber = stepNumber,
         _stepDescription = stepDescription;
 
   @override
-  @JsonKey()
   final int id;
   @override
-  @JsonKey()
+  final String role;
+  @override
   final String name;
   @override
-  @JsonKey()
   final String description;
   @override
-  @JsonKey()
   final String cookingTime;
   final List<String> _ingredientName;
   @override
-  @JsonKey()
   List<String> get ingredientName {
     if (_ingredientName is EqualUnmodifiableListView) return _ingredientName;
     // ignore: implicit_dynamic_type
@@ -292,7 +345,6 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   final List<String> _ingredientQuantity;
   @override
-  @JsonKey()
   List<String> get ingredientQuantity {
     if (_ingredientQuantity is EqualUnmodifiableListView)
       return _ingredientQuantity;
@@ -302,7 +354,6 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   final List<String> _stepNumber;
   @override
-  @JsonKey()
   List<String> get stepNumber {
     if (_stepNumber is EqualUnmodifiableListView) return _stepNumber;
     // ignore: implicit_dynamic_type
@@ -311,7 +362,6 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   final List<String> _stepDescription;
   @override
-  @JsonKey()
   List<String> get stepDescription {
     if (_stepDescription is EqualUnmodifiableListView) return _stepDescription;
     // ignore: implicit_dynamic_type
@@ -319,24 +369,25 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   }
 
   @override
-  @JsonKey()
   final String calorie;
   @override
-  @JsonKey()
   final String protein;
   @override
-  @JsonKey()
   final String fat;
   @override
-  @JsonKey()
   final String carbohydrate;
   @override
-  @JsonKey()
   final String salt;
+  @override
+  final DateTime timeStamp;
+  @override
+  final bool isMade;
+  @override
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt)';
+    return 'ImmuRecipe(id: $id, role: $role, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
@@ -345,6 +396,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
         (other.runtimeType == runtimeType &&
             other is _$_ImmuRecipe &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -363,13 +415,19 @@ class _$_ImmuRecipe implements _ImmuRecipe {
             (identical(other.fat, fat) || other.fat == fat) &&
             (identical(other.carbohydrate, carbohydrate) ||
                 other.carbohydrate == carbohydrate) &&
-            (identical(other.salt, salt) || other.salt == salt));
+            (identical(other.salt, salt) || other.salt == salt) &&
+            (identical(other.timeStamp, timeStamp) ||
+                other.timeStamp == timeStamp) &&
+            (identical(other.isMade, isMade) || other.isMade == isMade) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      role,
       name,
       description,
       cookingTime,
@@ -381,7 +439,10 @@ class _$_ImmuRecipe implements _ImmuRecipe {
       protein,
       fat,
       carbohydrate,
-      salt);
+      salt,
+      timeStamp,
+      isMade,
+      isFavorite);
 
   @JsonKey(ignore: true)
   @override
@@ -392,22 +453,28 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
 abstract class _ImmuRecipe implements ImmuRecipe {
   const factory _ImmuRecipe(
-      {final int id,
-      final String name,
-      final String description,
-      final String cookingTime,
-      final List<String> ingredientName,
-      final List<String> ingredientQuantity,
-      final List<String> stepNumber,
-      final List<String> stepDescription,
-      final String calorie,
-      final String protein,
-      final String fat,
-      final String carbohydrate,
-      final String salt}) = _$_ImmuRecipe;
+      {required final int id,
+      required final String role,
+      required final String name,
+      required final String description,
+      required final String cookingTime,
+      required final List<String> ingredientName,
+      required final List<String> ingredientQuantity,
+      required final List<String> stepNumber,
+      required final List<String> stepDescription,
+      required final String calorie,
+      required final String protein,
+      required final String fat,
+      required final String carbohydrate,
+      required final String salt,
+      required final DateTime timeStamp,
+      required final bool isMade,
+      required final bool isFavorite}) = _$_ImmuRecipe;
 
   @override
   int get id;
+  @override
+  String get role;
   @override
   String get name;
   @override
@@ -432,6 +499,12 @@ abstract class _ImmuRecipe implements ImmuRecipe {
   String get carbohydrate;
   @override
   String get salt;
+  @override
+  DateTime get timeStamp;
+  @override
+  bool get isMade;
+  @override
+  bool get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$$_ImmuRecipeCopyWith<_$_ImmuRecipe> get copyWith =>

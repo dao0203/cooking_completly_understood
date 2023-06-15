@@ -52,9 +52,9 @@ const RecipeSchema = CollectionSchema(
       name: r'ingredientQuantity',
       type: IsarType.stringList,
     ),
-    r'isError': PropertySchema(
+    r'isFavorite': PropertySchema(
       id: 7,
-      name: r'isError',
+      name: r'isFavorite',
       type: IsarType.bool,
     ),
     r'isMade': PropertySchema(
@@ -171,7 +171,7 @@ void _recipeSerialize(
   writer.writeString(offsets[4], object.fat);
   writer.writeStringList(offsets[5], object.ingredientName);
   writer.writeStringList(offsets[6], object.ingredientQuantity);
-  writer.writeBool(offsets[7], object.isError);
+  writer.writeBool(offsets[7], object.isFavorite);
   writer.writeBool(offsets[8], object.isMade);
   writer.writeString(offsets[9], object.name);
   writer.writeString(offsets[10], object.protein);
@@ -197,7 +197,7 @@ Recipe _recipeDeserialize(
   object.id = id;
   object.ingredientName = reader.readStringList(offsets[5]) ?? [];
   object.ingredientQuantity = reader.readStringList(offsets[6]) ?? [];
-  object.isError = reader.readBool(offsets[7]);
+  object.isFavorite = reader.readBool(offsets[7]);
   object.isMade = reader.readBool(offsets[8]);
   object.name = reader.readString(offsets[9]);
   object.protein = reader.readString(offsets[10]);
@@ -1493,11 +1493,11 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isErrorEqualTo(
+  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isFavoriteEqualTo(
       bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isError',
+        property: r'isFavorite',
         value: value,
       ));
     });
@@ -2594,15 +2594,15 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsError() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.asc);
+      return query.addSortBy(r'isFavorite', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsErrorDesc() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsFavoriteDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.desc);
+      return query.addSortBy(r'isFavorite', Sort.desc);
     });
   }
 
@@ -2752,15 +2752,15 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsError() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.asc);
+      return query.addSortBy(r'isFavorite', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsErrorDesc() {
+  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsFavoriteDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.desc);
+      return query.addSortBy(r'isFavorite', Sort.desc);
     });
   }
 
@@ -2885,9 +2885,9 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsError() {
+  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'isError');
+      return query.addDistinctBy(r'isFavorite');
     });
   }
 
@@ -2995,9 +2995,9 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
     });
   }
 
-  QueryBuilder<Recipe, bool, QQueryOperations> isErrorProperty() {
+  QueryBuilder<Recipe, bool, QQueryOperations> isFavoriteProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'isError');
+      return query.addPropertyName(r'isFavorite');
     });
   }
 
