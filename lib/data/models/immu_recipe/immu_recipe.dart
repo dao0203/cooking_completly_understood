@@ -6,6 +6,7 @@ part 'immu_recipe.freezed.dart';
 class ImmuRecipe with _$ImmuRecipe {
   const factory ImmuRecipe({
     required int id,
+    required String role,
     required String name,
     required String description,
     required String cookingTime,

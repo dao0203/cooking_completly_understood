@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ImmuRecipe {
   int get id => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get cookingTime => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $ImmuRecipeCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      String role,
       String name,
       String description,
       String cookingTime,
@@ -77,6 +79,7 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
   @override
   $Res call({
     Object? id = null,
+    Object? role = null,
     Object? name = null,
     Object? description = null,
     Object? cookingTime = null,
@@ -98,6 +101,10 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -172,6 +179,7 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
+      String role,
       String name,
       String description,
       String cookingTime,
@@ -201,6 +209,7 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? role = null,
     Object? name = null,
     Object? description = null,
     Object? cookingTime = null,
@@ -222,6 +231,10 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -291,6 +304,7 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
 class _$_ImmuRecipe implements _ImmuRecipe {
   const _$_ImmuRecipe(
       {required this.id,
+      required this.role,
       required this.name,
       required this.description,
       required this.cookingTime,
@@ -313,6 +327,8 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   @override
   final int id;
+  @override
+  final String role;
   @override
   final String name;
   @override
@@ -371,7 +387,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   @override
   String toString() {
-    return 'ImmuRecipe(id: $id, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isMade: $isMade, isFavorite: $isFavorite)';
+    return 'ImmuRecipe(id: $id, role: $role, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
@@ -380,6 +396,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
         (other.runtimeType == runtimeType &&
             other is _$_ImmuRecipe &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -410,6 +427,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      role,
       name,
       description,
       cookingTime,
@@ -436,6 +454,7 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 abstract class _ImmuRecipe implements ImmuRecipe {
   const factory _ImmuRecipe(
       {required final int id,
+      required final String role,
       required final String name,
       required final String description,
       required final String cookingTime,
@@ -454,6 +473,8 @@ abstract class _ImmuRecipe implements ImmuRecipe {
 
   @override
   int get id;
+  @override
+  String get role;
   @override
   String get name;
   @override
