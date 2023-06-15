@@ -35,12 +35,15 @@ class ChatScreen extends HookConsumerWidget {
                         return const Text('エラーが発生しました。再度お試しください。');
                       } else {
                         return ListView.separated(
+                          key: const PageStorageKey<String>('menuListView'),
                           keyboardDismissBehavior:
                               ScrollViewKeyboardDismissBehavior.onDrag,
                           padding: const EdgeInsets.symmetric(horizontal: 16),
+                          reverse: true,
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            final message = snapshot.data![index];
+                            final message = snapshot
+                                .data![snapshot.data!.length - index - 1];
                             return Align(
                               key: Key(message.hashCode.toString()),
                               alignment: message.role ==
@@ -157,7 +160,8 @@ class ChatScreen extends HookConsumerWidget {
                             isWaiting.value = true;
                             messageController.clear();
                             //TODO: この処理が終わったら一番下までスクロールする
-                            await sendMessage.then((value) => isWaiting.value = false);
+                            await sendMessage
+                                .then((value) => isWaiting.value = false);
                           }
                         },
                         icon: !isWaiting.value
