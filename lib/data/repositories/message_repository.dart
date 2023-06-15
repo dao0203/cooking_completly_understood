@@ -13,6 +13,7 @@ import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MessageRepository {
@@ -53,12 +54,12 @@ class MessageRepository {
         //緯度経度をもとに天気情報を取得する
         .getWeatherInfo(position.altitude, position.longitude)
         .then(
-      (response) async {
+      (weatherResponse) async {
         //レスポンス成功時
-        if (response.isSuccessful) {
+        if (weatherResponse.isSuccessful) {
           //レスポンスボディをパース
           final weatherForecast =
-              WeatherForecast.fromJson(json.decode(response.bodyString));
+              WeatherForecast.fromJson(json.decode(weatherResponse.bodyString));
 
           //パースしたデータの温度を格納
           final currentTemperature =
@@ -79,12 +80,25 @@ class MessageRepository {
               json.encode(getRequestBodyForMakerSuite(sendedMessage));
 
           //ChatGPTにメッセージを送信して返信を受け取る
-          await _makerMeteoService.getMessage(encodedModel).then((value) async {
+          await _makerMeteoService
+              .getMessage(encodedModel)
+              .then((chatResponse) async {
             //成功時(1つでも選択肢がある場合)
-            if (value.isSuccessful) {
+            if (chatResponse.isSuccessful) {
               //レスポンスボディをパース
-              print('candidates:${json.decode(value.body)['candidates'][0]['output']}');
-              final recipe = Message.fromJson(json.decode(value.body)['candidates'][0]['output']);
+              final parseByJsonToString = json
+                  .decode(chatResponse.body)['candidates'][0]["output"]
+                  .toString()
+                  .substring(7); //[///Json]の部分を削除
+
+              debugPrint(
+                  'candidates1:${parseByJsonToString.substring(0, parseByJsonToString.length - 3)}');
+              //パースしたものをまたパース
+              final recipe = Message.fromJson(
+                json.decode(
+                  parseByJsonToString.substring(0, parseByJsonToString.length - 3), ///[''']の部分を削除
+                ),
+              );
 
               //保存するレシピデータクラスを作成
               final insertedRecipe = Recipe()

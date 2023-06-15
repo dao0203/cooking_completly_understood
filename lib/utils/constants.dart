@@ -20,13 +20,13 @@ String messageThatUserInputted(
     {
       "$jsonIngredientName": "材料名",
       "$jsoningredientQuantity": "材料の量(g)"
-    }
+    },
   ],
   "$jsonRecipeSteps": [
     {
       "$jsonStepNumber": "手順番号",
       "$jsonStepDescription": "手順の説明"
-    }
+    },
   ],
   "$jsonRecipeNutrition": {
     "$jsonCalorie": "カロリー(kcal)",
@@ -34,7 +34,7 @@ String messageThatUserInputted(
     "$jsonFat": "脂質(g)",
     "$jsonCarbohydrate": "炭水化物(g)",
     "$jsonSalt": "塩分(g)"
-  }
+  },
 }
 ''';
 
@@ -46,7 +46,7 @@ Please give me a recipe that meets the following criteria
 Message: $message
 2. Please answer the result considering the weather information
 temperature: $temperature weather(WMO): $weather
-3. Please answer in Json format as follows.
+3. Please answer in Json format as follows.(all type string)
 {
   "$jsonRecipeName": "recipe name",
   "$jsonRecipeDescription": "recipe description",
