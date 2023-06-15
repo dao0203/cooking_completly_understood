@@ -290,42 +290,37 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
 
 class _$_ImmuRecipe implements _ImmuRecipe {
   const _$_ImmuRecipe(
-      {required this.id = 0,
-      required this.name = '',
-      required this.description = '',
-      required this.cookingTime = '',
-      required final List<String> ingredientName = const [],
-      required final List<String> ingredientQuantity = const [],
-      required final List<String> stepNumber = const [],
-      required final List<String> stepDescription = const [],
-      required this.calorie = '',
-      required this.protein = '',
-      required this.fat = '',
-      required this.carbohydrate = '',
-      required this.salt = '',
-      required this.timeStamp = '',
-      required this.isMade = false,
-      required this.isFavorite = false})
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.cookingTime,
+      required final List<String> ingredientName,
+      required final List<String> ingredientQuantity,
+      required final List<String> stepNumber,
+      required final List<String> stepDescription,
+      required this.calorie,
+      required this.protein,
+      required this.fat,
+      required this.carbohydrate,
+      required this.salt,
+      required this.timeStamp,
+      required this.isMade,
+      required this.isFavorite})
       : _ingredientName = ingredientName,
         _ingredientQuantity = ingredientQuantity,
         _stepNumber = stepNumber,
         _stepDescription = stepDescription;
 
   @override
-  @JsonKey()
   final int id;
   @override
-  @JsonKey()
   final String name;
   @override
-  @JsonKey()
   final String description;
   @override
-  @JsonKey()
   final String cookingTime;
   final List<String> _ingredientName;
   @override
-  @JsonKey()
   List<String> get ingredientName {
     if (_ingredientName is EqualUnmodifiableListView) return _ingredientName;
     // ignore: implicit_dynamic_type
@@ -334,7 +329,6 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   final List<String> _ingredientQuantity;
   @override
-  @JsonKey()
   List<String> get ingredientQuantity {
     if (_ingredientQuantity is EqualUnmodifiableListView)
       return _ingredientQuantity;
@@ -344,7 +338,6 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   final List<String> _stepNumber;
   @override
-  @JsonKey()
   List<String> get stepNumber {
     if (_stepNumber is EqualUnmodifiableListView) return _stepNumber;
     // ignore: implicit_dynamic_type
@@ -353,7 +346,6 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   final List<String> _stepDescription;
   @override
-  @JsonKey()
   List<String> get stepDescription {
     if (_stepDescription is EqualUnmodifiableListView) return _stepDescription;
     // ignore: implicit_dynamic_type
@@ -361,28 +353,20 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   }
 
   @override
-  @JsonKey()
   final String calorie;
   @override
-  @JsonKey()
   final String protein;
   @override
-  @JsonKey()
   final String fat;
   @override
-  @JsonKey()
   final String carbohydrate;
   @override
-  @JsonKey()
   final String salt;
   @override
-  @JsonKey()
   final DateTime timeStamp;
   @override
-  @JsonKey()
   final bool isMade;
   @override
-  @JsonKey()
   final bool isFavorite;
 
   @override
