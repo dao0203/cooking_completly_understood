@@ -18,7 +18,7 @@ class Recipe {
   late String fat;
   late String carbohydrate;
   late String salt;
-  late DateTime timeStamp;
-  late bool isError;
+  DateTime timeStamp = DateTime.now();
+  bool isError = false;
   bool isMade = false;
 }
