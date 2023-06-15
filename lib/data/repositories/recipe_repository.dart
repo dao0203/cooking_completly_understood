@@ -70,4 +70,27 @@ class RecipeRepository {
       ..isFavorite = !immuRecipe.isFavorite; //お気に入り状態を反転させる
     return _recipeService.changeFavoriteStatus(recipe);
   }
+
+  //レシピの料理済み状態を変更するメソッド
+  Future<void> changeMadeStatus(ImmuRecipe immuRecipe) {
+    final Recipe recipe = Recipe()
+      ..id = immuRecipe.id
+      ..role = immuRecipe.role
+      ..name = immuRecipe.name
+      ..description = immuRecipe.description
+      ..cookingTime = immuRecipe.cookingTime
+      ..ingredientName = immuRecipe.ingredientName
+      ..ingredientQuantity = immuRecipe.ingredientQuantity
+      ..stepNumber = immuRecipe.stepNumber
+      ..stepDescription = immuRecipe.stepDescription
+      ..calorie = immuRecipe.calorie
+      ..protein = immuRecipe.protein
+      ..fat = immuRecipe.fat
+      ..carbohydrate = immuRecipe.carbohydrate
+      ..salt = immuRecipe.salt
+      ..timeStamp = immuRecipe.timeStamp
+      ..isMade = !immuRecipe.isMade //料理済み状態を反転させる
+      ..isFavorite = immuRecipe.isFavorite;
+    return _recipeService.changeMadeStatus(recipe);
+  }
 }
