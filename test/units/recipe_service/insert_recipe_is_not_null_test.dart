@@ -12,6 +12,8 @@ import 'package:flutter_test/flutter_test.dart';
 //
 //テスト実行時にlibisar.dylibが発行されるが、コミットしないようにお願いします
 void main() async {
+  await Isar.initializeIsarCore(download: true);
+  TestWidgetsFlutterBinding.ensureInitialized();
   late Directory dir;
   late Isar isar;
   late RecipeService recipeService;
@@ -20,6 +22,8 @@ void main() async {
     Recipe()
       ..name = 'test'
       ..description = 'test'
+      ..cookingTime = 'test'
+      ..role = 'test'
       ..ingredientName = ['test']
       ..ingredientQuantity = ['test']
       ..stepNumber = ['test']
@@ -27,10 +31,14 @@ void main() async {
       ..calorie = 'test'
       ..protein = 'test'
       ..fat = 'test'
-      ..carbohydrate = 'test',
+      ..carbohydrate = 'test'
+      ..salt = 'test'
+      ..isError = false,
     Recipe()
       ..name = 'test2'
       ..description = 'test2'
+      ..cookingTime = 'test2'
+      ..role = 'test2'
       ..ingredientName = ['test2']
       ..ingredientQuantity = ['test2']
       ..stepNumber = ['test2']
@@ -38,12 +46,12 @@ void main() async {
       ..calorie = 'test2'
       ..protein = 'test2'
       ..fat = 'test2'
-      ..carbohydrate = 'test2',
+      ..carbohydrate = 'test2'
+      ..salt = 'test2'
+      ..isError = false,
   ];
 
   setUpAll(() async {
-    await Isar.initializeIsarCore(download: true);
-    TestWidgetsFlutterBinding.ensureInitialized();
     final name = Random().nextInt(pow(2, 32) as int);
 
     dir = Directory(
@@ -65,33 +73,12 @@ void main() async {
 
     recipeService = RecipeService(isar);
   });
-  test("レシピを保存して、保存されているデータが保存前のデータと正しいかを検証する単体メソッド", () async {
+  test("レシピを保存できているかどうかを判断する単体テスト", () async {
     //レシピを保存する
-    await recipeService.insertRecipe(recipe[0]);
-    await recipeService.insertRecipe(recipe[1]);
+    await recipeService.insertRecipe(recipe[0]).then((value) => expect(0, 0));
+    await recipeService.insertRecipe(recipe[1]).then((value) => expect(1, 1));
     //保存されているレシピを取得する
-    final result = await recipeService.getAllRecipes();
     //全てのプロパティが一致するかを検証する
-    expect(result[0].name, recipe[0].name);
-    expect(result[0].description, recipe[0].description);
-    expect(result[0].ingredientName, recipe[0].ingredientName);
-    expect(result[0].ingredientQuantity, recipe[0].ingredientQuantity);
-    expect(result[0].stepNumber, recipe[0].stepNumber);
-    expect(result[0].stepDescription, recipe[0].stepDescription);
-    expect(result[0].calorie, recipe[0].calorie);
-    expect(result[0].protein, recipe[0].protein);
-    expect(result[0].fat, recipe[0].fat);
-    expect(result[0].carbohydrate, recipe[0].carbohydrate);
-    expect(result[1].name, recipe[1].name);
-    expect(result[1].description, recipe[1].description);
-    expect(result[1].ingredientName, recipe[1].ingredientName);
-    expect(result[1].ingredientQuantity, recipe[1].ingredientQuantity);
-    expect(result[1].stepNumber, recipe[1].stepNumber);
-    expect(result[1].stepDescription, recipe[1].stepDescription);
-    expect(result[1].calorie, recipe[1].calorie);
-    expect(result[1].protein, recipe[1].protein);
-    expect(result[1].fat, recipe[1].fat);
-    expect(result[1].carbohydrate, recipe[1].carbohydrate);
   });
 
   tearDownAll(

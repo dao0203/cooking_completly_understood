@@ -20,13 +20,13 @@ String messageThatUserInputted(
     {
       "$jsonIngredientName": "材料名",
       "$jsoningredientQuantity": "材料の量(g)"
-    }
+    },
   ],
   "$jsonRecipeSteps": [
     {
       "$jsonStepNumber": "手順番号",
       "$jsonStepDescription": "手順の説明"
-    }
+    },
   ],
   "$jsonRecipeNutrition": {
     "$jsonCalorie": "カロリー(kcal)",
@@ -34,6 +34,44 @@ String messageThatUserInputted(
     "$jsonFat": "脂質(g)",
     "$jsonCarbohydrate": "炭水化物(g)",
     "$jsonSalt": "塩分(g)"
+  },
+}
+''';
+
+String messageThatUserInputtedInEnglish(
+        String message, String temperature, String weather) =>
+    '''
+Please give me a recipe that meets the following criteria
+1.Please answer the result considering the message entered by the user
+Message: $message
+2. Please answer the result considering the weather information
+temperature: $temperature weather(WMO): $weather
+3. Please answer in Json format as follows.
+- all types are string
+- please make sure to place the comma correctly
+- please do not display units such as kcal and g
+{
+  "$jsonRecipeName": "recipe name",
+  "$jsonRecipeDescription": "recipe description",
+  "$jsonRecipeCookingTime": "cooking time(minute)",
+  "$jsonRecipeIngredients": [
+    {
+      "$jsonIngredientName": "ingredient name",
+      "$jsoningredientQuantity": "ingredient quantity(g)"
+    }
+  ],
+  "$jsonRecipeSteps": [
+    {
+      "$jsonStepNumber": "step number",
+      "$jsonStepDescription": "step description"
+    }
+  ],
+  "$jsonRecipeNutrition": {
+    "$jsonCalorie": "calorie(kcal)",
+    "$jsonProtein": "protein(g)",
+    "$jsonFat": "fat(g)",
+    "$jsonCarbohydrate": "carbohydrate(g)",
+    "$jsonSalt": "salt(g)"
   }
 }
 ''';
@@ -57,3 +95,27 @@ const jsonProtein = "protein";
 const jsonFat = "fat";
 const jsonCarbohydrate = "carbohydrate";
 const jsonSalt = "salt";
+
+Map<String, dynamic> getRequestBodyForMakerSuite(String promptString) {
+  return {
+    // 'model': 'models/test-beta-001',
+    'prompt': {
+      'text': promptString,
+    },
+
+    // 'temperature': 0.7,
+    // 'candidateCount': 1,
+    // 'top_k': 40,
+    // 'top_p': 0.95,
+    // 'max_output_tokens': 1024,
+    // 'stop_sequences': [],
+    // 'safety_settings': [
+    //   {'category': 'HARM_CATEGORY_DEROGATORY', 'threshold': 1},
+    //   {'category': 'HARM_CATEGORY_TOXICITY', 'threshold': 1},
+    //   {'category': 'HARM_CATEGORY_VIOLENCE', 'threshold': 2},
+    //   {'category': 'HARM_CATEGORY_SEXUAL', 'threshold': 2},
+    //   {'category': 'HARM_CATEGORY_MEDICAL', 'threshold': 2},
+    //   {'category': 'HARM_CATEGORY_DANGEROUS', 'threshold': 2},
+    // ],
+  };
+}

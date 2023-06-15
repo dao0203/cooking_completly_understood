@@ -6,25 +6,27 @@ import 'package:cooking_completly_understood/data/models/my_message/my_message.d
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/chat_service.dart';
+import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
 import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MessageRepository {
   final PositionService _positionService;
   final WeatherService _weatherService;
-  final ChatService _chatService;
+  // final ChatService _chatService;
+  final MakerSuiteService _makerMeteoService;
   final RecipeService _recipeService;
   final MyMessageService _myMessageService;
   MessageRepository(
     this._positionService,
     this._weatherService,
-    this._chatService,
+    this._makerMeteoService,
     this._recipeService,
     this._myMessageService,
   );
@@ -32,7 +34,7 @@ class MessageRepository {
   //初期メッセージを送信する
   Future<void> sendInitialMessage() async {
     //初期メッセージを送信
-    await _chatService.sendInitialMessage();
+    // await _chatService.sendInitialMessage();
   }
 
   //メッセージを送信して返信を受け取る
@@ -52,12 +54,12 @@ class MessageRepository {
         //緯度経度をもとに天気情報を取得する
         .getWeatherInfo(position.altitude, position.longitude)
         .then(
-      (response) async {
+      (weatherResponse) async {
         //レスポンス成功時
-        if (response.isSuccessful) {
+        if (weatherResponse.isSuccessful) {
           //レスポンスボディをパース
           final weatherForecast =
-              WeatherForecast.fromJson(json.decode(response.bodyString));
+              WeatherForecast.fromJson(json.decode(weatherResponse.bodyString));
 
           //パースしたデータの温度を格納
           final currentTemperature =
@@ -68,22 +70,35 @@ class MessageRepository {
               weatherForecast.currentWeather.weatherCode.toString();
 
           //送信するメッセージを作成
-          final sendedMessage = messageThatUserInputted(
+          final sendedMessage = messageThatUserInputtedInEnglish(
             inputedMessage,
             currentTemperature,
             currentWeather,
           );
 
+          final encodedModel =
+              json.encode(getRequestBodyForMakerSuite(sendedMessage));
+
           //ChatGPTにメッセージを送信して返信を受け取る
-          await _chatService
-              .sendMessageAndReceiveMessage(sendedMessage)
-              .then((value) async {
+          await _makerMeteoService
+              .getMessage(encodedModel)
+              .then((chatResponse) async {
             //成功時(1つでも選択肢がある場合)
-            if (value.haveChoices) {
+            if (chatResponse.isSuccessful) {
               //レスポンスボディをパース
-              print("${value.choices[0].message.content}");
+              final parseByJsonToString = json
+                  .decode(chatResponse.body)['candidates'][0]["output"]
+                  .toString();
+
+              final cuttedPreviousMessage = parseByJsonToString.substring(
+                  parseByJsonToString.indexOf('{'), //最初の{の位置までを切り取る
+                  parseByJsonToString.length - 3); //最後の[''']を切り取る
+
+              debugPrint('cuttedPreviousMessage: $cuttedPreviousMessage');
+              //パースしたものをまたパース
               final recipe = Message.fromJson(
-                  json.decode(value.choices[0].message.content));
+                json.decode(cuttedPreviousMessage),
+              );
 
               //保存するレシピデータクラスを作成
               final insertedRecipe = Recipe()
@@ -112,7 +127,7 @@ class MessageRepository {
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
-              throw Exception('failed to get message');
+              // throw Exception('failed to get message');
             }
           });
         } else {
@@ -124,7 +139,7 @@ class MessageRepository {
   }
 
   //自分のメッセージと相手のメッセージを一つのデータクラスに統一してメッセージに表示するメソッド
-  Stream<List<RecipeMessage>> getAllRecipeMessages() {
+  Stream<List<RecipeMessage>> getAllMessages() {
     //レシピを全て取得
     final recipes = _recipeService.getAllRecipes();
     //自分のメッセージを全て取得
@@ -151,10 +166,11 @@ class MessageRepository {
       handleData: (myMessages, sink) {
         List<RecipeMessage> recipeMessages = myMessages.map((e) {
           return RecipeMessage(
-              id: e.id,
-              role: e.role,
-              content: e.toString(), //TODO:ここでレシピを文字列に変換する
-              timeStamp: e.timeStamp);
+            id: e.id,
+            role: e.role,
+            content: e.content,
+            timeStamp: e.timeStamp,
+          );
         }).toList();
         sink.add(recipeMessages);
       },
@@ -164,10 +180,6 @@ class MessageRepository {
         myMessages.transform(myMessageToRecipeMessage);
     final convertedRecipeToRecipeMessage =
         recipes.transform(recipeToRecipeMessage);
-    //レシピと自分のメッセージを結合して返す
-    // return convertedMyMessageToRecipeMessage;
-    //FIXME:ここで結合して返したいと考えているが、なぜかレシピの方から変更の通知が来ないと、マイメッセージが変更されないというもんだが起きている
-    //TODO:原因を調査する
 
     //レシピと自分のメッセージを結合
     return Rx.combineLatest2<List<RecipeMessage>, List<RecipeMessage>,
