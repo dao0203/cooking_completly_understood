@@ -49,15 +49,19 @@ temperature: $temperature weather(WMO): $weather
 3. Please answer in Json format as follows.
 - all types are string
 - please make sure to place the comma correctly
-- please do not display units such as kcal and g
+- Please output the cooking time in minutes without including the unit name.
+- Please output the quantity in grams (g) without including the unit name.
+- Please output the quantity of nutrients in grams (g) without including the unit name
+- Please output the quantity of ingredient quantitiy in grams (g) without including the unit name
+- Please answer in Japanese
 {
   "$jsonRecipeName": "recipe name",
   "$jsonRecipeDescription": "recipe description",
-  "$jsonRecipeCookingTime": "cooking time(minute)",
+  "$jsonRecipeCookingTime": "cooking time",
   "$jsonRecipeIngredients": [
     {
       "$jsonIngredientName": "ingredient name",
-      "$jsoningredientQuantity": "ingredient quantity(g)"
+      "$jsoningredientQuantity": "ingredient quantity"
     }
   ],
   "$jsonRecipeSteps": [
@@ -67,11 +71,11 @@ temperature: $temperature weather(WMO): $weather
     }
   ],
   "$jsonRecipeNutrition": {
-    "$jsonCalorie": "calorie(kcal)",
-    "$jsonProtein": "protein(g)",
-    "$jsonFat": "fat(g)",
-    "$jsonCarbohydrate": "carbohydrate(g)",
-    "$jsonSalt": "salt(g)"
+    "$jsonCalorie": "calorie",
+    "$jsonProtein": "protein",
+    "$jsonFat": "fat",
+    "$jsonCarbohydrate": "carbohydrate",
+    "$jsonSalt": "salt"
   }
 }
 ''';
