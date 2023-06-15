@@ -58,7 +58,7 @@ dependencies:
   isar_flutter_libs: ^3.1.0+1
   rxdart: ^0.27.7
   google_mlkit_translation: ^0.7.0
-
+  fl_chart: ^0.63.0
 
 
 dev_dependencies:
@@ -94,6 +94,7 @@ flutter:
     - .env
     - assets/ml/lite-model_aiy_vision_classifier_food_V1_1.tflite
     - assets/ml/lite-model_seefood_segmenter_mobile_food_segmenter_V1_1.tflite
+    - assets/ml/model.tflite
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
