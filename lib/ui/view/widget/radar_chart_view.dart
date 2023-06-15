@@ -55,12 +55,12 @@ class _RadarCartState extends State<RadarChartView> {
                   text: 'カロリー',
                   angle: usedAngle,
                 );
-              case 5:
+              case 1:
                 return RadarChartTitle(
                   text: 'タンパク質',
                   angle: usedAngle,
                 );
-              case 4:
+              case 2:
                 return RadarChartTitle(
                   text: '脂質',
                   angle: usedAngle,
@@ -70,13 +70,12 @@ class _RadarCartState extends State<RadarChartView> {
                   text: '炭水化物',
                   angle: usedAngle,
                 );
-              case 2:
+              case 4:
                 return RadarChartTitle(
                   text: '塩分',
                   angle: usedAngle,
                 );
-              case 1:
-                return RadarChartTitle(text: 'TV', angle: usedAngle);
+              
               default:
                 return const RadarChartTitle(text: '');
             }
