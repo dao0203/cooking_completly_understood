@@ -6,7 +6,7 @@ part of 'recipe_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeStateHash() => r'634f93efae0cb51924a68f72e7d6477d3112d64c';
+String _$recipeStateHash() => r'f4c0985d1acae2a39971ef97125c6c35b982fdb1';
 
 /// See also [RecipeState].
 @ProviderFor(RecipeState)
