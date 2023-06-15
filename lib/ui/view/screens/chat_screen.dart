@@ -156,6 +156,7 @@ class ChatScreen extends HookConsumerWidget {
                                 );
                             isWaiting.value = true;
                             messageController.clear();
+                            //TODO: この処理が終わったら一番下までスクロールする
                             await sendMessage.then((value) => isWaiting.value = false);
                           }
                         },
