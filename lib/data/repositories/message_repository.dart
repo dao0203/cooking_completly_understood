@@ -14,6 +14,7 @@ import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MessageRepository {
@@ -46,6 +47,8 @@ class MessageRepository {
 
     //自分のメッセージをローカルDBに保存
     await _myMessageService.insertMyMessage(myMessage);
+
+    //
     //現在地を取得
     final position = await _positionService.getLocationInfo();
 
@@ -69,9 +72,24 @@ class MessageRepository {
           final currentWeather =
               weatherForecast.currentWeather.weatherCode.toString();
 
+          //GoogleMLKitを使用してユーザーが入力したメッセージを英語に変換する
+          const TranslateLanguage sourceLang = TranslateLanguage.japanese;
+          const TranslateLanguage targetLang = TranslateLanguage.english;
+
+          final onDeviceTranslator = OnDeviceTranslator(
+            sourceLanguage: sourceLang,
+            targetLanguage: targetLang,
+          );
+
+          //ユーザーが入力したメッセージを英語に変換
+          final String inputedMessageInEnglish =
+              await onDeviceTranslator.translateText(inputedMessage);
+
+          debugPrint('inputedMessageInEnglish: $inputedMessageInEnglish');
+
           //送信するメッセージを作成
           final sendedMessage = messageThatUserInputtedInEnglish(
-            inputedMessage,
+            inputedMessageInEnglish,
             currentTemperature,
             currentWeather,
           );
@@ -150,6 +168,7 @@ class MessageRepository {
         StreamTransformer.fromHandlers(
       handleData: (recipes, sink) {
         List<RecipeMessage> recipeMessages = recipes.map((e) {
+          
           return RecipeMessage(
               id: e.id,
               role: e.role,
