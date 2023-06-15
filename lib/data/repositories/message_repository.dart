@@ -139,7 +139,7 @@ class MessageRepository {
   }
 
   //自分のメッセージと相手のメッセージを一つのデータクラスに統一してメッセージに表示するメソッド
-  Stream<List<RecipeMessage>> getAllRecipeMessages() {
+  Stream<List<RecipeMessage>> getAllMessages() {
     //レシピを全て取得
     final recipes = _recipeService.getAllRecipes();
     //自分のメッセージを全て取得

@@ -11,7 +11,7 @@ class MessagesState extends _$MessagesState {
     //MessageStateが初期化された際に初期メッセージを送信する
     return await ref.read(messageRepositoryProvider).then((value) {
       value.sendInitialMessage();
-      return value.getAllRecipeMessages();
+      return value.getAllMessages();
     });
   }
 
