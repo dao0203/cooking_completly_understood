@@ -180,10 +180,6 @@ class MessageRepository {
         myMessages.transform(myMessageToRecipeMessage);
     final convertedRecipeToRecipeMessage =
         recipes.transform(recipeToRecipeMessage);
-    //レシピと自分のメッセージを結合して返す
-    // return convertedMyMessageToRecipeMessage;
-    //FIXME:ここで結合して返したいと考えているが、なぜかレシピの方から変更の通知が来ないと、マイメッセージが変更されないというもんだが起きている
-    //TODO:原因を調査する
 
     //レシピと自分のメッセージを結合
     return Rx.combineLatest2<List<RecipeMessage>, List<RecipeMessage>,

@@ -32,7 +32,7 @@ class ChatScreen extends HookConsumerWidget {
                         );
                         //エラー
                       } else if (snapshot.hasError) {
-                        return Text('エラーが発生しました。再度お試しください。');
+                        return const Text('エラーが発生しました。再度お試しください。');
                       } else {
                         return ListView.separated(
                           keyboardDismissBehavior:
@@ -95,7 +95,7 @@ class ChatScreen extends HookConsumerWidget {
                   );
                 },
                 error: (Object error, StackTrace stackTrace) {
-                  return Text('エラーが発生しました。再度お試しください。');
+                  return const Text('エラーが発生しました。再度お試しください。');
                 },
                 loading: () => const Center(
                   child: CircularProgressIndicator(),
