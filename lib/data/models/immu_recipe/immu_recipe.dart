@@ -19,7 +19,6 @@ class ImmuRecipe with _$ImmuRecipe {
     @Default('') String carbohydrate,
     @Default('') String salt,
     @Default('') DateTime timeStamp,
-    @Default(false) bool isError,
     @Default(false) bool isMade,
     @Default(false) bool isFavorite,
   }) = _ImmuRecipe;

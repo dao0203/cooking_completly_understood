@@ -19,7 +19,6 @@ class Recipe {
   late String carbohydrate;
   late String salt;
   DateTime timeStamp = DateTime.now();
-  bool isError = false;
   bool isMade = false;
   bool isFavorite = false;
 }

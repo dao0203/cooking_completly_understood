@@ -32,7 +32,6 @@ class RecipeRepository {
             carbohydrate: e.carbohydrate,
             salt: e.salt,
             timeStamp: e.timeStamp,
-            isError: e.isError,
             isMade: e.isMade,
             isFavorite: e.isFavorite,
           );

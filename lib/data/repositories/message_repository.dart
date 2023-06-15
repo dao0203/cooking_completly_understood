@@ -137,8 +137,8 @@ class MessageRepository {
                 ..carbohydrate = recipe.nutrition.carbohydrate
                 ..salt = recipe.nutrition.salt
                 ..timeStamp = DateTime.now()
-                ..isError = false
-                ..isMade = false;
+                ..isMade = false
+                ..isFavorite = false;
 
               //レシピを保存
               await _recipeService.insertRecipe(insertedRecipe);
@@ -168,7 +168,6 @@ class MessageRepository {
         StreamTransformer.fromHandlers(
       handleData: (recipes, sink) {
         List<RecipeMessage> recipeMessages = recipes.map((e) {
-          
           return RecipeMessage(
               id: e.id,
               role: e.role,

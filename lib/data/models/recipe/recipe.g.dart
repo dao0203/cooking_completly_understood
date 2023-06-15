@@ -52,53 +52,48 @@ const RecipeSchema = CollectionSchema(
       name: r'ingredientQuantity',
       type: IsarType.stringList,
     ),
-    r'isError': PropertySchema(
-      id: 7,
-      name: r'isError',
-      type: IsarType.bool,
-    ),
     r'isFavorite': PropertySchema(
-      id: 8,
+      id: 7,
       name: r'isFavorite',
       type: IsarType.bool,
     ),
     r'isMade': PropertySchema(
-      id: 9,
+      id: 8,
       name: r'isMade',
       type: IsarType.bool,
     ),
     r'name': PropertySchema(
-      id: 10,
+      id: 9,
       name: r'name',
       type: IsarType.string,
     ),
     r'protein': PropertySchema(
-      id: 11,
+      id: 10,
       name: r'protein',
       type: IsarType.string,
     ),
     r'role': PropertySchema(
-      id: 12,
+      id: 11,
       name: r'role',
       type: IsarType.string,
     ),
     r'salt': PropertySchema(
-      id: 13,
+      id: 12,
       name: r'salt',
       type: IsarType.string,
     ),
     r'stepDescription': PropertySchema(
-      id: 14,
+      id: 13,
       name: r'stepDescription',
       type: IsarType.stringList,
     ),
     r'stepNumber': PropertySchema(
-      id: 15,
+      id: 14,
       name: r'stepNumber',
       type: IsarType.stringList,
     ),
     r'timeStamp': PropertySchema(
-      id: 16,
+      id: 15,
       name: r'timeStamp',
       type: IsarType.dateTime,
     )
@@ -176,16 +171,15 @@ void _recipeSerialize(
   writer.writeString(offsets[4], object.fat);
   writer.writeStringList(offsets[5], object.ingredientName);
   writer.writeStringList(offsets[6], object.ingredientQuantity);
-  writer.writeBool(offsets[7], object.isError);
-  writer.writeBool(offsets[8], object.isFavorite);
-  writer.writeBool(offsets[9], object.isMade);
-  writer.writeString(offsets[10], object.name);
-  writer.writeString(offsets[11], object.protein);
-  writer.writeString(offsets[12], object.role);
-  writer.writeString(offsets[13], object.salt);
-  writer.writeStringList(offsets[14], object.stepDescription);
-  writer.writeStringList(offsets[15], object.stepNumber);
-  writer.writeDateTime(offsets[16], object.timeStamp);
+  writer.writeBool(offsets[7], object.isFavorite);
+  writer.writeBool(offsets[8], object.isMade);
+  writer.writeString(offsets[9], object.name);
+  writer.writeString(offsets[10], object.protein);
+  writer.writeString(offsets[11], object.role);
+  writer.writeString(offsets[12], object.salt);
+  writer.writeStringList(offsets[13], object.stepDescription);
+  writer.writeStringList(offsets[14], object.stepNumber);
+  writer.writeDateTime(offsets[15], object.timeStamp);
 }
 
 Recipe _recipeDeserialize(
@@ -203,16 +197,15 @@ Recipe _recipeDeserialize(
   object.id = id;
   object.ingredientName = reader.readStringList(offsets[5]) ?? [];
   object.ingredientQuantity = reader.readStringList(offsets[6]) ?? [];
-  object.isError = reader.readBool(offsets[7]);
-  object.isFavorite = reader.readBool(offsets[8]);
-  object.isMade = reader.readBool(offsets[9]);
-  object.name = reader.readString(offsets[10]);
-  object.protein = reader.readString(offsets[11]);
-  object.role = reader.readString(offsets[12]);
-  object.salt = reader.readString(offsets[13]);
-  object.stepDescription = reader.readStringList(offsets[14]) ?? [];
-  object.stepNumber = reader.readStringList(offsets[15]) ?? [];
-  object.timeStamp = reader.readDateTime(offsets[16]);
+  object.isFavorite = reader.readBool(offsets[7]);
+  object.isMade = reader.readBool(offsets[8]);
+  object.name = reader.readString(offsets[9]);
+  object.protein = reader.readString(offsets[10]);
+  object.role = reader.readString(offsets[11]);
+  object.salt = reader.readString(offsets[12]);
+  object.stepDescription = reader.readStringList(offsets[13]) ?? [];
+  object.stepNumber = reader.readStringList(offsets[14]) ?? [];
+  object.timeStamp = reader.readDateTime(offsets[15]);
   return object;
 }
 
@@ -242,7 +235,7 @@ P _recipeDeserializeProp<P>(
     case 8:
       return (reader.readBool(offset)) as P;
     case 9:
-      return (reader.readBool(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 10:
       return (reader.readString(offset)) as P;
     case 11:
@@ -250,12 +243,10 @@ P _recipeDeserializeProp<P>(
     case 12:
       return (reader.readString(offset)) as P;
     case 13:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringList(offset) ?? []) as P;
     case 14:
       return (reader.readStringList(offset) ?? []) as P;
     case 15:
-      return (reader.readStringList(offset) ?? []) as P;
-    case 16:
       return (reader.readDateTime(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1502,16 +1493,6 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isErrorEqualTo(
-      bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isError',
-        value: value,
-      ));
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isFavoriteEqualTo(
       bool value) {
     return QueryBuilder.apply(this, (query) {
@@ -2613,18 +2594,6 @@ extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsError() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsErrorDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.desc);
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.asc);
@@ -2783,18 +2752,6 @@ extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsError() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsErrorDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isError', Sort.desc);
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.asc);
@@ -2928,12 +2885,6 @@ extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsError() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'isError');
-    });
-  }
-
   QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isFavorite');
@@ -3041,12 +2992,6 @@ extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
       ingredientQuantityProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'ingredientQuantity');
-    });
-  }
-
-  QueryBuilder<Recipe, bool, QQueryOperations> isErrorProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'isError');
     });
   }
 
