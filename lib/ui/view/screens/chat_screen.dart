@@ -211,6 +211,7 @@ class ChatScreen extends HookConsumerWidget {
                       controller: messageController,
                       maxLines: 5,
                       minLines: 1,
+                      cursorRadius: const Radius.circular(4),
                       decoration: InputDecoration(
                         hintText: 'じゃがいもを使った簡単レシピを教えて',
                         hintStyle: TextStyle(
