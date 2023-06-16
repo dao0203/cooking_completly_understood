@@ -3,13 +3,6 @@ import 'package:flutter/material.dart';
 
 class RadarChartView extends StatefulWidget {
   const RadarChartView({super.key});
-  final gridColor = const Color.fromARGB(255, 202, 52, 52);
-  final titleColor = const Color.fromARGB(255, 27, 206, 158);
-  final fashionColor = const Color.fromARGB(255, 152, 221, 61);
-  final artColor = const Color.fromARGB(255, 34, 76, 154);
-  final boxingColor = const Color.fromARGB(255, 230, 99, 242);
-  final entertainmentColor = const Color.fromARGB(255, 198, 171, 176);
-  final offRoadColor = const Color.fromARGB(255, 176, 113, 31);
 
   @override
   State<RadarChartView> createState() => _RadarCartState();
@@ -45,7 +38,8 @@ class _RadarCartState extends State<RadarChartView> {
           borderData: FlBorderData(show: false),
           radarBorderData: const BorderSide(color: Colors.transparent),
           titlePositionPercentageOffset: 0.2,
-          titleTextStyle: TextStyle(color: widget.titleColor, fontSize: 14),
+          titleTextStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onBackground, fontSize: 14),
           getTitle: (index, angle) {
             final usedAngle =
                 relativeAngleMode ? angle + angleValue : angleValue;
@@ -75,7 +69,7 @@ class _RadarCartState extends State<RadarChartView> {
                   text: '塩分',
                   angle: usedAngle,
                 );
-              
+
               default:
                 return const RadarChartTitle(text: '');
             }
@@ -84,7 +78,8 @@ class _RadarCartState extends State<RadarChartView> {
           ticksTextStyle:
               const TextStyle(color: Colors.transparent, fontSize: 10),
           tickBorderData: const BorderSide(color: Colors.transparent),
-          gridBorderData: BorderSide(color: widget.gridColor, width: 2),
+          gridBorderData: BorderSide(
+              color: Theme.of(context).colorScheme.surfaceVariant, width: 2),
         ),
         swapAnimationDuration: const Duration(milliseconds: 400),
       ),
@@ -120,7 +115,7 @@ class _RadarCartState extends State<RadarChartView> {
     return [
       RawDataSet(
         title: 'Nutrition',
-        color: widget.fashionColor,
+        color: Theme.of(context).colorScheme.primary,
         values: [
           10,
           20,
@@ -129,7 +124,6 @@ class _RadarCartState extends State<RadarChartView> {
           50,
         ],
       ),
-      
     ];
   }
 }
