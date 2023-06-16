@@ -1,5 +1,6 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
 import 'package:cooking_completly_understood/ui/view/widget/bottom_sheet_recipe.dart';
+import 'package:cooking_completly_understood/utils/utils.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -108,9 +109,24 @@ class ChatScreen extends HookConsumerWidget {
                                                 .colorScheme
                                                 .secondary
                                                 .withOpacity(0.1)
-                                            : Theme.of(context)
-                                                .colorScheme
-                                                .tertiary,
+                                            : null,
+                                        gradient: message.role !=
+                                                OpenAIChatMessageRole.user.name
+                                            ? LinearGradient(
+                                                begin: Alignment.topLeft,
+                                                end: Alignment.bottomRight,
+                                                colors: [
+                                                  Theme.of(context)
+                                                      .colorScheme
+                                                      .tertiaryContainer
+                                                      .withOpacity(0.8),
+                                                  Theme.of(context)
+                                                      .colorScheme
+                                                      .primaryContainer
+                                                      .withOpacity(0.8),
+                                                ],
+                                              )
+                                            : null,
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -128,9 +144,15 @@ class ChatScreen extends HookConsumerWidget {
                                                     ? Theme.of(context)
                                                         .colorScheme
                                                         .secondary
-                                                    : Theme.of(context)
-                                                        .colorScheme
-                                                        .onTertiary,
+                                                    : alphaBlend(
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .primary
+                                                            .withOpacity(0.5),
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .tertiary,
+                                                      ),
                                           ),
                                         ),
                                       ),
