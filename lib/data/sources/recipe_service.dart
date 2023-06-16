@@ -21,6 +21,11 @@ class RecipeService {
     );
   }
 
+  //idを指定してレシピを取得するメソッド
+  Stream<Recipe?> getRecipeById(int id){
+    return _isar.recipes.get(id).asStream();
+  }
+
   // レシピのお気に入り状態を変更するメソッド
   Future<void> changeFavoriteStatus(Recipe recipe) async {
     await _isar.writeTxn(
