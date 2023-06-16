@@ -17,8 +17,8 @@ class _NavigationState extends State<Navigation> {
   var _currentPageIndex = 1;
 
   final _pages = <Widget>[
-    const MenuScreen(),
     const HomeScreen(),
+    const MenuScreen(),
     const AnalyticsScreen(),
   ];
 
@@ -36,10 +36,10 @@ class _NavigationState extends State<Navigation> {
     return Scaffold(
       appBar: [
         AppBar(
-          title: const Text('献立'),
+          title: const Text('料理完全に理解した'),
         ),
         AppBar(
-          title: const Text('料理完全に理解した'),
+          title: const Text('献立'),
         ),
         AppBar(
           title: const Text('分析'),
@@ -55,14 +55,14 @@ class _NavigationState extends State<Navigation> {
         selectedIndex: _currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
-            icon: Icon(Icons.restaurant_rounded),
-            selectedIcon: Icon(Icons.restaurant_rounded),
-            label: '献立',
-          ),
-          NavigationDestination(
             icon: Icon(Icons.kitchen_rounded),
             selectedIcon: Icon(Icons.kitchen),
             label: '冷蔵庫',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.restaurant_rounded),
+            selectedIcon: Icon(Icons.restaurant_rounded),
+            label: '献立',
           ),
           NavigationDestination(
             icon: Icon(Icons.analytics_outlined),
@@ -72,7 +72,6 @@ class _NavigationState extends State<Navigation> {
         ],
       ),
       floatingActionButton: [
-        null,
         FloatingActionButton.large(
           onPressed: () {
             Navigator.of(context).push(
@@ -85,6 +84,7 @@ class _NavigationState extends State<Navigation> {
           },
           child: const Icon(Icons.add_a_photo_outlined),
         ),
+        null,
         null,
       ][_currentPageIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
