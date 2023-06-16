@@ -10,7 +10,19 @@ class FoodsState extends _$FoodsState {
   Future<Stream<List<ImmuFood>>> build() async {
     return await ref.read(foodRepositoryProvider).then(
       (value) {
-        return value.getAllFood();
+        //食べ物を全て取得するメソッド
+        return value.getAllFood().map(
+              (event) => event
+                  .map(
+                    //ImmuFoodに変換
+                    (e) => ImmuFood(
+                      id: e.id,
+                      name: e.name,
+                      createdAt: e.createdAt,
+                    ),
+                  )
+                  .toList(),
+            );
       },
     );
   }

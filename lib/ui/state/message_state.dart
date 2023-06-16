@@ -1,6 +1,12 @@
+import 'dart:ffi';
+
+import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
+import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
+import 'package:cooking_completly_understood/di/recipe_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'message_state.g.dart';
 
@@ -9,9 +15,36 @@ class MessagesState extends _$MessagesState {
   @override
   Future<Stream<List<RecipeMessage>>> build() async {
     //MessageStateが初期化された際に初期メッセージを送信する
-    return await ref.read(messageRepositoryProvider).then((value) {
-      value.sendInitialMessage();
-      return value.getAllMessages();
+    final messages = await ref.read(messageRepositoryProvider).then(
+          (value) => value.getAllMyMessages().map(
+                (event) => event
+                    .map((e) => RecipeMessage(
+                          id: e.id,
+                          role: e.role,
+                          content: e.content,
+                          timeStamp: e.timeStamp,
+                        ))
+                    .toList(),
+              ),
+        );
+
+    final recipes = await ref.read(recipeRepositoryProvider).then(
+          (value) => value.getAllRecipes().map(
+                (event) => event
+                    .map((e) => RecipeMessage(
+                          id: e.id,
+                          role: e.role,
+                          content: "${e.name}をおすすめします",
+                          timeStamp: e.timeStamp,
+                        ))
+                    .toList(),
+              ),
+        );
+    
+    return Rx.combineLatest2(messages, recipes, (mes, rec) {
+      final messageList = mes + rec;
+      messageList.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
+      return messageList;
     });
   }
 

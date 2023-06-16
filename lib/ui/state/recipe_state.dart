@@ -7,9 +7,34 @@ part 'recipe_state.g.dart';
 @riverpod
 class RecipeState extends _$RecipeState {
   @override
-  Future<Stream<List<ImmuRecipe>>> build() {
-    return ref.read(recipeRepositoryProvider).then(
-          (value) => value.getAllRecipes(),
+  Future<Stream<List<ImmuRecipe>>> build() async {
+    return await ref.read(recipeRepositoryProvider).then(
+          (value) => value.getAllRecipes().map(
+                (event) => event
+                    .map(
+                      //ImmuRecipeに変換
+                      (e) => ImmuRecipe(
+                        id: e.id,
+                        role: e.role,
+                        name: e.name,
+                        description: e.description,
+                        cookingTime: e.cookingTime,
+                        ingredientName: e.ingredientName,
+                        ingredientQuantity: e.ingredientQuantity,
+                        stepNumber: e.stepNumber,
+                        stepDescription: e.stepDescription,
+                        calorie: e.calorie,
+                        protein: e.protein,
+                        fat: e.fat,
+                        carbohydrate: e.carbohydrate,
+                        salt: e.salt,
+                        timeStamp: e.timeStamp,
+                        isMade: e.isMade,
+                        isFavorite: e.isFavorite,
+                      ),
+                    )
+                    .toList(),
+              ),
         );
   }
 
