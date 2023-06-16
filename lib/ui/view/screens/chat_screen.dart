@@ -209,7 +209,8 @@ class ChatScreen extends HookConsumerWidget {
                   Expanded(
                     child: TextField(
                       controller: messageController,
-                      maxLines: null,
+                      maxLines: 5,
+                      minLines: 1,
                       decoration: InputDecoration(
                         hintText: 'じゃがいもを使った簡単レシピを教えて',
                         hintStyle: TextStyle(
