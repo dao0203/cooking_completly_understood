@@ -196,7 +196,7 @@ class _CameraViewState extends State<CameraView> {
               ),
             )
           : const Icon(
-              Icons.image,
+              Icons.image_rounded,
               size: 200,
             ),
       Padding(

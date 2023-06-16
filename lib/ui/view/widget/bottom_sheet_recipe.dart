@@ -37,9 +37,12 @@ class BottomSheetRecipe extends HookConsumerWidget {
                         children: [
                           //チェックのアイコンを表示
                           IconButton(
-                            icon: const Icon(Icons.check),
+                            icon: const Icon(Icons.check_rounded),
                             onPressed: () {
-                              ref.read(recipeByIdStateProvider(recipeId).notifier).changeMadeStatus(recipeContent);
+                              ref
+                                  .read(recipeByIdStateProvider(recipeId)
+                                      .notifier)
+                                  .changeMadeStatus(recipeContent);
                             },
                             color: recipeContent.isMade
                                 ? Colors.green
@@ -48,9 +51,12 @@ class BottomSheetRecipe extends HookConsumerWidget {
 
                           //星のアイコンを表示
                           IconButton(
-                            icon: const Icon(Icons.star),
+                            icon: const Icon(Icons.star_rounded),
                             onPressed: () {
-                              ref.read(recipeByIdStateProvider(recipeId).notifier).changeFavoriteStatus(recipeContent);
+                              ref
+                                  .read(recipeByIdStateProvider(recipeId)
+                                      .notifier)
+                                  .changeFavoriteStatus(recipeContent);
                             },
                             color: recipeContent.isFavorite
                                 ? Colors.yellow
