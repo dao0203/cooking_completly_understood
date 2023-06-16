@@ -9,43 +9,9 @@ class RecipeRepository {
   RecipeRepository(this._recipeService);
 
   // レシピを全て取得するメソッド
-  Stream<List<ImmuRecipe>> getAllRecipes() {
+  Stream<List<Recipe>> getAllRecipes() {
     //レシピを全て取得
-    final recipes = _recipeService.getAllRecipes();
-
-    //レシピをImmuRecipeに変換する
-    //この機能デカすぎんか？
-    StreamTransformer<List<Recipe>, List<ImmuRecipe>> transformer =
-        StreamTransformer.fromHandlers(
-      handleData: (recipes, sink) {
-        List<ImmuRecipe> immuRecipes = recipes.map((e) {
-          return ImmuRecipe(
-            id: e.id,
-            role: e.role,
-            name: e.name,
-            description: e.description,
-            cookingTime: e.cookingTime,
-            ingredientName: e.ingredientName,
-            ingredientQuantity: e.ingredientQuantity,
-            stepNumber: e.stepNumber,
-            stepDescription: e.stepDescription,
-            calorie: e.calorie,
-            protein: e.protein,
-            fat: e.fat,
-            carbohydrate: e.carbohydrate,
-            salt: e.salt,
-            timeStamp: e.timeStamp,
-            isMade: e.isMade,
-            isFavorite: e.isFavorite,
-          );
-        }).toList();
-
-        sink.add(immuRecipes);
-      },
-    );
-
-    //レシピをImmuRecipeに変換して返す
-    return recipes.transform(transformer);
+    return _recipeService.getAllRecipes();
   }
 
   //レシピのお気に入り状態を変更するメソッド
@@ -72,42 +38,8 @@ class RecipeRepository {
   }
 
   //idを指定してレシピを取得するメソッド
-  Stream<List<ImmuRecipe>> getRecipeById(int id) {
-    final recipe = _recipeService.getRecipeById(id);
-
-    //レシピをImmuRecipeに変換する
-    //この機能デカすぎんか？
-    StreamTransformer<List<Recipe>, List<ImmuRecipe>> transformer =
-        StreamTransformer.fromHandlers(
-      handleData: (recipes, sink) {
-        List<ImmuRecipe> immuRecipes = recipes.map((e) {
-          return ImmuRecipe(
-            id: e.id,
-            role: e.role,
-            name: e.name,
-            description: e.description,
-            cookingTime: e.cookingTime,
-            ingredientName: e.ingredientName,
-            ingredientQuantity: e.ingredientQuantity,
-            stepNumber: e.stepNumber,
-            stepDescription: e.stepDescription,
-            calorie: e.calorie,
-            protein: e.protein,
-            fat: e.fat,
-            carbohydrate: e.carbohydrate,
-            salt: e.salt,
-            timeStamp: e.timeStamp,
-            isMade: e.isMade,
-            isFavorite: e.isFavorite,
-          );
-        }).toList();
-
-        sink.add(immuRecipes);
-      },
-    );
-
-    //レシピをImmuRecipeに変換して返す
-    return recipe.transform(transformer);
+  Stream<List<Recipe>> getRecipeById(int id) {
+    return  _recipeService.getRecipeById(id);
   }
 
   //レシピの料理済み状態を変更するメソッド

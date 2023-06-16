@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
 import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
@@ -15,12 +14,10 @@ import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
-import 'package:rxdart/rxdart.dart';
 
 class MessageRepository {
   final PositionService _positionService;
   final WeatherService _weatherService;
-  // final ChatService _chatService;
   final MakerSuiteService _makerMeteoService;
   final RecipeService _recipeService;
   final MyMessageService _myMessageService;
@@ -156,61 +153,8 @@ class MessageRepository {
     );
   }
 
-  //自分のメッセージと相手のメッセージを一つのデータクラスに統一してメッセージに表示するメソッド
-  Stream<List<RecipeMessage>> getAllMessages() {
-    //レシピを全て取得
-    final recipes = _recipeService.getAllRecipes();
-    //自分のメッセージを全て取得
-    final myMessages = _myMessageService.getAllMyMessages();
-
-    //RecipeをRecipeMessageに変換するトランスフォーマー
-    StreamTransformer<List<Recipe>, List<RecipeMessage>> recipeToRecipeMessage =
-        StreamTransformer.fromHandlers(
-      handleData: (recipes, sink) {
-        List<RecipeMessage> recipeMessages = recipes.map((e) {
-          return RecipeMessage(
-              id: e.id,
-              role: e.role,
-              content: '${e.name}をおすすめします', //TODO:ここでレシピを文字列に変換する
-              timeStamp: e.timeStamp);
-        }).toList();
-        sink.add(recipeMessages);
-      },
-    );
-
-    //MyMessageをRecipeMessageに変換するトランスフォーマー
-    StreamTransformer<List<MyMessage>, List<RecipeMessage>>
-        myMessageToRecipeMessage = StreamTransformer.fromHandlers(
-      handleData: (myMessages, sink) {
-        List<RecipeMessage> recipeMessages = myMessages.map((e) {
-          return RecipeMessage(
-            id: e.id,
-            role: e.role,
-            content: e.content,
-            timeStamp: e.timeStamp,
-          );
-        }).toList();
-        sink.add(recipeMessages);
-      },
-    );
-
-    final convertedMyMessageToRecipeMessage =
-        myMessages.transform(myMessageToRecipeMessage);
-    final convertedRecipeToRecipeMessage =
-        recipes.transform(recipeToRecipeMessage);
-
-    //レシピと自分のメッセージを結合
-    return Rx.combineLatest2<List<RecipeMessage>, List<RecipeMessage>,
-        List<RecipeMessage>>(
-      convertedRecipeToRecipeMessage,
-      convertedMyMessageToRecipeMessage,
-      (recipes, myMessages) {
-        //レシピと自分のメッセージを結合
-        final recipeMessages = recipes + myMessages;
-        //結合したメッセージを時間順にソート
-        recipeMessages.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
-        return recipeMessages;
-      },
-    ).asBroadcastStream();
+  //ユーザが入力したメッセージを全取得する
+  Stream<List<MyMessage>> getAllMyMessages() {
+    return _myMessageService.getAllMyMessages();
   }
 }
