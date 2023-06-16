@@ -48,7 +48,7 @@ class RecipeRepository {
     return recipes.transform(transformer);
   }
 
-    //レシピのお気に入り状態を変更するメソッド
+  //レシピのお気に入り状態を変更するメソッド
   Future<void> changeFavoriteStatus(ImmuRecipe immuRecipe) {
     final Recipe recipe = Recipe()
       ..id = immuRecipe.id
@@ -69,6 +69,46 @@ class RecipeRepository {
       ..isMade = immuRecipe.isMade
       ..isFavorite = !immuRecipe.isFavorite; //お気に入り状態を反転させる
     return _recipeService.changeFavoriteStatus(recipe);
+  }
+
+  //idを指定してレシピを取得するメソッド
+  Stream<ImmuRecipe?> getRecipeById(int id) {
+    final recipe = _recipeService.getRecipeById(id);
+
+    //レシピをImmuRecipeに変換する
+    StreamTransformer<Recipe?, ImmuRecipe?> transformer =
+        StreamTransformer.fromHandlers(
+      handleData: (recipe, sink) {
+        if (recipe == null) {
+          //レシピがnullの場合はnullを返す
+          sink.add(null);
+        } else {
+          ImmuRecipe immuRecipe = ImmuRecipe(
+            id: recipe.id,
+            role: recipe.role,
+            name: recipe.name,
+            description: recipe.description,
+            cookingTime: recipe.cookingTime,
+            ingredientName: recipe.ingredientName,
+            ingredientQuantity: recipe.ingredientQuantity,
+            stepNumber: recipe.stepNumber,
+            stepDescription: recipe.stepDescription,
+            calorie: recipe.calorie,
+            protein: recipe.protein,
+            fat: recipe.fat,
+            carbohydrate: recipe.carbohydrate,
+            salt: recipe.salt,
+            timeStamp: recipe.timeStamp,
+            isMade: recipe.isMade,
+            isFavorite: recipe.isFavorite,
+          );
+          sink.add(immuRecipe);
+        }
+      },
+    );
+
+    //レシピをImmuRecipeに変換して返す
+    return recipe.transform(transformer);
   }
 
   //レシピの料理済み状態を変更するメソッド
