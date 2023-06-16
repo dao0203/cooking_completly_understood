@@ -10,6 +10,11 @@ class RecipeService {
   Query<Recipe> get _recipeGetAllQuery =>
       _isar.recipes.where(sort: Sort.asc).build();
 
+  //レシピのIdを指定してレシピを取得するクエリ
+  Query<Recipe> getRecipeByIdQuery(int id) {
+    return _isar.recipes.where().idEqualTo(id).limit(1).build();
+  }
+
   // レシピを保存するメソッド
   Future<void> insertRecipe(Recipe recipe) async {
     await _isar.writeTxn(
@@ -19,6 +24,11 @@ class RecipeService {
             .then((value) => debugPrint("レシピを保存しました"));
       },
     );
+  }
+
+  //idを指定してレシピを取得するメソッド
+  Stream<List<Recipe>> getRecipeById(int id)  {
+    return getRecipeByIdQuery(id).watch(fireImmediately: true);
   }
 
   // レシピのお気に入り状態を変更するメソッド

@@ -1,4 +1,5 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
+import 'package:cooking_completly_understood/ui/view/widget/bottom_sheet_recipe.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -44,50 +45,84 @@ class ChatScreen extends HookConsumerWidget {
                           itemBuilder: (context, index) {
                             final message = snapshot
                                 .data![snapshot.data!.length - index - 1];
-                            return Align(
+                            return Row(
                               key: Key(message.hashCode.toString()),
-                              alignment: message.role ==
+                              mainAxisAlignment: message.role ==
                                       OpenAIChatMessageRole.user.name
-                                  ? Alignment.centerRight
-                                  : Alignment.centerLeft,
-                              child: ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  maxWidth: screenWidth * 0.8,
-                                ),
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: message.role ==
-                                            OpenAIChatMessageRole.user.name
-                                        ? Theme.of(context).colorScheme.primary
-                                        : Theme.of(context)
-                                            .colorScheme
-                                            .secondary,
+                                  ? MainAxisAlignment.end
+                                  : MainAxisAlignment.start,
+                              children: [
+                                ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxWidth: screenWidth * 0.8,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 8,
-                                      horizontal: 16,
-                                    ),
-                                    //メッセージの内容
-                                    child: Text(
-                                      message.content,
-                                      style: TextStyle(
-                                        color: //ここでメッセージの送信者を判定する
-                                            message.role ==
-                                                    OpenAIChatMessageRole
-                                                        .user.name
-                                                ? Theme.of(context)
-                                                    .colorScheme
-                                                    .onPrimary
-                                                : Theme.of(context)
-                                                    .colorScheme
-                                                    .onSecondary,
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      //相手のメッセージが押された場合
+                                      if (message.role ==
+                                          OpenAIChatMessageRole
+                                              .assistant.name) {
+                                        //ボトムシートを表示させる
+                                        showModalBottomSheet(
+                                          context: context,
+                                          builder: (context) =>
+                                              BottomSheetRecipe(message.id),
+                                        );
+                                      }
+                                    },
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: message.role ==
+                                                OpenAIChatMessageRole.user.name
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .primary
+                                            : Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                          horizontal: 16,
+                                        ),
+                                        //メッセージの内容
+                                        child: Text(
+                                          message.content,
+                                          style: TextStyle(
+                                            color: //ここでメッセージの送信者を判定する
+                                                message.role ==
+                                                        OpenAIChatMessageRole
+                                                            .user.name
+                                                    ? Theme.of(context)
+                                                        .colorScheme
+                                                        .onPrimary
+                                                    : Theme.of(context)
+                                                        .colorScheme
+                                                        .onSecondary,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
+
+                                //アシスタントの場合は詳細アイコンを表示する
+                                message.role ==
+                                        OpenAIChatMessageRole.assistant.name
+                                    ? IconButton(
+                                        onPressed: () {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) =>
+                                                BottomSheetRecipe(message.id),
+                                          );
+                                        },
+                                        icon: const Icon(Icons.info),
+                                      )
+                                    : const SizedBox(width: 0),
+                              ],
                             );
                           },
                           separatorBuilder: (context, index) =>
