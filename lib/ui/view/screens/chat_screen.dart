@@ -62,13 +62,6 @@ class ChatScreen extends HookConsumerWidget {
                                       if (message.role ==
                                           OpenAIChatMessageRole
                                               .assistant.name) {
-                                        //このようにしないと、表示と表示が競合してしまう
-                                        //もしボトムシートが表示されていた場合
-                                        if (Scaffold.of(context)
-                                            .isEndDrawerOpen) {
-                                          //ボトムシートを閉じる
-                                          Navigator.of(context).pop();
-                                        }
                                         //ボトムシートを表示させる
                                         showModalBottomSheet(
                                           context: context,
@@ -120,7 +113,7 @@ class ChatScreen extends HookConsumerWidget {
                                         OpenAIChatMessageRole.assistant.name
                                     ? IconButton(
                                         onPressed: () {
-                                          showBottomSheet(
+                                          showModalBottomSheet(
                                             context: context,
                                             builder: (context) =>
                                                 BottomSheetRecipe(message.id),
