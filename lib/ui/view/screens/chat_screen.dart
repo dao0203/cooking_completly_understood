@@ -194,14 +194,11 @@ class ChatScreen extends HookConsumerWidget {
 
           // 送信フォーム
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: DecoratedBox(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.primary,
-                  width: 2,
-                ),
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(24),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -218,7 +215,7 @@ class ChatScreen extends HookConsumerWidget {
                           color: Theme.of(context)
                               .colorScheme
                               .onBackground
-                              .withOpacity(0.6),
+                              .withOpacity(0.5),
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 12,
@@ -253,21 +250,32 @@ class ChatScreen extends HookConsumerWidget {
                         }
                       },
                       icon: !isWaiting.value
-                          ? const Icon(Icons.send)
-                          : const SizedBox(
-                              width: 16,
-                              height: 16,
-                              child: CircularProgressIndicator(),
+                          ? Icon(
+                              Icons.send_rounded,
+                              color: Theme.of(context).colorScheme.primary,
+                            )
+                          : SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: FittedBox(
+                                child: CircularProgressIndicator(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                              ),
                             ),
                     ),
                   // 送信中
                   if (isWaiting.value)
-                    const IconButton(
+                    IconButton(
                       onPressed: null,
                       icon: SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(),
+                        width: 24,
+                        height: 24,
+                        child: FittedBox(
+                          child: CircularProgressIndicator(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
                       ),
                     ),
                 ],
