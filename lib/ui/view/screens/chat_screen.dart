@@ -78,7 +78,7 @@ class ChatScreen extends HookConsumerWidget {
                                             message.role ==
                                                     OpenAIChatMessageRole
                                                         .user.name
-                                                ? 18
+                                                ? 20
                                                 : 16,
                                           ),
                                           topRight: Radius.circular(
@@ -86,13 +86,13 @@ class ChatScreen extends HookConsumerWidget {
                                                     OpenAIChatMessageRole
                                                         .user.name
                                                 ? 16
-                                                : 18,
+                                                : 20,
                                           ),
                                           bottomLeft: Radius.circular(
                                             message.role ==
                                                     OpenAIChatMessageRole
                                                         .user.name
-                                                ? 18
+                                                ? 20
                                                 : 4,
                                           ),
                                           bottomRight: Radius.circular(
@@ -100,7 +100,7 @@ class ChatScreen extends HookConsumerWidget {
                                                     OpenAIChatMessageRole
                                                         .user.name
                                                 ? 4
-                                                : 18,
+                                                : 20,
                                           ),
                                         ),
                                         color: message.role ==
@@ -130,7 +130,7 @@ class ChatScreen extends HookConsumerWidget {
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          vertical: 8,
+                                          vertical: 10,
                                           horizontal: 16,
                                         ),
                                         //メッセージの内容
