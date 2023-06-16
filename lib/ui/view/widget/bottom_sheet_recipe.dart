@@ -25,24 +25,46 @@ class BottomSheetRecipe extends HookConsumerWidget {
                 );
               } else {
                 final recipe = snapshot.data!;
-                return Column(
-                  children: [
-                    Text(recipe.name),
-                    Text(recipe.description),
-                    Text(recipe.cookingTime.toString()),
-                    Text(recipe.ingredientName.toString()),
-                    Text(recipe.ingredientQuantity.toString()),
-                    Text(recipe.stepNumber.toString()),
-                    Text(recipe.stepDescription.toString()),
-                    Text(recipe.calorie.toString()),
-                    Text(recipe.protein.toString()),
-                    Text(recipe.fat.toString()),
-                    Text(recipe.carbohydrate.toString()),
-                    Text(recipe.salt.toString()),
-                    Text(recipe.timeStamp.toString()),
-                    Text(recipe.isMade.toString()),
-                    Text(recipe.isFavorite.toString()),
-                  ],
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 1, //レシピは1つしかないので1
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        
+                        //レシピ名
+                        Text(
+                          recipe[index].name,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        //レシピの説明
+                        Text(
+                          recipe[index].description,
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                        //レシピの材料
+                        Text(
+                          recipe[index].ingredientName.toString(),
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                        //レシピの手順
+                        Text(
+                          recipe[index].stepDescription.toString(),
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 );
               }
             },

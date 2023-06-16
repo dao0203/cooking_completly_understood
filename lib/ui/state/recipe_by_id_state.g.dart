@@ -6,7 +6,7 @@ part of 'recipe_by_id_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeByIdStateHash() => r'8ad54c1ab682fbd67a8c60c3018d77e6bcd7502d';
+String _$recipeByIdStateHash() => r'5a3230cad81c930b68ef7e0fbe733013f3b2ba5a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$RecipeByIdState
-    extends BuildlessAutoDisposeAsyncNotifier<Stream<ImmuRecipe>?> {
+    extends BuildlessAutoDisposeAsyncNotifier<Stream<List<ImmuRecipe>>> {
   late final int id;
 
-  Future<Stream<ImmuRecipe>?> build(
+  Future<Stream<List<ImmuRecipe>>> build(
     int id,
   );
 }
@@ -43,7 +43,8 @@ abstract class _$RecipeByIdState
 const recipeByIdStateProvider = RecipeByIdStateFamily();
 
 /// See also [RecipeByIdState].
-class RecipeByIdStateFamily extends Family<AsyncValue<Stream<ImmuRecipe>?>> {
+class RecipeByIdStateFamily
+    extends Family<AsyncValue<Stream<List<ImmuRecipe>>>> {
   /// See also [RecipeByIdState].
   const RecipeByIdStateFamily();
 
@@ -82,7 +83,7 @@ class RecipeByIdStateFamily extends Family<AsyncValue<Stream<ImmuRecipe>?>> {
 
 /// See also [RecipeByIdState].
 class RecipeByIdStateProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    RecipeByIdState, Stream<ImmuRecipe>?> {
+    RecipeByIdState, Stream<List<ImmuRecipe>>> {
   /// See also [RecipeByIdState].
   RecipeByIdStateProvider(
     this.id,
@@ -115,7 +116,7 @@ class RecipeByIdStateProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  Future<Stream<ImmuRecipe>?> runNotifierBuild(
+  Future<Stream<List<ImmuRecipe>>> runNotifierBuild(
     covariant RecipeByIdState notifier,
   ) {
     return notifier.build(

@@ -7,8 +7,8 @@ part 'recipe_by_id_state.g.dart';
 @riverpod
 class RecipeByIdState extends _$RecipeByIdState {
   @override
-  Future<Stream<ImmuRecipe>?> build(int id) async {
-    await ref.read(recipeRepositoryProvider).then(
+  Future<Stream<List<ImmuRecipe>>> build(int id) async {
+    return await ref.read(recipeRepositoryProvider).then(
       (value) {
         return value.getRecipeById(id);
       },
