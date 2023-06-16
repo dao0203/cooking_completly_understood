@@ -17,8 +17,13 @@ const FoodSchema = CollectionSchema(
   name: r'Food',
   id: -1224223000086120450,
   properties: {
-    r'name': PropertySchema(
+    r'createdAt': PropertySchema(
       id: 0,
+      name: r'createdAt',
+      type: IsarType.dateTime,
+    ),
+    r'name': PropertySchema(
+      id: 1,
       name: r'name',
       type: IsarType.string,
     )
@@ -53,7 +58,8 @@ void _foodSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.name);
+  writer.writeDateTime(offsets[0], object.createdAt);
+  writer.writeString(offsets[1], object.name);
 }
 
 Food _foodDeserialize(
@@ -63,8 +69,9 @@ Food _foodDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = Food();
+  object.createdAt = reader.readDateTime(offsets[0]);
   object.id = id;
-  object.name = reader.readString(offsets[0]);
+  object.name = reader.readString(offsets[1]);
   return object;
 }
 
@@ -76,6 +83,8 @@ P _foodDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
+      return (reader.readDateTime(offset)) as P;
+    case 1:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -170,6 +179,59 @@ extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
 }
 
 extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
+  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtEqualTo(
+      DateTime value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'createdAt',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtGreaterThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'createdAt',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtLessThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'createdAt',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtBetween(
+    DateTime lower,
+    DateTime upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'createdAt',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<Food, Food, QAfterFilterCondition> idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -356,6 +418,18 @@ extension FoodQueryObject on QueryBuilder<Food, Food, QFilterCondition> {}
 extension FoodQueryLinks on QueryBuilder<Food, Food, QFilterCondition> {}
 
 extension FoodQuerySortBy on QueryBuilder<Food, Food, QSortBy> {
+  QueryBuilder<Food, Food, QAfterSortBy> sortByCreatedAt() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'createdAt', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Food, Food, QAfterSortBy> sortByCreatedAtDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'createdAt', Sort.desc);
+    });
+  }
+
   QueryBuilder<Food, Food, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -370,6 +444,18 @@ extension FoodQuerySortBy on QueryBuilder<Food, Food, QSortBy> {
 }
 
 extension FoodQuerySortThenBy on QueryBuilder<Food, Food, QSortThenBy> {
+  QueryBuilder<Food, Food, QAfterSortBy> thenByCreatedAt() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'createdAt', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Food, Food, QAfterSortBy> thenByCreatedAtDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'createdAt', Sort.desc);
+    });
+  }
+
   QueryBuilder<Food, Food, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
@@ -396,6 +482,12 @@ extension FoodQuerySortThenBy on QueryBuilder<Food, Food, QSortThenBy> {
 }
 
 extension FoodQueryWhereDistinct on QueryBuilder<Food, Food, QDistinct> {
+  QueryBuilder<Food, Food, QDistinct> distinctByCreatedAt() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'createdAt');
+    });
+  }
+
   QueryBuilder<Food, Food, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -408,6 +500,12 @@ extension FoodQueryProperty on QueryBuilder<Food, Food, QQueryProperty> {
   QueryBuilder<Food, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<Food, DateTime, QQueryOperations> createdAtProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'createdAt');
     });
   }
 

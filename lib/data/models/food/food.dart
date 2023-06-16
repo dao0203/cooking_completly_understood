@@ -6,4 +6,5 @@ part 'food.g.dart';
 class Food{
   Id id = Isar.autoIncrement;
   late String name;
+  late DateTime createdAt;
 }
