@@ -169,8 +169,12 @@ class ChatScreen extends HookConsumerWidget {
                                           BottomSheetRecipe(message.id),
                                     );
                                   },
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.info_outline_rounded,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground
+                                        .withOpacity(0.5),
                                   ),
                                 ),
                             ],
