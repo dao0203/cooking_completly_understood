@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/data/models/food/food.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,7 +12,11 @@ final isarProvider = Provider(
 
     // データベースを開く
     return await Isar.open(
-      [RecipeSchema, MyMessageSchema], // 保存するデータモデルのリスト
+      [
+        RecipeSchema,
+        MyMessageSchema,
+        FoodSchema,
+      ], // 保存するデータモデルのリスト
       directory: dir.path, // データベースの保存先のパス
     );
   },
