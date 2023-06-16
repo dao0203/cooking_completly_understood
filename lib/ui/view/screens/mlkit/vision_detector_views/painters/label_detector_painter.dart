@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
 
 class LabelDetectorPainter extends CustomPainter {
-  LabelDetectorPainter(this.labels);
+  LabelDetectorPainter(this.labels, this.foodsStateNotifier);
 
   final List<ImageLabel> labels;
+  final foodsStateNotifier;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -22,6 +23,8 @@ class LabelDetectorPainter extends CustomPainter {
       builder.addText('Label: ${label.label}, '
           'Confidence: ${label.confidence.toStringAsFixed(2)}\n');
       debugPrint(label.label);
+      // ビジネスロジック混入
+      foodsStateNotifier.insertFood(label.label);
     }
     builder.pop();
 
