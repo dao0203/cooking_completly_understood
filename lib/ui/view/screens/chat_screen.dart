@@ -54,7 +54,7 @@ class ChatScreen extends HookConsumerWidget {
                               children: [
                                 ConstrainedBox(
                                   constraints: BoxConstraints(
-                                    maxWidth: screenWidth * 0.8,
+                                    maxWidth: screenWidth * 0.75,
                                   ),
                                   child: GestureDetector(
                                     onTap: () async {
@@ -72,15 +72,45 @@ class ChatScreen extends HookConsumerWidget {
                                     },
                                     child: DecoratedBox(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 18
+                                                : 16,
+                                          ),
+                                          topRight: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 16
+                                                : 18,
+                                          ),
+                                          bottomLeft: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 18
+                                                : 4,
+                                          ),
+                                          bottomRight: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 4
+                                                : 18,
+                                          ),
+                                        ),
                                         color: message.role ==
                                                 OpenAIChatMessageRole.user.name
                                             ? Theme.of(context)
                                                 .colorScheme
-                                                .primary
+                                                .secondary
+                                                .withOpacity(0.1)
                                             : Theme.of(context)
                                                 .colorScheme
-                                                .secondary,
+                                                .tertiary,
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -97,10 +127,10 @@ class ChatScreen extends HookConsumerWidget {
                                                             .user.name
                                                     ? Theme.of(context)
                                                         .colorScheme
-                                                        .onPrimary
+                                                        .secondary
                                                     : Theme.of(context)
                                                         .colorScheme
-                                                        .onSecondary,
+                                                        .onTertiary,
                                           ),
                                         ),
                                       ),
@@ -109,19 +139,20 @@ class ChatScreen extends HookConsumerWidget {
                                 ),
 
                                 //アシスタントの場合は詳細アイコンを表示する
-                                message.role ==
-                                        OpenAIChatMessageRole.assistant.name
-                                    ? IconButton(
-                                        onPressed: () {
-                                          showModalBottomSheet(
-                                            context: context,
-                                            builder: (context) =>
-                                                BottomSheetRecipe(message.id),
-                                          );
-                                        },
-                                        icon: const Icon(Icons.info),
-                                      )
-                                    : const SizedBox(width: 0),
+                                if (message.role ==
+                                    OpenAIChatMessageRole.assistant.name)
+                                  IconButton(
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) =>
+                                            BottomSheetRecipe(message.id),
+                                      );
+                                    },
+                                    icon: const Icon(
+                                      Icons.info_outline_rounded,
+                                    ),
+                                  ),
                               ],
                             );
                           },
