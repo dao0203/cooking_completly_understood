@@ -1,7 +1,3 @@
-import 'dart:ffi';
-
-import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
-import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
 import 'package:cooking_completly_understood/di/recipe_repository_provider.dart';
