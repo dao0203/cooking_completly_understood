@@ -153,7 +153,7 @@ class MessageRepository {
     );
   }
 
-  //自
+  //ユーザが入力したメッセージを全取得する
   Stream<List<MyMessage>> getAllMyMessages() {
     return _myMessageService.getAllMyMessages();
   }
