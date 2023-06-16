@@ -1,5 +1,7 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
 import 'package:cooking_completly_understood/ui/view/widget/bottom_sheet_recipe.dart';
+import 'package:cooking_completly_understood/ui/view/widget/unfocus.dart';
+import 'package:cooking_completly_understood/utils/utils.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -16,7 +18,7 @@ class ChatScreen extends HookConsumerWidget {
     final isWaiting = useState(false);
 
     return Scaffold(
-      body: SafeArea(
+      body: Unfocus(
         child: Column(
           children: [
             // メッセージ一覧
@@ -54,7 +56,7 @@ class ChatScreen extends HookConsumerWidget {
                               children: [
                                 ConstrainedBox(
                                   constraints: BoxConstraints(
-                                    maxWidth: screenWidth * 0.8,
+                                    maxWidth: screenWidth * 0.75,
                                   ),
                                   child: GestureDetector(
                                     onTap: () async {
@@ -62,6 +64,8 @@ class ChatScreen extends HookConsumerWidget {
                                       if (message.role ==
                                           OpenAIChatMessageRole
                                               .assistant.name) {
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
                                         //ボトムシートを表示させる
                                         showModalBottomSheet(
                                           context: context,
@@ -72,19 +76,64 @@ class ChatScreen extends HookConsumerWidget {
                                     },
                                     child: DecoratedBox(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 20
+                                                : 16,
+                                          ),
+                                          topRight: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 16
+                                                : 20,
+                                          ),
+                                          bottomLeft: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 20
+                                                : 4,
+                                          ),
+                                          bottomRight: Radius.circular(
+                                            message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? 4
+                                                : 20,
+                                          ),
+                                        ),
                                         color: message.role ==
                                                 OpenAIChatMessageRole.user.name
                                             ? Theme.of(context)
                                                 .colorScheme
-                                                .primary
-                                            : Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
+                                                .secondary
+                                                .withOpacity(0.1)
+                                            : null,
+                                        gradient: message.role !=
+                                                OpenAIChatMessageRole.user.name
+                                            ? LinearGradient(
+                                                begin: Alignment.topLeft,
+                                                end: Alignment.bottomRight,
+                                                colors: [
+                                                  Theme.of(context)
+                                                      .colorScheme
+                                                      .tertiaryContainer
+                                                      .withOpacity(0.8),
+                                                  Theme.of(context)
+                                                      .colorScheme
+                                                      .primaryContainer
+                                                      .withOpacity(0.8),
+                                                ],
+                                              )
+                                            : null,
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          vertical: 8,
+                                          vertical: 10,
                                           horizontal: 16,
                                         ),
                                         //メッセージの内容
@@ -97,10 +146,16 @@ class ChatScreen extends HookConsumerWidget {
                                                             .user.name
                                                     ? Theme.of(context)
                                                         .colorScheme
-                                                        .onPrimary
-                                                    : Theme.of(context)
-                                                        .colorScheme
-                                                        .onSecondary,
+                                                        .secondary
+                                                    : alphaBlend(
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .primary
+                                                            .withOpacity(0.5),
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .tertiary,
+                                                      ),
                                           ),
                                         ),
                                       ),
@@ -109,19 +164,26 @@ class ChatScreen extends HookConsumerWidget {
                                 ),
 
                                 //アシスタントの場合は詳細アイコンを表示する
-                                message.role ==
-                                        OpenAIChatMessageRole.assistant.name
-                                    ? IconButton(
-                                        onPressed: () {
-                                          showModalBottomSheet(
-                                            context: context,
-                                            builder: (context) =>
-                                                BottomSheetRecipe(message.id),
-                                          );
-                                        },
-                                        icon: const Icon(Icons.info),
-                                      )
-                                    : const SizedBox(width: 0),
+                                if (message.role ==
+                                    OpenAIChatMessageRole.assistant.name)
+                                  IconButton(
+                                    onPressed: () {
+                                      FocusManager.instance.primaryFocus
+                                          ?.unfocus();
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) =>
+                                            BottomSheetRecipe(message.id),
+                                      );
+                                    },
+                                    icon: Icon(
+                                      Icons.info_outline_rounded,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground
+                                          .withOpacity(0.5),
+                                    ),
+                                  ),
                               ],
                             );
                           },
@@ -143,14 +205,12 @@ class ChatScreen extends HookConsumerWidget {
 
             // 送信フォーム
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: DecoratedBox(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 2,
-                  ),
+                  color:
+                      Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(24),
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -158,14 +218,16 @@ class ChatScreen extends HookConsumerWidget {
                     Expanded(
                       child: TextField(
                         controller: messageController,
-                        maxLines: null,
+                        maxLines: 5,
+                        minLines: 1,
+                        cursorRadius: const Radius.circular(4),
                         decoration: InputDecoration(
                           hintText: 'じゃがいもを使った簡単レシピを教えて',
                           hintStyle: TextStyle(
                             color: Theme.of(context)
                                 .colorScheme
                                 .onBackground
-                                .withOpacity(0.6),
+                                .withOpacity(0.5),
                           ),
                           contentPadding: const EdgeInsets.symmetric(
                             vertical: 12,
@@ -200,21 +262,33 @@ class ChatScreen extends HookConsumerWidget {
                           }
                         },
                         icon: !isWaiting.value
-                            ? const Icon(Icons.send)
-                            : const SizedBox(
-                                width: 16,
-                                height: 16,
-                                child: CircularProgressIndicator(),
+                            ? Icon(
+                                Icons.send_rounded,
+                                color: Theme.of(context).colorScheme.primary,
+                              )
+                            : SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: FittedBox(
+                                  child: CircularProgressIndicator(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                ),
                               ),
                       ),
                     // 送信中
                     if (isWaiting.value)
-                      const IconButton(
+                      IconButton(
                         onPressed: null,
                         icon: SizedBox(
-                          width: 18,
-                          height: 18,
-                          child: CircularProgressIndicator(),
+                          width: 24,
+                          height: 24,
+                          child: FittedBox(
+                            child: CircularProgressIndicator(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
                         ),
                       ),
                   ],
