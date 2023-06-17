@@ -49,7 +49,7 @@ class GetRecipeMessagesUseCase {
   );
 
 //RecipeとMyMessageを結合するメソッド
-  Stream<List<RecipeMessage>> getRecipeMessages() {
+  Stream<List<RecipeMessage>> call() {
     final recipeStream = _recipeRepository.getAllRecipes().transform(
           recipeToRecipeMessageTransformer,
         );

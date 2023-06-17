@@ -10,7 +10,7 @@ class MessagesState extends _$MessagesState {
   @override
   Future<Stream<List<RecipeMessage>>> build() async {
     return await ref.read(getRecipeMessagesUseCaseProvider).then(
-          (value) => value.getRecipeMessages(),
+          (value) => value.call(),
         );
   }
 
