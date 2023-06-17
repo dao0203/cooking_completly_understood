@@ -305,7 +305,7 @@ class ChatScreen extends HookConsumerWidget {
             ),
             // 食材の一覧
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 12, 8),
+              padding: const EdgeInsets.fromLTRB(30, 0, 12, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
