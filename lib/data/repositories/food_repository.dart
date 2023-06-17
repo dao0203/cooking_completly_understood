@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/data/models/food/food.dart';
-import 'package:cooking_completly_understood/data/sources/food_service.dart';
+import 'package:cooking_completly_understood/data/services/food_service.dart';
 
 class FoodRepository {
   final FoodService _foodService;
