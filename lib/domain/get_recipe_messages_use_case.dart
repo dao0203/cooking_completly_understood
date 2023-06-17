@@ -57,11 +57,11 @@ class GetRecipeMessagesUseCase {
           myMessageToRecipeMessageTransformer,
         );
     return Rx.combineLatest2(
-      recipeStream,
       myMessageStream,
+      recipeStream,
       (a, b) => (a + b)
         ..sort(
-          (a, b) => b.timeStamp.compareTo(a.timeStamp),
+          (a, b) => a.timeStamp.compareTo(b.timeStamp),
         ),
     );
   }
