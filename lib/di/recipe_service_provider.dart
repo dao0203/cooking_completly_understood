@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
+import 'package:cooking_completly_understood/data/services/recipe_service.dart';
 import 'package:cooking_completly_understood/di/isar_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

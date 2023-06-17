@@ -1,6 +1,6 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
-import 'package:cooking_completly_understood/ui/view/widget/bottom_sheet_recipe.dart';
-import 'package:cooking_completly_understood/ui/view/widget/unfocus.dart';
+import 'package:cooking_completly_understood/ui/view/widgets/bottom_sheet_recipe.dart';
+import 'package:cooking_completly_understood/ui/view/widgets/unfocus.dart';
 import 'package:cooking_completly_understood/utils/utils.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/ui/state/foods_state.dart';
-import 'package:cooking_completly_understood/ui/view/widget/food_list.dart';
+import 'package:cooking_completly_understood/ui/view/widgets/food_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
