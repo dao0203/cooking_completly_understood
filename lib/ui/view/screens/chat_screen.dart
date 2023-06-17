@@ -72,6 +72,11 @@ class ChatScreen extends HookConsumerWidget {
                                           context: context,
                                           builder: (context) =>
                                               BottomSheetRecipe(message.id),
+                                          backgroundColor: Theme.of(context)
+                                              .colorScheme
+                                              .background,
+                                          isScrollControlled: true,
+                                          useSafeArea: false,
                                         );
                                       }
                                     },
@@ -175,6 +180,11 @@ class ChatScreen extends HookConsumerWidget {
                                         context: context,
                                         builder: (context) =>
                                             BottomSheetRecipe(message.id),
+                                        backgroundColor: Theme.of(context)
+                                            .colorScheme
+                                            .background,
+                                        isScrollControlled: true,
+                                        useSafeArea: false,
                                       );
                                     },
                                     icon: Icon(

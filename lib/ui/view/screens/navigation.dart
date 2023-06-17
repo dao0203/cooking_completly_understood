@@ -14,7 +14,7 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
-  var _currentPageIndex = 1;
+  var _currentPageIndex = 0;
 
   final _pages = <Widget>[
     const HomeScreen(),
