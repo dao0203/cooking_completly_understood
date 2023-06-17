@@ -1,4 +1,5 @@
 import 'package:cooking_completly_understood/ui/state/recipe_by_id_state.dart';
+import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:cooking_completly_understood/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -194,8 +195,7 @@ class BottomSheetRecipe extends HookConsumerWidget {
                                         : Icons.star_border_rounded,
                                     color: recipeContent.isFavorite
                                         ? alphaBlend(
-                                            const Color(0xFFffee00)
-                                                .withOpacity(0.5),
+                                            favoriteColor.withOpacity(0.5),
                                             Theme.of(context)
                                                 .colorScheme
                                                 .onBackground,
@@ -204,6 +204,13 @@ class BottomSheetRecipe extends HookConsumerWidget {
                                             .colorScheme
                                             .onBackground
                                             .withOpacity(0.5),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: recipeContent.isFavorite
+                                        ? favoriteColor.withOpacity(0.08)
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .surfaceVariant,
                                   ),
                                   label: recipeContent.isFavorite
                                       ? const Text('お気に入り済み')
@@ -222,8 +229,7 @@ class BottomSheetRecipe extends HookConsumerWidget {
                                     Icons.check_rounded,
                                     color: recipeContent.isMade
                                         ? alphaBlend(
-                                            const Color(0xFF2B96DE)
-                                                .withOpacity(0.5),
+                                            madeColor.withOpacity(0.5),
                                             Theme.of(context)
                                                 .colorScheme
                                                 .onBackground,
@@ -232,6 +238,13 @@ class BottomSheetRecipe extends HookConsumerWidget {
                                             .colorScheme
                                             .onBackground
                                             .withOpacity(0.5),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: recipeContent.isMade
+                                        ? madeColor.withOpacity(0.08)
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .surfaceVariant,
                                   ),
                                   label: recipeContent.isMade
                                       ? const Text('調理済み')
