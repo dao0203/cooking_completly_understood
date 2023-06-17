@@ -1,5 +1,6 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
 import 'package:cooking_completly_understood/ui/view/widgets/bottom_sheet_recipe.dart';
+import 'package:cooking_completly_understood/ui/view/widgets/recipe_preview.dart';
 import 'package:cooking_completly_understood/ui/view/widgets/unfocus.dart';
 import 'package:cooking_completly_understood/utils/utils.dart';
 import 'package:dart_openai/dart_openai.dart';
@@ -48,153 +49,227 @@ class ChatScreen extends HookConsumerWidget {
                           itemBuilder: (context, index) {
                             final message = snapshot
                                 .data![snapshot.data!.length - index - 1];
-                            return Row(
-                              key: Key(message.hashCode.toString()),
-                              mainAxisAlignment: message.role ==
-                                      OpenAIChatMessageRole.user.name
-                                  ? MainAxisAlignment.end
-                                  : MainAxisAlignment.start,
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    maxWidth: screenWidth * 0.75,
-                                  ),
-                                  child: GestureDetector(
-                                    onTap: () async {
-                                      //相手のメッセージが押された場合
-                                      if (message.role ==
-                                          OpenAIChatMessageRole
-                                              .assistant.name) {
-                                        FocusManager.instance.primaryFocus
-                                            ?.unfocus();
-                                        //ボトムシートを表示させる
-                                        showModalBottomSheet(
-                                          context: context,
-                                          builder: (context) =>
-                                              BottomSheetRecipe(message.id),
-                                          backgroundColor: Theme.of(context)
-                                              .colorScheme
-                                              .background,
-                                          isScrollControlled: true,
-                                          useSafeArea: false,
-                                        );
-                                      }
-                                    },
-                                    child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(
-                                            message.role ==
-                                                    OpenAIChatMessageRole
-                                                        .user.name
-                                                ? 20
-                                                : 16,
-                                          ),
-                                          topRight: Radius.circular(
-                                            message.role ==
-                                                    OpenAIChatMessageRole
-                                                        .user.name
-                                                ? 16
-                                                : 20,
-                                          ),
-                                          bottomLeft: Radius.circular(
-                                            message.role ==
-                                                    OpenAIChatMessageRole
-                                                        .user.name
-                                                ? 20
-                                                : 4,
-                                          ),
-                                          bottomRight: Radius.circular(
-                                            message.role ==
-                                                    OpenAIChatMessageRole
-                                                        .user.name
-                                                ? 4
-                                                : 20,
-                                          ),
-                                        ),
-                                        color: message.role ==
-                                                OpenAIChatMessageRole.user.name
-                                            ? Theme.of(context)
-                                                .colorScheme
-                                                .secondary
-                                                .withOpacity(0.1)
-                                            : null,
-                                        gradient: message.role !=
-                                                OpenAIChatMessageRole.user.name
-                                            ? LinearGradient(
-                                                begin: Alignment.topLeft,
-                                                end: Alignment.bottomRight,
-                                                colors: [
-                                                  Theme.of(context)
-                                                      .colorScheme
-                                                      .tertiaryContainer
-                                                      .withOpacity(0.8),
-                                                  Theme.of(context)
-                                                      .colorScheme
-                                                      .primaryContainer
-                                                      .withOpacity(0.8),
-                                                ],
-                                              )
-                                            : null,
+                                Row(
+                                  key: Key(message.hashCode.toString()),
+                                  mainAxisAlignment: message.role ==
+                                          OpenAIChatMessageRole.user.name
+                                      ? MainAxisAlignment.end
+                                      : MainAxisAlignment.start,
+                                  children: [
+                                    ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        maxWidth: screenWidth * 0.75,
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 10,
-                                          horizontal: 16,
-                                        ),
-                                        //メッセージの内容
-                                        child: Text(
-                                          message.content,
-                                          style: TextStyle(
-                                            color: //ここでメッセージの送信者を判定する
+                                      child: GestureDetector(
+                                        onTap: () async {
+                                          //相手のメッセージが押された場合
+                                          if (message.role ==
+                                              OpenAIChatMessageRole
+                                                  .assistant.name) {
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                            //ボトムシートを表示させる
+                                            showModalBottomSheet(
+                                              context: context,
+                                              builder: (context) =>
+                                                  BottomSheetRecipe(message.id),
+                                              backgroundColor: Theme.of(context)
+                                                  .colorScheme
+                                                  .background,
+                                              isScrollControlled: true,
+                                              useSafeArea: false,
+                                            );
+                                          }
+                                        },
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(
                                                 message.role ==
                                                         OpenAIChatMessageRole
                                                             .user.name
-                                                    ? Theme.of(context)
-                                                        .colorScheme
-                                                        .secondary
-                                                    : alphaBlend(
-                                                        Theme.of(context)
+                                                    ? 20
+                                                    : 16,
+                                              ),
+                                              topRight: Radius.circular(
+                                                message.role ==
+                                                        OpenAIChatMessageRole
+                                                            .user.name
+                                                    ? 16
+                                                    : 20,
+                                              ),
+                                              bottomLeft: Radius.circular(
+                                                message.role ==
+                                                        OpenAIChatMessageRole
+                                                            .user.name
+                                                    ? 20
+                                                    : 4,
+                                              ),
+                                              bottomRight: Radius.circular(
+                                                // 4,
+                                                message.role ==
+                                                        OpenAIChatMessageRole
+                                                            .user.name
+                                                    ? 4
+                                                    : 20,
+                                              ),
+                                            ),
+                                            color: message.role ==
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary
+                                                    .withOpacity(0.1)
+                                                : null,
+                                            gradient: message.role !=
+                                                    OpenAIChatMessageRole
+                                                        .user.name
+                                                ? LinearGradient(
+                                                    begin: Alignment.topLeft,
+                                                    end: Alignment.bottomRight,
+                                                    colors: [
+                                                      Theme.of(context)
+                                                          .colorScheme
+                                                          .tertiaryContainer
+                                                          .withOpacity(0.8),
+                                                      Theme.of(context)
+                                                          .colorScheme
+                                                          .primaryContainer
+                                                          .withOpacity(0.8),
+                                                    ],
+                                                  )
+                                                : null,
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 10,
+                                              horizontal: 16,
+                                            ),
+                                            //メッセージの内容
+                                            child: Text(
+                                              message.content,
+                                              style: TextStyle(
+                                                color: //ここでメッセージの送信者を判定する
+                                                    message.role ==
+                                                            OpenAIChatMessageRole
+                                                                .user.name
+                                                        ? Theme.of(context)
                                                             .colorScheme
-                                                            .primary
-                                                            .withOpacity(0.5),
-                                                        Theme.of(context)
-                                                            .colorScheme
-                                                            .tertiary,
-                                                      ),
+                                                            .secondary
+                                                        : alphaBlend(
+                                                            Theme.of(context)
+                                                                .colorScheme
+                                                                .primary
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            Theme.of(context)
+                                                                .colorScheme
+                                                                .tertiary,
+                                                          ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
 
-                                //アシスタントの場合は詳細アイコンを表示する
-                                if (message.role ==
-                                    OpenAIChatMessageRole.assistant.name)
-                                  IconButton(
-                                    onPressed: () {
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                      showModalBottomSheet(
-                                        context: context,
-                                        builder: (context) =>
-                                            BottomSheetRecipe(message.id),
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .background,
-                                        isScrollControlled: true,
-                                        useSafeArea: false,
-                                      );
-                                    },
-                                    icon: Icon(
-                                      Icons.info_outline_rounded,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onBackground
-                                          .withOpacity(0.5),
-                                    ),
-                                  ),
+                                    //アシスタントの場合は詳細アイコンを表示する
+                                    if (message.role ==
+                                        OpenAIChatMessageRole.assistant.name)
+                                      IconButton(
+                                        onPressed: () {
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                          showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) =>
+                                                BottomSheetRecipe(message.id),
+                                            backgroundColor: Theme.of(context)
+                                                .colorScheme
+                                                .background,
+                                            isScrollControlled: true,
+                                            useSafeArea: false,
+                                          );
+                                        },
+                                        icon: Icon(
+                                          Icons.info_outline_rounded,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onBackground
+                                              .withOpacity(0.5),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                                //アシスタントの場合は詳細プレビューを表示する
+                                // if (message.role ==
+                                //     OpenAIChatMessageRole.assistant.name)
+                                //   ConstrainedBox(
+                                //     constraints: BoxConstraints(
+                                //       maxWidth: screenWidth * 0.75,
+                                //     ),
+                                //     child: GestureDetector(
+                                //       onTap: () async {
+                                //         FocusManager.instance.primaryFocus
+                                //             ?.unfocus();
+                                //         //ボトムシートを表示させる
+                                //         showModalBottomSheet(
+                                //           context: context,
+                                //           builder: (context) =>
+                                //               BottomSheetRecipe(message.id),
+                                //           backgroundColor: Theme.of(context)
+                                //               .colorScheme
+                                //               .background,
+                                //           isScrollControlled: true,
+                                //           useSafeArea: false,
+                                //         );
+                                //       },
+                                //       child: DecoratedBox(
+                                //         decoration: BoxDecoration(
+                                //           borderRadius: const BorderRadius.only(
+                                //             topLeft: Radius.circular(
+                                //               4,
+                                //             ),
+                                //             topRight: Radius.circular(
+                                //               4,
+                                //             ),
+                                //             bottomLeft: Radius.circular(
+                                //               4,
+                                //             ),
+                                //             bottomRight: Radius.circular(
+                                //               20,
+                                //             ),
+                                //           ),
+                                //           gradient: LinearGradient(
+                                //             begin: Alignment.topLeft,
+                                //             end: Alignment.bottomRight,
+                                //             colors: [
+                                //               Theme.of(context)
+                                //                   .colorScheme
+                                //                   .tertiaryContainer
+                                //                   .withOpacity(0.8),
+                                //               Theme.of(context)
+                                //                   .colorScheme
+                                //                   .primaryContainer
+                                //                   .withOpacity(0.8),
+                                //             ],
+                                //           ),
+                                //         ),
+                                //         child: Padding(
+                                //           padding: const EdgeInsets.symmetric(
+                                //             vertical: 10,
+                                //             horizontal: 16,
+                                //           ),
+                                //           //プレビュー表示
+                                //           child: RecipePreview(message.id),
+                                //         ),
+                                //       ),
+                                //     ),
+                                //   ),
                               ],
                             );
                           },
