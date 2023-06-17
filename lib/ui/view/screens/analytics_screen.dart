@@ -17,10 +17,13 @@ class AnalyticsScreen extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '過去の料理の栄養バランスなど',
+              '過去の料理の栄養バランス',
             ),
-            MenuItem(),
-            RadarChartView()
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: RadarChartView(),
+            ),
+            // MenuItem(),
           ],
         ),
       ),

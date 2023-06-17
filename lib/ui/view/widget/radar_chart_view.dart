@@ -47,7 +47,6 @@ class _RadarChartViewState extends ConsumerState<RadarChartView> {
               stream: value,
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  debugPrint('null ');
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
@@ -55,7 +54,6 @@ class _RadarChartViewState extends ConsumerState<RadarChartView> {
                   return const Text(
                       'エラーが発生しました。:null check operator used on a null value');
                 } else {
-                  debugPrint('データあるよ');
                   final recipe = snapshot.data!;
                   var recipeLength = recipe.length;
 
@@ -98,10 +96,8 @@ class _RadarChartViewState extends ConsumerState<RadarChartView> {
 
                   return Column(
                     children: [
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          child: SizedBox(
+                      
+                          SizedBox(
                             width: MediaQuery.of(context).size.width * 0.9,
                             height: MediaQuery.of(context).size.width * 0.9,
                             child: RadarChart(
@@ -183,8 +179,8 @@ class _RadarChartViewState extends ConsumerState<RadarChartView> {
                               swapAnimationDuration:
                                   const Duration(milliseconds: 400),
                             ),
-                          )),
-                      const Text('↑recipe'),
+                          )
+                          
                     ],
                   );
                 }
