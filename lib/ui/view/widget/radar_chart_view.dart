@@ -96,10 +96,8 @@ class _RadarChartViewState extends ConsumerState<RadarChartView> {
 
                   return Column(
                     children: [
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height*0.7,
-                          child: SizedBox(
+                      
+                          SizedBox(
                             width: MediaQuery.of(context).size.width * 0.9,
                             height: MediaQuery.of(context).size.width * 0.9,
                             child: RadarChart(
@@ -181,7 +179,8 @@ class _RadarChartViewState extends ConsumerState<RadarChartView> {
                               swapAnimationDuration:
                                   const Duration(milliseconds: 400),
                             ),
-                          )),
+                          )
+                          
                     ],
                   );
                 }
