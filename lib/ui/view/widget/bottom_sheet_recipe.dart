@@ -103,21 +103,57 @@ class BottomSheetRecipe extends HookConsumerWidget {
                               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                               child: Column(
                                 children: [
-                                  //レシピの材料
-                                  Text(
-                                    recipe[index].ingredientName.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                    ),
+                                  const SizedBox(height: 24),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      const Text(
+                                        '材料',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      ...recipe[index]
+                                          .ingredientName
+                                          .map((ingredient) {
+                                        return Text(
+                                          ingredient,
+                                        );
+                                      }).toList(),
+                                      const SizedBox(height: 24),
+                                      const Text(
+                                        '手順',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      ...recipe[index]
+                                          .stepDescription
+                                          .asMap()
+                                          .entries
+                                          .map((entry) {
+                                        final stepNumber = entry.key + 1;
+                                        final stepDescription = entry.value;
+                                        return ListTile(
+                                          leading: Text(
+                                            '$stepNumber',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          title: Text(
+                                            stepDescription,
+                                          ),
+                                        );
+                                      }).toList(),
+                                    ],
                                   ),
-                                  //レシピの手順
-                                  Text(
-                                    recipe[index].stepDescription.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
+                                  const SizedBox(height: 20),
                                   Row(
                                     children: [
                                       Icon(
@@ -140,30 +176,70 @@ class BottomSheetRecipe extends HookConsumerWidget {
                                     ],
                                   ),
                                   const SizedBox(height: 8),
-                                  //レシピのカロリー
-                                  Text(
-                                    recipe[index].calorie.toString(),
-                                    style: const TextStyle(),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'カロリー: ',
+                                        style: TextStyle(),
+                                      ),
+                                      //レシピのカロリー
+                                      Text(
+                                        recipe[index].calorie.toString(),
+                                        style: const TextStyle(),
+                                      ),
+                                    ],
                                   ),
-                                  //レシピのタンパク質
-                                  Text(
-                                    recipe[index].protein.toString(),
-                                    style: const TextStyle(),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'タンパク質: ',
+                                        style: TextStyle(),
+                                      ),
+                                      //レシピのタンパク質
+                                      Text(
+                                        recipe[index].protein.toString(),
+                                        style: const TextStyle(),
+                                      ),
+                                    ],
                                   ),
-                                  //レシピの脂質
-                                  Text(
-                                    recipe[index].fat.toString(),
-                                    style: const TextStyle(),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        '脂質: ',
+                                        style: TextStyle(),
+                                      ),
+                                      //レシピの脂質
+                                      Text(
+                                        recipe[index].fat.toString(),
+                                        style: const TextStyle(),
+                                      ),
+                                    ],
                                   ),
-                                  //レシピの炭水化物
-                                  Text(
-                                    recipe[index].carbohydrate.toString(),
-                                    style: const TextStyle(),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        '炭水化物: ',
+                                        style: TextStyle(),
+                                      ),
+                                      //レシピの炭水化物
+                                      Text(
+                                        recipe[index].carbohydrate.toString(),
+                                        style: const TextStyle(),
+                                      ),
+                                    ],
                                   ),
-                                  //レシピの塩分
-                                  Text(
-                                    recipe[index].salt.toString(),
-                                    style: const TextStyle(),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        '塩分: ',
+                                        style: TextStyle(),
+                                      ),
+                                      //レシピの塩分
+                                      Text(
+                                        recipe[index].salt.toString(),
+                                        style: const TextStyle(),
+                                      ),
+                                    ],
                                   ),
                                   const SizedBox(height: 8),
                                 ],
