@@ -128,11 +128,12 @@ class MessageRepository {
                 ..stepNumber = recipe.recipeSteps.map((e) => e.number).toList()
                 ..stepDescription =
                     recipe.recipeSteps.map((e) => e.description).toList()
-                ..calorie = recipe.nutrition.calorie
-                ..protein = recipe.nutrition.protein
-                ..fat = recipe.nutrition.fat
-                ..carbohydrate = recipe.nutrition.carbohydrate
-                ..salt = recipe.nutrition.salt
+                    //数と小数点以外の文字を削除
+                ..calorie = recipe.nutrition.calorie.replaceAll('kcal', '') 
+                ..protein = recipe.nutrition.protein.replaceAll('g', '')
+                ..fat = recipe.nutrition.fat.replaceAll('g', '')
+                ..carbohydrate = recipe.nutrition.carbohydrate.replaceAll('g', '')
+                ..salt = recipe.nutrition.salt.replaceAll('g', '')
                 ..timeStamp = DateTime.now()
                 ..isMade = false
                 ..isFavorite = false;
