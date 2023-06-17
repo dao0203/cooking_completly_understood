@@ -16,6 +16,7 @@ class ChatScreen extends HookConsumerWidget {
     final messageController = useTextEditingController();
     final screenWidth = MediaQuery.of(context).size.width;
     final isWaiting = useState(false);
+    final List<String> foodList = ['potato'];
 
     return Scaffold(
       body: Unfocus(
@@ -202,10 +203,9 @@ class ChatScreen extends HookConsumerWidget {
                 ),
               ),
             ),
-
             // 送信フォーム
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
               child: Container(
                 decoration: BoxDecoration(
                   color:
@@ -252,11 +252,9 @@ class ChatScreen extends HookConsumerWidget {
                             final sendMessage = ref
                                 .read(messagesStateProvider.notifier)
                                 .sendMessageAndReceiveMessage(
-                                  messageController.text,
-                                );
+                                    messageController.text);
                             isWaiting.value = true;
                             messageController.clear();
-                            //TODO: この処理が終わったら一番下までスクロールする
                             await sendMessage
                                 .then((value) => isWaiting.value = false);
                           }
@@ -293,6 +291,48 @@ class ChatScreen extends HookConsumerWidget {
                       ),
                   ],
                 ),
+              ),
+            ),
+            // 食材の一覧
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 0, 12, 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // const Expanded(child: FoodListData()),
+                  Expanded(
+                    child: Text(
+                      '使える食材：$foodList',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: false,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withOpacity(0.5),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      messageController.text += '使える食材：$foodList';
+                    },
+                    icon: Transform(
+                      transform: Matrix4.identity()
+                        ..scale(-1.0, 1.0), // これで左右反転させます。
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.arrow_outward_rounded, // 左向きのアイコンを使用します。
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withOpacity(0.5),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
