@@ -8,7 +8,7 @@ abstract class MakerSuiteService extends ChopperService {
   static MakerSuiteService create() => _$MakerSuiteService(ChopperClient());
 
   @Post(
-    path: '/v1beta2/models/text-bison-001:generateText?key=$makerSuiteApiKey',
+    path: '/v1beta2/models/text-bison-001:generateText?key=$palmApiKey',
     headers: {'Content-Type': 'application/json'},
   )
   Future<Response> getMessage(
