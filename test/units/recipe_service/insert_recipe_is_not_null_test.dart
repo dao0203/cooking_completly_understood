@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
+import 'package:cooking_completly_understood/data/services/recipe_service.dart';
 import 'package:isar/isar.dart';
 import 'package:path/path.dart' as path;
 
@@ -32,8 +32,7 @@ void main() async {
       ..protein = 'test'
       ..fat = 'test'
       ..carbohydrate = 'test'
-      ..salt = 'test'
-      ..isError = false,
+      ..salt = 'test',
     Recipe()
       ..name = 'test2'
       ..description = 'test2'
@@ -48,7 +47,6 @@ void main() async {
       ..fat = 'test2'
       ..carbohydrate = 'test2'
       ..salt = 'test2'
-      ..isError = false,
   ];
 
   setUpAll(() async {

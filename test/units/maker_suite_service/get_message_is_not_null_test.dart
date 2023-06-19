@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
+import 'package:cooking_completly_understood/data/services/maker_suite_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/position_service.dart';
+import 'package:cooking_completly_understood/data/services/position_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/weather_service.dart';
+import 'package:cooking_completly_understood/data/services/weather_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 

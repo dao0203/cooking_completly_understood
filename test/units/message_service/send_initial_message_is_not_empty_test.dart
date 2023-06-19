@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/chat_service.dart';
+import 'package:cooking_completly_understood/data/services/chat_service.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';

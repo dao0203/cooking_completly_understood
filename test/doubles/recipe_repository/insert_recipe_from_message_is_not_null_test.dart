@@ -7,7 +7,7 @@ import 'package:cooking_completly_understood/data/models/message/recipe_ingredie
 import 'package:cooking_completly_understood/data/models/message/recipe_steps/recipe_steps.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/repositories/recipe_repository.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
+import 'package:cooking_completly_understood/data/services/recipe_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
 import 'package:path/path.dart' as path;

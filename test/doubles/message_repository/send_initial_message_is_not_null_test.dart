@@ -1,7 +1,8 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/data/sources/chat_service.dart';
-import 'package:cooking_completly_understood/data/sources/position_service.dart';
-import 'package:cooking_completly_understood/data/sources/weather_service.dart';
+import 'package:cooking_completly_understood/data/services/chat_service.dart';
+import 'package:cooking_completly_understood/data/services/maker_suite_service.dart';
+import 'package:cooking_completly_understood/data/services/position_service.dart';
+import 'package:cooking_completly_understood/data/services/weather_service.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,7 +26,7 @@ void main() async {
     final messageRepository = MessageRepository(
       positionDataSource,
       WeatherService.create(),
-      ChatService(),
+      MakerSuiteService.create(),
     );
     await messageRepository.sendInitialMessage();
   });
