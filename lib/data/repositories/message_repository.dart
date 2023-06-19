@@ -5,11 +5,11 @@ import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
-import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
-import 'package:cooking_completly_understood/data/sources/position_service.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
-import 'package:cooking_completly_understood/data/sources/weather_service.dart';
+import 'package:cooking_completly_understood/data/services/maker_suite_service.dart';
+import 'package:cooking_completly_understood/data/services/my_message_service.dart';
+import 'package:cooking_completly_understood/data/services/position_service.dart';
+import 'package:cooking_completly_understood/data/services/recipe_service.dart';
+import 'package:cooking_completly_understood/data/services/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
@@ -128,11 +128,12 @@ class MessageRepository {
                 ..stepNumber = recipe.recipeSteps.map((e) => e.number).toList()
                 ..stepDescription =
                     recipe.recipeSteps.map((e) => e.description).toList()
-                    //数と小数点以外の文字を削除
-                ..calorie = recipe.nutrition.calorie.replaceAll('kcal', '') 
+                //数と小数点以外の文字を削除
+                ..calorie = recipe.nutrition.calorie.replaceAll('kcal', '')
                 ..protein = recipe.nutrition.protein.replaceAll('g', '')
                 ..fat = recipe.nutrition.fat.replaceAll('g', '')
-                ..carbohydrate = recipe.nutrition.carbohydrate.replaceAll('g', '')
+                ..carbohydrate =
+                    recipe.nutrition.carbohydrate.replaceAll('g', '')
                 ..salt = recipe.nutrition.salt.replaceAll('g', '')
                 ..timeStamp = DateTime.now()
                 ..isMade = false
