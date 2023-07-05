@@ -8,7 +8,7 @@ import 'package:cooking_completly_understood/data/models/weather_forecast/weathe
 import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
 import 'package:cooking_completly_understood/data/sources/my_message_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
+import 'package:cooking_completly_understood/data/sources/recipe_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
@@ -19,7 +19,7 @@ class MessageRepository {
   final PositionDataSource _positionService;
   final WeatherService _weatherService;
   final MakerSuiteService _makerMeteoService;
-  final RecipeService _recipeService;
+  final RecipeDataSource _recipeService;
   final MyMessageDataSource _myMessageService;
   MessageRepository(
     this._positionService,
@@ -145,7 +145,7 @@ class MessageRepository {
                 ..isFavorite = false;
 
               //レシピを保存
-              await _recipeService.insertRecipe(insertedRecipe);
+              await _recipeService.insert(insertedRecipe);
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）

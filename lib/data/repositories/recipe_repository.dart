@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
+import 'package:cooking_completly_understood/data/sources/recipe_data_source.dart';
 
 class RecipeRepository {
-  final RecipeService _recipeService;
+  final RecipeDataSource _recipeService;
   RecipeRepository(this._recipeService);
 
   // レシピを全て取得するメソッド
   Stream<List<Recipe>> getAllRecipes() {
     //レシピを全て取得
-    return _recipeService.getAllRecipes();
+    return _recipeService.getAll();
   }
 
   //レシピのお気に入り状態を変更するメソッド
@@ -39,7 +39,7 @@ class RecipeRepository {
 
   //idを指定してレシピを取得するメソッド
   Stream<List<Recipe>> getRecipeById(int id) {
-    return _recipeService.getRecipeById(id);
+    return _recipeService.getById(id);
   }
 
   //レシピの料理済み状態を変更するメソッド
