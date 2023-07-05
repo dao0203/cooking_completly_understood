@@ -11,7 +11,7 @@ import 'package:cooking_completly_understood/data/services/position_service.dart
 import 'package:cooking_completly_understood/data/services/recipe_service.dart';
 import 'package:cooking_completly_understood/data/services/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
-import 'package:dart_openai/dart_openai.dart';
+import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
@@ -39,7 +39,7 @@ class MessageRepository {
   Future<void> sendMessage(String inputedMessage) async {
     final myMessage = MyMessage()
       ..content = inputedMessage
-      ..role = OpenAIChatMessageRole.user.name
+      ..role = Role.user.name
       ..timeStamp = DateTime.now();
 
     //自分のメッセージをローカルDBに保存
@@ -98,27 +98,33 @@ class MessageRepository {
           await _makerMeteoService
               .getMessage(encodedModel)
               .then((chatResponse) async {
+                debugPrint('chatResponse: $chatResponse');
             //成功時(1つでも選択肢がある場合)
             if (chatResponse.isSuccessful) {
+
+              //このようになっている
+              //```json
+              //{(レスポンスボディ))}
+              //```
+
               //レスポンスボディをパース
               final parseByJsonToString = json
                   .decode(chatResponse.body)['candidates'][0]["output"]
                   .toString();
 
-              final cuttedPreviousMessage = parseByJsonToString.substring(
+              final cuttedMessage = parseByJsonToString.substring(
                   parseByJsonToString.indexOf('{'), //最初の{の位置までを切り取る
                   parseByJsonToString.length - 3); //最後の[''']を切り取る
 
-              debugPrint('cuttedPreviousMessage: $cuttedPreviousMessage');
               //パースしたものをまたパース
               final recipe = Message.fromJson(
-                json.decode(cuttedPreviousMessage),
+                json.decode(cuttedMessage),
               );
 
               //保存するレシピデータクラスを作成
               final insertedRecipe = Recipe()
                 ..name = recipe.recipeName
-                ..role = OpenAIChatMessageRole.assistant.name
+                ..role = Role.assistant.name
                 ..description = recipe.recipeDescription
                 ..cookingTime = recipe.recipeCookingTime
                 ..ingredientName =

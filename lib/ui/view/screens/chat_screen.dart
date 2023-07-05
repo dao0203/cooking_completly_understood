@@ -1,9 +1,8 @@
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
 import 'package:cooking_completly_understood/ui/view/widgets/bottom_sheet_recipe.dart';
-import 'package:cooking_completly_understood/ui/view/widgets/recipe_preview.dart';
 import 'package:cooking_completly_understood/ui/view/widgets/unfocus.dart';
+import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:cooking_completly_understood/utils/utils.dart';
-import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -54,10 +53,10 @@ class ChatScreen extends HookConsumerWidget {
                               children: [
                                 Row(
                                   key: Key(message.hashCode.toString()),
-                                  mainAxisAlignment: message.role ==
-                                          OpenAIChatMessageRole.user.name
-                                      ? MainAxisAlignment.end
-                                      : MainAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      message.role == Role.user.name
+                                          ? MainAxisAlignment.end
+                                          : MainAxisAlignment.start,
                                   children: [
                                     ConstrainedBox(
                                       constraints: BoxConstraints(
@@ -67,8 +66,7 @@ class ChatScreen extends HookConsumerWidget {
                                         onTap: () async {
                                           //相手のメッセージが押された場合
                                           if (message.role ==
-                                              OpenAIChatMessageRole
-                                                  .assistant.name) {
+                                              Role.assistant.name) {
                                             FocusManager.instance.primaryFocus
                                                 ?.unfocus();
                                             //ボトムシートを表示させる
@@ -88,46 +86,36 @@ class ChatScreen extends HookConsumerWidget {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(
-                                                message.role ==
-                                                        OpenAIChatMessageRole
-                                                            .user.name
+                                                message.role == Role.user.name
                                                     ? 20
                                                     : 16,
                                               ),
                                               topRight: Radius.circular(
-                                                message.role ==
-                                                        OpenAIChatMessageRole
-                                                            .user.name
+                                                message.role == Role.user.name
                                                     ? 16
                                                     : 20,
                                               ),
                                               bottomLeft: Radius.circular(
-                                                message.role ==
-                                                        OpenAIChatMessageRole
-                                                            .user.name
+                                                message.role == Role.user.name
                                                     ? 20
                                                     : 4,
                                               ),
                                               bottomRight: Radius.circular(
                                                 // 4,
-                                                message.role ==
-                                                        OpenAIChatMessageRole
-                                                            .user.name
+                                                message.role == Role.user.name
                                                     ? 4
                                                     : 20,
                                               ),
                                             ),
-                                            color: message.role ==
-                                                    OpenAIChatMessageRole
-                                                        .user.name
-                                                ? Theme.of(context)
-                                                    .colorScheme
-                                                    .secondary
-                                                    .withOpacity(0.1)
-                                                : null,
+                                            color:
+                                                message.role == Role.user.name
+                                                    ? Theme.of(context)
+                                                        .colorScheme
+                                                        .secondary
+                                                        .withOpacity(0.1)
+                                                    : null,
                                             gradient: message.role !=
-                                                    OpenAIChatMessageRole
-                                                        .user.name
+                                                    Role.user.name
                                                 ? LinearGradient(
                                                     begin: Alignment.topLeft,
                                                     end: Alignment.bottomRight,
@@ -155,8 +143,7 @@ class ChatScreen extends HookConsumerWidget {
                                               style: TextStyle(
                                                 color: //ここでメッセージの送信者を判定する
                                                     message.role ==
-                                                            OpenAIChatMessageRole
-                                                                .user.name
+                                                            Role.user.name
                                                         ? Theme.of(context)
                                                             .colorScheme
                                                             .secondary
@@ -178,8 +165,7 @@ class ChatScreen extends HookConsumerWidget {
                                     ),
 
                                     //アシスタントの場合は詳細アイコンを表示する
-                                    if (message.role ==
-                                        OpenAIChatMessageRole.assistant.name)
+                                    if (message.role == Role.assistant.name)
                                       IconButton(
                                         onPressed: () {
                                           FocusManager.instance.primaryFocus
