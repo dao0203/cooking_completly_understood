@@ -6,7 +6,7 @@ import 'package:cooking_completly_understood/data/models/my_message/my_message.d
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
-import 'package:cooking_completly_understood/data/sources/my_message_service.dart';
+import 'package:cooking_completly_understood/data/sources/my_message_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/position_service.dart';
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
@@ -20,7 +20,7 @@ class MessageRepository {
   final WeatherService _weatherService;
   final MakerSuiteService _makerMeteoService;
   final RecipeService _recipeService;
-  final MyMessageService _myMessageService;
+  final MyMessageDataSource _myMessageService;
   MessageRepository(
     this._positionService,
     this._weatherService,
@@ -43,7 +43,7 @@ class MessageRepository {
       ..timeStamp = DateTime.now();
 
     //自分のメッセージをローカルDBに保存
-    await _myMessageService.insertMyMessage(myMessage);
+    await _myMessageService.insert(myMessage);
 
     //
     //現在地を取得
@@ -98,10 +98,9 @@ class MessageRepository {
           await _makerMeteoService
               .getMessage(encodedModel)
               .then((chatResponse) async {
-                debugPrint('chatResponse: $chatResponse');
+            debugPrint('chatResponse: $chatResponse');
             //成功時(1つでも選択肢がある場合)
             if (chatResponse.isSuccessful) {
-
               //このようになっている
               //```json
               //{(レスポンスボディ))}
@@ -163,6 +162,6 @@ class MessageRepository {
 
   //ユーザが入力したメッセージを全取得する
   Stream<List<MyMessage>> getAllMyMessages() {
-    return _myMessageService.getAllMyMessages();
+    return _myMessageService.getAll();
   }
 }
