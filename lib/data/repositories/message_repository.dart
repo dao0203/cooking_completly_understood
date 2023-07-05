@@ -7,7 +7,7 @@ import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
 import 'package:cooking_completly_understood/data/sources/my_message_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/position_service.dart';
+import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 import 'package:cooking_completly_understood/data/sources/weather_service.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
 class MessageRepository {
-  final PositionService _positionService;
+  final PositionDataSource _positionService;
   final WeatherService _weatherService;
   final MakerSuiteService _makerMeteoService;
   final RecipeService _recipeService;
@@ -47,7 +47,7 @@ class MessageRepository {
 
     //
     //現在地を取得
-    final position = await _positionService.getLocationInfo();
+    final position = await _positionService.getInfo();
 
     //天気情報を取得
     await _weatherService

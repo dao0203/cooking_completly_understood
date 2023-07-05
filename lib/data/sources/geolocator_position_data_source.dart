@@ -1,8 +1,10 @@
+import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
 import 'package:geolocator/geolocator.dart';
 
-class PositionService {
+class GeolocatorPositionDataSource implements PositionDataSource {
   // 位置情報を取得する
-  Future<Position> getLocationInfo() async {
+  @override
+  Future<Position> getInfo() async {
     // 位置情報を取得できるかどうかのフラグ
     bool isLocationServiceEnabled;
     LocationPermission permission;
