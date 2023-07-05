@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/services/recipe_service.dart';
+import 'package:cooking_completly_understood/data/sources/recipe_service.dart';
 
 class RecipeRepository {
   final RecipeService _recipeService;
