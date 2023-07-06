@@ -29,12 +29,6 @@ class MessageRepository {
     this._myMessageService,
   );
 
-  //初期メッセージを送信する
-  Future<void> sendInitialMessage() async {
-    //初期メッセージを送信
-    // await _chatService.sendInitialMessage();
-  }
-
   //メッセージを送信して返信を受け取る
   Future<void> sendMessage(String inputedMessage) async {
     final myMessage = MyMessage()
