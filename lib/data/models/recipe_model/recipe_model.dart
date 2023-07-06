@@ -1,9 +1,9 @@
 import 'package:isar/isar.dart';
 
-part 'recipe.g.dart';
+part 'recipe_model.g.dart';
 
 @collection
-class Recipe {
+class RecipeModel {
   Id id = Isar.autoIncrement;
   late String role;
   late String name;

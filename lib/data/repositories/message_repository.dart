@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
-import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
 import 'package:cooking_completly_understood/data/sources/palm_api_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/my_message_data_source.dart';
@@ -115,7 +115,7 @@ class MessageRepository {
               );
 
               //保存するレシピデータクラスを作成
-              final insertedRecipe = Recipe()
+              final insertedRecipe = RecipeModel()
                 ..name = recipe.recipeName
                 ..role = Role.assistant.name
                 ..description = recipe.recipeDescription

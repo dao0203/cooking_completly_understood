@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe.dart';
+part of 'recipe_model.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,13 +9,13 @@ part of 'recipe.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetRecipeCollection on Isar {
-  IsarCollection<Recipe> get recipes => this.collection();
+extension GetRecipeModelCollection on Isar {
+  IsarCollection<RecipeModel> get recipeModels => this.collection();
 }
 
-const RecipeSchema = CollectionSchema(
-  name: r'Recipe',
-  id: 8054415271972849591,
+const RecipeModelSchema = CollectionSchema(
+  name: r'RecipeModel',
+  id: 1871555323955702891,
   properties: {
     r'calorie': PropertySchema(
       id: 0,
@@ -98,22 +98,22 @@ const RecipeSchema = CollectionSchema(
       type: IsarType.dateTime,
     )
   },
-  estimateSize: _recipeEstimateSize,
-  serialize: _recipeSerialize,
-  deserialize: _recipeDeserialize,
-  deserializeProp: _recipeDeserializeProp,
+  estimateSize: _recipeModelEstimateSize,
+  serialize: _recipeModelSerialize,
+  deserialize: _recipeModelDeserialize,
+  deserializeProp: _recipeModelDeserializeProp,
   idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _recipeGetId,
-  getLinks: _recipeGetLinks,
-  attach: _recipeAttach,
+  getId: _recipeModelGetId,
+  getLinks: _recipeModelGetLinks,
+  attach: _recipeModelAttach,
   version: '3.1.0+1',
 );
 
-int _recipeEstimateSize(
-  Recipe object,
+int _recipeModelEstimateSize(
+  RecipeModel object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -158,8 +158,8 @@ int _recipeEstimateSize(
   return bytesCount;
 }
 
-void _recipeSerialize(
-  Recipe object,
+void _recipeModelSerialize(
+  RecipeModel object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -182,13 +182,13 @@ void _recipeSerialize(
   writer.writeDateTime(offsets[15], object.timeStamp);
 }
 
-Recipe _recipeDeserialize(
+RecipeModel _recipeModelDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Recipe();
+  final object = RecipeModel();
   object.calorie = reader.readString(offsets[0]);
   object.carbohydrate = reader.readString(offsets[1]);
   object.cookingTime = reader.readString(offsets[2]);
@@ -209,7 +209,7 @@ Recipe _recipeDeserialize(
   return object;
 }
 
-P _recipeDeserializeProp<P>(
+P _recipeModelDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -253,28 +253,31 @@ P _recipeDeserializeProp<P>(
   }
 }
 
-Id _recipeGetId(Recipe object) {
+Id _recipeModelGetId(RecipeModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _recipeGetLinks(Recipe object) {
+List<IsarLinkBase<dynamic>> _recipeModelGetLinks(RecipeModel object) {
   return [];
 }
 
-void _recipeAttach(IsarCollection<dynamic> col, Id id, Recipe object) {
+void _recipeModelAttach(
+    IsarCollection<dynamic> col, Id id, RecipeModel object) {
   object.id = id;
 }
 
-extension RecipeQueryWhereSort on QueryBuilder<Recipe, Recipe, QWhere> {
-  QueryBuilder<Recipe, Recipe, QAfterWhere> anyId() {
+extension RecipeModelQueryWhereSort
+    on QueryBuilder<RecipeModel, RecipeModel, QWhere> {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension RecipeQueryWhere on QueryBuilder<Recipe, Recipe, QWhereClause> {
-  QueryBuilder<Recipe, Recipe, QAfterWhereClause> idEqualTo(Id id) {
+extension RecipeModelQueryWhere
+    on QueryBuilder<RecipeModel, RecipeModel, QWhereClause> {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -283,7 +286,8 @@ extension RecipeQueryWhere on QueryBuilder<Recipe, Recipe, QWhereClause> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterWhereClause> idNotEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -305,7 +309,7 @@ extension RecipeQueryWhere on QueryBuilder<Recipe, Recipe, QWhereClause> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<RecipeModel, RecipeModel, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -314,7 +318,7 @@ extension RecipeQueryWhere on QueryBuilder<Recipe, Recipe, QWhereClause> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<RecipeModel, RecipeModel, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -323,7 +327,7 @@ extension RecipeQueryWhere on QueryBuilder<Recipe, Recipe, QWhereClause> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterWhereClause> idBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -340,8 +344,9 @@ extension RecipeQueryWhere on QueryBuilder<Recipe, Recipe, QWhereClause> {
   }
 }
 
-extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieEqualTo(
+extension RecipeModelQueryFilter
+    on QueryBuilder<RecipeModel, RecipeModel, QFilterCondition> {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> calorieEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -354,7 +359,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      calorieGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -369,7 +375,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> calorieLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -384,7 +390,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> calorieBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -403,7 +409,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieStartsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      calorieStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -416,7 +423,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> calorieEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -429,7 +436,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieContains(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> calorieContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -441,7 +448,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieMatches(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> calorieMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -453,7 +460,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      calorieIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'calorie',
@@ -462,7 +470,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> calorieIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      calorieIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'calorie',
@@ -471,7 +480,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -484,7 +494,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -499,7 +510,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -514,7 +526,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -533,7 +546,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateStartsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -546,7 +560,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -559,411 +574,425 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateContains(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'carbohydrate',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'carbohydrate',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'carbohydrate',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      carbohydrateIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'carbohydrate',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'cookingTime',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'cookingTime',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'cookingTime',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'cookingTime',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      cookingTimeIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'cookingTime',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'description',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'description',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'description',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'description',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'description',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'description',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'description',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'description',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'description',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      descriptionIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'description',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'fat',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'fat',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'fat',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'fat',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'fat',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'fat',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
-        property: r'carbohydrate',
+        property: r'fat',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateMatches(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
-        property: r'carbohydrate',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'carbohydrate',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> carbohydrateIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'carbohydrate',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'cookingTime',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'cookingTime',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'cookingTime',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'cookingTime',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'cookingTime',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'cookingTime',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeContains(
-      String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'cookingTime',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'cookingTime',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'cookingTime',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> cookingTimeIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'cookingTime',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'description',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'description',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'description',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'description',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'description',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'description',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionContains(
-      String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'description',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'description',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'description',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> descriptionIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'description',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'fat',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'fat',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'fat',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'fat',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'fat',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'fat',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatContains(String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'fat',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatMatches(String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
         property: r'fat',
         wildcard: pattern,
         caseSensitive: caseSensitive,
@@ -971,7 +1000,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> fatIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'fat',
@@ -980,7 +1009,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> fatIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      fatIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'fat',
@@ -989,7 +1019,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> idEqualTo(
+      Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -998,7 +1029,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -1011,7 +1042,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> idLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -1024,7 +1055,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> idBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -1041,7 +1072,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1055,7 +1086,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementGreaterThan(
     String value, {
     bool include = false,
@@ -1071,7 +1102,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementLessThan(
     String value, {
     bool include = false,
@@ -1087,7 +1118,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementBetween(
     String lower,
     String upper, {
@@ -1107,7 +1138,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -1121,7 +1152,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -1135,7 +1166,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -1146,7 +1177,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementMatches(String pattern,
           {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1158,7 +1189,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -1168,7 +1199,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -1178,7 +1209,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -1191,7 +1222,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> ingredientNameIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      ingredientNameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'ingredientName',
@@ -1203,7 +1235,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -1216,7 +1248,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameLengthLessThan(
     int length, {
     bool include = false,
@@ -1232,7 +1264,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameLengthGreaterThan(
     int length, {
     bool include = false,
@@ -1248,7 +1280,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientNameLengthBetween(
     int lower,
     int upper, {
@@ -1266,7 +1298,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1280,7 +1312,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementGreaterThan(
     String value, {
     bool include = false,
@@ -1296,7 +1328,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementLessThan(
     String value, {
     bool include = false,
@@ -1312,7 +1344,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementBetween(
     String lower,
     String upper, {
@@ -1332,7 +1364,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -1346,7 +1378,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -1360,7 +1392,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementContains(String value,
           {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1372,7 +1404,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementMatches(String pattern,
           {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1384,7 +1416,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -1394,7 +1426,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -1404,7 +1436,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -1417,7 +1449,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -1430,7 +1462,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -1443,7 +1475,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityLengthLessThan(
     int length, {
     bool include = false,
@@ -1459,7 +1491,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityLengthGreaterThan(
     int length, {
     bool include = false,
@@ -1475,7 +1507,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       ingredientQuantityLengthBetween(
     int lower,
     int upper, {
@@ -1493,8 +1525,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isFavoriteEqualTo(
-      bool value) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      isFavoriteEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'isFavorite',
@@ -1503,7 +1535,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> isMadeEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> isMadeEqualTo(
       bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -1513,7 +1545,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1526,7 +1558,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1541,7 +1573,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1556,7 +1588,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1575,7 +1607,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameStartsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1588,7 +1620,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1601,7 +1633,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameContains(String value,
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameContains(
+      String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -1612,7 +1645,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameMatches(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1624,7 +1657,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'name',
@@ -1633,7 +1666,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> nameIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'name',
@@ -1642,7 +1676,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> proteinEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1655,7 +1689,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      proteinGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1670,7 +1705,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> proteinLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1685,7 +1720,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> proteinBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1704,7 +1739,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinStartsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      proteinStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1717,7 +1753,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> proteinEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1730,7 +1766,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinContains(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> proteinContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1742,7 +1778,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinMatches(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> proteinMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1754,7 +1790,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      proteinIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'protein',
@@ -1763,7 +1800,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> proteinIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      proteinIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'protein',
@@ -1772,7 +1810,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1785,7 +1823,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1800,7 +1838,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1815,7 +1853,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1834,7 +1872,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleStartsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1847,7 +1885,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1860,7 +1898,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleContains(String value,
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleContains(
+      String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -1871,7 +1910,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleMatches(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1883,7 +1922,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> roleIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'role',
@@ -1892,7 +1931,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> roleIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      roleIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'role',
@@ -1901,7 +1941,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1914,7 +1954,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1929,7 +1969,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1944,7 +1984,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1963,7 +2003,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltStartsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1976,7 +2016,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1989,7 +2029,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltContains(String value,
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltContains(
+      String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -2000,7 +2041,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltMatches(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2012,7 +2053,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition> saltIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'salt',
@@ -2021,7 +2062,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> saltIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      saltIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'salt',
@@ -2030,7 +2072,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -2044,7 +2086,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementGreaterThan(
     String value, {
     bool include = false,
@@ -2060,7 +2102,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementLessThan(
     String value, {
     bool include = false,
@@ -2076,7 +2118,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementBetween(
     String lower,
     String upper, {
@@ -2096,7 +2138,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -2110,7 +2152,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -2124,7 +2166,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementContains(String value,
           {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2136,7 +2178,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementMatches(String pattern,
           {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2148,7 +2190,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2158,7 +2200,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2168,7 +2210,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -2181,7 +2223,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepDescriptionIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepDescriptionIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'stepDescription',
@@ -2193,7 +2236,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -2206,7 +2249,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionLengthLessThan(
     int length, {
     bool include = false,
@@ -2222,7 +2265,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionLengthGreaterThan(
     int length, {
     bool include = false,
@@ -2238,7 +2281,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepDescriptionLengthBetween(
     int lower,
     int upper, {
@@ -2256,7 +2299,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberElementEqualTo(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberElementEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2269,7 +2313,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepNumberElementGreaterThan(
     String value, {
     bool include = false,
@@ -2285,7 +2329,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberElementLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberElementLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2300,7 +2345,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberElementBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberElementBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -2319,7 +2365,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepNumberElementStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -2333,7 +2379,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberElementEndsWith(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberElementEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2346,9 +2393,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberElementContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberElementContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'stepNumber',
@@ -2358,9 +2404,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberElementMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberElementMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'stepNumber',
@@ -2370,7 +2415,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepNumberElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2380,7 +2425,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepNumberElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2390,8 +2435,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberLengthEqualTo(
-      int length) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'stepNumber',
@@ -2403,7 +2448,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberIsEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'stepNumber',
@@ -2415,7 +2461,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberIsNotEmpty() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'stepNumber',
@@ -2427,7 +2474,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberLengthLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberLengthLessThan(
     int length, {
     bool include = false,
   }) {
@@ -2442,7 +2490,7 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition>
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
       stepNumberLengthGreaterThan(
     int length, {
     bool include = false,
@@ -2458,7 +2506,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> stepNumberLengthBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      stepNumberLengthBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -2475,8 +2524,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampEqualTo(
-      DateTime value) {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      timeStampEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'timeStamp',
@@ -2485,7 +2534,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampGreaterThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      timeStampGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -2498,7 +2548,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampLessThan(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      timeStampLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -2511,7 +2562,8 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterFilterCondition> timeStampBetween(
+  QueryBuilder<RecipeModel, RecipeModel, QAfterFilterCondition>
+      timeStampBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -2529,522 +2581,533 @@ extension RecipeQueryFilter on QueryBuilder<Recipe, Recipe, QFilterCondition> {
   }
 }
 
-extension RecipeQueryObject on QueryBuilder<Recipe, Recipe, QFilterCondition> {}
+extension RecipeModelQueryObject
+    on QueryBuilder<RecipeModel, RecipeModel, QFilterCondition> {}
 
-extension RecipeQueryLinks on QueryBuilder<Recipe, Recipe, QFilterCondition> {}
+extension RecipeModelQueryLinks
+    on QueryBuilder<RecipeModel, RecipeModel, QFilterCondition> {}
 
-extension RecipeQuerySortBy on QueryBuilder<Recipe, Recipe, QSortBy> {
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCalorie() {
+extension RecipeModelQuerySortBy
+    on QueryBuilder<RecipeModel, RecipeModel, QSortBy> {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByCalorie() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'calorie', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCalorieDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByCalorieDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'calorie', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCarbohydrate() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByCarbohydrate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carbohydrate', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCarbohydrateDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy>
+      sortByCarbohydrateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carbohydrate', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCookingTime() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByCookingTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cookingTime', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByCookingTimeDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByCookingTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cookingTime', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByDescription() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByDescriptionDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByDescriptionDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByFat() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByFat() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fat', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByFatDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByFatDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fat', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsFavorite() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsFavoriteDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByIsFavoriteDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsMade() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByIsMade() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isMade', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByIsMadeDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByIsMadeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isMade', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByName() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByNameDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByProtein() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByProtein() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'protein', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByProteinDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByProteinDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'protein', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByRole() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByRole() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByRoleDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByRoleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortBySalt() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortBySalt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortBySaltDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortBySaltDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByTimeStamp() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByTimeStamp() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> sortByTimeStampDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> sortByTimeStampDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.desc);
     });
   }
 }
 
-extension RecipeQuerySortThenBy on QueryBuilder<Recipe, Recipe, QSortThenBy> {
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCalorie() {
+extension RecipeModelQuerySortThenBy
+    on QueryBuilder<RecipeModel, RecipeModel, QSortThenBy> {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByCalorie() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'calorie', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCalorieDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByCalorieDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'calorie', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCarbohydrate() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByCarbohydrate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carbohydrate', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCarbohydrateDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy>
+      thenByCarbohydrateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carbohydrate', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCookingTime() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByCookingTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cookingTime', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByCookingTimeDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByCookingTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cookingTime', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByDescription() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByDescriptionDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByDescriptionDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByFat() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByFat() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fat', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByFatDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByFatDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fat', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenById() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsFavorite() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsFavoriteDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByIsFavoriteDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsMade() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByIsMade() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isMade', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByIsMadeDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByIsMadeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isMade', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByName() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByNameDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByProtein() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByProtein() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'protein', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByProteinDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByProteinDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'protein', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByRole() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByRole() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByRoleDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByRoleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenBySalt() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenBySalt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenBySaltDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenBySaltDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'salt', Sort.desc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByTimeStamp() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByTimeStamp() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.asc);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QAfterSortBy> thenByTimeStampDesc() {
+  QueryBuilder<RecipeModel, RecipeModel, QAfterSortBy> thenByTimeStampDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.desc);
     });
   }
 }
 
-extension RecipeQueryWhereDistinct on QueryBuilder<Recipe, Recipe, QDistinct> {
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByCalorie(
+extension RecipeModelQueryWhereDistinct
+    on QueryBuilder<RecipeModel, RecipeModel, QDistinct> {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByCalorie(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'calorie', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByCarbohydrate(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByCarbohydrate(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'carbohydrate', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByCookingTime(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByCookingTime(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'cookingTime', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByDescription(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByDescription(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'description', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByFat(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByFat(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'fat', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIngredientName() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByIngredientName() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'ingredientName');
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIngredientQuantity() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct>
+      distinctByIngredientQuantity() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'ingredientQuantity');
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsFavorite() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isFavorite');
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByIsMade() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByIsMade() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isMade');
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByName(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByProtein(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByProtein(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'protein', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByRole(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByRole(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'role', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctBySalt(
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctBySalt(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'salt', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByStepDescription() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct>
+      distinctByStepDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stepDescription');
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByStepNumber() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByStepNumber() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stepNumber');
     });
   }
 
-  QueryBuilder<Recipe, Recipe, QDistinct> distinctByTimeStamp() {
+  QueryBuilder<RecipeModel, RecipeModel, QDistinct> distinctByTimeStamp() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'timeStamp');
     });
   }
 }
 
-extension RecipeQueryProperty on QueryBuilder<Recipe, Recipe, QQueryProperty> {
-  QueryBuilder<Recipe, int, QQueryOperations> idProperty() {
+extension RecipeModelQueryProperty
+    on QueryBuilder<RecipeModel, RecipeModel, QQueryProperty> {
+  QueryBuilder<RecipeModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> calorieProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> calorieProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'calorie');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> carbohydrateProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> carbohydrateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'carbohydrate');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> cookingTimeProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> cookingTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'cookingTime');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> descriptionProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> descriptionProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'description');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> fatProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> fatProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'fat');
     });
   }
 
-  QueryBuilder<Recipe, List<String>, QQueryOperations>
+  QueryBuilder<RecipeModel, List<String>, QQueryOperations>
       ingredientNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'ingredientName');
     });
   }
 
-  QueryBuilder<Recipe, List<String>, QQueryOperations>
+  QueryBuilder<RecipeModel, List<String>, QQueryOperations>
       ingredientQuantityProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'ingredientQuantity');
     });
   }
 
-  QueryBuilder<Recipe, bool, QQueryOperations> isFavoriteProperty() {
+  QueryBuilder<RecipeModel, bool, QQueryOperations> isFavoriteProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isFavorite');
     });
   }
 
-  QueryBuilder<Recipe, bool, QQueryOperations> isMadeProperty() {
+  QueryBuilder<RecipeModel, bool, QQueryOperations> isMadeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isMade');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> nameProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> proteinProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> proteinProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'protein');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> roleProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> roleProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'role');
     });
   }
 
-  QueryBuilder<Recipe, String, QQueryOperations> saltProperty() {
+  QueryBuilder<RecipeModel, String, QQueryOperations> saltProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'salt');
     });
   }
 
-  QueryBuilder<Recipe, List<String>, QQueryOperations>
+  QueryBuilder<RecipeModel, List<String>, QQueryOperations>
       stepDescriptionProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'stepDescription');
     });
   }
 
-  QueryBuilder<Recipe, List<String>, QQueryOperations> stepNumberProperty() {
+  QueryBuilder<RecipeModel, List<String>, QQueryOperations>
+      stepNumberProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'stepNumber');
     });
   }
 
-  QueryBuilder<Recipe, DateTime, QQueryOperations> timeStampProperty() {
+  QueryBuilder<RecipeModel, DateTime, QQueryOperations> timeStampProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'timeStamp');
     });

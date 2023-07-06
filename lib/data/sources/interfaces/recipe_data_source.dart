@@ -1,9 +1,9 @@
-import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 
 abstract class RecipeDataSource {
-  Stream<List<Recipe>> getAll();
-  Stream<List<Recipe>> getById(int id);
-  Future<void> insert(Recipe recipe);
-  Future<void> changeFavoriteStatus(Recipe recipe);
-  Future<void> changeMadeStatus(Recipe recipe);
+  Stream<List<RecipeModel>> getAll();
+  Stream<List<RecipeModel>> getById(int id);
+  Future<void> insert(RecipeModel recipe);
+  Future<void> changeFavoriteStatus(RecipeModel recipe);
+  Future<void> changeMadeStatus(RecipeModel recipe);
 }

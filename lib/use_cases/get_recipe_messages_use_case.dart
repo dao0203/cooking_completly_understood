@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
-import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/data/repositories/recipe_repository.dart';
@@ -14,7 +14,7 @@ class GetRecipeMessagesUseCase {
   GetRecipeMessagesUseCase(this._messageRepository, this._recipeRepository);
   //RecipeからRecipeMessageへ変換するトランスフォーマー
   final recipeToRecipeMessageTransformer =
-      StreamTransformer<List<Recipe>, List<RecipeMessage>>.fromHandlers(
+      StreamTransformer<List<RecipeModel>, List<RecipeMessage>>.fromHandlers(
     handleData: (recipes, sink) {
       final recipeMessages = recipes
           .map(
