@@ -1,6 +1,6 @@
-import 'package:cooking_completly_understood/data/sources/weather_service.dart';
+import 'package:cooking_completly_understood/data/sources/open_meteo_api_data_source.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final weatherInfoDataSourceProvider = Provider<WeatherService>((ref) {
-  return WeatherService.create();
+final weatherInfoDataSourceProvider = Provider<OpenMeteoApiDataSource>((ref) {
+  return OpenMeteoApiDataSource.create();
 });

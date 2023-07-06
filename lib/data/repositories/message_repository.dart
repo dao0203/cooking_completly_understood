@@ -5,11 +5,11 @@ import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/sources/maker_suite_service.dart';
-import 'package:cooking_completly_understood/data/sources/my_message_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/weather_service.dart';
+import 'package:cooking_completly_understood/data/sources/palm_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/my_message_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/position_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/open_meteo_api_data_source.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +17,8 @@ import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
 class MessageRepository {
   final PositionDataSource _positionService;
-  final WeatherService _weatherService;
-  final MakerSuiteService _makerMeteoService;
+  final OpenMeteoApiDataSource _weatherService;
+  final PaLMApiDataSource _makerMeteoService;
   final RecipeDataSource _recipeService;
   final MyMessageDataSource _myMessageService;
   MessageRepository(

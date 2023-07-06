@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/position_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/position_data_source.dart';
 import 'package:geolocator/geolocator.dart';
 
 class GeolocatorPositionDataSource implements PositionDataSource {

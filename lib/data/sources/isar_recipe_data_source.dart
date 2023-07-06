@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/sources/recipe_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 

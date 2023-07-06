@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/di/maker_suite_service_provider.dart';
+import 'package:cooking_completly_understood/di/palm_api_data_source_provider.dart';
 import 'package:cooking_completly_understood/di/my_message_data_source_provider.dart';
 import 'package:cooking_completly_understood/di/position_data_source_providier.dart';
 import 'package:cooking_completly_understood/di/recipe_data_source_provider.dart';
@@ -12,7 +12,7 @@ final messageRepositoryProvider = Provider((ref) async {
               (myMessage) => MessageRepository(
                 ref.read(positionDataSourceProvider),
                 ref.read(weatherInfoDataSourceProvider),
-                ref.read(makerSuiteServiceProvider),
+                ref.read(paLMApiDataSourceProvider),
                 recipeService,
                 myMessage,
               ),
