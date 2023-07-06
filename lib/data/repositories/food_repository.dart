@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/food/food.dart';
+import 'package:cooking_completly_understood/data/models/food_model/food_model.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
 
 class FoodRepository {
@@ -6,13 +6,13 @@ class FoodRepository {
   FoodRepository(this._foodService);
 
   //食べ物を全て取得するメソッド
-  Stream<List<Food>> getAllFood() {
+  Stream<List<FoodModel>> getAllFood() {
     return _foodService.getAllFood();
   }
 
   //食べ物を保存するメソッド
   Future<void> insertFood(String foodName) async {
-    final food = Food()
+    final food = FoodModel()
       ..name = foodName
       ..createdAt = DateTime.now();
     await _foodService.insertFood(food);

@@ -1,9 +1,9 @@
 import 'package:isar/isar.dart';
 
-part 'food.g.dart';
+part 'food_model.g.dart';
 
 @collection
-class Food{
+class FoodModel {
   Id id = Isar.autoIncrement;
   late String name;
   late DateTime createdAt;

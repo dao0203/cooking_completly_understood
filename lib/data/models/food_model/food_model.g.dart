@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'food.dart';
+part of 'food_model.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,13 +9,13 @@ part of 'food.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetFoodCollection on Isar {
-  IsarCollection<Food> get foods => this.collection();
+extension GetFoodModelCollection on Isar {
+  IsarCollection<FoodModel> get foodModels => this.collection();
 }
 
-const FoodSchema = CollectionSchema(
-  name: r'Food',
-  id: -1224223000086120450,
+const FoodModelSchema = CollectionSchema(
+  name: r'FoodModel',
+  id: 204927117867715681,
   properties: {
     r'createdAt': PropertySchema(
       id: 0,
@@ -28,22 +28,22 @@ const FoodSchema = CollectionSchema(
       type: IsarType.string,
     )
   },
-  estimateSize: _foodEstimateSize,
-  serialize: _foodSerialize,
-  deserialize: _foodDeserialize,
-  deserializeProp: _foodDeserializeProp,
+  estimateSize: _foodModelEstimateSize,
+  serialize: _foodModelSerialize,
+  deserialize: _foodModelDeserialize,
+  deserializeProp: _foodModelDeserializeProp,
   idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _foodGetId,
-  getLinks: _foodGetLinks,
-  attach: _foodAttach,
+  getId: _foodModelGetId,
+  getLinks: _foodModelGetLinks,
+  attach: _foodModelAttach,
   version: '3.1.0+1',
 );
 
-int _foodEstimateSize(
-  Food object,
+int _foodModelEstimateSize(
+  FoodModel object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -52,8 +52,8 @@ int _foodEstimateSize(
   return bytesCount;
 }
 
-void _foodSerialize(
-  Food object,
+void _foodModelSerialize(
+  FoodModel object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -62,20 +62,20 @@ void _foodSerialize(
   writer.writeString(offsets[1], object.name);
 }
 
-Food _foodDeserialize(
+FoodModel _foodModelDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Food();
+  final object = FoodModel();
   object.createdAt = reader.readDateTime(offsets[0]);
   object.id = id;
   object.name = reader.readString(offsets[1]);
   return object;
 }
 
-P _foodDeserializeProp<P>(
+P _foodModelDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -91,28 +91,30 @@ P _foodDeserializeProp<P>(
   }
 }
 
-Id _foodGetId(Food object) {
+Id _foodModelGetId(FoodModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _foodGetLinks(Food object) {
+List<IsarLinkBase<dynamic>> _foodModelGetLinks(FoodModel object) {
   return [];
 }
 
-void _foodAttach(IsarCollection<dynamic> col, Id id, Food object) {
+void _foodModelAttach(IsarCollection<dynamic> col, Id id, FoodModel object) {
   object.id = id;
 }
 
-extension FoodQueryWhereSort on QueryBuilder<Food, Food, QWhere> {
-  QueryBuilder<Food, Food, QAfterWhere> anyId() {
+extension FoodModelQueryWhereSort
+    on QueryBuilder<FoodModel, FoodModel, QWhere> {
+  QueryBuilder<FoodModel, FoodModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
-  QueryBuilder<Food, Food, QAfterWhereClause> idEqualTo(Id id) {
+extension FoodModelQueryWhere
+    on QueryBuilder<FoodModel, FoodModel, QWhereClause> {
+  QueryBuilder<FoodModel, FoodModel, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -121,7 +123,7 @@ extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<FoodModel, FoodModel, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -143,7 +145,7 @@ extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<FoodModel, FoodModel, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -152,7 +154,7 @@ extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<FoodModel, FoodModel, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -161,7 +163,7 @@ extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterWhereClause> idBetween(
+  QueryBuilder<FoodModel, FoodModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -178,8 +180,9 @@ extension FoodQueryWhere on QueryBuilder<Food, Food, QWhereClause> {
   }
 }
 
-extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
-  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtEqualTo(
+extension FoodModelQueryFilter
+    on QueryBuilder<FoodModel, FoodModel, QFilterCondition> {
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> createdAtEqualTo(
       DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -189,7 +192,8 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtGreaterThan(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition>
+      createdAtGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -202,7 +206,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtLessThan(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> createdAtLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -215,7 +219,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> createdAtBetween(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> createdAtBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -232,7 +236,8 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> idEqualTo(
+      Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -241,7 +246,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -254,7 +259,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> idLessThan(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -267,7 +272,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> idBetween(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -284,7 +289,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameEqualTo(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -297,7 +302,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameGreaterThan(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -312,7 +317,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameLessThan(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -327,7 +332,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameBetween(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -346,7 +351,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameStartsWith(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -359,7 +364,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameEndsWith(
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -372,7 +377,8 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameContains(String value,
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameContains(
+      String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -383,7 +389,8 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameMatches(String pattern,
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameMatches(
+      String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -394,7 +401,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameIsEmpty() {
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'name',
@@ -403,7 +410,7 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Food, Food, QAfterFilterCondition> nameIsNotEmpty() {
+  QueryBuilder<FoodModel, FoodModel, QAfterFilterCondition> nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'name',
@@ -413,82 +420,86 @@ extension FoodQueryFilter on QueryBuilder<Food, Food, QFilterCondition> {
   }
 }
 
-extension FoodQueryObject on QueryBuilder<Food, Food, QFilterCondition> {}
+extension FoodModelQueryObject
+    on QueryBuilder<FoodModel, FoodModel, QFilterCondition> {}
 
-extension FoodQueryLinks on QueryBuilder<Food, Food, QFilterCondition> {}
+extension FoodModelQueryLinks
+    on QueryBuilder<FoodModel, FoodModel, QFilterCondition> {}
 
-extension FoodQuerySortBy on QueryBuilder<Food, Food, QSortBy> {
-  QueryBuilder<Food, Food, QAfterSortBy> sortByCreatedAt() {
+extension FoodModelQuerySortBy on QueryBuilder<FoodModel, FoodModel, QSortBy> {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> sortByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.asc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> sortByCreatedAtDesc() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> sortByCreatedAtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.desc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> sortByName() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> sortByNameDesc() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension FoodQuerySortThenBy on QueryBuilder<Food, Food, QSortThenBy> {
-  QueryBuilder<Food, Food, QAfterSortBy> thenByCreatedAt() {
+extension FoodModelQuerySortThenBy
+    on QueryBuilder<FoodModel, FoodModel, QSortThenBy> {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> thenByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.asc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> thenByCreatedAtDesc() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> thenByCreatedAtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.desc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> thenById() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> thenByName() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<Food, Food, QAfterSortBy> thenByNameDesc() {
+  QueryBuilder<FoodModel, FoodModel, QAfterSortBy> thenByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension FoodQueryWhereDistinct on QueryBuilder<Food, Food, QDistinct> {
-  QueryBuilder<Food, Food, QDistinct> distinctByCreatedAt() {
+extension FoodModelQueryWhereDistinct
+    on QueryBuilder<FoodModel, FoodModel, QDistinct> {
+  QueryBuilder<FoodModel, FoodModel, QDistinct> distinctByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'createdAt');
     });
   }
 
-  QueryBuilder<Food, Food, QDistinct> distinctByName(
+  QueryBuilder<FoodModel, FoodModel, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
@@ -496,20 +507,21 @@ extension FoodQueryWhereDistinct on QueryBuilder<Food, Food, QDistinct> {
   }
 }
 
-extension FoodQueryProperty on QueryBuilder<Food, Food, QQueryProperty> {
-  QueryBuilder<Food, int, QQueryOperations> idProperty() {
+extension FoodModelQueryProperty
+    on QueryBuilder<FoodModel, FoodModel, QQueryProperty> {
+  QueryBuilder<FoodModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Food, DateTime, QQueryOperations> createdAtProperty() {
+  QueryBuilder<FoodModel, DateTime, QQueryOperations> createdAtProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'createdAt');
     });
   }
 
-  QueryBuilder<Food, String, QQueryOperations> nameProperty() {
+  QueryBuilder<FoodModel, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
     });
