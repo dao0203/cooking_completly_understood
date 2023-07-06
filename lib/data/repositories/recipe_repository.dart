@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
+import 'package:cooking_completly_understood/domain/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
 
@@ -15,26 +15,26 @@ class RecipeRepository {
   }
 
   //レシピのお気に入り状態を変更するメソッド
-  Future<void> changeFavoriteStatus(ImmuRecipe immuRecipe) {
-    final RecipeModel recipe = RecipeModel()
-      ..id = immuRecipe.id
-      ..role = immuRecipe.role
-      ..name = immuRecipe.name
-      ..description = immuRecipe.description
-      ..cookingTime = immuRecipe.cookingTime
-      ..ingredientName = immuRecipe.ingredientName
-      ..ingredientQuantity = immuRecipe.ingredientQuantity
-      ..stepNumber = immuRecipe.stepNumber
-      ..stepDescription = immuRecipe.stepDescription
-      ..calorie = immuRecipe.calorie
-      ..protein = immuRecipe.protein
-      ..fat = immuRecipe.fat
-      ..carbohydrate = immuRecipe.carbohydrate
-      ..salt = immuRecipe.salt
-      ..timeStamp = immuRecipe.timeStamp
-      ..isMade = immuRecipe.isMade
-      ..isFavorite = !immuRecipe.isFavorite; //お気に入り状態を反転させる
-    return _recipeService.changeFavoriteStatus(recipe);
+  Future<void> changeFavoriteStatus(Recipe recipe) {
+    final RecipeModel recipeModel = RecipeModel()
+      ..id = recipe.id
+      ..role = recipe.role
+      ..name = recipe.name
+      ..description = recipe.description
+      ..cookingTime = recipe.cookingTime
+      ..ingredientName = recipe.ingredientName
+      ..ingredientQuantity = recipe.ingredientQuantity
+      ..stepNumber = recipe.stepNumber
+      ..stepDescription = recipe.stepDescription
+      ..calorie = recipe.calorie
+      ..protein = recipe.protein
+      ..fat = recipe.fat
+      ..carbohydrate = recipe.carbohydrate
+      ..salt = recipe.salt
+      ..timeStamp = recipe.timeStamp
+      ..isMade = recipe.isMade
+      ..isFavorite = !recipe.isFavorite; //お気に入り状態を反転させる
+    return _recipeService.changeFavoriteStatus(recipeModel);
   }
 
   //idを指定してレシピを取得するメソッド
@@ -43,25 +43,25 @@ class RecipeRepository {
   }
 
   //レシピの料理済み状態を変更するメソッド
-  Future<void> changeMadeStatus(ImmuRecipe immuRecipe) {
-    final RecipeModel recipe = RecipeModel()
-      ..id = immuRecipe.id
-      ..role = immuRecipe.role
-      ..name = immuRecipe.name
-      ..description = immuRecipe.description
-      ..cookingTime = immuRecipe.cookingTime
-      ..ingredientName = immuRecipe.ingredientName
-      ..ingredientQuantity = immuRecipe.ingredientQuantity
-      ..stepNumber = immuRecipe.stepNumber
-      ..stepDescription = immuRecipe.stepDescription
-      ..calorie = immuRecipe.calorie
-      ..protein = immuRecipe.protein
-      ..fat = immuRecipe.fat
-      ..carbohydrate = immuRecipe.carbohydrate
-      ..salt = immuRecipe.salt
-      ..timeStamp = immuRecipe.timeStamp
-      ..isMade = !immuRecipe.isMade //料理済み状態を反転させる
-      ..isFavorite = immuRecipe.isFavorite;
-    return _recipeService.changeMadeStatus(recipe);
+  Future<void> changeMadeStatus(Recipe recipe) {
+    final RecipeModel recipeModel = RecipeModel()
+      ..id = recipe.id
+      ..role = recipe.role
+      ..name = recipe.name
+      ..description = recipe.description
+      ..cookingTime = recipe.cookingTime
+      ..ingredientName = recipe.ingredientName
+      ..ingredientQuantity = recipe.ingredientQuantity
+      ..stepNumber = recipe.stepNumber
+      ..stepDescription = recipe.stepDescription
+      ..calorie = recipe.calorie
+      ..protein = recipe.protein
+      ..fat = recipe.fat
+      ..carbohydrate = recipe.carbohydrate
+      ..salt = recipe.salt
+      ..timeStamp = recipe.timeStamp
+      ..isMade = !recipe.isMade //料理済み状態を反転させる
+      ..isFavorite = recipe.isFavorite;
+    return _recipeService.changeMadeStatus(recipeModel);
   }
 }

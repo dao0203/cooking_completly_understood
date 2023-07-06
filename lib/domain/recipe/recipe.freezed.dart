@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'immu_recipe.dart';
+part of 'recipe.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ImmuRecipe {
+mixin _$Recipe {
   int get id => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -35,15 +35,13 @@ mixin _$ImmuRecipe {
   bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ImmuRecipeCopyWith<ImmuRecipe> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ImmuRecipeCopyWith<$Res> {
-  factory $ImmuRecipeCopyWith(
-          ImmuRecipe value, $Res Function(ImmuRecipe) then) =
-      _$ImmuRecipeCopyWithImpl<$Res, ImmuRecipe>;
+abstract class $RecipeCopyWith<$Res> {
+  factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
+      _$RecipeCopyWithImpl<$Res, Recipe>;
   @useResult
   $Res call(
       {int id,
@@ -66,9 +64,9 @@ abstract class $ImmuRecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
-    implements $ImmuRecipeCopyWith<$Res> {
-  _$ImmuRecipeCopyWithImpl(this._value, this._then);
+class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
+    implements $RecipeCopyWith<$Res> {
+  _$RecipeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -170,11 +168,9 @@ class _$ImmuRecipeCopyWithImpl<$Res, $Val extends ImmuRecipe>
 }
 
 /// @nodoc
-abstract class _$$_ImmuRecipeCopyWith<$Res>
-    implements $ImmuRecipeCopyWith<$Res> {
-  factory _$$_ImmuRecipeCopyWith(
-          _$_ImmuRecipe value, $Res Function(_$_ImmuRecipe) then) =
-      __$$_ImmuRecipeCopyWithImpl<$Res>;
+abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
+  factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
+      __$$_RecipeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -198,11 +194,10 @@ abstract class _$$_ImmuRecipeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ImmuRecipeCopyWithImpl<$Res>
-    extends _$ImmuRecipeCopyWithImpl<$Res, _$_ImmuRecipe>
-    implements _$$_ImmuRecipeCopyWith<$Res> {
-  __$$_ImmuRecipeCopyWithImpl(
-      _$_ImmuRecipe _value, $Res Function(_$_ImmuRecipe) _then)
+class __$$_RecipeCopyWithImpl<$Res>
+    extends _$RecipeCopyWithImpl<$Res, _$_Recipe>
+    implements _$$_RecipeCopyWith<$Res> {
+  __$$_RecipeCopyWithImpl(_$_Recipe _value, $Res Function(_$_Recipe) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -226,7 +221,7 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
     Object? isMade = null,
     Object? isFavorite = null,
   }) {
-    return _then(_$_ImmuRecipe(
+    return _then(_$_Recipe(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -301,8 +296,8 @@ class __$$_ImmuRecipeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ImmuRecipe implements _ImmuRecipe {
-  const _$_ImmuRecipe(
+class _$_Recipe implements _Recipe {
+  const _$_Recipe(
       {required this.id,
       required this.role,
       required this.name,
@@ -387,14 +382,14 @@ class _$_ImmuRecipe implements _ImmuRecipe {
 
   @override
   String toString() {
-    return 'ImmuRecipe(id: $id, role: $role, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isMade: $isMade, isFavorite: $isFavorite)';
+    return 'Recipe(id: $id, role: $role, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImmuRecipe &&
+            other is _$_Recipe &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name) &&
@@ -447,12 +442,12 @@ class _$_ImmuRecipe implements _ImmuRecipe {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImmuRecipeCopyWith<_$_ImmuRecipe> get copyWith =>
-      __$$_ImmuRecipeCopyWithImpl<_$_ImmuRecipe>(this, _$identity);
+  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
+      __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
 }
 
-abstract class _ImmuRecipe implements ImmuRecipe {
-  const factory _ImmuRecipe(
+abstract class _Recipe implements Recipe {
+  const factory _Recipe(
       {required final int id,
       required final String role,
       required final String name,
@@ -469,7 +464,7 @@ abstract class _ImmuRecipe implements ImmuRecipe {
       required final String salt,
       required final DateTime timeStamp,
       required final bool isMade,
-      required final bool isFavorite}) = _$_ImmuRecipe;
+      required final bool isFavorite}) = _$_Recipe;
 
   @override
   int get id;
@@ -507,6 +502,6 @@ abstract class _ImmuRecipe implements ImmuRecipe {
   bool get isFavorite;
   @override
   @JsonKey(ignore: true)
-  _$$_ImmuRecipeCopyWith<_$_ImmuRecipe> get copyWith =>
+  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
       throw _privateConstructorUsedError;
 }

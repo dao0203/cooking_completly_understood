@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
+import 'package:cooking_completly_understood/domain/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
@@ -43,11 +43,11 @@ final myMessageToRecipeMessageTransformer =
 
 //RecipeをImmuRecipeに変換するトランスフォーマー
 final recipeToImmuRecipeTransformer =
-    StreamTransformer<List<RecipeModel>, List<ImmuRecipe>>.fromHandlers(
+    StreamTransformer<List<RecipeModel>, List<Recipe>>.fromHandlers(
   handleData: (recipes, sink) {
     final immuRecipes = recipes
         .map(
-          (e) => ImmuRecipe(
+          (e) => Recipe(
             id: e.id,
             role: e.role,
             name: e.name,

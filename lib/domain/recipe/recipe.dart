@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'immu_recipe.freezed.dart';
+part 'recipe.freezed.dart';
 
 @freezed
-class ImmuRecipe with _$ImmuRecipe {
-  const factory ImmuRecipe({
+class Recipe with _$Recipe {
+  const factory Recipe({
     required int id,
     required String role,
     required String name,
@@ -22,5 +22,5 @@ class ImmuRecipe with _$ImmuRecipe {
     required DateTime timeStamp,
     required bool isMade,
     required bool isFavorite,
-  }) = _ImmuRecipe;
+  }) = _Recipe;
 }
