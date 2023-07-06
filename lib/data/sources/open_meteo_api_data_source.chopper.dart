@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather_service.dart';
+part of 'open_meteo_api_data_source.dart';
 
 // **************************************************************************
 // ChopperGenerator
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$WeatherService extends WeatherService {
-  _$WeatherService([ChopperClient? client]) {
+class _$OpenMeteoApiDataSource extends OpenMeteoApiDataSource {
+  _$OpenMeteoApiDataSource([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = WeatherService;
+  final definitionType = OpenMeteoApiDataSource;
 
   @override
   Future<Response<dynamic>> getWeatherInfo(

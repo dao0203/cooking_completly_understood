@@ -1,8 +1,8 @@
 import 'package:cooking_completly_understood/data/models/food/food.dart';
-import 'package:cooking_completly_understood/data/services/food_service.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
 
 class FoodRepository {
-  final FoodService _foodService;
+  final FoodDataSource _foodService;
   FoodRepository(this._foodService);
 
   //食べ物を全て取得するメソッド

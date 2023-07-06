@@ -5,22 +5,22 @@ import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
-import 'package:cooking_completly_understood/data/services/maker_suite_service.dart';
-import 'package:cooking_completly_understood/data/services/my_message_service.dart';
-import 'package:cooking_completly_understood/data/services/position_service.dart';
-import 'package:cooking_completly_understood/data/services/recipe_service.dart';
-import 'package:cooking_completly_understood/data/services/weather_service.dart';
+import 'package:cooking_completly_understood/data/sources/palm_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/my_message_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/position_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/open_meteo_api_data_source.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
 class MessageRepository {
-  final PositionService _positionService;
-  final WeatherService _weatherService;
-  final MakerSuiteService _makerMeteoService;
-  final RecipeService _recipeService;
-  final MyMessageService _myMessageService;
+  final PositionDataSource _positionService;
+  final OpenMeteoApiDataSource _weatherService;
+  final PaLMApiDataSource _makerMeteoService;
+  final RecipeDataSource _recipeService;
+  final MyMessageDataSource _myMessageService;
   MessageRepository(
     this._positionService,
     this._weatherService,
@@ -28,12 +28,6 @@ class MessageRepository {
     this._recipeService,
     this._myMessageService,
   );
-
-  //初期メッセージを送信する
-  Future<void> sendInitialMessage() async {
-    //初期メッセージを送信
-    // await _chatService.sendInitialMessage();
-  }
 
   //メッセージを送信して返信を受け取る
   Future<void> sendMessage(String inputedMessage) async {
@@ -43,11 +37,11 @@ class MessageRepository {
       ..timeStamp = DateTime.now();
 
     //自分のメッセージをローカルDBに保存
-    await _myMessageService.insertMyMessage(myMessage);
+    await _myMessageService.insert(myMessage);
 
     //
     //現在地を取得
-    final position = await _positionService.getLocationInfo();
+    final position = await _positionService.getInfo();
 
     //天気情報を取得
     await _weatherService
@@ -98,10 +92,9 @@ class MessageRepository {
           await _makerMeteoService
               .getMessage(encodedModel)
               .then((chatResponse) async {
-                debugPrint('chatResponse: $chatResponse');
+            debugPrint('chatResponse: $chatResponse');
             //成功時(1つでも選択肢がある場合)
             if (chatResponse.isSuccessful) {
-
               //このようになっている
               //```json
               //{(レスポンスボディ))}
@@ -146,7 +139,7 @@ class MessageRepository {
                 ..isFavorite = false;
 
               //レシピを保存
-              await _recipeService.insertRecipe(insertedRecipe);
+              await _recipeService.insert(insertedRecipe);
             } else {
               //失敗時
               //本来はエラーが起きているはChatGPTのAPIを呼び出す際にエラーが起きている（はず）
@@ -163,6 +156,6 @@ class MessageRepository {
 
   //ユーザが入力したメッセージを全取得する
   Stream<List<MyMessage>> getAllMyMessages() {
-    return _myMessageService.getAllMyMessages();
+    return _myMessageService.getAll();
   }
 }

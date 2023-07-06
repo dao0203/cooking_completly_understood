@@ -1,10 +1,11 @@
 import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 
-class RecipeService {
+class IsarRecipeDataSource implements RecipeDataSource {
   final Isar _isar;
-  RecipeService(this._isar);
+  IsarRecipeDataSource(this._isar);
 
   // レシピのクエリを作成するメソッド
   Query<Recipe> get _recipeGetAllQuery =>
@@ -16,7 +17,8 @@ class RecipeService {
   }
 
   // レシピを保存するメソッド
-  Future<void> insertRecipe(Recipe recipe) async {
+  @override
+  Future<void> insert(Recipe recipe) async {
     await _isar.writeTxn(
       () async {
         await _isar.recipes
@@ -27,11 +29,13 @@ class RecipeService {
   }
 
   //idを指定してレシピを取得するメソッド
-  Stream<List<Recipe>> getRecipeById(int id)  {
+  @override
+  Stream<List<Recipe>> getById(int id) {
     return getRecipeByIdQuery(id).watch(fireImmediately: true);
   }
 
   // レシピのお気に入り状態を変更するメソッド
+  @override
   Future<void> changeFavoriteStatus(Recipe recipe) async {
     await _isar.writeTxn(
       () async {
@@ -43,6 +47,7 @@ class RecipeService {
   }
 
   //レシピの料理済み状態を変更するメソッド
+  @override
   Future<void> changeMadeStatus(Recipe recipe) async {
     await _isar.writeTxn(
       () async {
@@ -54,7 +59,8 @@ class RecipeService {
   }
 
   // レシピを全て取得するメソッド
-  Stream<List<Recipe>> getAllRecipes() {
+  @override
+  Stream<List<Recipe>> getAll() {
     return _recipeGetAllQuery.watch(fireImmediately: true);
   }
 }
