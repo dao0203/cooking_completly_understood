@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/immu_food.dart/immu_food.dart';
+import 'package:cooking_completly_understood/domain/food.dart/food.dart';
 import 'package:cooking_completly_understood/di/food_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -7,7 +7,7 @@ part 'foods_state.g.dart';
 @riverpod
 class FoodsState extends _$FoodsState {
   @override
-  Future<Stream<List<ImmuFood>>> build() async {
+  Future<Stream<List<Food>>> build() async {
     return await ref.read(foodRepositoryProvider).then(
       (value) {
         //食べ物を全て取得するメソッド
@@ -15,7 +15,7 @@ class FoodsState extends _$FoodsState {
               (event) => event
                   .map(
                     //ImmuFoodに変換
-                    (e) => ImmuFood(
+                    (e) => Food(
                       id: e.id,
                       name: e.name,
                       createdAt: e.createdAt,
