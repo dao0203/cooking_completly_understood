@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'message.dart';
+part of 'recipe_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
+_$_RecipeResponse _$$_RecipeResponseFromJson(Map<String, dynamic> json) =>
+    _$_RecipeResponse(
       recipeName: json['recipe_name'] as String? ?? '',
       recipeDescription: json['recipe_description'] as String? ?? '',
       recipeCookingTime: json['recipe_cooking_time'] as String? ?? '',
@@ -23,7 +24,8 @@ _$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
           Nutrition.fromJson(json['recipe_nutrition'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
+Map<String, dynamic> _$$_RecipeResponseToJson(_$_RecipeResponse instance) =>
+    <String, dynamic>{
       'recipe_name': instance.recipeName,
       'recipe_description': instance.recipeDescription,
       'recipe_cooking_time': instance.recipeCookingTime,

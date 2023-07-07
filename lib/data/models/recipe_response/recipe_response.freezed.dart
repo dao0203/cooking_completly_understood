@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'message.dart';
+part of 'recipe_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Message _$MessageFromJson(Map<String, dynamic> json) {
-  return _Recipe.fromJson(json);
+RecipeResponse _$RecipeResponseFromJson(Map<String, dynamic> json) {
+  return _RecipeResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Message {
+mixin _$RecipeResponse {
   @JsonKey(name: jsonRecipeName, defaultValue: '')
   String get recipeName => throw _privateConstructorUsedError; //レシピ名
   @JsonKey(name: jsonRecipeDescription, defaultValue: '')
@@ -36,13 +36,15 @@ mixin _$Message {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
+  $RecipeResponseCopyWith<RecipeResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MessageCopyWith<$Res> {
-  factory $MessageCopyWith(Message value, $Res Function(Message) then) =
-      _$MessageCopyWithImpl<$Res, Message>;
+abstract class $RecipeResponseCopyWith<$Res> {
+  factory $RecipeResponseCopyWith(
+          RecipeResponse value, $Res Function(RecipeResponse) then) =
+      _$RecipeResponseCopyWithImpl<$Res, RecipeResponse>;
   @useResult
   $Res call(
       {@JsonKey(name: jsonRecipeName, defaultValue: '')
@@ -62,9 +64,9 @@ abstract class $MessageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MessageCopyWithImpl<$Res, $Val extends Message>
-    implements $MessageCopyWith<$Res> {
-  _$MessageCopyWithImpl(this._value, this._then);
+class _$RecipeResponseCopyWithImpl<$Res, $Val extends RecipeResponse>
+    implements $RecipeResponseCopyWith<$Res> {
+  _$RecipeResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -119,9 +121,11 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
 }
 
 /// @nodoc
-abstract class _$$_RecipeCopyWith<$Res> implements $MessageCopyWith<$Res> {
-  factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
-      __$$_RecipeCopyWithImpl<$Res>;
+abstract class _$$_RecipeResponseCopyWith<$Res>
+    implements $RecipeResponseCopyWith<$Res> {
+  factory _$$_RecipeResponseCopyWith(
+          _$_RecipeResponse value, $Res Function(_$_RecipeResponse) then) =
+      __$$_RecipeResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -143,10 +147,11 @@ abstract class _$$_RecipeCopyWith<$Res> implements $MessageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RecipeCopyWithImpl<$Res>
-    extends _$MessageCopyWithImpl<$Res, _$_Recipe>
-    implements _$$_RecipeCopyWith<$Res> {
-  __$$_RecipeCopyWithImpl(_$_Recipe _value, $Res Function(_$_Recipe) _then)
+class __$$_RecipeResponseCopyWithImpl<$Res>
+    extends _$RecipeResponseCopyWithImpl<$Res, _$_RecipeResponse>
+    implements _$$_RecipeResponseCopyWith<$Res> {
+  __$$_RecipeResponseCopyWithImpl(
+      _$_RecipeResponse _value, $Res Function(_$_RecipeResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -159,7 +164,7 @@ class __$$_RecipeCopyWithImpl<$Res>
     Object? recipeSteps = null,
     Object? nutrition = null,
   }) {
-    return _then(_$_Recipe(
+    return _then(_$_RecipeResponse(
       recipeName: null == recipeName
           ? _value.recipeName
           : recipeName // ignore: cast_nullable_to_non_nullable
@@ -190,8 +195,8 @@ class __$$_RecipeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Recipe extends _Recipe {
-  const _$_Recipe(
+class _$_RecipeResponse extends _RecipeResponse {
+  const _$_RecipeResponse(
       {@JsonKey(name: jsonRecipeName, defaultValue: '')
           required this.recipeName,
       @JsonKey(name: jsonRecipeDescription, defaultValue: '')
@@ -208,8 +213,8 @@ class _$_Recipe extends _Recipe {
         _recipeSteps = recipeSteps,
         super._();
 
-  factory _$_Recipe.fromJson(Map<String, dynamic> json) =>
-      _$$_RecipeFromJson(json);
+  factory _$_RecipeResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_RecipeResponseFromJson(json);
 
   @override
   @JsonKey(name: jsonRecipeName, defaultValue: '')
@@ -252,14 +257,14 @@ class _$_Recipe extends _Recipe {
 
   @override
   String toString() {
-    return 'Message(recipeName: $recipeName, recipeDescription: $recipeDescription, recipeCookingTime: $recipeCookingTime, recipeIngredients: $recipeIngredients, recipeSteps: $recipeSteps, nutrition: $nutrition)';
+    return 'RecipeResponse(recipeName: $recipeName, recipeDescription: $recipeDescription, recipeCookingTime: $recipeCookingTime, recipeIngredients: $recipeIngredients, recipeSteps: $recipeSteps, nutrition: $nutrition)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Recipe &&
+            other is _$_RecipeResponse &&
             (identical(other.recipeName, recipeName) ||
                 other.recipeName == recipeName) &&
             (identical(other.recipeDescription, recipeDescription) ||
@@ -288,19 +293,19 @@ class _$_Recipe extends _Recipe {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
-      __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
+  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
+      __$$_RecipeResponseCopyWithImpl<_$_RecipeResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeToJson(
+    return _$$_RecipeResponseToJson(
       this,
     );
   }
 }
 
-abstract class _Recipe extends Message {
-  const factory _Recipe(
+abstract class _RecipeResponse extends RecipeResponse {
+  const factory _RecipeResponse(
       {@JsonKey(name: jsonRecipeName, defaultValue: '')
           required final String recipeName,
       @JsonKey(name: jsonRecipeDescription, defaultValue: '')
@@ -312,10 +317,11 @@ abstract class _Recipe extends Message {
       @JsonKey(name: jsonRecipeSteps, defaultValue: [])
           required final List<RecipeSteps> recipeSteps,
       @JsonKey(name: jsonRecipeNutrition)
-          required final Nutrition nutrition}) = _$_Recipe;
-  const _Recipe._() : super._();
+          required final Nutrition nutrition}) = _$_RecipeResponse;
+  const _RecipeResponse._() : super._();
 
-  factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
+  factory _RecipeResponse.fromJson(Map<String, dynamic> json) =
+      _$_RecipeResponse.fromJson;
 
   @override
   @JsonKey(name: jsonRecipeName, defaultValue: '')
@@ -337,6 +343,6 @@ abstract class _Recipe extends Message {
   Nutrition get nutrition;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
+  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

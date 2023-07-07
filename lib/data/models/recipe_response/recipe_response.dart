@@ -1,17 +1,17 @@
-import 'package:cooking_completly_understood/data/models/message/nutrition/nutrition.dart';
-import 'package:cooking_completly_understood/data/models/message/recipe_ingredients/recipe_ingredients.dart';
-import 'package:cooking_completly_understood/data/models/message/recipe_steps/recipe_steps.dart';
+import 'package:cooking_completly_understood/data/models/recipe_response/nutrition/nutrition.dart';
+import 'package:cooking_completly_understood/data/models/recipe_response/recipe_ingredients/recipe_ingredients.dart';
+import 'package:cooking_completly_understood/data/models/recipe_response/recipe_steps/recipe_steps.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'message.freezed.dart';
-part 'message.g.dart';
+part 'recipe_response.freezed.dart';
+part 'recipe_response.g.dart';
 
 @freezed
-class Message with _$Message {
-  const Message._();
+class RecipeResponse with _$RecipeResponse {
+  const RecipeResponse._();
 
-  const factory Message({
+  const factory RecipeResponse({
     @JsonKey(name: jsonRecipeName, defaultValue: '')
     required String recipeName, //レシピ名
     @JsonKey(name: jsonRecipeDescription, defaultValue: '')
@@ -24,8 +24,8 @@ class Message with _$Message {
     required List<RecipeSteps> recipeSteps, //手順
     @JsonKey(name: jsonRecipeNutrition)
     required Nutrition nutrition, //栄養　//これはNNullになる可能性がある
-  }) = _Recipe;
+  }) = _RecipeResponse;
 
-  factory Message.fromJson(Map<String, dynamic> json) =>
-      _$MessageFromJson(json);
+  factory RecipeResponse.fromJson(Map<String, dynamic> json) =>
+      _$RecipeResponseFromJson(json);
 }
