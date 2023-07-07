@@ -46,7 +46,7 @@ class MessageRepository {
     //天気情報を取得
     await _weatherService
         //緯度経度をもとに天気情報を取得する
-        .getWeatherInfo(position.altitude, position.longitude)
+        .getInfo(position.altitude, position.longitude)
         .then(
       (weatherResponse) async {
         //レスポンス成功時

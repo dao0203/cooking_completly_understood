@@ -17,7 +17,7 @@ class _$OpenMeteoApiDataSource extends OpenMeteoApiDataSource {
   final definitionType = OpenMeteoApiDataSource;
 
   @override
-  Future<Response<dynamic>> getWeatherInfo(
+  Future<Response<dynamic>> getInfo(
     double latitude,
     double longtitude,
   ) {
