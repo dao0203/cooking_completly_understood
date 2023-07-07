@@ -113,12 +113,13 @@ class __$$_CurrentWeatherCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CurrentWeather implements _CurrentWeather {
+class _$_CurrentWeather extends _CurrentWeather {
   const _$_CurrentWeather(
       {@JsonKey(name: 'temperature', defaultValue: 0.0)
           required this.temperature,
       @JsonKey(name: 'weathercode', defaultValue: 0)
-          required this.weatherCode});
+          required this.weatherCode})
+      : super._();
 
   factory _$_CurrentWeather.fromJson(Map<String, dynamic> json) =>
       _$$_CurrentWeatherFromJson(json);
@@ -164,12 +165,13 @@ class _$_CurrentWeather implements _CurrentWeather {
   }
 }
 
-abstract class _CurrentWeather implements CurrentWeather {
+abstract class _CurrentWeather extends CurrentWeather {
   const factory _CurrentWeather(
       {@JsonKey(name: 'temperature', defaultValue: 0.0)
           required final double temperature,
       @JsonKey(name: 'weathercode', defaultValue: 0)
           required final int weatherCode}) = _$_CurrentWeather;
+  const _CurrentWeather._() : super._();
 
   factory _CurrentWeather.fromJson(Map<String, dynamic> json) =
       _$_CurrentWeather.fromJson;
