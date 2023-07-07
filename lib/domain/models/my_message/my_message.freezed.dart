@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MyMessage {
+  int get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
   DateTime get timeStamp => throw _privateConstructorUsedError;
@@ -30,7 +31,7 @@ abstract class $MyMessageCopyWith<$Res> {
   factory $MyMessageCopyWith(MyMessage value, $Res Function(MyMessage) then) =
       _$MyMessageCopyWithImpl<$Res, MyMessage>;
   @useResult
-  $Res call({String content, String role, DateTime timeStamp});
+  $Res call({int id, String content, String role, DateTime timeStamp});
 }
 
 /// @nodoc
@@ -46,11 +47,16 @@ class _$MyMessageCopyWithImpl<$Res, $Val extends MyMessage>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? content = null,
     Object? role = null,
     Object? timeStamp = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -74,7 +80,7 @@ abstract class _$$_MyMessageCopyWith<$Res> implements $MyMessageCopyWith<$Res> {
       __$$_MyMessageCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, String role, DateTime timeStamp});
+  $Res call({int id, String content, String role, DateTime timeStamp});
 }
 
 /// @nodoc
@@ -88,11 +94,16 @@ class __$$_MyMessageCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? content = null,
     Object? role = null,
     Object? timeStamp = null,
   }) {
     return _then(_$_MyMessage(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -113,8 +124,13 @@ class __$$_MyMessageCopyWithImpl<$Res>
 
 class _$_MyMessage implements _MyMessage {
   const _$_MyMessage(
-      {required this.content, required this.role, required this.timeStamp});
+      {required this.id,
+      required this.content,
+      required this.role,
+      required this.timeStamp});
 
+  @override
+  final int id;
   @override
   final String content;
   @override
@@ -124,7 +140,7 @@ class _$_MyMessage implements _MyMessage {
 
   @override
   String toString() {
-    return 'MyMessage(content: $content, role: $role, timeStamp: $timeStamp)';
+    return 'MyMessage(id: $id, content: $content, role: $role, timeStamp: $timeStamp)';
   }
 
   @override
@@ -132,6 +148,7 @@ class _$_MyMessage implements _MyMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MyMessage &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.timeStamp, timeStamp) ||
@@ -139,7 +156,7 @@ class _$_MyMessage implements _MyMessage {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, content, role, timeStamp);
+  int get hashCode => Object.hash(runtimeType, id, content, role, timeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -150,10 +167,13 @@ class _$_MyMessage implements _MyMessage {
 
 abstract class _MyMessage implements MyMessage {
   const factory _MyMessage(
-      {required final String content,
+      {required final int id,
+      required final String content,
       required final String role,
       required final DateTime timeStamp}) = _$_MyMessage;
 
+  @override
+  int get id;
   @override
   String get content;
   @override
