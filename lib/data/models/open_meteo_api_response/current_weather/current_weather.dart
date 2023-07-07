@@ -6,6 +6,7 @@ part 'current_weather.g.dart';
 
 @freezed
 abstract class CurrentWeather with _$CurrentWeather {
+  const CurrentWeather._();
   const factory CurrentWeather({
     @JsonKey(name: 'temperature', defaultValue: 0.0)
     required double temperature,
