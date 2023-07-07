@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:cooking_completly_understood/data/models/message/message.dart';
 import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
-import 'package:cooking_completly_understood/data/models/weather_forecast/weather_forecast.dart';
+import 'package:cooking_completly_understood/data/models/open_meteo_api_response/open_meteo_api_response.dart';
 import 'package:cooking_completly_understood/data/sources/remote/palm_api_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/my_message_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/position_data_source.dart';
@@ -42,19 +42,21 @@ class MessageRepository {
     //
     //現在地を取得
     final position = await _positionService.getInfo();
-
+    debugPrint('position: $position');
     //天気情報を取得
     await _weatherService
         //緯度経度をもとに天気情報を取得する
-        .getInfo(position.altitude, position.longitude)
+        .getInfo(position.latitude, position.longitude)
         .then(
       (weatherResponse) async {
         //レスポンス成功時
         if (weatherResponse.isSuccessful) {
           //レスポンスボディをパース
-          final weatherForecast =
-              WeatherForecast.fromJson(json.decode(weatherResponse.bodyString));
+          final weatherForecast = OpenMeteoApiResponse.fromJson(
+              json.decode(weatherResponse.bodyString));
 
+          debugPrint(
+              'weatherForecast: ${json.decode(weatherResponse.bodyString)})}');
           //パースしたデータの温度を格納
           final currentTemperature =
               weatherForecast.currentWeather.temperature.toString();
@@ -148,6 +150,7 @@ class MessageRepository {
           });
         } else {
           //レスポンス失敗時
+          debugPrint('weatherResponse: ${weatherResponse.error}');
           throw Exception('failed to get weather info');
         }
       },

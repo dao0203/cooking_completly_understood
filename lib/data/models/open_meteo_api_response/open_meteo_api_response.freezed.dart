@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'weather_forecast.dart';
+part of 'open_meteo_api_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,26 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-WeatherForecast _$WeatherForecastFromJson(Map<String, dynamic> json) {
-  return _WeatherForecast.fromJson(json);
+OpenMeteoApiResponse _$OpenMeteoApiResponseFromJson(Map<String, dynamic> json) {
+  return _OpenMeteoApiResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WeatherForecast {
+mixin _$OpenMeteoApiResponse {
   @JsonKey(name: 'current_weather')
   CurrentWeather get currentWeather => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WeatherForecastCopyWith<WeatherForecast> get copyWith =>
+  $OpenMeteoApiResponseCopyWith<OpenMeteoApiResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WeatherForecastCopyWith<$Res> {
-  factory $WeatherForecastCopyWith(
-          WeatherForecast value, $Res Function(WeatherForecast) then) =
-      _$WeatherForecastCopyWithImpl<$Res, WeatherForecast>;
+abstract class $OpenMeteoApiResponseCopyWith<$Res> {
+  factory $OpenMeteoApiResponseCopyWith(OpenMeteoApiResponse value,
+          $Res Function(OpenMeteoApiResponse) then) =
+      _$OpenMeteoApiResponseCopyWithImpl<$Res, OpenMeteoApiResponse>;
   @useResult
   $Res call({@JsonKey(name: 'current_weather') CurrentWeather currentWeather});
 
@@ -41,9 +41,10 @@ abstract class $WeatherForecastCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WeatherForecastCopyWithImpl<$Res, $Val extends WeatherForecast>
-    implements $WeatherForecastCopyWith<$Res> {
-  _$WeatherForecastCopyWithImpl(this._value, this._then);
+class _$OpenMeteoApiResponseCopyWithImpl<$Res,
+        $Val extends OpenMeteoApiResponse>
+    implements $OpenMeteoApiResponseCopyWith<$Res> {
+  _$OpenMeteoApiResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -73,11 +74,11 @@ class _$WeatherForecastCopyWithImpl<$Res, $Val extends WeatherForecast>
 }
 
 /// @nodoc
-abstract class _$$_WeatherForecastCopyWith<$Res>
-    implements $WeatherForecastCopyWith<$Res> {
-  factory _$$_WeatherForecastCopyWith(
-          _$_WeatherForecast value, $Res Function(_$_WeatherForecast) then) =
-      __$$_WeatherForecastCopyWithImpl<$Res>;
+abstract class _$$_OpenMeteoApiResponseCopyWith<$Res>
+    implements $OpenMeteoApiResponseCopyWith<$Res> {
+  factory _$$_OpenMeteoApiResponseCopyWith(_$_OpenMeteoApiResponse value,
+          $Res Function(_$_OpenMeteoApiResponse) then) =
+      __$$_OpenMeteoApiResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'current_weather') CurrentWeather currentWeather});
@@ -87,11 +88,11 @@ abstract class _$$_WeatherForecastCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WeatherForecastCopyWithImpl<$Res>
-    extends _$WeatherForecastCopyWithImpl<$Res, _$_WeatherForecast>
-    implements _$$_WeatherForecastCopyWith<$Res> {
-  __$$_WeatherForecastCopyWithImpl(
-      _$_WeatherForecast _value, $Res Function(_$_WeatherForecast) _then)
+class __$$_OpenMeteoApiResponseCopyWithImpl<$Res>
+    extends _$OpenMeteoApiResponseCopyWithImpl<$Res, _$_OpenMeteoApiResponse>
+    implements _$$_OpenMeteoApiResponseCopyWith<$Res> {
+  __$$_OpenMeteoApiResponseCopyWithImpl(_$_OpenMeteoApiResponse _value,
+      $Res Function(_$_OpenMeteoApiResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +100,7 @@ class __$$_WeatherForecastCopyWithImpl<$Res>
   $Res call({
     Object? currentWeather = null,
   }) {
-    return _then(_$_WeatherForecast(
+    return _then(_$_OpenMeteoApiResponse(
       currentWeather: null == currentWeather
           ? _value.currentWeather
           : currentWeather // ignore: cast_nullable_to_non_nullable
@@ -110,12 +111,12 @@ class __$$_WeatherForecastCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WeatherForecast implements _WeatherForecast {
-  const _$_WeatherForecast(
+class _$_OpenMeteoApiResponse implements _OpenMeteoApiResponse {
+  const _$_OpenMeteoApiResponse(
       {@JsonKey(name: 'current_weather') required this.currentWeather});
 
-  factory _$_WeatherForecast.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherForecastFromJson(json);
+  factory _$_OpenMeteoApiResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_OpenMeteoApiResponseFromJson(json);
 
   @override
   @JsonKey(name: 'current_weather')
@@ -123,14 +124,14 @@ class _$_WeatherForecast implements _WeatherForecast {
 
   @override
   String toString() {
-    return 'WeatherForecast(currentWeather: $currentWeather)';
+    return 'OpenMeteoApiResponse(currentWeather: $currentWeather)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherForecast &&
+            other is _$_OpenMeteoApiResponse &&
             (identical(other.currentWeather, currentWeather) ||
                 other.currentWeather == currentWeather));
   }
@@ -142,30 +143,32 @@ class _$_WeatherForecast implements _WeatherForecast {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WeatherForecastCopyWith<_$_WeatherForecast> get copyWith =>
-      __$$_WeatherForecastCopyWithImpl<_$_WeatherForecast>(this, _$identity);
+  _$$_OpenMeteoApiResponseCopyWith<_$_OpenMeteoApiResponse> get copyWith =>
+      __$$_OpenMeteoApiResponseCopyWithImpl<_$_OpenMeteoApiResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherForecastToJson(
+    return _$$_OpenMeteoApiResponseToJson(
       this,
     );
   }
 }
 
-abstract class _WeatherForecast implements WeatherForecast {
-  const factory _WeatherForecast(
-      {@JsonKey(name: 'current_weather')
-          required final CurrentWeather currentWeather}) = _$_WeatherForecast;
+abstract class _OpenMeteoApiResponse implements OpenMeteoApiResponse {
+  const factory _OpenMeteoApiResponse(
+          {@JsonKey(name: 'current_weather')
+              required final CurrentWeather currentWeather}) =
+      _$_OpenMeteoApiResponse;
 
-  factory _WeatherForecast.fromJson(Map<String, dynamic> json) =
-      _$_WeatherForecast.fromJson;
+  factory _OpenMeteoApiResponse.fromJson(Map<String, dynamic> json) =
+      _$_OpenMeteoApiResponse.fromJson;
 
   @override
   @JsonKey(name: 'current_weather')
   CurrentWeather get currentWeather;
   @override
   @JsonKey(ignore: true)
-  _$$_WeatherForecastCopyWith<_$_WeatherForecast> get copyWith =>
+  _$$_OpenMeteoApiResponseCopyWith<_$_OpenMeteoApiResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
