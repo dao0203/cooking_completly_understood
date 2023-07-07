@@ -5,6 +5,9 @@ abstract class RecipeRepository {
   // レシピを全て取得するメソッド
   Stream<List<Recipe>> getAllRecipes();
 
+  // レシピを追加するメソッド
+  Future<void> insert(RecipeModel recipe);
+
   //レシピのお気に入り状態を変更するメソッド
   Future<void> changeFavoriteStatus(RecipeModel recipe);
 

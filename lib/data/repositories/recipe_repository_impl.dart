@@ -23,4 +23,8 @@ class RecipeRepositoryImpl implements RecipeRepository {
   Stream<List<Recipe>> getRecipeById(int id) => _recipeService
       .getById(id)
       .map((event) => event.map((e) => e.toRecipe()).toList());
+
+  @override
+  Future<void> insert(RecipeModel recipeModel) =>
+      _recipeService.insert(recipeModel);
 }
