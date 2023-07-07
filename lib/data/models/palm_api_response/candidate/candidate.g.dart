@@ -7,7 +7,7 @@ part of 'candidate.dart';
 // **************************************************************************
 
 _$_Candidate _$$_CandidateFromJson(Map<String, dynamic> json) => _$_Candidate(
-      output: Output.fromJson(json['output'] as Map<String, dynamic>),
+      output: json['output'] as String,
       safetyRatings: (json['safetyRatings'] as List<dynamic>)
           .map((e) => SafetyRating.fromJson(e as Map<String, dynamic>))
           .toList(),

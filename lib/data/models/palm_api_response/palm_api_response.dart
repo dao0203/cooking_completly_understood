@@ -7,7 +7,7 @@ part 'palm_api_response.g.dart';
 @freezed
 abstract class PaLMApiResponse with _$PaLMApiResponse {
   const factory PaLMApiResponse({
-    @JsonKey(name: 'candiidates') required List<Candidate> result,
+    @JsonKey(name: 'candidates') required List<Candidate> candidates,
   }) = _PaLMApiResponse;
 
   factory PaLMApiResponse.fromJson(Map<String, dynamic> json) =>

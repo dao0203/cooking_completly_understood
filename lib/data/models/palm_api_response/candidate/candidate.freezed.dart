@@ -21,7 +21,7 @@ Candidate _$CandidateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Candidate {
   @JsonKey(name: 'output')
-  Output get output => throw _privateConstructorUsedError;
+  String get output => throw _privateConstructorUsedError;
   @JsonKey(name: 'safetyRatings')
   List<SafetyRating> get safetyRatings => throw _privateConstructorUsedError;
 
@@ -37,10 +37,8 @@ abstract class $CandidateCopyWith<$Res> {
       _$CandidateCopyWithImpl<$Res, Candidate>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'output') Output output,
+      {@JsonKey(name: 'output') String output,
       @JsonKey(name: 'safetyRatings') List<SafetyRating> safetyRatings});
-
-  $OutputCopyWith<$Res> get output;
 }
 
 /// @nodoc
@@ -63,20 +61,12 @@ class _$CandidateCopyWithImpl<$Res, $Val extends Candidate>
       output: null == output
           ? _value.output
           : output // ignore: cast_nullable_to_non_nullable
-              as Output,
+              as String,
       safetyRatings: null == safetyRatings
           ? _value.safetyRatings
           : safetyRatings // ignore: cast_nullable_to_non_nullable
               as List<SafetyRating>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OutputCopyWith<$Res> get output {
-    return $OutputCopyWith<$Res>(_value.output, (value) {
-      return _then(_value.copyWith(output: value) as $Val);
-    });
   }
 }
 
@@ -88,11 +78,8 @@ abstract class _$$_CandidateCopyWith<$Res> implements $CandidateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'output') Output output,
+      {@JsonKey(name: 'output') String output,
       @JsonKey(name: 'safetyRatings') List<SafetyRating> safetyRatings});
-
-  @override
-  $OutputCopyWith<$Res> get output;
 }
 
 /// @nodoc
@@ -113,7 +100,7 @@ class __$$_CandidateCopyWithImpl<$Res>
       output: null == output
           ? _value.output
           : output // ignore: cast_nullable_to_non_nullable
-              as Output,
+              as String,
       safetyRatings: null == safetyRatings
           ? _value._safetyRatings
           : safetyRatings // ignore: cast_nullable_to_non_nullable
@@ -137,7 +124,7 @@ class _$_Candidate implements _Candidate {
 
   @override
   @JsonKey(name: 'output')
-  final Output output;
+  final String output;
   final List<SafetyRating> _safetyRatings;
   @override
   @JsonKey(name: 'safetyRatings')
@@ -184,7 +171,7 @@ class _$_Candidate implements _Candidate {
 abstract class _Candidate implements Candidate {
   const factory _Candidate(
       {@JsonKey(name: 'output')
-          required final Output output,
+          required final String output,
       @JsonKey(name: 'safetyRatings')
           required final List<SafetyRating> safetyRatings}) = _$_Candidate;
 
@@ -193,7 +180,7 @@ abstract class _Candidate implements Candidate {
 
   @override
   @JsonKey(name: 'output')
-  Output get output;
+  String get output;
   @override
   @JsonKey(name: 'safetyRatings')
   List<SafetyRating> get safetyRatings;

@@ -20,8 +20,8 @@ PaLMApiResponse _$PaLMApiResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaLMApiResponse {
-  @JsonKey(name: 'candiidates')
-  List<Candidate> get result => throw _privateConstructorUsedError;
+  @JsonKey(name: 'candidates')
+  List<Candidate> get candidates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $PaLMApiResponseCopyWith<$Res> {
           PaLMApiResponse value, $Res Function(PaLMApiResponse) then) =
       _$PaLMApiResponseCopyWithImpl<$Res, PaLMApiResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'candiidates') List<Candidate> result});
+  $Res call({@JsonKey(name: 'candidates') List<Candidate> candidates});
 }
 
 /// @nodoc
@@ -51,12 +51,12 @@ class _$PaLMApiResponseCopyWithImpl<$Res, $Val extends PaLMApiResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? candidates = null,
   }) {
     return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      candidates: null == candidates
+          ? _value.candidates
+          : candidates // ignore: cast_nullable_to_non_nullable
               as List<Candidate>,
     ) as $Val);
   }
@@ -70,7 +70,7 @@ abstract class _$$_PaLMApiResponseCopyWith<$Res>
       __$$_PaLMApiResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'candiidates') List<Candidate> result});
+  $Res call({@JsonKey(name: 'candidates') List<Candidate> candidates});
 }
 
 /// @nodoc
@@ -84,12 +84,12 @@ class __$$_PaLMApiResponseCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? candidates = null,
   }) {
     return _then(_$_PaLMApiResponse(
-      result: null == result
-          ? _value._result
-          : result // ignore: cast_nullable_to_non_nullable
+      candidates: null == candidates
+          ? _value._candidates
+          : candidates // ignore: cast_nullable_to_non_nullable
               as List<Candidate>,
     ));
   }
@@ -99,24 +99,24 @@ class __$$_PaLMApiResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PaLMApiResponse implements _PaLMApiResponse {
   const _$_PaLMApiResponse(
-      {@JsonKey(name: 'candiidates') required final List<Candidate> result})
-      : _result = result;
+      {@JsonKey(name: 'candidates') required final List<Candidate> candidates})
+      : _candidates = candidates;
 
   factory _$_PaLMApiResponse.fromJson(Map<String, dynamic> json) =>
       _$$_PaLMApiResponseFromJson(json);
 
-  final List<Candidate> _result;
+  final List<Candidate> _candidates;
   @override
-  @JsonKey(name: 'candiidates')
-  List<Candidate> get result {
-    if (_result is EqualUnmodifiableListView) return _result;
+  @JsonKey(name: 'candidates')
+  List<Candidate> get candidates {
+    if (_candidates is EqualUnmodifiableListView) return _candidates;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_result);
+    return EqualUnmodifiableListView(_candidates);
   }
 
   @override
   String toString() {
-    return 'PaLMApiResponse(result: $result)';
+    return 'PaLMApiResponse(candidates: $candidates)';
   }
 
   @override
@@ -124,13 +124,14 @@ class _$_PaLMApiResponse implements _PaLMApiResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaLMApiResponse &&
-            const DeepCollectionEquality().equals(other._result, _result));
+            const DeepCollectionEquality()
+                .equals(other._candidates, _candidates));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_candidates));
 
   @JsonKey(ignore: true)
   @override
@@ -148,15 +149,15 @@ class _$_PaLMApiResponse implements _PaLMApiResponse {
 
 abstract class _PaLMApiResponse implements PaLMApiResponse {
   const factory _PaLMApiResponse(
-      {@JsonKey(name: 'candiidates')
-          required final List<Candidate> result}) = _$_PaLMApiResponse;
+      {@JsonKey(name: 'candidates')
+          required final List<Candidate> candidates}) = _$_PaLMApiResponse;
 
   factory _PaLMApiResponse.fromJson(Map<String, dynamic> json) =
       _$_PaLMApiResponse.fromJson;
 
   @override
-  @JsonKey(name: 'candiidates')
-  List<Candidate> get result;
+  @JsonKey(name: 'candidates')
+  List<Candidate> get candidates;
   @override
   @JsonKey(ignore: true)
   _$$_PaLMApiResponseCopyWith<_$_PaLMApiResponse> get copyWith =>
