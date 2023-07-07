@@ -1,4 +1,6 @@
+import 'package:cooking_completly_understood/data/models/recipe_response/recipe_response.dart';
 import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:isar/isar.dart';
 
 part 'recipe_model.g.dart';
@@ -43,5 +45,28 @@ class RecipeModel {
       isMade: isMade,
       isFavorite: isFavorite,
     );
+  }
+
+  RecipeModel fromRecipeResponseToInsert(RecipeResponse recipeResponse) {
+    return RecipeModel()
+      ..name = recipeResponse.recipeName
+      ..role = Role.assistant.name
+      ..description = recipeResponse.recipeDescription
+      ..cookingTime = recipeResponse.recipeCookingTime
+      ..ingredientName =
+          recipeResponse.recipeIngredients.map((e) => e.name).toList()
+      ..ingredientQuantity =
+          recipeResponse.recipeIngredients.map((e) => e.quantity).toList()
+      ..stepNumber = recipeResponse.recipeSteps.map((e) => e.number).toList()
+      ..stepDescription =
+          recipeResponse.recipeSteps.map((e) => e.description).toList()
+      ..calorie = recipeResponse.nutrition.calorie
+      ..protein = recipeResponse.nutrition.protein
+      ..fat = recipeResponse.nutrition.fat
+      ..carbohydrate = recipeResponse.nutrition.carbohydrate
+      ..salt = recipeResponse.nutrition.salt
+      ..timeStamp = DateTime.now()
+      ..isMade = false
+      ..isFavorite = false;
   }
 }
