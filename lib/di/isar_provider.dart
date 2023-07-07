@@ -1,5 +1,5 @@
 import 'package:cooking_completly_understood/data/models/food_model/food_model.dart';
-import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
+import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:isar/isar.dart';
@@ -14,7 +14,7 @@ final isarProvider = Provider(
     return await Isar.open(
       [
         RecipeModelSchema,
-        MyMessageSchema,
+        MyMessageModelSchema,
         FoodModelSchema,
       ], // 保存するデータモデルのリスト
       directory: dir.path, // データベースの保存先のパス

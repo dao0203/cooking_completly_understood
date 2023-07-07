@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cooking_completly_understood/domain/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
+import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
 
@@ -25,7 +25,7 @@ final recipeToRecipeMessageTransformer =
 
 //MyMessageからRecipeMessageへ変換するトランスフォーマー
 final myMessageToRecipeMessageTransformer =
-    StreamTransformer<List<MyMessage>, List<RecipeMessage>>.fromHandlers(
+    StreamTransformer<List<MyMessageModel>, List<RecipeMessage>>.fromHandlers(
   handleData: (myMessages, sink) {
     final recipeMessages = myMessages
         .map(

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_message.dart';
+part of 'my_message_model.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,13 +9,13 @@ part of 'my_message.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetMyMessageCollection on Isar {
-  IsarCollection<MyMessage> get myMessages => this.collection();
+extension GetMyMessageModelCollection on Isar {
+  IsarCollection<MyMessageModel> get myMessageModels => this.collection();
 }
 
-const MyMessageSchema = CollectionSchema(
-  name: r'MyMessage',
-  id: 1503401546129815691,
+const MyMessageModelSchema = CollectionSchema(
+  name: r'MyMessageModel',
+  id: 4040028854070006138,
   properties: {
     r'content': PropertySchema(
       id: 0,
@@ -33,22 +33,22 @@ const MyMessageSchema = CollectionSchema(
       type: IsarType.dateTime,
     )
   },
-  estimateSize: _myMessageEstimateSize,
-  serialize: _myMessageSerialize,
-  deserialize: _myMessageDeserialize,
-  deserializeProp: _myMessageDeserializeProp,
+  estimateSize: _myMessageModelEstimateSize,
+  serialize: _myMessageModelSerialize,
+  deserialize: _myMessageModelDeserialize,
+  deserializeProp: _myMessageModelDeserializeProp,
   idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _myMessageGetId,
-  getLinks: _myMessageGetLinks,
-  attach: _myMessageAttach,
+  getId: _myMessageModelGetId,
+  getLinks: _myMessageModelGetLinks,
+  attach: _myMessageModelAttach,
   version: '3.1.0+1',
 );
 
-int _myMessageEstimateSize(
-  MyMessage object,
+int _myMessageModelEstimateSize(
+  MyMessageModel object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -58,8 +58,8 @@ int _myMessageEstimateSize(
   return bytesCount;
 }
 
-void _myMessageSerialize(
-  MyMessage object,
+void _myMessageModelSerialize(
+  MyMessageModel object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -69,13 +69,13 @@ void _myMessageSerialize(
   writer.writeDateTime(offsets[2], object.timeStamp);
 }
 
-MyMessage _myMessageDeserialize(
+MyMessageModel _myMessageModelDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = MyMessage();
+  final object = MyMessageModel();
   object.content = reader.readString(offsets[0]);
   object.id = id;
   object.role = reader.readString(offsets[1]);
@@ -83,7 +83,7 @@ MyMessage _myMessageDeserialize(
   return object;
 }
 
-P _myMessageDeserializeProp<P>(
+P _myMessageModelDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -101,30 +101,32 @@ P _myMessageDeserializeProp<P>(
   }
 }
 
-Id _myMessageGetId(MyMessage object) {
+Id _myMessageModelGetId(MyMessageModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _myMessageGetLinks(MyMessage object) {
+List<IsarLinkBase<dynamic>> _myMessageModelGetLinks(MyMessageModel object) {
   return [];
 }
 
-void _myMessageAttach(IsarCollection<dynamic> col, Id id, MyMessage object) {
+void _myMessageModelAttach(
+    IsarCollection<dynamic> col, Id id, MyMessageModel object) {
   object.id = id;
 }
 
-extension MyMessageQueryWhereSort
-    on QueryBuilder<MyMessage, MyMessage, QWhere> {
-  QueryBuilder<MyMessage, MyMessage, QAfterWhere> anyId() {
+extension MyMessageModelQueryWhereSort
+    on QueryBuilder<MyMessageModel, MyMessageModel, QWhere> {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension MyMessageQueryWhere
-    on QueryBuilder<MyMessage, MyMessage, QWhereClause> {
-  QueryBuilder<MyMessage, MyMessage, QAfterWhereClause> idEqualTo(Id id) {
+extension MyMessageModelQueryWhere
+    on QueryBuilder<MyMessageModel, MyMessageModel, QWhereClause> {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterWhereClause> idEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -133,7 +135,8 @@ extension MyMessageQueryWhere
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterWhereClause> idNotEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -155,7 +158,8 @@ extension MyMessageQueryWhere
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterWhereClause> idGreaterThan(
+      Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -164,7 +168,8 @@ extension MyMessageQueryWhere
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterWhereClause> idLessThan(
+      Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -173,7 +178,7 @@ extension MyMessageQueryWhere
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterWhereClause> idBetween(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -190,9 +195,10 @@ extension MyMessageQueryWhere
   }
 }
 
-extension MyMessageQueryFilter
-    on QueryBuilder<MyMessage, MyMessage, QFilterCondition> {
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentEqualTo(
+extension MyMessageModelQueryFilter
+    on QueryBuilder<MyMessageModel, MyMessageModel, QFilterCondition> {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -205,7 +211,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentGreaterThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -220,7 +227,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentLessThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -235,7 +243,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentBetween(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -254,7 +263,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentStartsWith(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -267,7 +277,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentEndsWith(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -280,9 +291,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'content',
@@ -292,9 +302,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'content',
@@ -304,7 +313,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> contentIsEmpty() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      contentIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'content',
@@ -313,7 +323,7 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition>
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
       contentIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -323,7 +333,7 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> idEqualTo(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition> idEqualTo(
       Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -333,7 +343,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -346,7 +357,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> idLessThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -359,7 +371,7 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> idBetween(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -376,7 +388,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleEqualTo(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -389,7 +402,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleGreaterThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -404,7 +418,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleLessThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -419,7 +434,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleBetween(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -438,7 +454,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleStartsWith(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -451,7 +468,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleEndsWith(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -464,9 +482,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'role',
@@ -476,9 +493,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'role',
@@ -488,7 +504,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleIsEmpty() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'role',
@@ -497,7 +514,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> roleIsNotEmpty() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      roleIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'role',
@@ -506,8 +524,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> timeStampEqualTo(
-      DateTime value) {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      timeStampEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'timeStamp',
@@ -516,7 +534,7 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition>
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
       timeStampGreaterThan(
     DateTime value, {
     bool include = false,
@@ -530,7 +548,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> timeStampLessThan(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      timeStampLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -543,7 +562,8 @@ extension MyMessageQueryFilter
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterFilterCondition> timeStampBetween(
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterFilterCondition>
+      timeStampBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -561,145 +581,151 @@ extension MyMessageQueryFilter
   }
 }
 
-extension MyMessageQueryObject
-    on QueryBuilder<MyMessage, MyMessage, QFilterCondition> {}
+extension MyMessageModelQueryObject
+    on QueryBuilder<MyMessageModel, MyMessageModel, QFilterCondition> {}
 
-extension MyMessageQueryLinks
-    on QueryBuilder<MyMessage, MyMessage, QFilterCondition> {}
+extension MyMessageModelQueryLinks
+    on QueryBuilder<MyMessageModel, MyMessageModel, QFilterCondition> {}
 
-extension MyMessageQuerySortBy on QueryBuilder<MyMessage, MyMessage, QSortBy> {
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> sortByContent() {
+extension MyMessageModelQuerySortBy
+    on QueryBuilder<MyMessageModel, MyMessageModel, QSortBy> {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> sortByContent() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'content', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> sortByContentDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy>
+      sortByContentDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'content', Sort.desc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> sortByRole() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> sortByRole() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> sortByRoleDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> sortByRoleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.desc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> sortByTimeStamp() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> sortByTimeStamp() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> sortByTimeStampDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy>
+      sortByTimeStampDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.desc);
     });
   }
 }
 
-extension MyMessageQuerySortThenBy
-    on QueryBuilder<MyMessage, MyMessage, QSortThenBy> {
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByContent() {
+extension MyMessageModelQuerySortThenBy
+    on QueryBuilder<MyMessageModel, MyMessageModel, QSortThenBy> {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> thenByContent() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'content', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByContentDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy>
+      thenByContentDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'content', Sort.desc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenById() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByRole() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> thenByRole() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByRoleDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> thenByRoleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'role', Sort.desc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByTimeStamp() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy> thenByTimeStamp() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.asc);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QAfterSortBy> thenByTimeStampDesc() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QAfterSortBy>
+      thenByTimeStampDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'timeStamp', Sort.desc);
     });
   }
 }
 
-extension MyMessageQueryWhereDistinct
-    on QueryBuilder<MyMessage, MyMessage, QDistinct> {
-  QueryBuilder<MyMessage, MyMessage, QDistinct> distinctByContent(
+extension MyMessageModelQueryWhereDistinct
+    on QueryBuilder<MyMessageModel, MyMessageModel, QDistinct> {
+  QueryBuilder<MyMessageModel, MyMessageModel, QDistinct> distinctByContent(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'content', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QDistinct> distinctByRole(
+  QueryBuilder<MyMessageModel, MyMessageModel, QDistinct> distinctByRole(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'role', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MyMessage, MyMessage, QDistinct> distinctByTimeStamp() {
+  QueryBuilder<MyMessageModel, MyMessageModel, QDistinct>
+      distinctByTimeStamp() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'timeStamp');
     });
   }
 }
 
-extension MyMessageQueryProperty
-    on QueryBuilder<MyMessage, MyMessage, QQueryProperty> {
-  QueryBuilder<MyMessage, int, QQueryOperations> idProperty() {
+extension MyMessageModelQueryProperty
+    on QueryBuilder<MyMessageModel, MyMessageModel, QQueryProperty> {
+  QueryBuilder<MyMessageModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<MyMessage, String, QQueryOperations> contentProperty() {
+  QueryBuilder<MyMessageModel, String, QQueryOperations> contentProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'content');
     });
   }
 
-  QueryBuilder<MyMessage, String, QQueryOperations> roleProperty() {
+  QueryBuilder<MyMessageModel, String, QQueryOperations> roleProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'role');
     });
   }
 
-  QueryBuilder<MyMessage, DateTime, QQueryOperations> timeStampProperty() {
+  QueryBuilder<MyMessageModel, DateTime, QQueryOperations> timeStampProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'timeStamp');
     });
