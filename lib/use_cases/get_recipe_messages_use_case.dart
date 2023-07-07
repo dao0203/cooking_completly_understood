@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
-import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
+import 'package:cooking_completly_understood/domain/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/data/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/data/repositories/recipe_repository.dart';
 import 'package:rxdart/rxdart.dart';
