@@ -1,7 +1,7 @@
-import 'package:cooking_completly_understood/data/models/food_model/food_model.dart';
+import 'package:cooking_completly_understood/domain/models/food/food.dart';
 
 abstract class FoodRepository {
-  Stream<List<FoodModel>> getAll();
+  Stream<List<Food>> getAll();
   Future<void> insert(String foodName);
   Future<void> delete(int foodId);
 }

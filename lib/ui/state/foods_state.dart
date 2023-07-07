@@ -8,23 +8,9 @@ part 'foods_state.g.dart';
 class FoodsState extends _$FoodsState {
   @override
   Future<Stream<List<Food>>> build() async {
-    return await ref.read(foodRepositoryProvider).then(
-      (value) {
-        //食べ物を全て取得するメソッド
-        return value.getAll().map(
-              (event) => event
-                  .map(
-                    //ImmuFoodに変換
-                    (e) => Food(
-                      id: e.id,
-                      name: e.name,
-                      createdAt: e.createdAt,
-                    ),
-                  )
-                  .toList(),
-            );
-      },
-    );
+    return await ref
+        .read(foodRepositoryProvider)
+        .then((value) => value.getAll());
   }
 
   //食べ物を保存するメソッド
