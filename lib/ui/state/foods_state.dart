@@ -1,5 +1,5 @@
+import 'package:cooking_completly_understood/di/repository_providers.dart';
 import 'package:cooking_completly_understood/domain/models/food/food.dart';
-import 'package:cooking_completly_understood/di/food_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'foods_state.g.dart';
