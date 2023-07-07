@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cooking_completly_understood/domain/recipe/recipe.dart';
+import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
 

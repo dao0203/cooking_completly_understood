@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:cooking_completly_understood/domain/recipe/recipe.dart';
+import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
-import 'package:cooking_completly_understood/domain/recipe_message/recipe_message.dart';
+import 'package:cooking_completly_understood/domain/models/recipe_message/recipe_message.dart';
 
 //RecipeからRecipeMessageへ変換するトランスフォーマー
 final recipeToRecipeMessageTransformer =

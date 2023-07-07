@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/domain/recipe_message/recipe_message.dart';
+import 'package:cooking_completly_understood/domain/models/recipe_message/recipe_message.dart';
 import 'package:cooking_completly_understood/di/get_recipe_messages_use_case_provider.dart';
 import 'package:cooking_completly_understood/di/message_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
