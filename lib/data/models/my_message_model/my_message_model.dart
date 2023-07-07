@@ -13,6 +13,7 @@ class MyMessageModel {
   late DateTime timeStamp;
 
   MyMessage toMyMessage() => MyMessage(
+        id: id,
         role: role,
         content: content,
         timeStamp: timeStamp,
