@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'remote/palm_api_data_source.dart';
+part of 'palm_api_data_source.dart';
 
 // **************************************************************************
 // ChopperGenerator
