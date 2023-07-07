@@ -1,17 +1,20 @@
 import 'package:cooking_completly_understood/data/models/food_model/food_model.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
+import 'package:cooking_completly_understood/domain/repositories/food_repository.dart';
 
-class FoodRepository {
+class FoodRepositoryImpl implements FoodRepository {
   final FoodDataSource _foodService;
-  FoodRepository(this._foodService);
+  FoodRepositoryImpl(this._foodService);
 
   //食べ物を全て取得するメソッド
-  Stream<List<FoodModel>> getAllFood() {
+  @override
+  Stream<List<FoodModel>> getAll() {
     return _foodService.getAllFood();
   }
 
   //食べ物を保存するメソッド
-  Future<void> insertFood(String foodName) async {
+  @override
+  Future<void> insert(String foodName) async {
     final food = FoodModel()
       ..name = foodName
       ..createdAt = DateTime.now();
@@ -19,7 +22,8 @@ class FoodRepository {
   }
 
   //食べ物を削除するメソッド
-  Future<void> deleteFood(int foodId) async {
+  @override
+  Future<void> delete(int foodId) async {
     await _foodService.deleteFood(foodId);
   }
 }

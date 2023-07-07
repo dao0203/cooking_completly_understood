@@ -11,7 +11,7 @@ class FoodsState extends _$FoodsState {
     return await ref.read(foodRepositoryProvider).then(
       (value) {
         //食べ物を全て取得するメソッド
-        return value.getAllFood().map(
+        return value.getAll().map(
               (event) => event
                   .map(
                     //ImmuFoodに変換
@@ -31,7 +31,7 @@ class FoodsState extends _$FoodsState {
   Future<void> insertFood(String foodName) async {
     await ref.read(foodRepositoryProvider).then(
       (value) {
-        return value.insertFood(foodName);
+        return value.insert(foodName);
       },
     );
   }
@@ -40,7 +40,7 @@ class FoodsState extends _$FoodsState {
   Future<void> deleteFood(int foodId) async {
     await ref.read(foodRepositoryProvider).then(
       (value) {
-        return value.deleteFood(foodId);
+        return value.delete(foodId);
       },
     );
   }
