@@ -16,7 +16,7 @@ class MessagesState extends _$MessagesState {
   //メッセージを送信するメソッド
   Future<void> sendMessageAndReceiveMessage(String inputedMessage) async {
     await ref
-        .read(suggestRecipeConsideringWeatherAndTEmperatureUseCaseProvider)
+        .read(suggestRecipeConsideringWeatherAndTemperatureUseCaseProvider)
         .then((value) => value.call(inputedMessage));
   }
 }
