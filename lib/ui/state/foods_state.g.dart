@@ -6,12 +6,12 @@ part of 'foods_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$foodsStateHash() => r'766988134e761dd448924e8864104f6447466538';
+String _$foodsStateHash() => r'dc7cc6a3a04c244758b3eed60233831ace76db77';
 
 /// See also [FoodsState].
 @ProviderFor(FoodsState)
-final foodsStateProvider = AutoDisposeAsyncNotifierProvider<FoodsState,
-    Stream<List<ImmuFood>>>.internal(
+final foodsStateProvider =
+    AutoDisposeAsyncNotifierProvider<FoodsState, Stream<List<Food>>>.internal(
   FoodsState.new,
   name: r'foodsStateProvider',
   debugGetCreateSourceHash:
@@ -20,5 +20,5 @@ final foodsStateProvider = AutoDisposeAsyncNotifierProvider<FoodsState,
   allTransitiveDependencies: null,
 );
 
-typedef _$FoodsState = AutoDisposeAsyncNotifier<Stream<List<ImmuFood>>>;
+typedef _$FoodsState = AutoDisposeAsyncNotifier<Stream<List<Food>>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

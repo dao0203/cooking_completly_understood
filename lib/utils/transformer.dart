@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:cooking_completly_understood/data/models/immu_recipe/immu_recipe.dart';
-import 'package:cooking_completly_understood/data/models/my_message/my_message.dart';
-import 'package:cooking_completly_understood/data/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/data/models/recipe_message/recipe_message.dart';
+import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
+import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
+import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
+import 'package:cooking_completly_understood/domain/models/recipe_message/recipe_message.dart';
 
 //RecipeからRecipeMessageへ変換するトランスフォーマー
 final recipeToRecipeMessageTransformer =
-    StreamTransformer<List<Recipe>, List<RecipeMessage>>.fromHandlers(
+    StreamTransformer<List<RecipeModel>, List<RecipeMessage>>.fromHandlers(
   handleData: (recipes, sink) {
     final recipeMessages = recipes
         .map(
@@ -25,7 +25,7 @@ final recipeToRecipeMessageTransformer =
 
 //MyMessageからRecipeMessageへ変換するトランスフォーマー
 final myMessageToRecipeMessageTransformer =
-    StreamTransformer<List<MyMessage>, List<RecipeMessage>>.fromHandlers(
+    StreamTransformer<List<MyMessageModel>, List<RecipeMessage>>.fromHandlers(
   handleData: (myMessages, sink) {
     final recipeMessages = myMessages
         .map(
@@ -43,11 +43,11 @@ final myMessageToRecipeMessageTransformer =
 
 //RecipeをImmuRecipeに変換するトランスフォーマー
 final recipeToImmuRecipeTransformer =
-    StreamTransformer<List<Recipe>, List<ImmuRecipe>>.fromHandlers(
+    StreamTransformer<List<RecipeModel>, List<Recipe>>.fromHandlers(
   handleData: (recipes, sink) {
     final immuRecipes = recipes
         .map(
-          (e) => ImmuRecipe(
+          (e) => Recipe(
             id: e.id,
             role: e.role,
             name: e.name,
