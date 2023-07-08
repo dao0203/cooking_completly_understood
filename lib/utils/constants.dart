@@ -56,7 +56,7 @@ temperature: $temperature weather(WMO): $weather
 - Please output the quantity in grams (g) without including the unit name.
 - Please output the quantity of nutrients in grams (g) without including the unit name
 - Please output the quantity of ingredient quantitiy in grams (g) without including the unit name
-- Please answer in Japanese
+- Please answer in English
 {
   "$jsonRecipeName": "recipe name",
   "$jsonRecipeDescription": "recipe description",
@@ -103,7 +103,7 @@ const jsonFat = "fat";
 const jsonCarbohydrate = "carbohydrate";
 const jsonSalt = "salt";
 
-Map<String, dynamic> getRequestBodyForMakerSuite(String promptString) {
+Map<String, dynamic> getRequestBodyForPaLMApi(String promptString) {
   return {
     // 'model': 'models/test-beta-001',
     'prompt': {
