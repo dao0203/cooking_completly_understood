@@ -9,14 +9,14 @@ final getRecipeMessagesUseCaseProvider = Provider((ref) async {
   return GetRecipeMessagesUseCase(myMessageRepository, recipeRepository);
 });
 
-final suggestRecipeConsideringWeatherAndTEmperatureUseCaseProvider =
+final suggestRecipeConsideringWeatherAndTemperatureUseCaseProvider =
     Provider((ref) async {
   final myMessageRepository = await ref.read(myMessageRepositoryProvider);
   final positionRepository = ref.read(positionRepositoryProvider);
   final weatherRepository = ref.read(weatherRepositoryProvider);
   final messageRepository = ref.read(messageRepositoryProvider);
   final recipeRepository = await ref.read(recipeRepositoryProvider);
-  return  SuggestRecipeConsideringWeatherAndTemperatureUseCase(
+  return SuggestRecipeConsideringWeatherAndTemperatureUseCase(
     myMessageRepository,
     positionRepository,
     weatherRepository,
