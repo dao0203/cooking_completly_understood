@@ -16,12 +16,27 @@ class MessageRepositoryImpl implements MessageRepository {
     final requestBody = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
     //リクエストを送信してレスポンスを受け取る
-    final response = await _paLMApiDataSource.getMessage(requestBody);
+    return await _paLMApiDataSource.getMessage(requestBody).then((response) {
+      if (response.isSuccessful) {
+        //レスポンスボディをパース
+        final paLMApiRsponse =
+            PaLMApiResponse.fromJson(json.decode(response.body));
 
-    //レスポンスボディをパース
-    final paLMApiRsponse = PaLMApiResponse.fromJson(json.decode(response.body));
+        //パースしたデータのoutputを返す
+        return paLMApiRsponse.candidates[0].output;
+      } else if (response.statusCode == 400) {
+        //エラーを投げる
+        throw Exception('invalid_argument');
+      } else {
+        //エラーを投げる
+        throw Exception('unknown_error');
+      }
+    });
 
-    //パースしたデータのoutputを返す
-    return paLMApiRsponse.candidates[0].output;
+    // //レスポンスボディをパース
+    // final paLMApiRsponse = PaLMApiResponse.fromJson(json.decode(response.body));
+
+    // //パースしたデータのoutputを返す
+    // return paLMApiRsponse.candidates[0].output;
   }
 }
