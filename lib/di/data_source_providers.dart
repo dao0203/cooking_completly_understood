@@ -27,8 +27,8 @@ final openMeteoApiDataSourceProvider =
 final recipeDataSourceProvider = Provider(
     (ref) => ref.read(isarProvider).then((isar) => IsarRecipeDataSource(isar)));
 
-//palmApiDataSource
-final paLMApiDataSourceProvider = Provider((ref) => PaLMApiDataSource.create());
+//chatDataSource
+final chatDataSourceProvider = Provider((ref) => PaLMApiDataSource.create());
 
 //weatherDataSource
 final weatherDataSourceProvider =

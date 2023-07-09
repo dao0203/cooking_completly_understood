@@ -14,7 +14,7 @@ void main() {
   late String promptString;
   late Response response;
   late String paLMKey;
-  setUpAll(() async{
+  setUpAll(() async {
     //dotenvを初期化
     await dotenv.load(fileName: ".env");
     //paLMApiDataSourceを初期化
@@ -34,8 +34,7 @@ void main() {
         sendedBodyString = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
         //レスポンスを取得
-        response =
-            await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
+        response = await paLMApiDataSource.getInfo(sendedBodyString, paLMKey);
       });
       test('取得したメッセージが空ではないこと', () async {
         expect(response, isNotNull);
@@ -60,8 +59,7 @@ void main() {
               json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
           //レスポンスを取得
-          response =
-              await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
+          response = await paLMApiDataSource.getInfo(sendedBodyString, paLMKey);
         });
         test('取得したメッセージが空ではないこと', () async {
           expect(response, isNotNull);
@@ -89,8 +87,7 @@ void main() {
         sendedBodyString = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
         //レスポンスを取得
-        response =
-            await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
+        response = await paLMApiDataSource.getInfo(sendedBodyString, paLMKey);
       });
       test('取得したメッセージが空ではないこと', () async {
         expect(response, isNotNull);
@@ -115,8 +112,7 @@ void main() {
         sendedBodyString = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
         //レスポンスを取得
-        response =
-            await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
+        response = await paLMApiDataSource.getInfo(sendedBodyString, paLMKey);
       });
       test('取得したメッセージが空ではないこと', () async {
         expect(response, isNotNull);

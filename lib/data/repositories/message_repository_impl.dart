@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/palm_api_response/palm_api_response.dart';
-import 'package:cooking_completly_understood/data/sources/remote/palm_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/interfaces/chat_data_source.dart';
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MessageRepositoryImpl implements MessageRepository {
-  final PaLMApiDataSource _paLMApiDataSource;
+  final ChatDataSource _paLMApiDataSource;
 
   MessageRepositoryImpl(this._paLMApiDataSource);
 
