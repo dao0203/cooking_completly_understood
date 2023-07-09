@@ -17,9 +17,12 @@ class _$PaLMApiDataSource extends PaLMApiDataSource {
   final definitionType = PaLMApiDataSource;
 
   @override
-  Future<Response<dynamic>> getMessage(String body) {
+  Future<Response<dynamic>> getMessage(
+    String body,
+    String paLMKey,
+  ) {
     final Uri $url = Uri.parse(
-        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyDl-ZzfybSIAwrmrErawFSjMjUUuDs_DS4');
+        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=${paLMKey}');
     final Map<String, String> $headers = {
       'Content-Type': 'application/json',
     };
