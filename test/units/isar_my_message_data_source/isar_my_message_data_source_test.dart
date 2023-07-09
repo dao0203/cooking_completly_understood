@@ -4,22 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
 
-import '../../mocks/mock_my_message_model_list.dart';
+import '../../mocks/mock_my_message_models.dart';
 import '../../utils/isar_db_directory.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   late Isar isar;
   late IsarMyMessageDataSource isarMyMessageDataSource;
-  late List<MyMessageModel> firstGetAllResult;
   late List<MyMessageModel> getAllResult;
   late List<MyMessageModel> insertResult;
   final IsarDbDirectory isarDbDirectory = IsarDbDirectory();
   //insert用のテストデータ
-  final MyMessageModel myMessageModel = MyMessageModel()
-    ..role = 'test4'
-    ..content = 'test4'
-    ..timeStamp = DateTime.now();
 
   setUpAll(() async {
     await Isar.initializeIsarCore(download: true);
@@ -32,9 +27,6 @@ void main() {
     for (final myMessageModel in mockMyMessageModelList) {
       await isarMyMessageDataSource.insert(myMessageModel);
     }
-
-    // getAllの結果を取得
-    firstGetAllResult = await isarMyMessageDataSource.getAll().first;
   });
 
   tearDownAll(() async {
@@ -69,22 +61,23 @@ void main() {
   group("insert", () {
     setUpAll(() async {
       // テスト用のデータをinsert
-      await isarMyMessageDataSource.insert(myMessageModel);
+      await isarMyMessageDataSource.insert(mockMyMessageModelForInsertion);
       // insertの結果を取得
       insertResult = await isarMyMessageDataSource.getAll().first;
-      debugPrint(insertResult.length.toString());
+      debugPrint("setUpAll: insertResult: ${insertResult.length}");
     });
 
     test("insertの結果の長さがmockMyMessageModelListの長さより1大きいこと",
         () => expect(insertResult.length, mockMyMessageModelList.length + 1));
     test("insertの結果のroleがgetAllの結果のroleと同じであること", () {
-      expect(insertResult.last.role, myMessageModel.role);
+      expect(insertResult.last.role, mockMyMessageModelForInsertion.role);
     });
     test("insertの結果のcontentがgetAllの結果のcontentと同じであること", () {
-      expect(insertResult.last.content, myMessageModel.content);
+      expect(insertResult.last.content, mockMyMessageModelForInsertion.content);
     });
     test("insertの結果のtimeStampがgetAllの結果のtimeStampと同じであること", () {
-      expect(insertResult.last.timeStamp, myMessageModel.timeStamp);
+      expect(insertResult.last.timeStamp,
+          mockMyMessageModelForInsertion.timeStamp);
     });
   });
 }
