@@ -60,6 +60,8 @@ class MessageRepositoryImpl implements MessageRepository {
         //パースしたデータのoutputを返す
         return openAIApiRsponse.choices[0].message.content;
       } else if (response.statusCode == 400) {
+        debugPrint(response.body);
+        debugPrint(response.error.toString());
         //エラーを投げる
         throw Exception('invalid_argument');
       } else {
