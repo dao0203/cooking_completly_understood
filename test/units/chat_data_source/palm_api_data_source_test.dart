@@ -4,6 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:cooking_completly_understood/data/sources/remote/palm_api_data_source.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -12,9 +13,14 @@ void main() {
   late String sendedBodyString;
   late String promptString;
   late Response response;
-  setUpAll(() {
+  late String paLMKey;
+  setUpAll(() async{
+    //dotenvを初期化
+    await dotenv.load(fileName: ".env");
     //paLMApiDataSourceを初期化
     paLMApiDataSource = PaLMApiDataSource.create();
+    //.envファイルからAPIキーを取得
+    paLMKey = dotenv.env['PALM_KEY']!;
   });
 
   group("レシピをメッセージとして送信したときのテスト", () {
@@ -28,7 +34,8 @@ void main() {
         sendedBodyString = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
         //レスポンスを取得
-        response = await paLMApiDataSource.getMessage(sendedBodyString);
+        response =
+            await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
       });
       test('取得したメッセージが空ではないこと', () async {
         expect(response, isNotNull);
@@ -53,7 +60,8 @@ void main() {
               json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
           //レスポンスを取得
-          response = await paLMApiDataSource.getMessage(sendedBodyString);
+          response =
+              await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
         });
         test('取得したメッセージが空ではないこと', () async {
           expect(response, isNotNull);
@@ -81,7 +89,8 @@ void main() {
         sendedBodyString = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
         //レスポンスを取得
-        response = await paLMApiDataSource.getMessage(sendedBodyString);
+        response =
+            await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
       });
       test('取得したメッセージが空ではないこと', () async {
         expect(response, isNotNull);
@@ -106,7 +115,8 @@ void main() {
         sendedBodyString = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
         //レスポンスを取得
-        response = await paLMApiDataSource.getMessage(sendedBodyString);
+        response =
+            await paLMApiDataSource.getMessage(sendedBodyString, paLMKey);
       });
       test('取得したメッセージが空ではないこと', () async {
         expect(response, isNotNull);
