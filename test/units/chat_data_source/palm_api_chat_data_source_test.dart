@@ -1,7 +1,7 @@
 import 'dart:convert' show json;
 
 import 'package:chopper/chopper.dart';
-import 'package:cooking_completly_understood/data/sources/remote/palm_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/palm_api_chat_data_source.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  late PaLMApiDataSource paLMApiDataSource;
+  late PaLMApiChatDataSource paLMApiDataSource;
   late String sendedBodyString;
   late String promptString;
   late Response response;
@@ -18,7 +18,7 @@ void main() {
     //dotenvを初期化
     await dotenv.load(fileName: ".env");
     //paLMApiDataSourceを初期化
-    paLMApiDataSource = PaLMApiDataSource.create();
+    paLMApiDataSource = PaLMApiChatDataSource.create();
     //.envファイルからAPIキーを取得
     paLMKey = dotenv.env['PALM_KEY']!;
   });

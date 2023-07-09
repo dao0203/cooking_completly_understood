@@ -1,16 +1,16 @@
 import 'package:cooking_completly_understood/data/repositories/message_repository_impl.dart';
-import 'package:cooking_completly_understood/data/sources/remote/palm_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/palm_api_chat_data_source.dart';
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() async {
-  late final PaLMApiDataSource paLMApiDataSource;
+  late final PaLMApiChatDataSource paLMApiDataSource;
   late final MessageRepository messageRepository;
   late final String responseMessage;
   setUp(() async {
     //PaLMApiDataSourceを作成
-    paLMApiDataSource = PaLMApiDataSource.create();
+    paLMApiDataSource = PaLMApiChatDataSource.create();
     messageRepository = MessageRepositoryImpl(paLMApiDataSource);
 
     const String promptString = "please give me a recipe that uses daikon";
