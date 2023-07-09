@@ -4,6 +4,7 @@ import 'package:cooking_completly_understood/data/models/palm_api_response/palm_
 import 'package:cooking_completly_understood/data/sources/remote/palm_api_data_source.dart';
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MessageRepositoryImpl implements MessageRepository {
   final PaLMApiDataSource _paLMApiDataSource;
@@ -16,7 +17,9 @@ class MessageRepositoryImpl implements MessageRepository {
     final requestBody = json.encode(getRequestBodyForPaLMApi(sendedMessage));
 
     //リクエストを送信してレスポンスを受け取る
-    return await _paLMApiDataSource.getMessage(requestBody).then((response) {
+    return await _paLMApiDataSource
+        .getMessage(requestBody, dotenv.env['PALM_KEY']!)
+        .then((response) {
       if (response.isSuccessful) {
         //レスポンスボディをパース
         final paLMApiRsponse =
