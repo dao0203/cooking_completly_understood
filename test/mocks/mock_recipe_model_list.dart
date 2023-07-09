@@ -1,7 +1,7 @@
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
 
-final dummyRecipeModelList = [
+final mockRecipeModelList = [
   RecipeModel()
     ..name = 'test1'
     ..role = Role.assistant.name
