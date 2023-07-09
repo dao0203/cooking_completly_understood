@@ -1,6 +1,7 @@
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
 
+//getAllのテストデータ
 final mockRecipeModelList = [
   RecipeModel()
     ..name = 'test1'
@@ -57,3 +58,22 @@ final mockRecipeModelList = [
     ..isMade = false
     ..isFavorite = false,
 ];
+
+//RecipeModelのinsert用のテストデータ
+final RecipeModel mockRecipeModelForInsertion = RecipeModel()
+  ..name = 'test4'
+  ..role = Role.assistant.name
+  ..description = 'test4'
+  ..cookingTime = 'test4'
+  ..ingredientName = ['test4']
+  ..ingredientQuantity = ['test4']
+  ..stepNumber = ['test4']
+  ..stepDescription = ['test4']
+  ..calorie = 'test4'
+  ..protein = 'test4'
+  ..fat = 'test4'
+  ..carbohydrate = 'test4'
+  ..salt = 'test4'
+  ..timeStamp = DateTime.now()
+  ..isMade = false
+  ..isFavorite = false;
