@@ -87,13 +87,14 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
       //----------メッセージを取得----------
       final message =
           await _messageRepository.sendAndReceiveMessage(encodedBody);
-      //PaLM APIだとMarkDown形式で返ってくるので、変換する
-      final convertedMessage =
-          message.substring(message.indexOf('{') + 1, message.length - 1);
-      //メッセージをパース
-      final recipeResponse =
-          RecipeResponse.fromJson(json.decode(convertedMessage));
-
+      // //PaLM APIだとMarkDown形式で返ってくるので、変換する
+      // final convertedMessage =
+      //     message.substring(message.indexOf('{') + 1, message.length - 1);
+      // //メッセージをパース
+      // final recipeResponse =
+      //     RecipeResponse.fromJson(json.decode(convertedMessage));
+      //OpenAI時の処理
+      final recipeResponse = RecipeResponse.fromJson(json.decode(message));
       //----------レシピをローカルDBに保存----------
       final insertedRecipe =
           RecipeModel().fromRecipeResponseToInsert(recipeResponse);
