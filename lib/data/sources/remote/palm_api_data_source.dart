@@ -10,7 +10,7 @@ abstract class PaLMApiDataSource extends ChopperService {
     path: '/v1beta2/models/text-bison-001:generateText?key={PALM_KEY}',
     headers: {'Content-Type': 'application/json'},
   )
-  Future<Response> getMessage(
+  Future<Response> getInfo(
     @Body() String body,
     @Path("PALM_KEY") String paLMKey,
   );

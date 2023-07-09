@@ -17,7 +17,7 @@ class _$PaLMApiDataSource extends PaLMApiDataSource {
   final definitionType = PaLMApiDataSource;
 
   @override
-  Future<Response<dynamic>> getMessage(
+  Future<Response<dynamic>> getInfo(
     String body,
     String paLMKey,
   ) {

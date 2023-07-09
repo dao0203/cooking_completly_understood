@@ -18,7 +18,7 @@ class MessageRepositoryImpl implements MessageRepository {
 
     //リクエストを送信してレスポンスを受け取る
     return await _paLMApiDataSource
-        .getMessage(requestBody, dotenv.env['PALM_KEY']!)
+        .getInfo(requestBody, dotenv.env['PALM_KEY']!)
         .then((response) {
       if (response.isSuccessful) {
         //レスポンスボディをパース
