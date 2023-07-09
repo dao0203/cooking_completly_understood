@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
 
-import '../../dummies/dummy_recipe_model_list.dart';
+import '../../mocks/mock_recipe_model_list.dart';
 import '../../utils/isar_db_directory.dart';
 
 void main() {
@@ -29,7 +29,7 @@ void main() {
     isarRecipeDataSource = IsarRecipeDataSource(isar);
 
     // テスト用のデータをlistの大きさだけinsert
-    for (final recipeModel in dummyRecipeModelList) {
+    for (final recipeModel in mockRecipeModelList) {
       await isarRecipeDataSource.insert(recipeModel);
     }
 
@@ -69,14 +69,14 @@ void main() {
   group('IsarRecipeDataSourceのテスト', () {
     test('getAllのテスト', () async {
       // テスト用のデータを取得
-      expect(getAllResult.length, dummyRecipeModelList.length);
+      expect(getAllResult.length, mockRecipeModelList.length);
     });
 
     test('insertのテスト', () async {
       // テスト用のデータを取得
 
       // テスト用のデータを比較
-      expect(insertResult.length, dummyRecipeModelList.length + 1);
+      expect(insertResult.length, mockRecipeModelList.length + 1);
     });
   });
 }
