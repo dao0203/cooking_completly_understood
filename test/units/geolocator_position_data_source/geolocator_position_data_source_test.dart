@@ -18,20 +18,17 @@ void main() async {
     position = await geolocatorPositionDataSource.getInfo();
   });
 
-  group(
-    'getInfo',
-    () {
-      test('position is not null', () async {
-        expect(position, isNotNull);
-      });
+  group('getInfo', () {
+    test('position is not null', () async {
+      expect(position, isNotNull);
+    });
 
-      test('position latitude is not null', () async {
-        expect(position.latitude, isNotNull);
-      });
+    test('position latitude is not null', () async {
+      expect(position.latitude, isNotNull);
+    });
 
-      test('position longitude is not null', () async {
-        expect(position.longitude, isNotNull);
-      });
-    },
-  );
+    test('position longitude is not null', () async {
+      expect(position.longitude, isNotNull);
+    });
+  });
 }
