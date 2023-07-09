@@ -23,7 +23,7 @@ mixin _$Message {
   @JsonKey(name: 'role')
   String get role => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
-  int get content => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $MessageCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'role') String role,
-      @JsonKey(name: 'content') int content});
+      @JsonKey(name: 'content') String content});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$_MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'role') String role,
-      @JsonKey(name: 'content') int content});
+      @JsonKey(name: 'content') String content});
 }
 
 /// @nodoc
@@ -102,7 +102,7 @@ class __$$_MessageCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -122,7 +122,7 @@ class _$_Message implements _Message {
   final String role;
   @override
   @JsonKey(name: 'content')
-  final int content;
+  final String content;
 
   @override
   String toString() {
@@ -159,7 +159,7 @@ class _$_Message implements _Message {
 abstract class _Message implements Message {
   const factory _Message(
       {@JsonKey(name: 'role') required final String role,
-      @JsonKey(name: 'content') required final int content}) = _$_Message;
+      @JsonKey(name: 'content') required final String content}) = _$_Message;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$_Message.fromJson;
 
@@ -168,7 +168,7 @@ abstract class _Message implements Message {
   String get role;
   @override
   @JsonKey(name: 'content')
-  int get content;
+  String get content;
   @override
   @JsonKey(ignore: true)
   _$$_MessageCopyWith<_$_Message> get copyWith =>

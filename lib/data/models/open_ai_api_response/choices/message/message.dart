@@ -7,7 +7,7 @@ part 'message.g.dart';
 abstract class Message with _$Message {
   const factory Message({
     @JsonKey(name: 'role') required String role,
-    @JsonKey(name: 'content') required int content,
+    @JsonKey(name: 'content') required String content,
   }) = _Message;
 
   factory Message.fromJson(Map<String, dynamic> json) =>
