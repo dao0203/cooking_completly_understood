@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
 
-import '../../mocks/mock_recipe_model_list.dart';
+import '../../mocks/mock_recipe_models.dart';
 import '../../utils/isar_db_directory.dart';
 
 void main() {
