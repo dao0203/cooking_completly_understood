@@ -45,6 +45,7 @@ class MessageRepositoryImpl implements MessageRepository {
   }
 
   Future<String> returnMessageWithOpenAIApi(String sendedMessage) async {
+    debugPrint('sendedMessage: $sendedMessage');
     //リクエストボディを作成
     final parameters = json.encode(getOpenAIParameters(sendedMessage));
 
@@ -56,7 +57,7 @@ class MessageRepositoryImpl implements MessageRepository {
         //レスポンスボディをパース
         final openAIApiRsponse =
             OpenAIApiResponse.fromJson(json.decode(response.body));
-
+        debugPrint(openAIApiRsponse.choices[0].message.content);
         //パースしたデータのoutputを返す
         return openAIApiRsponse.choices[0].message.content;
       } else if (response.statusCode == 400) {
