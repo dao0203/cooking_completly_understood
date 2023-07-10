@@ -64,18 +64,19 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
         }
       });
 
-      //----------現在地を取得----------
+      //現在地を取得
       final position = await _positionRepository.getCurrentPosition();
 
-      //----------天気情報を取得----------
+      //天気情報を取得
       final currentWeatherInfo = await _weatherRepository.getCurrentWeather(
           position.latitude, position.longitude);
-      //----------レシピを取得するための手続き----------
+
       //メッセージを英語に変換 PaLM API用
       // final String translatedMessage = await OnDeviceTranslator(
       //   sourceLanguage: TranslateLanguage.japanese,
       //   targetLanguage: TranslateLanguage.english,
       // ).translateText(inputedMessage);
+
       //送信するメッセージを作成
       final String sendedMessage = messageThatUserInputted(
         inputedMessage,
@@ -86,9 +87,10 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
       final String encodedBody =
           // json.encode(getRequestBodyForPaLMApi(sendedMessage));  //PaLM API用
           json.encode(getOpenAIParameters(sendedMessage));
-      //----------メッセージを取得----------
+      //メッセージを取得
       final message =
           await _messageRepository.sendAndReceiveMessage(encodedBody);
+
       //PaLM API用
       // //PaLM APIだとMarkDown形式で返ってくるので、変換する
       // final convertedMessage =
@@ -98,8 +100,9 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
       //     RecipeResponse.fromJson(json.decode(convertedMessage));
       //OpenAI時の処理
 
+      //メッセージをパース
       final recipeResponse = RecipeResponse.fromJson(json.decode(message));
-      //----------レシピをローカルDBに保存----------
+      //レシピを保存するために、レシピモデルに変換
       final insertedRecipe =
           RecipeModel().fromRecipeResponseToInsert(recipeResponse);
       //レシピを保存
