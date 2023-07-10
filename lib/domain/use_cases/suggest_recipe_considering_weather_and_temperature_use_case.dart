@@ -83,13 +83,15 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
         currentWeatherInfo.temperature.toString(),
         currentWeatherInfo.weatherCode.toString(),
       );
+
       //送信するメッセージをBodyに変えてエンコード
-      final String encodedBody =
-          // json.encode(getRequestBodyForPaLMApi(sendedMessage));  //PaLM API用
-          json.encode(getOpenAIParameters(sendedMessage));
+      // final String encodedBody =
+      // json.encode(getRequestBodyForPaLMApi(sendedMessage));  //PaLM API用
+      // json.encode(getOpenAIParameters(sendedMessage)); //OpenAI用
       //メッセージを取得
+
       final message =
-          await _messageRepository.sendAndReceiveMessage(encodedBody);
+          await _messageRepository.sendAndReceiveMessage(sendedMessage);
 
       //PaLM API用
       // //PaLM APIだとMarkDown形式で返ってくるので、変換する
