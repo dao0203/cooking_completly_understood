@@ -14,7 +14,7 @@ void main() {
     openAiApiKey = dotenv.env['OPEN_AI_API_KEY']!;
     OpenAI.apiKey = openAiApiKey;
     await OpenAI.instance.chat.create(
-      model: 'gpt-3.5-turbo',
+      model: openAIModel,
       messages: [
         const OpenAIChatCompletionChoiceMessageModel(
           role: OpenAIChatMessageRole.system,
@@ -29,7 +29,7 @@ void main() {
       setUpAll(() async {
         content = messageThatUserInputted("大根を使ったレシピを教えてください", '30', '3');
         result = await OpenAI.instance.chat.create(
-          model: 'gpt-3.5-turbo',
+          model: openAIModel,
           messages: [
             OpenAIChatCompletionChoiceMessageModel(
               role: OpenAIChatMessageRole.user,
@@ -48,7 +48,7 @@ void main() {
       setUpAll(() async {
         content = messageThatUserInputted("ポテトを使ったレシピを教えてください", '30', '3');
         result = await OpenAI.instance.chat.create(
-          model: 'gpt-3.5-turbo',
+          model: openAIModel,
           messages: [
             OpenAIChatCompletionChoiceMessageModel(
               role: OpenAIChatMessageRole.user,

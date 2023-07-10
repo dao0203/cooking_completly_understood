@@ -77,7 +77,7 @@ class MessageRepositoryImpl implements MessageRepository {
 
   Future<String> returnMessageWithDartOpenAI(String sendedMessage) async {
     return await OpenAI.instance.chat.create(
-      model: 'gpt-3.5-turbo',
+      model: openAIModel,
       messages: [
         OpenAIChatCompletionChoiceMessageModel(
           role: OpenAIChatMessageRole.user,

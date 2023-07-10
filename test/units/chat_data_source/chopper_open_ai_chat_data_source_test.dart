@@ -26,7 +26,7 @@ void main() {
     openAIChatDataSource = ChopperOpenAIChatDataSource.create();
 
     final initialParamater = json.encode({
-      'model': 'gpt-3.5-turbo',
+      'model': openAIModel,
       'messages': [
         {'role': 'system', 'content': 'あなたは、家庭料理のスペシャリストです'}
       ]

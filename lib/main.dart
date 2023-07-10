@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:cooking_completly_understood/ui/theme/app_theme.dart';
@@ -13,7 +14,7 @@ Future<void> main() async {
   await dotenv.load(fileName: '.env');
   OpenAI.apiKey = dotenv.env['OPEN_AI_API_KEY']!;
   OpenAI.instance.chat.create(
-    model: 'gpt-3.5-turbo',
+    model: openAIModel,
     messages: [
       const OpenAIChatCompletionChoiceMessageModel(
         role: OpenAIChatMessageRole.system,
