@@ -43,5 +43,24 @@ void main() {
         expect(result.choices.first.message.content, isNotNull);
       });
     });
+
+    group('ポテトを使ったレシピを教えてと送った時のテスト', () {
+      setUpAll(() async {
+        content = messageThatUserInputted("ポテトを使ったレシピを教えてください", '30', '3');
+        result = await OpenAI.instance.chat.create(
+          model: 'gpt-3.5-turbo',
+          messages: [
+            OpenAIChatCompletionChoiceMessageModel(
+              role: OpenAIChatMessageRole.user,
+              content: content,
+            ),
+          ],
+        );
+        debugPrint(result.choices.first.message.content);
+      });
+      test('メッセージが空ではないこと', () async {
+        expect(result.choices.first.message.content, isNotNull);
+      });
+    });
   });
 }
