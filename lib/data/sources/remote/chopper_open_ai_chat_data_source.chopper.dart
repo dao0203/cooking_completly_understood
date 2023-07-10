@@ -1,32 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'open_meteo_api_data_source.dart';
+part of 'chopper_open_ai_chat_data_source.dart';
 
 // **************************************************************************
 // ChopperGenerator
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$OpenMeteoApiDataSource extends OpenMeteoApiDataSource {
-  _$OpenMeteoApiDataSource([ChopperClient? client]) {
+class _$ChopperOpenAIChatDataSource extends ChopperOpenAIChatDataSource {
+  _$ChopperOpenAIChatDataSource([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = OpenMeteoApiDataSource;
+  final definitionType = ChopperOpenAIChatDataSource;
 
   @override
   Future<Response<dynamic>> getInfo(
-    double latitude,
-    double longtitude,
+    String body,
+    String apiKey,
   ) {
-    final Uri $url = Uri.parse(
-        'https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longtitude}&current_weather=true');
+    final Uri $url = Uri.parse('https://api.openai.com/v1/chat/completions');
+    final Map<String, String> $headers = {
+      'Authorization': apiKey,
+      'Content-Type': 'application/json',
+    };
+    final $body = body;
     final Request $request = Request(
-      'GET',
+      'POST',
       $url,
       client.baseUrl,
+      body: $body,
+      headers: $headers,
     );
     return client.send<dynamic, dynamic>($request);
   }

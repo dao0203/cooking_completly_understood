@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:cooking_completly_understood/data/models/open_meteo_api_response/open_meteo_api_response.dart';
-import 'package:cooking_completly_understood/data/sources/remote/open_meteo_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/chopper_open_meteo_api_data_source.dart';
 import 'package:cooking_completly_understood/domain/models/weather/weather.dart';
 import 'package:cooking_completly_understood/domain/repositories/weather_repository.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
-  final OpenMeteoApiDataSource _weatherDataSource;
+  final ChopperOpenMeteoApiDataSource _weatherDataSource;
 
   WeatherRepositoryImpl(this._weatherDataSource);
 

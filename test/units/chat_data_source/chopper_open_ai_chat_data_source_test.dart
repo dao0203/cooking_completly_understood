@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
-import 'package:cooking_completly_understood/data/sources/remote/open_ai_chat_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/chopper_open_ai_chat_data_source.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:cooking_completly_understood/utils/open_ai_parameters.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  late OpenAIChatDataSource openAIChatDataSource;
+  late ChopperOpenAIChatDataSource openAIChatDataSource;
   late String paramater;
   late String promptString;
   late String sendedMessage;
@@ -23,7 +23,7 @@ void main() {
     //.envファイルからAPIキーを取得
     openAIApiKey = "Bearer ${dotenv.env['OPEN_AI_API_KEY']!}";
     //openAIChatDataSourceを初期化
-    openAIChatDataSource = OpenAIChatDataSource.create();
+    openAIChatDataSource = ChopperOpenAIChatDataSource.create();
 
     final initialParamater = json.encode({
       'model': 'gpt-3.5-turbo',
