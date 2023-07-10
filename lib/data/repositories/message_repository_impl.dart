@@ -6,6 +6,7 @@ import 'package:cooking_completly_understood/data/sources/interfaces/chat_data_s
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:cooking_completly_understood/utils/open_ai_parameters.dart';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -16,7 +17,7 @@ class MessageRepositoryImpl implements MessageRepository {
 
   @override
   Future<String> sendAndReceiveMessage(String sendedMessage) async {
-    return await returnMessageWithOpenAIApi(sendedMessage);
+    return await returnMessageWithDartOpenAI(sendedMessage);
   }
 
   Future<String> returnMessageWithPaLMApi(String sendedMessage) async {
@@ -71,6 +72,21 @@ class MessageRepositoryImpl implements MessageRepository {
         debugPrint(response.error.toString());
         throw Exception('unknown_error');
       }
+    });
+  }
+
+  Future<String> returnMessageWithDartOpenAI(String sendedMessage) async {
+    return await OpenAI.instance.chat.create(
+      model: 'gpt-3.5-turbo',
+      messages: [
+        OpenAIChatCompletionChoiceMessageModel(
+          role: OpenAIChatMessageRole.user,
+          content: sendedMessage,
+        ),
+      ],
+    ).then((value) {
+      debugPrint(value.choices.first.message.content);
+      return value.choices.first.message.content;
     });
   }
 }
