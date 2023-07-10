@@ -12,7 +12,7 @@ Future<void> main() async {
   // .evnから環境変数を読み込む
   await dotenv.load(fileName: '.env');
   OpenAI.apiKey = dotenv.env['OPEN_AI_API_KEY']!;
-  await OpenAI.instance.chat.create(
+  OpenAI.instance.chat.create(
     model: 'gpt-3.5-turbo',
     messages: [
       const OpenAIChatCompletionChoiceMessageModel(
@@ -20,7 +20,7 @@ Future<void> main() async {
         content: 'あなたは、家庭料理のプロフェッショナルです',
       ),
     ],
-  );
+  ).then((value) => debugPrint(value.choices.first.message.content));
   cameras = await availableCameras();
 
   runApp(
