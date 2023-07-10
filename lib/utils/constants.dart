@@ -6,40 +6,40 @@ const Color madeColor = Color(0xFF2B96DE);
 
 //--------------入力したメッセージをChatGPTに送るメッセージ-----------------
 //一生使用しないと思うが、一応残しておく
-// String messageThatUserInputted(
-//         String message, String temperature, String weather) =>
-//     '''
-// 以下の条件を満たすレシピを教えてください。
-// 1.userの入力したメッセージを考慮して結果を回答してください
-// メッセージ: $message
-// 2.今の天気状況にあったレシピを回答してください
-// 温度: $temperature 天気(WMO): $weather
-// 3.回答は下記のJson形式で「必ず」回答してください
-// {
-//   "$jsonRecipeName": "レシピ名",
-//   "$jsonRecipeDescription": "レシピの説明",
-//   "$jsonRecipeCookingTime": "調理時間（分）",
-//   "$jsonRecipeIngredients": [
-//     {
-//       "$jsonIngredientName": "材料名",
-//       "$jsoningredientQuantity": "材料の量(g)"
-//     },
-//   ],
-//   "$jsonRecipeSteps": [
-//     {
-//       "$jsonStepNumber": "手順番号",
-//       "$jsonStepDescription": "手順の説明"
-//     },
-//   ],
-//   "$jsonRecipeNutrition": {
-//     "$jsonCalorie": "カロリー(kcal)",
-//     "$jsonProtein": "タンパク質(g)",
-//     "$jsonFat": "脂質(g)",
-//     "$jsonCarbohydrate": "炭水化物(g)",
-//     "$jsonSalt": "塩分(g)"
-//   },
-// }
-// ''';
+String messageThatUserInputted(
+        String message, String temperature, String weather) =>
+    '''
+以下の条件を満たすレシピを教えてください。
+1.userの入力したメッセージを考慮して結果を回答してください
+メッセージ: $message
+2.今の天気状況にあったレシピを回答してください
+温度: $temperature 天気(WMO): $weather
+3.回答は下記のJson形式で「必ず」回答してください
+{
+  "$jsonRecipeName": "レシピ名",
+  "$jsonRecipeDescription": "レシピの説明",
+  "$jsonRecipeCookingTime": "調理時間（分）",
+  "$jsonRecipeIngredients": [
+    {
+      "$jsonIngredientName": "材料名",
+      "$jsoningredientQuantity": "材料の量(g)"
+    },
+  ],
+  "$jsonRecipeSteps": [
+    {
+      "$jsonStepNumber": "手順番号",
+      "$jsonStepDescription": "手順の説明"
+    },
+  ],
+  "$jsonRecipeNutrition": {
+    "$jsonCalorie": "カロリー(kcal)",
+    "$jsonProtein": "タンパク質(g)",
+    "$jsonFat": "脂質(g)",
+    "$jsonCarbohydrate": "炭水化物(g)",
+    "$jsonSalt": "塩分(g)"
+  },
+}
+''';
 
 String messageThatUserInputtedInEnglish(
         String message, String temperature, String weather) =>
@@ -56,7 +56,7 @@ temperature: $temperature weather(WMO): $weather
 - Please output the quantity in grams (g) without including the unit name.
 - Please output the quantity of nutrients in grams (g) without including the unit name
 - Please output the quantity of ingredient quantitiy in grams (g) without including the unit name
-- Please answer in English
+- Please answer in Japanese
 {
   "$jsonRecipeName": "recipe name",
   "$jsonRecipeDescription": "recipe description",

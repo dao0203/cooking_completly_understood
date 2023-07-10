@@ -10,6 +10,7 @@ import 'package:cooking_completly_understood/domain/repositories/recipe_reposito
 import 'package:cooking_completly_understood/domain/repositories/weather_repository.dart';
 import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:cooking_completly_understood/utils/open_ai_parameters.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
@@ -63,38 +64,47 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
         }
       });
 
-      //----------現在地を取得----------
+      //現在地を取得
       final position = await _positionRepository.getCurrentPosition();
 
-      //----------天気情報を取得----------
+      //天気情報を取得
       final currentWeatherInfo = await _weatherRepository.getCurrentWeather(
           position.latitude, position.longitude);
-      //----------レシピを取得するための手続き----------
-      //メッセージを英語に変換
-      final String translatedMessage = await OnDeviceTranslator(
-        sourceLanguage: TranslateLanguage.japanese,
-        targetLanguage: TranslateLanguage.english,
-      ).translateText(inputedMessage);
+
+      //メッセージを英語に変換 PaLM API用
+      // final String translatedMessage = await OnDeviceTranslator(
+      //   sourceLanguage: TranslateLanguage.japanese,
+      //   targetLanguage: TranslateLanguage.english,
+      // ).translateText(inputedMessage);
+
       //送信するメッセージを作成
-      final String sendedMessage = messageThatUserInputtedInEnglish(
-        translatedMessage,
+      final String sendedMessage = messageThatUserInputted(
+        inputedMessage,
         currentWeatherInfo.temperature.toString(),
         currentWeatherInfo.weatherCode.toString(),
       );
-      //送信するメッセージをBodyに変えてエンコード
-      final String encodedBody =
-          json.encode(getRequestBodyForPaLMApi(sendedMessage));
-      //----------メッセージを取得----------
-      final message =
-          await _messageRepository.sendAndReceiveMessage(encodedBody);
-      //PaLM APIだとMarkDown形式で返ってくるので、変換する
-      final convertedMessage =
-          message.substring(message.indexOf('{') + 1, message.length - 1);
-      //メッセージをパース
-      final recipeResponse =
-          RecipeResponse.fromJson(json.decode(convertedMessage));
 
-      //----------レシピをローカルDBに保存----------
+      //送信するメッセージをBodyに変えてエンコード
+      // final String encodedBody =
+      // json.encode(getRequestBodyForPaLMApi(sendedMessage));  //PaLM API用
+      // json.encode(getOpenAIParameters(sendedMessage)); //OpenAI用
+      //メッセージを取得
+
+      final message =
+          await _messageRepository.sendAndReceiveMessage(sendedMessage);
+
+      //PaLM API用
+      // //PaLM APIだとMarkDown形式で返ってくるので、変換する
+      // final convertedMessage =
+      //     message.substring(message.indexOf('{') + 1, message.length - 1);
+      // //メッセージをパース
+      // final recipeResponse =
+      //     RecipeResponse.fromJson(json.decode(convertedMessage));
+      //OpenAI時の処理
+
+      //メッセージをパース
+      final recipeResponse = RecipeResponse.fromJson(json.decode(message));
+      //レシピを保存するために、レシピモデルに変換
       final insertedRecipe =
           RecipeModel().fromRecipeResponseToInsert(recipeResponse);
       //レシピを保存

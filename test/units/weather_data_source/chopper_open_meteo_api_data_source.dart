@@ -1,5 +1,5 @@
 import 'package:chopper/chopper.dart';
-import 'package:cooking_completly_understood/data/sources/remote/open_meteo_api_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/chopper_open_meteo_api_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -8,14 +8,14 @@ void main() {
   late double latitude;
   late double longitude;
   late Response response;
-  late OpenMeteoApiDataSource openMeteoApiDataSource;
+  late ChopperOpenMeteoApiDataSource openMeteoApiDataSource;
 
   setUpAll(() async {
     //緯度経度を東京駅に設定
     latitude = 35.681236;
     longitude = 139.767125;
     //OpenMeteoApiDataSourceを作成
-    openMeteoApiDataSource = OpenMeteoApiDataSource.create();
+    openMeteoApiDataSource = ChopperOpenMeteoApiDataSource.create();
 
     //指定のメソッドを実行
     response = await openMeteoApiDataSource.getInfo(latitude, longitude);

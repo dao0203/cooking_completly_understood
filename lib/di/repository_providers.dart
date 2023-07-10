@@ -14,8 +14,8 @@ final recipeRepositoryProvider = Provider((ref) => ref
     .then((value) => RecipeRepositoryImpl(value)));
 
 //MessageRepository
-final messageRepositoryProvider = Provider(
-    (ref) => MessageRepositoryImpl(ref.read(paLMApiDataSourceProvider)));
+final messageRepositoryProvider =
+    Provider((ref) => MessageRepositoryImpl(ref.read(chatDataSourceProvider)));
 
 //FoodRepository
 final foodRepositoryProvider = Provider((ref) => ref
