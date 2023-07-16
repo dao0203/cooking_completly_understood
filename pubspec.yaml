@@ -59,6 +59,7 @@ dependencies:
   google_mlkit_translation: ^0.7.0
   fl_chart: ^0.63.0
   dart_openai: ^3.0.0
+  supabase_flutter: ^1.8.1
   
 
 
