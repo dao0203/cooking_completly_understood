@@ -11,9 +11,8 @@ class SupabaseAuthDataSource implements AuthDataSource {
   }
 
   @override
-  Future<bool> isSignedIn() {
-    // TODO: implement isSignedIn
-    throw UnimplementedError();
+  Future<bool> isSignedIn() async {
+    return _supabaseClient.auth.currentSession != null;
   }
 
   @override

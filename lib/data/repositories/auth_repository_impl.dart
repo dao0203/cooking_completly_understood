@@ -11,9 +11,8 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<bool> isSignedIn() {
-    // TODO: implement isSignedIn
-    throw UnimplementedError();
+  Future<bool> isSignedIn() async {
+    return _authDataSource.isSignedIn();
   }
 
   @override
