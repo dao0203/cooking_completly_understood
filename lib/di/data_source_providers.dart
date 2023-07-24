@@ -1,3 +1,4 @@
+import 'package:cooking_completly_understood/data/sources/interfaces/auth_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/local/isar_food_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/local/isar_my_message_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/local/isar_recipe_data_source.dart';
@@ -5,6 +6,7 @@ import 'package:cooking_completly_understood/data/sources/local/geolocator_posit
 import 'package:cooking_completly_understood/data/sources/remote/chopper_open_ai_chat_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/remote/chopper_open_meteo_api_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/remote/palm_api_chat_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/supabase_auth_data_source.dart';
 import 'package:cooking_completly_understood/di/isar_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -37,3 +39,7 @@ final chatDataSourceProvider =
 //weatherDataSource
 final weatherDataSourceProvider =
     Provider((ref) => ChopperOpenMeteoApiDataSource.create());
+
+//authDataSource
+final authDataSourceProvider =
+    Provider<AuthDataSource>((ref) => SupabaseAuthDataSource());

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cooking_completly_understood/ui/theme/app_theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 List<CameraDescription> cameras = [];
 
@@ -22,6 +23,10 @@ Future<void> main() async {
       ),
     ],
   ).then((value) => debugPrint(value.choices.first.message.content));
+  await Supabase.initialize(
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+  );
   cameras = await availableCameras();
 
   runApp(
