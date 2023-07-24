@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/ui/view/screens/navigation.dart';
+import 'package:cooking_completly_understood/auth_gate.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class AppTheme extends StatelessWidget {
                 ),
             brightness: Brightness.dark,
           ),
-          home: const Navigation(),
+          home: const AuthGate(),
         );
       },
     );
