@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/food_model/food_model.dart';
+import 'package:cooking_completly_understood/data/models/food_model/food_entity.dart';
 import 'package:cooking_completly_understood/data/sources/local/isar_food_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,16 +11,16 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   late Isar isar;
   late IsarFoodDataSource isarFoodDataSource;
-  late List<FoodModel> getAllResult;
-  late List<FoodModel> insertResult;
-  late List<FoodModel> deleteResult;
+  late List<FoodEntity> getAllResult;
+  late List<FoodEntity> insertResult;
+  late List<FoodEntity> deleteResult;
   final IsarDbDirectory isarDbDirectory = IsarDbDirectory();
 
   setUpAll(() async {
     await Isar.initializeIsarCore(download: true);
     await isarDbDirectory.create();
 
-    isar = await Isar.open([FoodModelSchema], directory: isarDbDirectory.path);
+    isar = await Isar.open([FoodEntitySchema], directory: isarDbDirectory.path);
 
     isarFoodDataSource = IsarFoodDataSource(isar);
 

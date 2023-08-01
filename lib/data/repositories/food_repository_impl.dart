@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/food_model/food_model.dart';
+import 'package:cooking_completly_understood/data/models/food_model/food_entity.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
 import 'package:cooking_completly_understood/domain/models/food/food.dart';
 import 'package:cooking_completly_understood/domain/repositories/food_repository.dart';
@@ -18,7 +18,7 @@ class FoodRepositoryImpl implements FoodRepository {
   //食べ物を保存するメソッド
   @override
   Future<void> insert(String foodName) async {
-    final food = FoodModel()
+    final food = FoodEntity()
       ..name = foodName
       ..createdAt = DateTime.now();
     await _foodDataSource.insertFood(food);
