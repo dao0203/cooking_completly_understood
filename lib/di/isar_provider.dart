@@ -15,7 +15,6 @@ final isarProvider = Provider(
       [
         RecipeModelSchema,
         MyMessageModelSchema,
-        FoodEntitySchema,
       ], // 保存するデータモデルのリスト
       directory: dir.path, // データベースの保存先のパス
     );
