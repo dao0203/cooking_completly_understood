@@ -10,18 +10,19 @@ class FoodRepositoryImpl implements FoodRepository {
   //食べ物を全て取得するメソッド
   @override
   Stream<List<Food>> getAll() {
-    return _foodDataSource
-        .getAllFood()
-        .map((event) => event.map((e) => e.toFood()).toList());
+    return _foodDataSource.getAllFood().map((event) => event
+        .map((e) => Food(
+              id: e.id,
+              name: e.foodName,
+              createdAt: e.createdAt,
+            ))
+        .toList());
   }
 
   //食べ物を保存するメソッド
   @override
   Future<void> insert(String foodName) async {
-    final food = FoodEntity()
-      ..name = foodName
-      ..createdAt = DateTime.now();
-    await _foodDataSource.insertFood(food);
+    await _foodDataSource.insertFood(foodName);
   }
 
   //食べ物を削除するメソッド
