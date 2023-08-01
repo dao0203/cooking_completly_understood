@@ -2,6 +2,6 @@ import 'package:cooking_completly_understood/data/models/food_model/food_entity.
 
 abstract class FoodDataSource {
   Stream<List<FoodEntity>> getAllFood();
-  Future<void> insertFood(FoodEntity food);
+  Future<void> insertFood(String foodName);
   Future<void> deleteFood(int foodId);
 }
