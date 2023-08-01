@@ -12,27 +12,15 @@ class FoodListData extends HookConsumerWidget {
       width: MediaQuery.of(context).size.width * 0.9,
       child: foods.when(
           data: (foods) {
-            return StreamBuilder(
-              stream:
-                  foods, //foodsStateProviderのbuild()で返されたStream<List<ImmuFood>>を流す
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return const Center(child: Text('エラーが発生しました。'));
-                } else {
-                  final foodList = snapshot.data;
-                  return Text(
-                    '使える食材：${foodList!.map((food) => food.name).join(', ')}',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    softWrap: false,
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
-                  );
-                }
-              },
+            final foodList = foods;
+            return Text(
+              '使える食材：${foodList.map((food) => food.name).join(', ')}',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              softWrap: false,
+              style: const TextStyle(
+                fontSize: 16,
+              ),
             );
           },
           loading: () => const Center(child: CircularProgressIndicator()),
