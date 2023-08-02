@@ -20,7 +20,7 @@ final messageRepositoryProvider =
 
 //FoodRepository
 final foodRepositoryProvider =
-    Provider((ref) => FoodRepositoryImpl(ref.read(foodDataSourceProvider)));
+    Provider((ref) => FoodRepositoryImpl(ref.watch(foodDataSourceProvider)));
 
 //MyMessageRepository
 final myMessageRepositoryProvider = Provider((ref) => ref
