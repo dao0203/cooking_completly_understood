@@ -8,7 +8,7 @@ part 'foods_state.g.dart';
 class FoodsState extends _$FoodsState {
   @override
   Stream<List<Food>> build() {
-    return ref.read(foodRepositoryProvider).getAll();
+    return ref.watch(foodRepositoryProvider).getAll();
   }
 
   //食べ物を保存するメソッド
