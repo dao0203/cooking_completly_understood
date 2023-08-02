@@ -5,9 +5,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class SupabaseFoodDataSource implements FoodDataSource {
   final Supabase _supabase = Supabase.instance;
   @override
-  Future<void> deleteFood(int foodId) {
-    // TODO: implement deleteFood
-    throw UnimplementedError();
+  Future<void> deleteFood(int foodId) async {
+    await _supabase.client.from('foods').delete().eq('id', foodId);
   }
 
   @override
