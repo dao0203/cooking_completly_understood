@@ -19,9 +19,8 @@ final messageRepositoryProvider =
     Provider((ref) => MessageRepositoryImpl(ref.read(chatDataSourceProvider)));
 
 //FoodRepository
-final foodRepositoryProvider = Provider((ref) => ref
-    .read(foodDataSourceProvider)
-    .then((value) => FoodRepositoryImpl(value)));
+final foodRepositoryProvider =
+    Provider((ref) => FoodRepositoryImpl(ref.watch(foodDataSourceProvider)));
 
 //MyMessageRepository
 final myMessageRepositoryProvider = Provider((ref) => ref
