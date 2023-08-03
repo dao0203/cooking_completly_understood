@@ -11,8 +11,7 @@ class FoodList extends HookConsumerWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.9,
       child: foods.when(
-          data: (foods) {
-            final foodList = foods;
+          data: (foodList) {
             return Expanded(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
@@ -39,8 +38,7 @@ class FoodList extends HookConsumerWidget {
                           ],
                         ),
                       );
-                    }
-                    ),
+                    }),
               ),
             );
           },
