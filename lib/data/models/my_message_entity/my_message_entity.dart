@@ -8,6 +8,6 @@ abstract class MyMessageEntity with _$MyMessageEntity {
   const factory MyMessageEntity({
     required int id,
     required String content,
-    required DateTime timeStamp,
+    required DateTime createdAt,
   }) = _MyMessageEntity;
 }

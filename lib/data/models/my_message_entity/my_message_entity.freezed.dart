@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MyMessageEntity {
   int get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  DateTime get timeStamp => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MyMessageEntityCopyWith<MyMessageEntity> get copyWith =>
@@ -31,7 +31,7 @@ abstract class $MyMessageEntityCopyWith<$Res> {
           MyMessageEntity value, $Res Function(MyMessageEntity) then) =
       _$MyMessageEntityCopyWithImpl<$Res, MyMessageEntity>;
   @useResult
-  $Res call({int id, String content, DateTime timeStamp});
+  $Res call({int id, String content, DateTime createdAt});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$MyMessageEntityCopyWithImpl<$Res, $Val extends MyMessageEntity>
   $Res call({
     Object? id = null,
     Object? content = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -60,9 +60,9 @@ class _$MyMessageEntityCopyWithImpl<$Res, $Val extends MyMessageEntity>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -76,7 +76,7 @@ abstract class _$$_MyMessageEntityCopyWith<$Res>
       __$$_MyMessageEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String content, DateTime timeStamp});
+  $Res call({int id, String content, DateTime createdAt});
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class __$$_MyMessageEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? content = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_MyMessageEntity(
       id: null == id
@@ -103,9 +103,9 @@ class __$$_MyMessageEntityCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -115,18 +115,18 @@ class __$$_MyMessageEntityCopyWithImpl<$Res>
 
 class _$_MyMessageEntity implements _MyMessageEntity {
   const _$_MyMessageEntity(
-      {required this.id, required this.content, required this.timeStamp});
+      {required this.id, required this.content, required this.createdAt});
 
   @override
   final int id;
   @override
   final String content;
   @override
-  final DateTime timeStamp;
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'MyMessageEntity(id: $id, content: $content, timeStamp: $timeStamp)';
+    return 'MyMessageEntity(id: $id, content: $content, createdAt: $createdAt)';
   }
 
   @override
@@ -136,12 +136,12 @@ class _$_MyMessageEntity implements _MyMessageEntity {
             other is _$_MyMessageEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.timeStamp, timeStamp) ||
-                other.timeStamp == timeStamp));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, content, timeStamp);
+  int get hashCode => Object.hash(runtimeType, id, content, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -154,14 +154,14 @@ abstract class _MyMessageEntity implements MyMessageEntity {
   const factory _MyMessageEntity(
       {required final int id,
       required final String content,
-      required final DateTime timeStamp}) = _$_MyMessageEntity;
+      required final DateTime createdAt}) = _$_MyMessageEntity;
 
   @override
   int get id;
   @override
   String get content;
   @override
-  DateTime get timeStamp;
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_MyMessageEntityCopyWith<_$_MyMessageEntity> get copyWith =>
