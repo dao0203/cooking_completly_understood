@@ -12,10 +12,10 @@ import 'package:rxdart/rxdart.dart';
 
 class GetRecipeMessagesUseCase
     implements UseCase<void, Stream<List<RecipeMessage>>> {
-  final MyMessageRepository _messageRepository;
+  final MyMessageRepository _myMessageRepository;
   final RecipeRepository _recipeRepository;
 
-  GetRecipeMessagesUseCase(this._messageRepository, this._recipeRepository);
+  GetRecipeMessagesUseCase(this._myMessageRepository, this._recipeRepository);
   //RecipeからRecipeMessageへ変換するトランスフォーマー
   final recipeToRecipeMessageTransformer =
       StreamTransformer<List<Recipe>, List<RecipeMessage>>.fromHandlers(
@@ -24,9 +24,9 @@ class GetRecipeMessagesUseCase
           .map(
             (e) => RecipeMessage(
               id: e.id,
-              role: e.role,
+              role: Role.assistant.name,
               content: "${e.name}をおすすめします",
-              createdAt: e.timeStamp,
+              createdAt: e.createdAt,
             ),
           )
           .toList();
@@ -54,12 +54,12 @@ class GetRecipeMessagesUseCase
 
 //RecipeとMyMessageを結合するメソッド
   @override
-  Stream<List<RecipeMessage>> call(void arg) {
+  Stream<List<RecipeMessage>> call(void _) {
     debugPrint("GetRecipeMessagesUseCase.call");
     final recipeStream = _recipeRepository.getAllRecipes().transform(
           recipeToRecipeMessageTransformer,
         );
-    final myMessageStream = _messageRepository.getAll().transform(
+    final myMessageStream = _myMessageRepository.getAll().transform(
           myMessageToRecipeMessageTransformer,
         );
     return Rx.combineLatest2(
