@@ -5,6 +5,6 @@ abstract class RecipeDataSource {
   Stream<List<RecipeEntity>> getAll();
   Stream<RecipeEntity> getById(int id);
   Future<void> insert(Recipe recipe);
-  Future<void> changeFavoriteStatus(int id);
-  Future<void> changeMadeStatus(int id);
+  Future<void> changeFavoriteStatus(Recipe recipe);
+  Future<void> changeMadeStatus(Recipe recipe);
 }

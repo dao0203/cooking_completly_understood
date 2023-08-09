@@ -7,11 +7,11 @@ class RecipeRepositoryImpl implements RecipeRepository {
   RecipeRepositoryImpl(this._recipeService);
   @override
   Future<void> changeFavoriteStatus(Recipe recipe) =>
-      _recipeService.changeFavoriteStatus(recipe.id);
+      _recipeService.changeFavoriteStatus(recipe);
 
   @override
   Future<void> changeMadeStatus(Recipe recipe) =>
-      _recipeService.changeMadeStatus(recipe.id);
+      _recipeService.changeMadeStatus(recipe);
 
   @override
   Stream<List<Recipe>> getAllRecipes() =>
