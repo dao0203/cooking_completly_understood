@@ -19,7 +19,7 @@ mixin _$RecipeMessage {
   int get id => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  DateTime get timeStamp => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeMessageCopyWith<RecipeMessage> get copyWith =>
@@ -32,7 +32,7 @@ abstract class $RecipeMessageCopyWith<$Res> {
           RecipeMessage value, $Res Function(RecipeMessage) then) =
       _$RecipeMessageCopyWithImpl<$Res, RecipeMessage>;
   @useResult
-  $Res call({int id, String role, String content, DateTime timeStamp});
+  $Res call({int id, String role, String content, DateTime createdAt});
 }
 
 /// @nodoc
@@ -51,7 +51,7 @@ class _$RecipeMessageCopyWithImpl<$Res, $Val extends RecipeMessage>
     Object? id = null,
     Object? role = null,
     Object? content = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -66,9 +66,9 @@ class _$RecipeMessageCopyWithImpl<$Res, $Val extends RecipeMessage>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -82,7 +82,7 @@ abstract class _$$_RecipeMessageCopyWith<$Res>
       __$$_RecipeMessageCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String role, String content, DateTime timeStamp});
+  $Res call({int id, String role, String content, DateTime createdAt});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_RecipeMessageCopyWithImpl<$Res>
     Object? id = null,
     Object? role = null,
     Object? content = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_RecipeMessage(
       id: null == id
@@ -114,9 +114,9 @@ class __$$_RecipeMessageCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -129,7 +129,7 @@ class _$_RecipeMessage implements _RecipeMessage {
       {required this.id,
       required this.role,
       required this.content,
-      required this.timeStamp});
+      required this.createdAt});
 
   @override
   final int id;
@@ -138,11 +138,11 @@ class _$_RecipeMessage implements _RecipeMessage {
   @override
   final String content;
   @override
-  final DateTime timeStamp;
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'RecipeMessage(id: $id, role: $role, content: $content, timeStamp: $timeStamp)';
+    return 'RecipeMessage(id: $id, role: $role, content: $content, createdAt: $createdAt)';
   }
 
   @override
@@ -153,12 +153,12 @@ class _$_RecipeMessage implements _RecipeMessage {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.timeStamp, timeStamp) ||
-                other.timeStamp == timeStamp));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, role, content, timeStamp);
+  int get hashCode => Object.hash(runtimeType, id, role, content, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -172,7 +172,7 @@ abstract class _RecipeMessage implements RecipeMessage {
       {required final int id,
       required final String role,
       required final String content,
-      required final DateTime timeStamp}) = _$_RecipeMessage;
+      required final DateTime createdAt}) = _$_RecipeMessage;
 
   @override
   int get id;
@@ -181,7 +181,7 @@ abstract class _RecipeMessage implements RecipeMessage {
   @override
   String get content;
   @override
-  DateTime get timeStamp;
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeMessageCopyWith<_$_RecipeMessage> get copyWith =>
