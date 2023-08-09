@@ -7,7 +7,6 @@ abstract class MyMessage with _$MyMessage {
   const factory MyMessage({
     required int id,
     required String content,
-    required String role,
-    required DateTime timeStamp,
+    required DateTime createdAt,
   }) = _MyMessage;
 }
