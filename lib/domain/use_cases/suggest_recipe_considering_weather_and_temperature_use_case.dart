@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/recipe_entity/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_response/recipe_response.dart';
+import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/domain/repositories/my_message_repository.dart';
 import 'package:cooking_completly_understood/domain/repositories/position_repository.dart';
@@ -98,8 +98,27 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
       //メッセージをパース
       final recipeResponse = RecipeResponse.fromJson(json.decode(message));
       //レシピを保存するために、レシピモデルに変換
-      final insertedRecipe =
-          RecipeModel().fromRecipeResponseToInsert(recipeResponse);
+      final insertedRecipe = Recipe(
+        id: 0,
+        name: recipeResponse.recipeName,
+        description: recipeResponse.recipeDescription,
+        cookingTimeMinutes: recipeResponse.recipeCookingTime,
+        ingredientName:
+            recipeResponse.recipeIngredients.map((e) => e.name).toList(),
+        ingredientQuantity:
+            recipeResponse.recipeIngredients.map((e) => e.quantity).toList(),
+        stepNumber: recipeResponse.recipeSteps.map((e) => e.number).toList(),
+        stepDescription:
+            recipeResponse.recipeSteps.map((e) => e.description).toList(),
+        calorie: double.parse(recipeResponse.nutrition.calorie),
+        protein: double.parse(recipeResponse.nutrition.protein),
+        fat: double.parse(recipeResponse.nutrition.fat),
+        carbohydrate: double.parse(recipeResponse.nutrition.carbohydrate),
+        salt: double.parse(recipeResponse.nutrition.salt),
+        createdAt: DateTime.now(),
+        isMade: false,
+        isFavorite: false,
+      );
       //レシピを保存
       await _recipeRepository.insert(insertedRecipe);
     });
