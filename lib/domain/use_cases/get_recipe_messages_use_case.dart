@@ -6,6 +6,7 @@ import 'package:cooking_completly_understood/domain/models/recipe_message/recipe
 import 'package:cooking_completly_understood/domain/repositories/my_message_repository.dart';
 import 'package:cooking_completly_understood/domain/repositories/recipe_repository.dart';
 import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
+import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:rxdart/rxdart.dart';
 
 class GetRecipeMessagesUseCase
@@ -24,7 +25,7 @@ class GetRecipeMessagesUseCase
               id: e.id,
               role: e.role,
               content: "${e.name}をおすすめします",
-              timeStamp: e.timeStamp,
+              createdAt: e.timeStamp,
             ),
           )
           .toList();
@@ -40,9 +41,9 @@ class GetRecipeMessagesUseCase
           .map(
             (e) => RecipeMessage(
               id: e.id,
-              role: e.role,
+              role: Role.user.name,
               content: e.content,
-              timeStamp: e.timeStamp,
+              createdAt: e.createdAt,
             ),
           )
           .toList();
@@ -64,7 +65,7 @@ class GetRecipeMessagesUseCase
       recipeStream,
       (a, b) => (a + b)
         ..sort(
-          (a, b) => a.timeStamp.compareTo(b.timeStamp),
+          (a, b) => a.createdAt.compareTo(b.createdAt),
         ),
     );
   }

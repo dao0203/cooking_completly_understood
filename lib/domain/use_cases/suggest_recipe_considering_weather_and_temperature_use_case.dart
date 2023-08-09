@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/my_message_model/my_message_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_response/recipe_response.dart';
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
@@ -10,10 +9,7 @@ import 'package:cooking_completly_understood/domain/repositories/recipe_reposito
 import 'package:cooking_completly_understood/domain/repositories/weather_repository.dart';
 import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
 import 'package:cooking_completly_understood/utils/constants.dart';
-import 'package:cooking_completly_understood/utils/open_ai_parameters.dart';
-import 'package:cooking_completly_understood/utils/role.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
 class SuggestRecipeConsideringWeatherAndTemperatureUseCase
     implements UseCase<String, Future<void>> {
@@ -33,11 +29,8 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
   @override
   Future<void> call(String inputedMessage) async {
     //----------マイメッセージをローカルDBに保存----------
-    final myMessage = MyMessageModel()
-      ..content = inputedMessage
-      ..role = Role.user.name
-      ..timeStamp = DateTime.now();
-    await _myMessageRepository.insert(myMessage);
+
+    await _myMessageRepository.insert(inputedMessage);
 
     //----------現在地を取得するための手続き----------
 
