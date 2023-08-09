@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
+import 'package:cooking_completly_understood/data/models/recipe_entity/recipe_model.dart';
 import 'package:cooking_completly_understood/data/sources/local/isar_recipe_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

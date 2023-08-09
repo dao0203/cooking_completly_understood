@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
+import 'package:cooking_completly_understood/data/models/recipe_entity/recipe_model.dart';
 import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
 import 'package:cooking_completly_understood/domain/repositories/recipe_repository.dart';
 import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/recipe_model/recipe_model.dart';
+import 'package:cooking_completly_understood/data/models/recipe_entity/recipe_model.dart';
 import 'package:cooking_completly_understood/data/models/recipe_response/recipe_response.dart';
 import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
 import 'package:cooking_completly_understood/domain/repositories/my_message_repository.dart';

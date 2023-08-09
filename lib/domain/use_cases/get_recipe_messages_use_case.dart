@@ -7,6 +7,7 @@ import 'package:cooking_completly_understood/domain/repositories/my_message_repo
 import 'package:cooking_completly_understood/domain/repositories/recipe_repository.dart';
 import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
 import 'package:cooking_completly_understood/utils/role.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class GetRecipeMessagesUseCase
@@ -54,6 +55,7 @@ class GetRecipeMessagesUseCase
 //RecipeとMyMessageを結合するメソッド
   @override
   Stream<List<RecipeMessage>> call(void arg) {
+    debugPrint("GetRecipeMessagesUseCase.call");
     final recipeStream = _recipeRepository.getAllRecipes().transform(
           recipeToRecipeMessageTransformer,
         );
