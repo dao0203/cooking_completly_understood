@@ -17,20 +17,19 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Recipe {
   int get id => throw _privateConstructorUsedError;
-  String get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get cookingTime => throw _privateConstructorUsedError;
+  String get cookingTimeMinutes => throw _privateConstructorUsedError;
   List<String> get ingredientName => throw _privateConstructorUsedError;
   List<String> get ingredientQuantity => throw _privateConstructorUsedError;
   List<String> get stepNumber => throw _privateConstructorUsedError;
   List<String> get stepDescription => throw _privateConstructorUsedError;
-  String get calorie => throw _privateConstructorUsedError;
-  String get protein => throw _privateConstructorUsedError;
-  String get fat => throw _privateConstructorUsedError;
-  String get carbohydrate => throw _privateConstructorUsedError;
-  String get salt => throw _privateConstructorUsedError;
-  DateTime get timeStamp => throw _privateConstructorUsedError;
+  double get calorie => throw _privateConstructorUsedError;
+  double get protein => throw _privateConstructorUsedError;
+  double get fat => throw _privateConstructorUsedError;
+  double get carbohydrate => throw _privateConstructorUsedError;
+  double get salt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   bool get isMade => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
 
@@ -45,20 +44,19 @@ abstract class $RecipeCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String role,
       String name,
       String description,
-      String cookingTime,
+      String cookingTimeMinutes,
       List<String> ingredientName,
       List<String> ingredientQuantity,
       List<String> stepNumber,
       List<String> stepDescription,
-      String calorie,
-      String protein,
-      String fat,
-      String carbohydrate,
-      String salt,
-      DateTime timeStamp,
+      double calorie,
+      double protein,
+      double fat,
+      double carbohydrate,
+      double salt,
+      DateTime createdAt,
       bool isMade,
       bool isFavorite});
 }
@@ -77,10 +75,9 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
   @override
   $Res call({
     Object? id = null,
-    Object? role = null,
     Object? name = null,
     Object? description = null,
-    Object? cookingTime = null,
+    Object? cookingTimeMinutes = null,
     Object? ingredientName = null,
     Object? ingredientQuantity = null,
     Object? stepNumber = null,
@@ -90,7 +87,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
     Object? fat = null,
     Object? carbohydrate = null,
     Object? salt = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
     Object? isMade = null,
     Object? isFavorite = null,
   }) {
@@ -99,10 +96,6 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -111,9 +104,9 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      cookingTime: null == cookingTime
-          ? _value.cookingTime
-          : cookingTime // ignore: cast_nullable_to_non_nullable
+      cookingTimeMinutes: null == cookingTimeMinutes
+          ? _value.cookingTimeMinutes
+          : cookingTimeMinutes // ignore: cast_nullable_to_non_nullable
               as String,
       ingredientName: null == ingredientName
           ? _value.ingredientName
@@ -134,26 +127,26 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
       calorie: null == calorie
           ? _value.calorie
           : calorie // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       protein: null == protein
           ? _value.protein
           : protein // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       fat: null == fat
           ? _value.fat
           : fat // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       carbohydrate: null == carbohydrate
           ? _value.carbohydrate
           : carbohydrate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       salt: null == salt
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as double,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       isMade: null == isMade
           ? _value.isMade
@@ -175,20 +168,19 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String role,
       String name,
       String description,
-      String cookingTime,
+      String cookingTimeMinutes,
       List<String> ingredientName,
       List<String> ingredientQuantity,
       List<String> stepNumber,
       List<String> stepDescription,
-      String calorie,
-      String protein,
-      String fat,
-      String carbohydrate,
-      String salt,
-      DateTime timeStamp,
+      double calorie,
+      double protein,
+      double fat,
+      double carbohydrate,
+      double salt,
+      DateTime createdAt,
       bool isMade,
       bool isFavorite});
 }
@@ -204,10 +196,9 @@ class __$$_RecipeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? role = null,
     Object? name = null,
     Object? description = null,
-    Object? cookingTime = null,
+    Object? cookingTimeMinutes = null,
     Object? ingredientName = null,
     Object? ingredientQuantity = null,
     Object? stepNumber = null,
@@ -217,7 +208,7 @@ class __$$_RecipeCopyWithImpl<$Res>
     Object? fat = null,
     Object? carbohydrate = null,
     Object? salt = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
     Object? isMade = null,
     Object? isFavorite = null,
   }) {
@@ -226,10 +217,6 @@ class __$$_RecipeCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -238,9 +225,9 @@ class __$$_RecipeCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      cookingTime: null == cookingTime
-          ? _value.cookingTime
-          : cookingTime // ignore: cast_nullable_to_non_nullable
+      cookingTimeMinutes: null == cookingTimeMinutes
+          ? _value.cookingTimeMinutes
+          : cookingTimeMinutes // ignore: cast_nullable_to_non_nullable
               as String,
       ingredientName: null == ingredientName
           ? _value._ingredientName
@@ -261,26 +248,26 @@ class __$$_RecipeCopyWithImpl<$Res>
       calorie: null == calorie
           ? _value.calorie
           : calorie // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       protein: null == protein
           ? _value.protein
           : protein // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       fat: null == fat
           ? _value.fat
           : fat // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       carbohydrate: null == carbohydrate
           ? _value.carbohydrate
           : carbohydrate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       salt: null == salt
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as double,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       isMade: null == isMade
           ? _value.isMade
@@ -299,10 +286,9 @@ class __$$_RecipeCopyWithImpl<$Res>
 class _$_Recipe implements _Recipe {
   const _$_Recipe(
       {required this.id,
-      required this.role,
       required this.name,
       required this.description,
-      required this.cookingTime,
+      required this.cookingTimeMinutes,
       required final List<String> ingredientName,
       required final List<String> ingredientQuantity,
       required final List<String> stepNumber,
@@ -312,7 +298,7 @@ class _$_Recipe implements _Recipe {
       required this.fat,
       required this.carbohydrate,
       required this.salt,
-      required this.timeStamp,
+      required this.createdAt,
       required this.isMade,
       required this.isFavorite})
       : _ingredientName = ingredientName,
@@ -323,13 +309,11 @@ class _$_Recipe implements _Recipe {
   @override
   final int id;
   @override
-  final String role;
-  @override
   final String name;
   @override
   final String description;
   @override
-  final String cookingTime;
+  final String cookingTimeMinutes;
   final List<String> _ingredientName;
   @override
   List<String> get ingredientName {
@@ -364,17 +348,17 @@ class _$_Recipe implements _Recipe {
   }
 
   @override
-  final String calorie;
+  final double calorie;
   @override
-  final String protein;
+  final double protein;
   @override
-  final String fat;
+  final double fat;
   @override
-  final String carbohydrate;
+  final double carbohydrate;
   @override
-  final String salt;
+  final double salt;
   @override
-  final DateTime timeStamp;
+  final DateTime createdAt;
   @override
   final bool isMade;
   @override
@@ -382,7 +366,7 @@ class _$_Recipe implements _Recipe {
 
   @override
   String toString() {
-    return 'Recipe(id: $id, role: $role, name: $name, description: $description, cookingTime: $cookingTime, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, timeStamp: $timeStamp, isMade: $isMade, isFavorite: $isFavorite)';
+    return 'Recipe(id: $id, name: $name, description: $description, cookingTimeMinutes: $cookingTimeMinutes, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, createdAt: $createdAt, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
@@ -391,12 +375,11 @@ class _$_Recipe implements _Recipe {
         (other.runtimeType == runtimeType &&
             other is _$_Recipe &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.cookingTime, cookingTime) ||
-                other.cookingTime == cookingTime) &&
+            (identical(other.cookingTimeMinutes, cookingTimeMinutes) ||
+                other.cookingTimeMinutes == cookingTimeMinutes) &&
             const DeepCollectionEquality()
                 .equals(other._ingredientName, _ingredientName) &&
             const DeepCollectionEquality()
@@ -411,8 +394,8 @@ class _$_Recipe implements _Recipe {
             (identical(other.carbohydrate, carbohydrate) ||
                 other.carbohydrate == carbohydrate) &&
             (identical(other.salt, salt) || other.salt == salt) &&
-            (identical(other.timeStamp, timeStamp) ||
-                other.timeStamp == timeStamp) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.isMade, isMade) || other.isMade == isMade) &&
             (identical(other.isFavorite, isFavorite) ||
                 other.isFavorite == isFavorite));
@@ -422,10 +405,9 @@ class _$_Recipe implements _Recipe {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      role,
       name,
       description,
-      cookingTime,
+      cookingTimeMinutes,
       const DeepCollectionEquality().hash(_ingredientName),
       const DeepCollectionEquality().hash(_ingredientQuantity),
       const DeepCollectionEquality().hash(_stepNumber),
@@ -435,7 +417,7 @@ class _$_Recipe implements _Recipe {
       fat,
       carbohydrate,
       salt,
-      timeStamp,
+      createdAt,
       isMade,
       isFavorite);
 
@@ -449,33 +431,30 @@ class _$_Recipe implements _Recipe {
 abstract class _Recipe implements Recipe {
   const factory _Recipe(
       {required final int id,
-      required final String role,
       required final String name,
       required final String description,
-      required final String cookingTime,
+      required final String cookingTimeMinutes,
       required final List<String> ingredientName,
       required final List<String> ingredientQuantity,
       required final List<String> stepNumber,
       required final List<String> stepDescription,
-      required final String calorie,
-      required final String protein,
-      required final String fat,
-      required final String carbohydrate,
-      required final String salt,
-      required final DateTime timeStamp,
+      required final double calorie,
+      required final double protein,
+      required final double fat,
+      required final double carbohydrate,
+      required final double salt,
+      required final DateTime createdAt,
       required final bool isMade,
       required final bool isFavorite}) = _$_Recipe;
 
   @override
   int get id;
   @override
-  String get role;
-  @override
   String get name;
   @override
   String get description;
   @override
-  String get cookingTime;
+  String get cookingTimeMinutes;
   @override
   List<String> get ingredientName;
   @override
@@ -485,17 +464,17 @@ abstract class _Recipe implements Recipe {
   @override
   List<String> get stepDescription;
   @override
-  String get calorie;
+  double get calorie;
   @override
-  String get protein;
+  double get protein;
   @override
-  String get fat;
+  double get fat;
   @override
-  String get carbohydrate;
+  double get carbohydrate;
   @override
-  String get salt;
+  double get salt;
   @override
-  DateTime get timeStamp;
+  DateTime get createdAt;
   @override
   bool get isMade;
   @override
