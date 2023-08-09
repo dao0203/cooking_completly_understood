@@ -1,7 +1,7 @@
 import 'package:cooking_completly_understood/data/sources/interfaces/auth_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/local/isar_recipe_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/local/geolocator_position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/local/supabase_food_data_source.dart';
+import 'package:cooking_completly_understood/data/sources/remote/supabase_food_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/remote/chopper_open_ai_chat_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/remote/chopper_open_meteo_api_data_source.dart';
 import 'package:cooking_completly_understood/data/sources/remote/supabase_auth_data_source.dart';
