@@ -20,10 +20,10 @@ mixin _$Recipe {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get cookingTimeMinutes => throw _privateConstructorUsedError;
-  List<String> get ingredientName => throw _privateConstructorUsedError;
-  List<String> get ingredientQuantity => throw _privateConstructorUsedError;
-  List<String> get stepNumber => throw _privateConstructorUsedError;
-  List<String> get stepDescription => throw _privateConstructorUsedError;
+  List<String> get ingredientNames => throw _privateConstructorUsedError;
+  List<String> get ingredientQuantities => throw _privateConstructorUsedError;
+  List<String> get stepNumbers => throw _privateConstructorUsedError;
+  List<String> get stepDescriptions => throw _privateConstructorUsedError;
   double get calorie => throw _privateConstructorUsedError;
   double get protein => throw _privateConstructorUsedError;
   double get fat => throw _privateConstructorUsedError;
@@ -47,10 +47,10 @@ abstract class $RecipeCopyWith<$Res> {
       String name,
       String description,
       String cookingTimeMinutes,
-      List<String> ingredientName,
-      List<String> ingredientQuantity,
-      List<String> stepNumber,
-      List<String> stepDescription,
+      List<String> ingredientNames,
+      List<String> ingredientQuantities,
+      List<String> stepNumbers,
+      List<String> stepDescriptions,
       double calorie,
       double protein,
       double fat,
@@ -78,10 +78,10 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
     Object? name = null,
     Object? description = null,
     Object? cookingTimeMinutes = null,
-    Object? ingredientName = null,
-    Object? ingredientQuantity = null,
-    Object? stepNumber = null,
-    Object? stepDescription = null,
+    Object? ingredientNames = null,
+    Object? ingredientQuantities = null,
+    Object? stepNumbers = null,
+    Object? stepDescriptions = null,
     Object? calorie = null,
     Object? protein = null,
     Object? fat = null,
@@ -108,21 +108,21 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.cookingTimeMinutes
           : cookingTimeMinutes // ignore: cast_nullable_to_non_nullable
               as String,
-      ingredientName: null == ingredientName
-          ? _value.ingredientName
-          : ingredientName // ignore: cast_nullable_to_non_nullable
+      ingredientNames: null == ingredientNames
+          ? _value.ingredientNames
+          : ingredientNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      ingredientQuantity: null == ingredientQuantity
-          ? _value.ingredientQuantity
-          : ingredientQuantity // ignore: cast_nullable_to_non_nullable
+      ingredientQuantities: null == ingredientQuantities
+          ? _value.ingredientQuantities
+          : ingredientQuantities // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      stepNumber: null == stepNumber
-          ? _value.stepNumber
-          : stepNumber // ignore: cast_nullable_to_non_nullable
+      stepNumbers: null == stepNumbers
+          ? _value.stepNumbers
+          : stepNumbers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      stepDescription: null == stepDescription
-          ? _value.stepDescription
-          : stepDescription // ignore: cast_nullable_to_non_nullable
+      stepDescriptions: null == stepDescriptions
+          ? _value.stepDescriptions
+          : stepDescriptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
       calorie: null == calorie
           ? _value.calorie
@@ -171,10 +171,10 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       String name,
       String description,
       String cookingTimeMinutes,
-      List<String> ingredientName,
-      List<String> ingredientQuantity,
-      List<String> stepNumber,
-      List<String> stepDescription,
+      List<String> ingredientNames,
+      List<String> ingredientQuantities,
+      List<String> stepNumbers,
+      List<String> stepDescriptions,
       double calorie,
       double protein,
       double fat,
@@ -199,10 +199,10 @@ class __$$_RecipeCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? cookingTimeMinutes = null,
-    Object? ingredientName = null,
-    Object? ingredientQuantity = null,
-    Object? stepNumber = null,
-    Object? stepDescription = null,
+    Object? ingredientNames = null,
+    Object? ingredientQuantities = null,
+    Object? stepNumbers = null,
+    Object? stepDescriptions = null,
     Object? calorie = null,
     Object? protein = null,
     Object? fat = null,
@@ -229,21 +229,21 @@ class __$$_RecipeCopyWithImpl<$Res>
           ? _value.cookingTimeMinutes
           : cookingTimeMinutes // ignore: cast_nullable_to_non_nullable
               as String,
-      ingredientName: null == ingredientName
-          ? _value._ingredientName
-          : ingredientName // ignore: cast_nullable_to_non_nullable
+      ingredientNames: null == ingredientNames
+          ? _value._ingredientNames
+          : ingredientNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      ingredientQuantity: null == ingredientQuantity
-          ? _value._ingredientQuantity
-          : ingredientQuantity // ignore: cast_nullable_to_non_nullable
+      ingredientQuantities: null == ingredientQuantities
+          ? _value._ingredientQuantities
+          : ingredientQuantities // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      stepNumber: null == stepNumber
-          ? _value._stepNumber
-          : stepNumber // ignore: cast_nullable_to_non_nullable
+      stepNumbers: null == stepNumbers
+          ? _value._stepNumbers
+          : stepNumbers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      stepDescription: null == stepDescription
-          ? _value._stepDescription
-          : stepDescription // ignore: cast_nullable_to_non_nullable
+      stepDescriptions: null == stepDescriptions
+          ? _value._stepDescriptions
+          : stepDescriptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
       calorie: null == calorie
           ? _value.calorie
@@ -289,10 +289,10 @@ class _$_Recipe implements _Recipe {
       required this.name,
       required this.description,
       required this.cookingTimeMinutes,
-      required final List<String> ingredientName,
-      required final List<String> ingredientQuantity,
-      required final List<String> stepNumber,
-      required final List<String> stepDescription,
+      required final List<String> ingredientNames,
+      required final List<String> ingredientQuantities,
+      required final List<String> stepNumbers,
+      required final List<String> stepDescriptions,
       required this.calorie,
       required this.protein,
       required this.fat,
@@ -301,10 +301,10 @@ class _$_Recipe implements _Recipe {
       required this.createdAt,
       required this.isMade,
       required this.isFavorite})
-      : _ingredientName = ingredientName,
-        _ingredientQuantity = ingredientQuantity,
-        _stepNumber = stepNumber,
-        _stepDescription = stepDescription;
+      : _ingredientNames = ingredientNames,
+        _ingredientQuantities = ingredientQuantities,
+        _stepNumbers = stepNumbers,
+        _stepDescriptions = stepDescriptions;
 
   @override
   final int id;
@@ -314,37 +314,38 @@ class _$_Recipe implements _Recipe {
   final String description;
   @override
   final String cookingTimeMinutes;
-  final List<String> _ingredientName;
+  final List<String> _ingredientNames;
   @override
-  List<String> get ingredientName {
-    if (_ingredientName is EqualUnmodifiableListView) return _ingredientName;
+  List<String> get ingredientNames {
+    if (_ingredientNames is EqualUnmodifiableListView) return _ingredientNames;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ingredientName);
+    return EqualUnmodifiableListView(_ingredientNames);
   }
 
-  final List<String> _ingredientQuantity;
+  final List<String> _ingredientQuantities;
   @override
-  List<String> get ingredientQuantity {
-    if (_ingredientQuantity is EqualUnmodifiableListView)
-      return _ingredientQuantity;
+  List<String> get ingredientQuantities {
+    if (_ingredientQuantities is EqualUnmodifiableListView)
+      return _ingredientQuantities;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ingredientQuantity);
+    return EqualUnmodifiableListView(_ingredientQuantities);
   }
 
-  final List<String> _stepNumber;
+  final List<String> _stepNumbers;
   @override
-  List<String> get stepNumber {
-    if (_stepNumber is EqualUnmodifiableListView) return _stepNumber;
+  List<String> get stepNumbers {
+    if (_stepNumbers is EqualUnmodifiableListView) return _stepNumbers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stepNumber);
+    return EqualUnmodifiableListView(_stepNumbers);
   }
 
-  final List<String> _stepDescription;
+  final List<String> _stepDescriptions;
   @override
-  List<String> get stepDescription {
-    if (_stepDescription is EqualUnmodifiableListView) return _stepDescription;
+  List<String> get stepDescriptions {
+    if (_stepDescriptions is EqualUnmodifiableListView)
+      return _stepDescriptions;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stepDescription);
+    return EqualUnmodifiableListView(_stepDescriptions);
   }
 
   @override
@@ -366,7 +367,7 @@ class _$_Recipe implements _Recipe {
 
   @override
   String toString() {
-    return 'Recipe(id: $id, name: $name, description: $description, cookingTimeMinutes: $cookingTimeMinutes, ingredientName: $ingredientName, ingredientQuantity: $ingredientQuantity, stepNumber: $stepNumber, stepDescription: $stepDescription, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, createdAt: $createdAt, isMade: $isMade, isFavorite: $isFavorite)';
+    return 'Recipe(id: $id, name: $name, description: $description, cookingTimeMinutes: $cookingTimeMinutes, ingredientNames: $ingredientNames, ingredientQuantities: $ingredientQuantities, stepNumbers: $stepNumbers, stepDescriptions: $stepDescriptions, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, createdAt: $createdAt, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
@@ -381,13 +382,13 @@ class _$_Recipe implements _Recipe {
             (identical(other.cookingTimeMinutes, cookingTimeMinutes) ||
                 other.cookingTimeMinutes == cookingTimeMinutes) &&
             const DeepCollectionEquality()
-                .equals(other._ingredientName, _ingredientName) &&
+                .equals(other._ingredientNames, _ingredientNames) &&
             const DeepCollectionEquality()
-                .equals(other._ingredientQuantity, _ingredientQuantity) &&
+                .equals(other._ingredientQuantities, _ingredientQuantities) &&
             const DeepCollectionEquality()
-                .equals(other._stepNumber, _stepNumber) &&
+                .equals(other._stepNumbers, _stepNumbers) &&
             const DeepCollectionEquality()
-                .equals(other._stepDescription, _stepDescription) &&
+                .equals(other._stepDescriptions, _stepDescriptions) &&
             (identical(other.calorie, calorie) || other.calorie == calorie) &&
             (identical(other.protein, protein) || other.protein == protein) &&
             (identical(other.fat, fat) || other.fat == fat) &&
@@ -408,10 +409,10 @@ class _$_Recipe implements _Recipe {
       name,
       description,
       cookingTimeMinutes,
-      const DeepCollectionEquality().hash(_ingredientName),
-      const DeepCollectionEquality().hash(_ingredientQuantity),
-      const DeepCollectionEquality().hash(_stepNumber),
-      const DeepCollectionEquality().hash(_stepDescription),
+      const DeepCollectionEquality().hash(_ingredientNames),
+      const DeepCollectionEquality().hash(_ingredientQuantities),
+      const DeepCollectionEquality().hash(_stepNumbers),
+      const DeepCollectionEquality().hash(_stepDescriptions),
       calorie,
       protein,
       fat,
@@ -434,10 +435,10 @@ abstract class _Recipe implements Recipe {
       required final String name,
       required final String description,
       required final String cookingTimeMinutes,
-      required final List<String> ingredientName,
-      required final List<String> ingredientQuantity,
-      required final List<String> stepNumber,
-      required final List<String> stepDescription,
+      required final List<String> ingredientNames,
+      required final List<String> ingredientQuantities,
+      required final List<String> stepNumbers,
+      required final List<String> stepDescriptions,
       required final double calorie,
       required final double protein,
       required final double fat,
@@ -456,13 +457,13 @@ abstract class _Recipe implements Recipe {
   @override
   String get cookingTimeMinutes;
   @override
-  List<String> get ingredientName;
+  List<String> get ingredientNames;
   @override
-  List<String> get ingredientQuantity;
+  List<String> get ingredientQuantities;
   @override
-  List<String> get stepNumber;
+  List<String> get stepNumbers;
   @override
-  List<String> get stepDescription;
+  List<String> get stepDescriptions;
   @override
   double get calorie;
   @override

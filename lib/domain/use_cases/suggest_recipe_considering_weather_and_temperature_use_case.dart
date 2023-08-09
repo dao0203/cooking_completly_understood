@@ -103,12 +103,12 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
         name: recipeResponse.recipeName,
         description: recipeResponse.recipeDescription,
         cookingTimeMinutes: recipeResponse.recipeCookingTime,
-        ingredientName:
+        ingredientNames:
             recipeResponse.recipeIngredients.map((e) => e.name).toList(),
-        ingredientQuantity:
+        ingredientQuantities:
             recipeResponse.recipeIngredients.map((e) => e.quantity).toList(),
-        stepNumber: recipeResponse.recipeSteps.map((e) => e.number).toList(),
-        stepDescription:
+        stepNumbers: recipeResponse.recipeSteps.map((e) => e.number).toList(),
+        stepDescriptions:
             recipeResponse.recipeSteps.map((e) => e.description).toList(),
         calorie: double.parse(recipeResponse.nutrition.calorie),
         protein: double.parse(recipeResponse.nutrition.protein),

@@ -7,10 +7,8 @@ part 'message_state.g.dart';
 @riverpod
 class MessagesState extends _$MessagesState {
   @override
-  Future<Stream<List<RecipeMessage>>> build() async {
-    return await ref
-        .read(getRecipeMessagesUseCaseProvider)
-        .then((value) => value.call(null));
+  Stream<List<RecipeMessage>> build() {
+    return ref.watch(getRecipeMessagesUseCaseProvider).call(null);
   }
 
   //メッセージを送信するメソッド
