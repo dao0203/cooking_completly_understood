@@ -7,10 +7,15 @@ class SupabaseMyMessageDataSource implements MyMessageDataSource {
   final String _tableName = 'my_messages';
   @override
   Stream<List<MyMessageEntity>> getAll() {
-    return _supabaseClient.from(_tableName).stream(primaryKey: ['id']).map(
-        (event) => event
-            .map((e) => MyMessageEntity(
-                id: e['id'], content: e['content'], createdAt: e['created_at']))
+    return _supabaseClient
+        .from(_tableName)
+        .stream(primaryKey: ['id']).map((event) => event
+            .map(
+              (e) => MyMessageEntity(
+                  id: e['id'],
+                  content: e['content'],
+                  createdAt: DateTime.parse(e['created_at'])),
+            )
             .toList());
   }
 
