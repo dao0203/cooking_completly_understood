@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/food_model/food_entity.dart';
+import 'package:cooking_completly_understood/data/models/food_entity/food_entity.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

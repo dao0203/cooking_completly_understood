@@ -1,4 +1,3 @@
-import 'package:cooking_completly_understood/data/models/food_model/food_entity.dart';
 import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
 import 'package:cooking_completly_understood/domain/models/food/food.dart';
 import 'package:cooking_completly_understood/domain/repositories/food_repository.dart';

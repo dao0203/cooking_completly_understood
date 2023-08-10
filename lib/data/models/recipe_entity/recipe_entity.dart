@@ -1,10 +1,11 @@
+//freezed
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'recipe.freezed.dart';
+part 'recipe_entity.freezed.dart';
 
 @freezed
-class Recipe with _$Recipe {
-  const factory Recipe({
+abstract class RecipeEntity with _$RecipeEntity {
+  const factory RecipeEntity({
     required int id,
     required String name,
     required String description,
@@ -21,5 +22,5 @@ class Recipe with _$Recipe {
     required DateTime createdAt,
     required bool isMade,
     required bool isFavorite,
-  }) = _Recipe;
+  }) = _RecipeEntity;
 }

@@ -6,14 +6,16 @@ import 'package:cooking_completly_understood/domain/models/recipe_message/recipe
 import 'package:cooking_completly_understood/domain/repositories/my_message_repository.dart';
 import 'package:cooking_completly_understood/domain/repositories/recipe_repository.dart';
 import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
+import 'package:cooking_completly_understood/utils/role.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class GetRecipeMessagesUseCase
     implements UseCase<void, Stream<List<RecipeMessage>>> {
-  final MyMessageRepository _messageRepository;
+  final MyMessageRepository _myMessageRepository;
   final RecipeRepository _recipeRepository;
 
-  GetRecipeMessagesUseCase(this._messageRepository, this._recipeRepository);
+  GetRecipeMessagesUseCase(this._myMessageRepository, this._recipeRepository);
   //RecipeからRecipeMessageへ変換するトランスフォーマー
   final recipeToRecipeMessageTransformer =
       StreamTransformer<List<Recipe>, List<RecipeMessage>>.fromHandlers(
@@ -22,9 +24,9 @@ class GetRecipeMessagesUseCase
           .map(
             (e) => RecipeMessage(
               id: e.id,
-              role: e.role,
+              role: Role.assistant.name,
               content: "${e.name}をおすすめします",
-              timeStamp: e.timeStamp,
+              createdAt: e.createdAt,
             ),
           )
           .toList();
@@ -40,9 +42,9 @@ class GetRecipeMessagesUseCase
           .map(
             (e) => RecipeMessage(
               id: e.id,
-              role: e.role,
+              role: Role.user.name,
               content: e.content,
-              timeStamp: e.timeStamp,
+              createdAt: e.createdAt,
             ),
           )
           .toList();
@@ -52,11 +54,12 @@ class GetRecipeMessagesUseCase
 
 //RecipeとMyMessageを結合するメソッド
   @override
-  Stream<List<RecipeMessage>> call(void arg) {
+  Stream<List<RecipeMessage>> call(void _) {
+    debugPrint("GetRecipeMessagesUseCase.call");
     final recipeStream = _recipeRepository.getAllRecipes().transform(
           recipeToRecipeMessageTransformer,
         );
-    final myMessageStream = _messageRepository.getAll().transform(
+    final myMessageStream = _myMessageRepository.getAll().transform(
           myMessageToRecipeMessageTransformer,
         );
     return Rx.combineLatest2(
@@ -64,7 +67,7 @@ class GetRecipeMessagesUseCase
       recipeStream,
       (a, b) => (a + b)
         ..sort(
-          (a, b) => a.timeStamp.compareTo(b.timeStamp),
+          (a, b) => a.createdAt.compareTo(b.createdAt),
         ),
     );
   }

@@ -10,9 +10,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'data_source_providers.dart';
 
 //RecipeRepository
-final recipeRepositoryProvider = Provider((ref) => ref
-    .read(recipeDataSourceProvider)
-    .then((value) => RecipeRepositoryImpl(value)));
+final recipeRepositoryProvider = Provider(
+    (ref) => RecipeRepositoryImpl(ref.watch(recipeDataSourceProvider)));
 
 //MessageRepository
 final messageRepositoryProvider =
@@ -23,9 +22,9 @@ final foodRepositoryProvider =
     Provider((ref) => FoodRepositoryImpl(ref.watch(foodDataSourceProvider)));
 
 //MyMessageRepository
-final myMessageRepositoryProvider = Provider((ref) => ref
-    .read(myMessageDataSourceProvider)
-    .then((value) => MyMessageRepositoryImpl(value)));
+final myMessageRepositoryProvider = Provider((ref) => MyMessageRepositoryImpl(
+      ref.watch(myMessageDataSourceProvider),
+    ));
 
 //PositionRepository
 final positionRepositoryProvider = Provider(

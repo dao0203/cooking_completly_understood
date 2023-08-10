@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MyMessage {
   int get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  String get role => throw _privateConstructorUsedError;
-  DateTime get timeStamp => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MyMessageCopyWith<MyMessage> get copyWith =>
@@ -31,7 +30,7 @@ abstract class $MyMessageCopyWith<$Res> {
   factory $MyMessageCopyWith(MyMessage value, $Res Function(MyMessage) then) =
       _$MyMessageCopyWithImpl<$Res, MyMessage>;
   @useResult
-  $Res call({int id, String content, String role, DateTime timeStamp});
+  $Res call({int id, String content, DateTime createdAt});
 }
 
 /// @nodoc
@@ -49,8 +48,7 @@ class _$MyMessageCopyWithImpl<$Res, $Val extends MyMessage>
   $Res call({
     Object? id = null,
     Object? content = null,
-    Object? role = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -61,13 +59,9 @@ class _$MyMessageCopyWithImpl<$Res, $Val extends MyMessage>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -80,7 +74,7 @@ abstract class _$$_MyMessageCopyWith<$Res> implements $MyMessageCopyWith<$Res> {
       __$$_MyMessageCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String content, String role, DateTime timeStamp});
+  $Res call({int id, String content, DateTime createdAt});
 }
 
 /// @nodoc
@@ -96,8 +90,7 @@ class __$$_MyMessageCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? content = null,
-    Object? role = null,
-    Object? timeStamp = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_MyMessage(
       id: null == id
@@ -108,13 +101,9 @@ class __$$_MyMessageCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeStamp: null == timeStamp
-          ? _value.timeStamp
-          : timeStamp // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -124,23 +113,18 @@ class __$$_MyMessageCopyWithImpl<$Res>
 
 class _$_MyMessage implements _MyMessage {
   const _$_MyMessage(
-      {required this.id,
-      required this.content,
-      required this.role,
-      required this.timeStamp});
+      {required this.id, required this.content, required this.createdAt});
 
   @override
   final int id;
   @override
   final String content;
   @override
-  final String role;
-  @override
-  final DateTime timeStamp;
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'MyMessage(id: $id, content: $content, role: $role, timeStamp: $timeStamp)';
+    return 'MyMessage(id: $id, content: $content, createdAt: $createdAt)';
   }
 
   @override
@@ -150,13 +134,12 @@ class _$_MyMessage implements _MyMessage {
             other is _$_MyMessage &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.timeStamp, timeStamp) ||
-                other.timeStamp == timeStamp));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, content, role, timeStamp);
+  int get hashCode => Object.hash(runtimeType, id, content, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -169,17 +152,14 @@ abstract class _MyMessage implements MyMessage {
   const factory _MyMessage(
       {required final int id,
       required final String content,
-      required final String role,
-      required final DateTime timeStamp}) = _$_MyMessage;
+      required final DateTime createdAt}) = _$_MyMessage;
 
   @override
   int get id;
   @override
   String get content;
   @override
-  String get role;
-  @override
-  DateTime get timeStamp;
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_MyMessageCopyWith<_$_MyMessage> get copyWith =>

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cooking_completly_understood/ui/state/message_state.dart';
 import 'package:cooking_completly_understood/ui/view/widgets/bottom_sheet_recipe.dart';
 import 'package:cooking_completly_understood/ui/view/widgets/unfocus.dart';
@@ -25,249 +27,228 @@ class ChatScreen extends HookConsumerWidget {
             // メッセージ一覧
             Expanded(
               child: messages.when(
-                data: (value) {
-                  return StreamBuilder(
-                    stream: value,
-                    builder: (context, snapshot) {
-                      //ローディング中
-                      if (!snapshot.hasData) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                        //エラー
-                      } else if (snapshot.hasError) {
-                        return const Text('エラーが発生しました。再度お試しください。');
-                      } else {
-                        return ListView.separated(
-                          key: const PageStorageKey<String>('menuListView'),
-                          keyboardDismissBehavior:
-                              ScrollViewKeyboardDismissBehavior.onDrag,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          reverse: true,
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            final message = snapshot
-                                .data![snapshot.data!.length - index - 1];
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  key: Key(message.hashCode.toString()),
-                                  mainAxisAlignment:
-                                      message.role == Role.user.name
-                                          ? MainAxisAlignment.end
-                                          : MainAxisAlignment.start,
-                                  children: [
-                                    ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        maxWidth: screenWidth * 0.75,
+                data: (messages) {
+                  return ListView.separated(
+                    key: const PageStorageKey<String>('menuListView'),
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    reverse: true,
+                    itemCount: messages.length,
+                    itemBuilder: (context, index) {
+                      final message = messages[messages.length - index - 1];
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            key: Key(message.hashCode.toString()),
+                            mainAxisAlignment: message.role == Role.user.name
+                                ? MainAxisAlignment.end
+                                : MainAxisAlignment.start,
+                            children: [
+                              ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: screenWidth * 0.75,
+                                ),
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    //相手のメッセージが押された場合
+                                    if (message.role == Role.assistant.name) {
+                                      FocusManager.instance.primaryFocus
+                                          ?.unfocus();
+                                      //ボトムシートを表示させる
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) =>
+                                            BottomSheetRecipe(message.id),
+                                        backgroundColor: Theme.of(context)
+                                            .colorScheme
+                                            .background,
+                                        isScrollControlled: true,
+                                        useSafeArea: false,
+                                      );
+                                    }
+                                  },
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                          message.role == Role.user.name
+                                              ? 20
+                                              : 16,
+                                        ),
+                                        topRight: Radius.circular(
+                                          message.role == Role.user.name
+                                              ? 16
+                                              : 20,
+                                        ),
+                                        bottomLeft: Radius.circular(
+                                          message.role == Role.user.name
+                                              ? 20
+                                              : 4,
+                                        ),
+                                        bottomRight: Radius.circular(
+                                          // 4,
+                                          message.role == Role.user.name
+                                              ? 4
+                                              : 20,
+                                        ),
                                       ),
-                                      child: GestureDetector(
-                                        onTap: () async {
-                                          //相手のメッセージが押された場合
-                                          if (message.role ==
-                                              Role.assistant.name) {
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                            //ボトムシートを表示させる
-                                            showModalBottomSheet(
-                                              context: context,
-                                              builder: (context) =>
-                                                  BottomSheetRecipe(message.id),
-                                              backgroundColor: Theme.of(context)
-                                                  .colorScheme
-                                                  .background,
-                                              isScrollControlled: true,
-                                              useSafeArea: false,
-                                            );
-                                          }
-                                        },
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(
-                                                message.role == Role.user.name
-                                                    ? 20
-                                                    : 16,
-                                              ),
-                                              topRight: Radius.circular(
-                                                message.role == Role.user.name
-                                                    ? 16
-                                                    : 20,
-                                              ),
-                                              bottomLeft: Radius.circular(
-                                                message.role == Role.user.name
-                                                    ? 20
-                                                    : 4,
-                                              ),
-                                              bottomRight: Radius.circular(
-                                                // 4,
-                                                message.role == Role.user.name
-                                                    ? 4
-                                                    : 20,
-                                              ),
-                                            ),
-                                            color:
-                                                message.role == Role.user.name
-                                                    ? Theme.of(context)
-                                                        .colorScheme
-                                                        .secondary
-                                                        .withOpacity(0.1)
-                                                    : null,
-                                            gradient: message.role !=
-                                                    Role.user.name
-                                                ? LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: [
+                                      color: message.role == Role.user.name
+                                          ? Theme.of(context)
+                                              .colorScheme
+                                              .secondary
+                                              .withOpacity(0.1)
+                                          : null,
+                                      gradient: message.role != Role.user.name
+                                          ? LinearGradient(
+                                              begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight,
+                                              colors: [
+                                                Theme.of(context)
+                                                    .colorScheme
+                                                    .tertiaryContainer
+                                                    .withOpacity(0.8),
+                                                Theme.of(context)
+                                                    .colorScheme
+                                                    .primaryContainer
+                                                    .withOpacity(0.8),
+                                              ],
+                                            )
+                                          : null,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 16,
+                                      ),
+                                      //メッセージの内容
+                                      child: Text(
+                                        message.content,
+                                        style: TextStyle(
+                                          color: //ここでメッセージの送信者を判定する
+                                              message.role == Role.user.name
+                                                  ? Theme.of(context)
+                                                      .colorScheme
+                                                      .secondary
+                                                  : alphaBlend(
                                                       Theme.of(context)
                                                           .colorScheme
-                                                          .tertiaryContainer
-                                                          .withOpacity(0.8),
+                                                          .primary
+                                                          .withOpacity(0.5),
                                                       Theme.of(context)
                                                           .colorScheme
-                                                          .primaryContainer
-                                                          .withOpacity(0.8),
-                                                    ],
-                                                  )
-                                                : null,
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 10,
-                                              horizontal: 16,
-                                            ),
-                                            //メッセージの内容
-                                            child: Text(
-                                              message.content,
-                                              style: TextStyle(
-                                                color: //ここでメッセージの送信者を判定する
-                                                    message.role ==
-                                                            Role.user.name
-                                                        ? Theme.of(context)
-                                                            .colorScheme
-                                                            .secondary
-                                                        : alphaBlend(
-                                                            Theme.of(context)
-                                                                .colorScheme
-                                                                .primary
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            Theme.of(context)
-                                                                .colorScheme
-                                                                .tertiary,
-                                                          ),
-                                              ),
-                                            ),
-                                          ),
+                                                          .tertiary,
+                                                    ),
                                         ),
                                       ),
                                     ),
-
-                                    //アシスタントの場合は詳細アイコンを表示する
-                                    if (message.role == Role.assistant.name)
-                                      IconButton(
-                                        onPressed: () {
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                          showModalBottomSheet(
-                                            context: context,
-                                            builder: (context) =>
-                                                BottomSheetRecipe(message.id),
-                                            backgroundColor: Theme.of(context)
-                                                .colorScheme
-                                                .background,
-                                            isScrollControlled: true,
-                                            useSafeArea: false,
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.info_outline_rounded,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onBackground
-                                              .withOpacity(0.5),
-                                        ),
-                                      ),
-                                  ],
+                                  ),
                                 ),
-                                //アシスタントの場合は詳細プレビューを表示する
-                                // if (message.role ==
-                                //     OpenAIChatMessageRole.assistant.name)
-                                //   ConstrainedBox(
-                                //     constraints: BoxConstraints(
-                                //       maxWidth: screenWidth * 0.75,
-                                //     ),
-                                //     child: GestureDetector(
-                                //       onTap: () async {
-                                //         FocusManager.instance.primaryFocus
-                                //             ?.unfocus();
-                                //         //ボトムシートを表示させる
-                                //         showModalBottomSheet(
-                                //           context: context,
-                                //           builder: (context) =>
-                                //               BottomSheetRecipe(message.id),
-                                //           backgroundColor: Theme.of(context)
-                                //               .colorScheme
-                                //               .background,
-                                //           isScrollControlled: true,
-                                //           useSafeArea: false,
-                                //         );
-                                //       },
-                                //       child: DecoratedBox(
-                                //         decoration: BoxDecoration(
-                                //           borderRadius: const BorderRadius.only(
-                                //             topLeft: Radius.circular(
-                                //               4,
-                                //             ),
-                                //             topRight: Radius.circular(
-                                //               4,
-                                //             ),
-                                //             bottomLeft: Radius.circular(
-                                //               4,
-                                //             ),
-                                //             bottomRight: Radius.circular(
-                                //               20,
-                                //             ),
-                                //           ),
-                                //           gradient: LinearGradient(
-                                //             begin: Alignment.topLeft,
-                                //             end: Alignment.bottomRight,
-                                //             colors: [
-                                //               Theme.of(context)
-                                //                   .colorScheme
-                                //                   .tertiaryContainer
-                                //                   .withOpacity(0.8),
-                                //               Theme.of(context)
-                                //                   .colorScheme
-                                //                   .primaryContainer
-                                //                   .withOpacity(0.8),
-                                //             ],
-                                //           ),
-                                //         ),
-                                //         child: Padding(
-                                //           padding: const EdgeInsets.symmetric(
-                                //             vertical: 10,
-                                //             horizontal: 16,
-                                //           ),
-                                //           //プレビュー表示
-                                //           child: RecipePreview(message.id),
-                                //         ),
-                                //       ),
-                                //     ),
-                                //   ),
-                              ],
-                            );
-                          },
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(height: 16),
-                        );
-                      }
+                              ),
+
+                              //アシスタントの場合は詳細アイコンを表示する
+                              if (message.role == Role.assistant.name)
+                                IconButton(
+                                  onPressed: () {
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) =>
+                                          BottomSheetRecipe(message.id),
+                                      backgroundColor: Theme.of(context)
+                                          .colorScheme
+                                          .background,
+                                      isScrollControlled: true,
+                                      useSafeArea: false,
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.info_outline_rounded,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground
+                                        .withOpacity(0.5),
+                                  ),
+                                ),
+                            ],
+                          ),
+                          //アシスタントの場合は詳細プレビューを表示する
+                          // if (message.role ==
+                          //     OpenAIChatMessageRole.assistant.name)
+                          //   ConstrainedBox(
+                          //     constraints: BoxConstraints(
+                          //       maxWidth: screenWidth * 0.75,
+                          //     ),
+                          //     child: GestureDetector(
+                          //       onTap: () async {
+                          //         FocusManager.instance.primaryFocus
+                          //             ?.unfocus();
+                          //         //ボトムシートを表示させる
+                          //         showModalBottomSheet(
+                          //           context: context,
+                          //           builder: (context) =>
+                          //               BottomSheetRecipe(message.id),
+                          //           backgroundColor: Theme.of(context)
+                          //               .colorScheme
+                          //               .background,
+                          //           isScrollControlled: true,
+                          //           useSafeArea: false,
+                          //         );
+                          //       },
+                          //       child: DecoratedBox(
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: const BorderRadius.only(
+                          //             topLeft: Radius.circular(
+                          //               4,
+                          //             ),
+                          //             topRight: Radius.circular(
+                          //               4,
+                          //             ),
+                          //             bottomLeft: Radius.circular(
+                          //               4,
+                          //             ),
+                          //             bottomRight: Radius.circular(
+                          //               20,
+                          //             ),
+                          //           ),
+                          //           gradient: LinearGradient(
+                          //             begin: Alignment.topLeft,
+                          //             end: Alignment.bottomRight,
+                          //             colors: [
+                          //               Theme.of(context)
+                          //                   .colorScheme
+                          //                   .tertiaryContainer
+                          //                   .withOpacity(0.8),
+                          //               Theme.of(context)
+                          //                   .colorScheme
+                          //                   .primaryContainer
+                          //                   .withOpacity(0.8),
+                          //             ],
+                          //           ),
+                          //         ),
+                          //         child: Padding(
+                          //           padding: const EdgeInsets.symmetric(
+                          //             vertical: 10,
+                          //             horizontal: 16,
+                          //           ),
+                          //           //プレビュー表示
+                          //           child: RecipePreview(message.id),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                        ],
+                      );
                     },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
                   );
                 },
                 error: (Object error, StackTrace stackTrace) {
-                  return const Text('エラーが発生しました。再度お試しください。');
+                  return Text(
+                      'エラーが発生しました。再度お試しください。${error.toString()} $stackTrace');
                 },
                 loading: () => const Center(
                   child: CircularProgressIndicator(),

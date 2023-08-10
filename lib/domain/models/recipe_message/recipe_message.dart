@@ -9,6 +9,6 @@ class RecipeMessage with _$RecipeMessage {
     required int id,
     required String role,
     required String content,
-    required DateTime timeStamp,
+    required DateTime createdAt,
   }) = _RecipeMessage;
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'recipe.dart';
+part of 'recipe_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Recipe {
+mixin _$RecipeEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -34,13 +34,15 @@ mixin _$Recipe {
   bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
+  $RecipeEntityCopyWith<RecipeEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RecipeCopyWith<$Res> {
-  factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
-      _$RecipeCopyWithImpl<$Res, Recipe>;
+abstract class $RecipeEntityCopyWith<$Res> {
+  factory $RecipeEntityCopyWith(
+          RecipeEntity value, $Res Function(RecipeEntity) then) =
+      _$RecipeEntityCopyWithImpl<$Res, RecipeEntity>;
   @useResult
   $Res call(
       {int id,
@@ -62,9 +64,9 @@ abstract class $RecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
-    implements $RecipeCopyWith<$Res> {
-  _$RecipeCopyWithImpl(this._value, this._then);
+class _$RecipeEntityCopyWithImpl<$Res, $Val extends RecipeEntity>
+    implements $RecipeEntityCopyWith<$Res> {
+  _$RecipeEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -161,9 +163,11 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
 }
 
 /// @nodoc
-abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
-  factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
-      __$$_RecipeCopyWithImpl<$Res>;
+abstract class _$$_RecipeEntityCopyWith<$Res>
+    implements $RecipeEntityCopyWith<$Res> {
+  factory _$$_RecipeEntityCopyWith(
+          _$_RecipeEntity value, $Res Function(_$_RecipeEntity) then) =
+      __$$_RecipeEntityCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -186,10 +190,11 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RecipeCopyWithImpl<$Res>
-    extends _$RecipeCopyWithImpl<$Res, _$_Recipe>
-    implements _$$_RecipeCopyWith<$Res> {
-  __$$_RecipeCopyWithImpl(_$_Recipe _value, $Res Function(_$_Recipe) _then)
+class __$$_RecipeEntityCopyWithImpl<$Res>
+    extends _$RecipeEntityCopyWithImpl<$Res, _$_RecipeEntity>
+    implements _$$_RecipeEntityCopyWith<$Res> {
+  __$$_RecipeEntityCopyWithImpl(
+      _$_RecipeEntity _value, $Res Function(_$_RecipeEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -212,7 +217,7 @@ class __$$_RecipeCopyWithImpl<$Res>
     Object? isMade = null,
     Object? isFavorite = null,
   }) {
-    return _then(_$_Recipe(
+    return _then(_$_RecipeEntity(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -283,8 +288,8 @@ class __$$_RecipeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Recipe implements _Recipe {
-  const _$_Recipe(
+class _$_RecipeEntity implements _RecipeEntity {
+  const _$_RecipeEntity(
       {required this.id,
       required this.name,
       required this.description,
@@ -367,14 +372,14 @@ class _$_Recipe implements _Recipe {
 
   @override
   String toString() {
-    return 'Recipe(id: $id, name: $name, description: $description, cookingTimeMinutes: $cookingTimeMinutes, ingredientNames: $ingredientNames, ingredientQuantities: $ingredientQuantities, stepNumbers: $stepNumbers, stepDescriptions: $stepDescriptions, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, createdAt: $createdAt, isMade: $isMade, isFavorite: $isFavorite)';
+    return 'RecipeEntity(id: $id, name: $name, description: $description, cookingTimeMinutes: $cookingTimeMinutes, ingredientNames: $ingredientNames, ingredientQuantities: $ingredientQuantities, stepNumbers: $stepNumbers, stepDescriptions: $stepDescriptions, calorie: $calorie, protein: $protein, fat: $fat, carbohydrate: $carbohydrate, salt: $salt, createdAt: $createdAt, isMade: $isMade, isFavorite: $isFavorite)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Recipe &&
+            other is _$_RecipeEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -425,12 +430,12 @@ class _$_Recipe implements _Recipe {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
-      __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
+  _$$_RecipeEntityCopyWith<_$_RecipeEntity> get copyWith =>
+      __$$_RecipeEntityCopyWithImpl<_$_RecipeEntity>(this, _$identity);
 }
 
-abstract class _Recipe implements Recipe {
-  const factory _Recipe(
+abstract class _RecipeEntity implements RecipeEntity {
+  const factory _RecipeEntity(
       {required final int id,
       required final String name,
       required final String description,
@@ -446,7 +451,7 @@ abstract class _Recipe implements Recipe {
       required final double salt,
       required final DateTime createdAt,
       required final bool isMade,
-      required final bool isFavorite}) = _$_Recipe;
+      required final bool isFavorite}) = _$_RecipeEntity;
 
   @override
   int get id;
@@ -482,6 +487,6 @@ abstract class _Recipe implements Recipe {
   bool get isFavorite;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
+  _$$_RecipeEntityCopyWith<_$_RecipeEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
