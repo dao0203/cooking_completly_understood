@@ -6,12 +6,12 @@ part of 'recipe_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeStateHash() => r'520bb94751961ec70833c472a2f2c7d2b091fb0b';
+String _$recipeStateHash() => r'cb8835cb5bc4841164ea981cfbdd0efee6d19f8a';
 
 /// See also [RecipeState].
 @ProviderFor(RecipeState)
-final recipeStateProvider = AutoDisposeAsyncNotifierProvider<RecipeState,
-    Stream<List<Recipe>>>.internal(
+final recipeStateProvider =
+    AutoDisposeStreamNotifierProvider<RecipeState, List<Recipe>>.internal(
   RecipeState.new,
   name: r'recipeStateProvider',
   debugGetCreateSourceHash:
@@ -20,5 +20,5 @@ final recipeStateProvider = AutoDisposeAsyncNotifierProvider<RecipeState,
   allTransitiveDependencies: null,
 );
 
-typedef _$RecipeState = AutoDisposeAsyncNotifier<Stream<List<Recipe>>>;
+typedef _$RecipeState = AutoDisposeStreamNotifier<List<Recipe>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
