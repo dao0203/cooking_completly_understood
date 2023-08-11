@@ -38,7 +38,7 @@ String messageThatUserInputted(
     "$jsonFat": "脂質(g)",
     "$jsonCarbohydrate": "炭水化物(g)",
     "$jsonSalt": "塩分(g)"
-  },
+  }
 }
 ''';
 
