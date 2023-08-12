@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color seedColor = Colors.blue;
+const Color seedColor = Color(0xFF821997);
 const Color favoriteColor = Color(0xFFFFEE00);
 const Color madeColor = Color(0xFF2B96DE);
 const String openAIModel = 'gpt-3.5-turbo';
