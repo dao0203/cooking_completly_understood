@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/ui/view/screens/menu_details_screen.dart';
+import 'package:recipe_lite/ui/view/screens/menu_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {

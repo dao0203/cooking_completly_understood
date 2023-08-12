@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/ui/state/foods_state.dart';
+import 'package:recipe_lite/ui/state/foods_state.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

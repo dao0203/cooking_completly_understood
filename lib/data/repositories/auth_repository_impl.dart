@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/data/sources/interfaces/auth_data_source.dart';
-import 'package:cooking_completly_understood/domain/repositories/auth_repository.dart';
+import 'package:recipe_lite/data/sources/interfaces/auth_data_source.dart';
+import 'package:recipe_lite/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource _authDataSource;

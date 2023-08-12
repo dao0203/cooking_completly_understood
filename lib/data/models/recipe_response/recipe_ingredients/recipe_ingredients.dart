@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:recipe_lite/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recipe_ingredients.freezed.dart';

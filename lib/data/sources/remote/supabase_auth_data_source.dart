@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/interfaces/auth_data_source.dart';
+import 'package:recipe_lite/data/sources/interfaces/auth_data_source.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseAuthDataSource implements AuthDataSource {

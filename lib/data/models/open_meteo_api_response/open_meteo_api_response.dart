@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/open_meteo_api_response/current_weather/current_weather.dart';
+import 'package:recipe_lite/data/models/open_meteo_api_response/current_weather/current_weather.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'open_meteo_api_response.freezed.dart';

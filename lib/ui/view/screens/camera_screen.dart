@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/ui/view/screens/mlkit/vision_detector_views/label_detector_view.dart';
+import 'package:recipe_lite/ui/view/screens/mlkit/vision_detector_views/label_detector_view.dart';
 import 'package:flutter/material.dart';
 
 class CameraScreen extends StatelessWidget {

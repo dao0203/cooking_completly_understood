@@ -1,11 +1,11 @@
 //RecipeRepository
-import 'package:cooking_completly_understood/data/repositories/auth_repository_impl.dart';
-import 'package:cooking_completly_understood/data/repositories/food_repository_impl.dart';
-import 'package:cooking_completly_understood/data/repositories/message_repository_impl.dart';
-import 'package:cooking_completly_understood/data/repositories/my_message_repository_impl.dart';
-import 'package:cooking_completly_understood/data/repositories/position_repository_impl.dart';
-import 'package:cooking_completly_understood/data/repositories/recipe_repository_impl.dart';
-import 'package:cooking_completly_understood/data/repositories/weather_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/auth_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/food_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/message_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/my_message_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/position_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/recipe_repository_impl.dart';
+import 'package:recipe_lite/data/repositories/weather_repository_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'data_source_providers.dart';
 

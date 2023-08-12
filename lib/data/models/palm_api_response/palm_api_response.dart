@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/palm_api_response/candidate/candidate.dart';
+import 'package:recipe_lite/data/models/palm_api_response/candidate/candidate.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'palm_api_response.freezed.dart';

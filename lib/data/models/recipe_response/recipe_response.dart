@@ -1,7 +1,7 @@
-import 'package:cooking_completly_understood/data/models/recipe_response/nutrition/nutrition.dart';
-import 'package:cooking_completly_understood/data/models/recipe_response/recipe_ingredients/recipe_ingredients.dart';
-import 'package:cooking_completly_understood/data/models/recipe_response/recipe_steps/recipe_steps.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:recipe_lite/data/models/recipe_response/nutrition/nutrition.dart';
+import 'package:recipe_lite/data/models/recipe_response/recipe_ingredients/recipe_ingredients.dart';
+import 'package:recipe_lite/data/models/recipe_response/recipe_steps/recipe_steps.dart';
+import 'package:recipe_lite/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recipe_response.freezed.dart';

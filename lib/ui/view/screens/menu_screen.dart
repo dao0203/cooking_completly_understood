@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cooking_completly_understood/ui/view/screens/chat_screen.dart';
+import 'package:recipe_lite/ui/view/screens/chat_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});

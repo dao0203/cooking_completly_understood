@@ -1,8 +1,8 @@
-import 'package:cooking_completly_understood/ui/view/screens/analytics_screen.dart';
-import 'package:cooking_completly_understood/ui/view/screens/camera_screen.dart';
-import 'package:cooking_completly_understood/ui/view/screens/menu_screen.dart';
-import 'package:cooking_completly_understood/ui/view/screens/home_screen.dart';
-import 'package:cooking_completly_understood/utils/utils.dart';
+import 'package:recipe_lite/ui/view/screens/analytics_screen.dart';
+import 'package:recipe_lite/ui/view/screens/camera_screen.dart';
+import 'package:recipe_lite/ui/view/screens/menu_screen.dart';
+import 'package:recipe_lite/ui/view/screens/home_screen.dart';
+import 'package:recipe_lite/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -36,7 +36,7 @@ class _NavigationState extends State<Navigation> {
     return Scaffold(
       appBar: [
         AppBar(
-          title: const Text('料理完全に理解した'),
+          title: const Text('レシピLite'),
         ),
         AppBar(
           title: const Text('献立'),

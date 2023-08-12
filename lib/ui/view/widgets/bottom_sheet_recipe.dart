@@ -1,6 +1,6 @@
-import 'package:cooking_completly_understood/ui/state/recipe_by_id_state.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
-import 'package:cooking_completly_understood/utils/utils.dart';
+import 'package:recipe_lite/ui/state/recipe_by_id_state.dart';
+import 'package:recipe_lite/utils/constants.dart';
+import 'package:recipe_lite/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

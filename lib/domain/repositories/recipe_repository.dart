@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
+import 'package:recipe_lite/domain/models/recipe/recipe.dart';
 
 abstract class RecipeRepository {
   Stream<List<Recipe>> getAllRecipes();

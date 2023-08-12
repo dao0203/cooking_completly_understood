@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/di/repository_providers.dart';
-import 'package:cooking_completly_understood/ui/view/screens/navigation.dart';
+import 'package:recipe_lite/di/repository_providers.dart';
+import 'package:recipe_lite/ui/view/screens/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
