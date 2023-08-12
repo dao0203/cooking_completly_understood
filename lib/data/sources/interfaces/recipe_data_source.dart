@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/data/models/recipe_entity/recipe_entity.dart';
-import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
+import 'package:recipe_lite/data/models/recipe_entity/recipe_entity.dart';
+import 'package:recipe_lite/domain/models/recipe/recipe.dart';
 
 abstract class RecipeDataSource {
   Stream<List<RecipeEntity>> getAll();

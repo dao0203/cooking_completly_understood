@@ -1,4 +1,4 @@
-# cooking_completly_understood
+# Recipe Lite
 
 A new Flutter project.
 

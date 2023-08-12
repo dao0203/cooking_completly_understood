@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/open_ai_api_response/open_ai_api_response.dart';
-import 'package:cooking_completly_understood/data/models/palm_api_response/palm_api_response.dart';
-import 'package:cooking_completly_understood/data/sources/interfaces/chat_data_source.dart';
-import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
-import 'package:cooking_completly_understood/utils/open_ai_parameters.dart';
+import 'package:recipe_lite/data/models/open_ai_api_response/open_ai_api_response.dart';
+import 'package:recipe_lite/data/models/palm_api_response/palm_api_response.dart';
+import 'package:recipe_lite/data/sources/interfaces/chat_data_source.dart';
+import 'package:recipe_lite/domain/repositories/message_repository.dart';
+import 'package:recipe_lite/utils/constants.dart';
+import 'package:recipe_lite/utils/open_ai_parameters.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

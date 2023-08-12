@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/auth_gate.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:recipe_lite/auth_gate.dart';
+import 'package:recipe_lite/utils/constants.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,7 +13,7 @@ class AppTheme extends StatelessWidget {
       builder: (lightDynemic, darkDynemic) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Cooking Completly Understood',
+          title: 'Recipe Lite',
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

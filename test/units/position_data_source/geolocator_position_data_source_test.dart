@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/sources/local/geolocator_position_data_source.dart';
+import 'package:recipe_lite/data/sources/local/geolocator_position_data_source.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geolocator/geolocator.dart';

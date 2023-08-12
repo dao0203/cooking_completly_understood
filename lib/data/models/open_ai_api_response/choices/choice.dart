@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/open_ai_api_response/choices/message/message.dart';
+import 'package:recipe_lite/data/models/open_ai_api_response/choices/message/message.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'choice.freezed.dart';

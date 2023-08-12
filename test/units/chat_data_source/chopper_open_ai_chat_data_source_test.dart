@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
-import 'package:cooking_completly_understood/data/sources/remote/chopper_open_ai_chat_data_source.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
-import 'package:cooking_completly_understood/utils/open_ai_parameters.dart';
+import 'package:recipe_lite/data/sources/remote/chopper_open_ai_chat_data_source.dart';
+import 'package:recipe_lite/utils/constants.dart';
+import 'package:recipe_lite/utils/open_ai_parameters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';

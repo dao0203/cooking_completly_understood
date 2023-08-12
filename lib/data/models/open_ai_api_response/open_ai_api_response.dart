@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/data/models/open_ai_api_response/choices/choice.dart';
-import 'package:cooking_completly_understood/data/models/open_ai_api_response/usage/usage.dart';
+import 'package:recipe_lite/data/models/open_ai_api_response/choices/choice.dart';
+import 'package:recipe_lite/data/models/open_ai_api_response/usage/usage.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'open_ai_api_response.freezed.dart';

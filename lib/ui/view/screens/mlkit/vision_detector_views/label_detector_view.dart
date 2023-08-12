@@ -1,6 +1,6 @@
 import 'dart:io' as io;
 
-import 'package:cooking_completly_understood/ui/state/foods_state.dart';
+import 'package:recipe_lite/ui/state/foods_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';

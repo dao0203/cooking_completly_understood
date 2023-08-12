@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:cooking_completly_understood/domain/models/my_message/my_message.dart';
-import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/domain/models/recipe_message/recipe_message.dart';
-import 'package:cooking_completly_understood/domain/repositories/my_message_repository.dart';
-import 'package:cooking_completly_understood/domain/repositories/recipe_repository.dart';
-import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
-import 'package:cooking_completly_understood/utils/role.dart';
+import 'package:recipe_lite/domain/models/my_message/my_message.dart';
+import 'package:recipe_lite/domain/models/recipe/recipe.dart';
+import 'package:recipe_lite/domain/models/recipe_message/recipe_message.dart';
+import 'package:recipe_lite/domain/repositories/my_message_repository.dart';
+import 'package:recipe_lite/domain/repositories/recipe_repository.dart';
+import 'package:recipe_lite/domain/use_cases/use_case.dart';
+import 'package:recipe_lite/utils/role.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 

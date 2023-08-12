@@ -1,5 +1,5 @@
 import 'package:chopper/chopper.dart';
-import 'package:cooking_completly_understood/data/sources/remote/chopper_open_meteo_api_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/chopper_open_meteo_api_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

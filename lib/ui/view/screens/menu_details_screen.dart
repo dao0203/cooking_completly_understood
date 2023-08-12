@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:recipe_lite/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class MenuDetailsScreen extends StatelessWidget {

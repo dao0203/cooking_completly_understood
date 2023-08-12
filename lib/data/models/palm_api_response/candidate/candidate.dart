@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/data/models/palm_api_response/safety_rating/safety_rating.dart';
+import 'package:recipe_lite/data/models/palm_api_response/safety_rating/safety_rating.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'candidate.freezed.dart';

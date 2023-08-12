@@ -1,14 +1,14 @@
-import 'package:cooking_completly_understood/data/sources/interfaces/auth_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/interfaces/chat_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/interfaces/my_message_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/local/geolocator_position_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/remote/supabase_food_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/remote/chopper_open_ai_chat_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/remote/chopper_open_meteo_api_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/remote/supabase_auth_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/remote/supabase_my_message_data_source.dart';
-import 'package:cooking_completly_understood/data/sources/remote/supabase_recipe_data_source.dart';
+import 'package:recipe_lite/data/sources/interfaces/auth_data_source.dart';
+import 'package:recipe_lite/data/sources/interfaces/chat_data_source.dart';
+import 'package:recipe_lite/data/sources/interfaces/my_message_data_source.dart';
+import 'package:recipe_lite/data/sources/interfaces/recipe_data_source.dart';
+import 'package:recipe_lite/data/sources/local/geolocator_position_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/supabase_food_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/chopper_open_ai_chat_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/chopper_open_meteo_api_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/supabase_auth_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/supabase_my_message_data_source.dart';
+import 'package:recipe_lite/data/sources/remote/supabase_recipe_data_source.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 //FoodDataSource

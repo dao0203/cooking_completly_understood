@@ -1,4 +1,4 @@
-import 'package:cooking_completly_understood/domain/models/weather/weather.dart';
+import 'package:recipe_lite/domain/models/weather/weather.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'current_weather.freezed.dart';

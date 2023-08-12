@@ -1,6 +1,6 @@
-import 'package:cooking_completly_understood/data/sources/interfaces/food_data_source.dart';
-import 'package:cooking_completly_understood/domain/models/food/food.dart';
-import 'package:cooking_completly_understood/domain/repositories/food_repository.dart';
+import 'package:recipe_lite/data/sources/interfaces/food_data_source.dart';
+import 'package:recipe_lite/domain/models/food/food.dart';
+import 'package:recipe_lite/domain/repositories/food_repository.dart';
 
 class FoodRepositoryImpl implements FoodRepository {
   final FoodDataSource _foodDataSource;

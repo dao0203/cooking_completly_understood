@@ -1,6 +1,6 @@
 {
-    "name": "cooking_completly_understood",
-    "short_name": "cooking_completly_understood",
+    "name": "recipe_lite",
+    "short_name": "recipe_lite",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

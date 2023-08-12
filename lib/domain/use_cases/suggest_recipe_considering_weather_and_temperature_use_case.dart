@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:cooking_completly_understood/data/models/recipe_response/recipe_response.dart';
-import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
-import 'package:cooking_completly_understood/domain/repositories/message_repository.dart';
-import 'package:cooking_completly_understood/domain/repositories/my_message_repository.dart';
-import 'package:cooking_completly_understood/domain/repositories/position_repository.dart';
-import 'package:cooking_completly_understood/domain/repositories/recipe_repository.dart';
-import 'package:cooking_completly_understood/domain/repositories/weather_repository.dart';
-import 'package:cooking_completly_understood/domain/use_cases/use_case.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:recipe_lite/data/models/recipe_response/recipe_response.dart';
+import 'package:recipe_lite/domain/models/recipe/recipe.dart';
+import 'package:recipe_lite/domain/repositories/message_repository.dart';
+import 'package:recipe_lite/domain/repositories/my_message_repository.dart';
+import 'package:recipe_lite/domain/repositories/position_repository.dart';
+import 'package:recipe_lite/domain/repositories/recipe_repository.dart';
+import 'package:recipe_lite/domain/repositories/weather_repository.dart';
+import 'package:recipe_lite/domain/use_cases/use_case.dart';
+import 'package:recipe_lite/utils/constants.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 
@@ -130,10 +130,13 @@ class SuggestRecipeConsideringWeatherAndTemperatureUseCase
       stepNumbers: recipeResponse.recipeSteps.map((e) => e.number).toList(),
       stepDescriptions:
           recipeResponse.recipeSteps.map((e) => e.description).toList(),
-      calorie: double.parse(recipeResponse.nutrition.calorie.replaceAll('kcal', '')),
-      protein: double.parse(recipeResponse.nutrition.protein.replaceAll('g', '')),
+      calorie:
+          double.parse(recipeResponse.nutrition.calorie.replaceAll('kcal', '')),
+      protein:
+          double.parse(recipeResponse.nutrition.protein.replaceAll('g', '')),
       fat: double.parse(recipeResponse.nutrition.fat.replaceAll('g', '')),
-      carbohydrate: double.parse(recipeResponse.nutrition.carbohydrate.replaceAll('g', '')),
+      carbohydrate: double.parse(
+          recipeResponse.nutrition.carbohydrate.replaceAll('g', '')),
       salt: double.parse(recipeResponse.nutrition.salt.replaceAll('g', '')),
       createdAt: DateTime.now(),
       isMade: false,

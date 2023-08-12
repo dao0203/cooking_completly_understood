@@ -1,6 +1,6 @@
-import 'package:cooking_completly_understood/data/models/recipe_entity/recipe_entity.dart';
-import 'package:cooking_completly_understood/data/sources/interfaces/recipe_data_source.dart';
-import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
+import 'package:recipe_lite/data/models/recipe_entity/recipe_entity.dart';
+import 'package:recipe_lite/data/sources/interfaces/recipe_data_source.dart';
+import 'package:recipe_lite/domain/models/recipe/recipe.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseRecipeDataSource implements RecipeDataSource {

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "cooking_completly_understood" "\0"
+            VALUE "FileDescription", "recipe_lite" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cooking_completly_understood" "\0"
+            VALUE "InternalName", "recipe_lite" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cooking_completly_understood.exe" "\0"
-            VALUE "ProductName", "cooking_completly_understood" "\0"
+            VALUE "OriginalFilename", "recipe_lite.exe" "\0"
+            VALUE "ProductName", "recipe_lite" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

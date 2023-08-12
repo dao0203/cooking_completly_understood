@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/di/repository_providers.dart';
-import 'package:cooking_completly_understood/domain/models/recipe/recipe.dart';
+import 'package:recipe_lite/di/repository_providers.dart';
+import 'package:recipe_lite/domain/models/recipe/recipe.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'recipe_by_id_state.g.dart';

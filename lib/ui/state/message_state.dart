@@ -1,5 +1,5 @@
-import 'package:cooking_completly_understood/di/use_case_providers.dart';
-import 'package:cooking_completly_understood/domain/models/recipe_message/recipe_message.dart';
+import 'package:recipe_lite/di/use_case_providers.dart';
+import 'package:recipe_lite/domain/models/recipe_message/recipe_message.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'message_state.g.dart';

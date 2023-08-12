@@ -1,8 +1,8 @@
 import 'package:camera/camera.dart';
-import 'package:cooking_completly_understood/utils/constants.dart';
+import 'package:recipe_lite/utils/constants.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
-import 'package:cooking_completly_understood/ui/theme/app_theme.dart';
+import 'package:recipe_lite/ui/theme/app_theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
